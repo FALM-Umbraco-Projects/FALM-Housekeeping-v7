@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88C26A45-5C8C-4103-B1CF-1F97B46528AC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FALMHousekeepingVersionsManager</RootNamespace>
+    <AssemblyName>FALMHousekeepingVersionsManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\published\Housekeeping\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="businesslogic">
+      <HintPath>bin\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ClientDependency.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="cms">
+      <HintPath>bin\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="controls">
+      <HintPath>bin\controls.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces">
+      <HintPath>bin\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="umbraco">
+      <HintPath>bin\umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Core">
+      <HintPath>bin\Umbraco.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.DataLayer">
+      <HintPath>bin\umbraco.DataLayer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="umbraco\images\umbraco\FALMHousekeeping\versions_cleanup.gif" />
+    <Content Include="umbraco\images\umbraco\FALMHousekeeping\versions_view.gif" />
+    <Content Include="umbraco\plugins\FALMHousekeeping\versions\cleanupVersionsByCount.aspx" />
+    <Content Include="umbraco\plugins\FALMHousekeeping\versions\cleanupVersionsByDate.aspx" />
+    <Content Include="umbraco\plugins\FALMHousekeeping\versions\showVersions.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="umbraco\plugins\FALMHousekeeping\versions\cleanupVersionsByCount.aspx.cs">
+      <DependentUpon>cleanupVersionsByCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="umbraco\plugins\FALMHousekeeping\versions\cleanupVersionsByCount.aspx.designer.cs">
+      <DependentUpon>cleanupVersionsByCount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="umbraco\plugins\FALMHousekeeping\versions\cleanupVersionsByDate.aspx.cs">
+      <DependentUpon>cleanupVersionsByDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="umbraco\plugins\FALMHousekeeping\versions\cleanupVersionsByDate.aspx.designer.cs">
+      <DependentUpon>cleanupVersionsByDate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="umbraco\plugins\FALMHousekeeping\versions\showVersions.aspx.cs">
+      <DependentUpon>showVersions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="umbraco\plugins\FALMHousekeeping\versions\showVersions.aspx.designer.cs">
+      <DependentUpon>showVersions.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56562</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)*.gif" "$(TargetDir)..\" /s /y
+xcopy "$(ProjectDir)*.aspx" "$(TargetDir)..\" /s /y
+xcopy "$(ProjectDir)*.js" "$(TargetDir)..\" /s /y
+
+xcopy "$(TargetDir)FALMHousekeepingVersionsManager.dll" "$(ProjectDir)\bin" /y
+xcopy "$(TargetDir)FALMHousekeepingVersionsManager.pdb" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)FALMHousekeepingVersionsManager.pdb"
+
+xcopy "$(TargetDir)businesslogic.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)businesslogic.dll"
+xcopy "$(TargetDir)ClientDependency.Core.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)ClientDependency.Core.dll"
+xcopy "$(TargetDir)cms.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)cms.dll"
+xcopy "$(TargetDir)controls.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)controls.dll"
+xcopy "$(TargetDir)interfaces.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)interfaces.dll"
+xcopy "$(TargetDir)Umbraco.Core.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)Umbraco.Core.dll"
+xcopy "$(TargetDir)umbraco.DataLayer.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)umbraco.DataLayer.dll"
+xcopy "$(TargetDir)umbraco.dll" "$(ProjectDir)\bin" /y
+del /Q "$(TargetDir)umbraco.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,7 @@
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\umbraco\presentation\bin\FALMHousekeepingUserManager.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\umbraco\presentation\bin\FALMHousekeepingUserManager.pdb
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\HousekeepingUserManager\obj\Debug\ResolveAssemblyReference.cache
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\HousekeepingUserManager\obj\Debug\FALMHousekeepingUserManager.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\HousekeepingUserManager\obj\Debug\FALMHousekeepingUserManager.pdb
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\HousekeepingUserManager\bin\FALMHousekeepingUserManager.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\HousekeepingUserManager\bin\FALMHousekeepingUserManager.pdb

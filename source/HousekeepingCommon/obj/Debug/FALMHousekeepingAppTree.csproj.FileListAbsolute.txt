@@ -1,0 +1,14 @@
+C:\Users\Adriano\Documents\Visual Studio 2010\Projects\umb451s.viking.it\umbraco\presentation\bin\FALMHousekeepingAppTree.dll
+C:\Users\Adriano\Documents\Visual Studio 2010\Projects\umb451s.viking.it\umbraco\presentation\bin\FALMHousekeepingAppTree.pdb
+C:\Users\Adriano\Documents\Visual Studio 2010\Projects\umb451s.viking.it\extensions\FALMHousekeeping\AppTree\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Adriano\Documents\Visual Studio 2010\Projects\umb451s.viking.it\extensions\FALMHousekeeping\AppTree\obj\Debug\FALMHousekeepingAppTree.dll
+C:\Users\Adriano\Documents\Visual Studio 2010\Projects\umb451s.viking.it\extensions\FALMHousekeeping\AppTree\obj\Debug\FALMHousekeepingAppTree.pdb
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\umbraco\presentation\bin\FALMHousekeepingAppTree.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\umbraco\presentation\bin\FALMHousekeepingAppTree.pdb
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\AppTree\obj\Debug\ResolveAssemblyReference.cache
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\AppTree\obj\Debug\FALMHousekeepingAppTree.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\AppTree\obj\Debug\FALMHousekeepingAppTree.pdb
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\AppTree\bin\FALMHousekeepingAppTree.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\AppTree\bin\FALMHousekeepingAppTree.pdb
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\published\bin\FALMHousekeepingAppTree.dll
+\\psf\Home\Documents\Visual Studio 2010\Projects\Umbraco_CustomPackages\net4\FALM_Housekeeping\published\bin\FALMHousekeepingAppTree.pdb
