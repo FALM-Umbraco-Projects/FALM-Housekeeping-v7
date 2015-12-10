@@ -20,3 +20,8 @@ C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\published\Housekee
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingCommon\obj\Debug\FALMHousekeeping.csprojResolveAssemblyReference.cache
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingCommon\obj\Debug\FALMHousekeeping.dll
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingCommon\obj\Debug\FALMHousekeeping.pdb
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeeping.dll
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeeping.pdb
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingCommon\obj\Debug\FALMHousekeeping.csprojResolveAssemblyReference.cache
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingCommon\obj\Debug\FALMHousekeeping.dll
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingCommon\obj\Debug\FALMHousekeeping.pdb

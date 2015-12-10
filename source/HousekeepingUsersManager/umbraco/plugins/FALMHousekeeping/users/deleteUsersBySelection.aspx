@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="deleteUsersBySelection.aspx.cs" Inherits="FALMHousekeepingUsersManager.deleteUsersBySelection" MasterPageFile="../../../masterpages/umbracoPage.Master" Title="F.A.L.M. Housekeeping - Delete Users by selection" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="deleteUsersBySelection.aspx.cs" Inherits="FALMHousekeepingUsersManager.deleteUsersBySelectAction" MasterPageFile="../../../masterpages/umbracoPage.Master" Title="F.A.L.M. Housekeeping - Delete Users by Selection" %>
 
 <%@ Register TagPrefix="cc1" Namespace="umbraco.uicontrols" Assembly="controls" %>
 <asp:Content ID="cphHead" ContentPlaceHolderID="head" runat="server">

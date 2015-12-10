@@ -8,7 +8,7 @@ using umbraco.DataLayer;
 
 namespace FALMHousekeepingUsersManager
 {
-	public partial class deleteUsersBySelection : System.Web.UI.Page
+	public partial class deleteUsersBySelectAction : System.Web.UI.Page
 	{
 		/// <summary>
 		/// Initialize an SQL Helper Interface

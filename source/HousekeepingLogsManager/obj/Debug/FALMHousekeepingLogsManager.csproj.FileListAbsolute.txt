@@ -23,3 +23,9 @@ C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\published\Housekee
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingLogsManager\obj\Debug\FALMHousekeepingLogsManager.csprojResolveAssemblyReference.cache
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingLogsManager\obj\Debug\FALMHousekeepingLogsManager.dll
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingLogsManager\obj\Debug\FALMHousekeepingLogsManager.pdb
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeepingLogsManager.dll.config
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeepingLogsManager.dll
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeepingLogsManager.pdb
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingLogsManager\obj\Debug\FALMHousekeepingLogsManager.csprojResolveAssemblyReference.cache
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingLogsManager\obj\Debug\FALMHousekeepingLogsManager.dll
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingLogsManager\obj\Debug\FALMHousekeepingLogsManager.pdb

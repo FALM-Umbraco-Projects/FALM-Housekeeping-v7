@@ -23,3 +23,9 @@ C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\published\Housekee
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingMediaManager\obj\Debug\FALMHousekeepingMediaManager.csprojResolveAssemblyReference.cache
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingMediaManager\obj\Debug\FALMHousekeepingMediaManager.dll
 C:\Users\a.fabri\Documents\GitHub\FALM-Housekeeping-v7\source\HousekeepingMediaManager\obj\Debug\FALMHousekeepingMediaManager.pdb
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeepingMediaManager.dll.config
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeepingMediaManager.dll
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\published\Housekeeping\bin\FALMHousekeepingMediaManager.pdb
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingMediaManager\obj\Debug\FALMHousekeepingMediaManager.csprojResolveAssemblyReference.cache
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingMediaManager\obj\Debug\FALMHousekeepingMediaManager.dll
+C:\Users\a.fabri\Documents\Developer Projects\Github\FALM-Housekeeping-v7\source\HousekeepingMediaManager\obj\Debug\FALMHousekeepingMediaManager.pdb
