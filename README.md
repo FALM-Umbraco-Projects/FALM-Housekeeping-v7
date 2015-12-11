@@ -15,7 +15,7 @@ You can find the latest Umbraco Package in "package" directory
 
 Version History
 =================
-- v7.0.0.0   - For Umbraco v7
+- v7.0.0.1   - For Umbraco v7
 - v6.1.3.0   - For Umbraco v6 to v7
 - v4.11.0.2  - For Umbraco v4.8 to v4.11
 - v4.5.0.1   - For Umbraco v4.5 to v4.7.2
