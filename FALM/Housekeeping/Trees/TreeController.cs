@@ -54,7 +54,7 @@ namespace FALM.Housekeeping
                 {
                     case "logs": // check if we're rendering Logs node's children
                         tree = new TreeNodeCollection {
-                            CreateTreeNode("logs-dbmanager", id, queryStrings, textService.Localize("FALM/LogsManager.TreeActionManagerDB", CultureInfo.CurrentCulture), "icon-diagnostics color-red", false),
+                            CreateTreeNode("logs-dbmanager", id, queryStrings, textService.Localize("FALM/LogsManager.TreeActionManagerDB", CultureInfo.CurrentCulture), "icon-diagnostics color-green", false),
                             CreateTreeNode("logs-tlmanager", id, queryStrings, textService.Localize("FALM/LogsManager.TreeActionManagerTL", CultureInfo.CurrentCulture), "icon-folder", true, FormDataCollectionExtensions.GetValue<string>(queryStrings, "application"))
                         };
                         break;
@@ -62,6 +62,7 @@ namespace FALM.Housekeeping
                     case "logs-tlmanager": // check if we're rendering Logs node's children
                         tree = new TreeNodeCollection();
 
+                        // Create TraceLog tree
                         foreach (var logFile in logsService.getTraceLogFiles())
                         {
                             string title = iCount == 1 ? textService.Localize("FALM/LogsManager.TreeActionManagerTL.Today", CultureInfo.CurrentCulture) : logFile.LogDate.ToString("yyyy-MM-dd");
@@ -72,9 +73,9 @@ namespace FALM.Housekeeping
                             }
 
                             string path = HttpUtility.UrlEncode(System.IO.Path.GetFileName(logFile.LogFileName));
-                            string traceLogRoutePath = FormDataCollectionExtensions.GetValue<string>(queryStrings, "application") + "/housekeeping/viewTraceLog/" + path;
+                            string traceLogRoutePath = FormDataCollectionExtensions.GetValue<string>(queryStrings, "application") + "/housekeeping/edittl/" + path;
 
-                            tree.Add(CreateTreeNode(path, id, queryStrings, title, "icon -calendar-alt color-red", false, traceLogRoutePath));
+                            tree.Add(CreateTreeNode(path, id, queryStrings, title, "icon-calendar-alt color-green", false, traceLogRoutePath));
 
                             iCount++;
                         };
@@ -95,9 +96,9 @@ namespace FALM.Housekeeping
 
                     case "versions": //check if we're rendering Versions node's children
                         tree = new TreeNodeCollection {
-                            CreateTreeNode("versions-show", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionShow", CultureInfo.CurrentCulture), "icon-binoculars color-green", false),
+                            CreateTreeNode("versions-manager", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionManager", CultureInfo.CurrentCulture), "icon-diagnostics color-green", false),
                             CreateTreeNode("versions-cleanup-by-count", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByCount", CultureInfo.CurrentCulture), "icon-delete color-red", false),
-                            CreateTreeNode("versions-cleanup-by-date",  id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByDate", CultureInfo.CurrentCulture), "icon-delete color-red", false)
+                            //CreateTreeNode("versions-cleanup-by-date",  id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByDate", CultureInfo.CurrentCulture), "icon-delete color-red", false)
                         };
                         break;
                 }

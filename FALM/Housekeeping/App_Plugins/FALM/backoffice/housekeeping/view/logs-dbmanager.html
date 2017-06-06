@@ -97,10 +97,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListDBLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage" ng-class="{'Error': logItem.LogHeader == 'Error', 'Error': logItem.LogHeader == 'LoginError'}">
+                                        <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListDBLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage">
                                             <td class="text-center" style="width: 50px;">{{ logItem.LogId }}</td>
                                             <td class="text-center" style="width: 120px;"><span ng-class="getLabelType(logItem.LogHeader)">{{ logItem.LogHeader }}</span></td>
-                                            <td style="width: 140px;">{{ logItem.LogDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                            <td class="text-center" style="width: 140px;">{{ logItem.LogDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
                                             <td style="width: 120px;">{{ logItem.UserName }}</td>
                                             <td class="text-center" style="width: 50px;">{{ logItem.NodeId }}</td>
                                             <td style="width: 150px;">{{ logItem.NodeName | limitTo:20 }}<span ng-if="logItem.NodeName.length > 20">...</span></td>

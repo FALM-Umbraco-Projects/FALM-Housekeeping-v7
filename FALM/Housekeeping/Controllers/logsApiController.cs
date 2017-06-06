@@ -186,12 +186,12 @@ namespace FALM.Housekeeping.Controllers
 
                             traceLogItem = new TraceLogDataModel();
 
-                            traceLogItem.LogDate = date;
+                            traceLogItem.LogDate    = date;
                             traceLogItem.LogProcess = processId;
-                            traceLogItem.LogDomain = domainId;
-                            traceLogItem.LogThread = threadId;
-                            traceLogItem.LogLevel = match.Groups["LEVEL"].Value;
-                            traceLogItem.LogLogger = match.Groups["LOGGER"].Value;
+                            traceLogItem.LogDomain  = domainId;
+                            traceLogItem.LogThread  = threadId;
+                            traceLogItem.LogLevel   = match.Groups["LEVEL"].Value;
+                            traceLogItem.LogLogger  = match.Groups["LOGGER"].Value;
                             traceLogItem.LogMessage = match.Groups["MESSAGE"].Value;
 
                             ListTraceLogs.Add(traceLogItem);
@@ -206,6 +206,7 @@ namespace FALM.Housekeeping.Controllers
                             }
                         }
 
+                        ListTraceLogs.Sort((x, y) => y.LogDate.CompareTo(x.LogDate));
                         traceLogsModel.ListTraceLogs = ListTraceLogs;
                     }
                 }

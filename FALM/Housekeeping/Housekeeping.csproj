@@ -159,7 +159,7 @@
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\css\fhbootstrap.css" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\css\img\searching.gif" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\css\fhstyle.css" />
-    <Content Include="App_Plugins\FALM\backoffice\housekeeping\viewtracelog.html" />
+    <Content Include="App_Plugins\FALM\backoffice\housekeeping\edittl.html" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\edit.html" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\dashboard.html" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\directive\versions.directive.js" />
@@ -189,10 +189,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
-    <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\versions-cleanup-by-date.html" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\versions-cleanup-by-count.html" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\logs-dbmanager.html" />
-    <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\versions-show.html" />
+    <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\versions-manager.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />

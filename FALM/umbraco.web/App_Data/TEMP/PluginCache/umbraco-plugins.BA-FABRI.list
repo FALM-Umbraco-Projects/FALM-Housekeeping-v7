@@ -7,7 +7,6 @@
     <add type="umbraco.providers.members.MembershipEventHandler, umbraco.providers, Version=1.0.6345.13061, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.ModelsBuilder.Umbraco.ModelsBuilderApplication, Umbraco.ModelsBuilder, Version=3.0.7.99, Culture=neutral, PublicKeyToken=null" />
     <add type="umbraco.editorControls.PickerRelations.PickerRelationsEventHandler, umbraco.editorControls, Version=1.0.6345.13064, Culture=neutral, PublicKeyToken=null" />
-    <add type="FALM.Housekeeping.HKRegisterEvents, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.BatchedDatabaseServerMessengerStartup, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Routing.RedirectTrackingEventHandler, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Models.Mapping.RelationModelMapper, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
@@ -47,6 +46,7 @@
     <add type="umbraco.presentation.nodeFactory.UmbracoSiteMapProviderAccessUpdate, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="umbraco.presentation.EnsureSystemPathsApplicationStartupHandler, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="umbraco.presentation.umbraco.Search.ExamineEvents, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALM.Housekeeping.HKRegisterEvents, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
     <add type="umbraco.BusinessLogic.ApplicationRegistrar, businesslogic, Version=1.0.6345.13060, Culture=neutral, PublicKeyToken=null" />
     <add type="umbraco.BusinessLogic.ApplicationTreeRegistrar, businesslogic, Version=1.0.6345.13060, Culture=neutral, PublicKeyToken=null" />
   </baseType>
@@ -81,11 +81,6 @@
     <add type="Umbraco.Web.Controllers.UmbLoginController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
   </baseType>
   <baseType type="Umbraco.Web.WebApi.UmbracoApiController" resolutionType="FindAllTypes">
-    <add type="FALMHousekeeping.Controllers.MediaApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
-    <add type="FALM.Housekeeping.HKTreeController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
-    <add type="FALM.Housekeeping.Controllers.VersionsApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
-    <add type="FALM.Housekeeping.Controllers.LogsApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
-    <add type="FALM.Housekeeping.Controllers.UsersApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Editors.GravatarController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.HealthCheck.HealthCheckController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Editors.RedirectUrlManagementController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
@@ -132,6 +127,11 @@
     <add type="Umbraco.Web.WebServices.TagsController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.WebServices.XmlDataIntegrityController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=3.0.7.99, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALMHousekeeping.Controllers.MediaApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALM.Housekeeping.HKTreeController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALM.Housekeeping.Controllers.VersionsApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALM.Housekeeping.Controllers.LogsApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALM.Housekeeping.Controllers.UsersApiController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
   </baseType>
   <baseType type="Umbraco.Core.Media.IThumbnailProvider" resolutionType="FindAllTypes">
     <add type="Umbraco.Web.Media.ThumbnailProviders.MediaTypeIconThumbnailProvider, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
@@ -190,7 +190,6 @@
     <add type="Umbraco.Web.PropertyEditors.TrueFalsePropertyEditor, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
   </baseType>
   <baseType type="Umbraco.Web.Trees.TreeController" resolutionType="FindTypesWithAttribute">
-    <add type="FALM.Housekeeping.HKTreeController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Trees.ContentTypeTreeController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Trees.PackagesTreeController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Trees.MediaTypeTreeController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
@@ -201,6 +200,7 @@
     <add type="Umbraco.Web.Trees.TemplatesTreeController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Trees.MediaTreeController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.Trees.ContentTreeController, umbraco, Version=1.0.6345.13062, Culture=neutral, PublicKeyToken=null" />
+    <add type="FALM.Housekeeping.HKTreeController, FALM.Housekeeping, Version=7.5.1.4, Culture=neutral, PublicKeyToken=null" />
   </baseType>
   <baseType type="umbraco.interfaces.ITree" resolutionType="FindAllTypes">
     <add type="umbraco.editorControls.MultiNodeTreePicker.FilteredContentTree, umbraco.editorControls, Version=1.0.6345.13064, Culture=neutral, PublicKeyToken=null" />

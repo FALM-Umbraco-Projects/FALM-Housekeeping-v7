@@ -1,0 +1,90 @@
+﻿<div ng-controller="FALMHousekeepingMediaCleanupController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h2 class="title"><localize key="FALM_VersionsManager.Title">Umbraco Versions Manager</localize></h2>
+                <div class="description">
+                    <localize key="FALM_VersionsManager.Description">With this tool you can manage the Umbraco history versions.</localize>
+                </div>
+                <div ng-switch="id">
+                    <div ng-hide="!showSearchPanel">
+                        <div ng-hide="!showLoader" class="loading">
+                            <localize key="FALM_VersionsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
+                            <umb-load-indicator></umb-load-indicator>
+                        </div>
+                    </div>
+                    <div ng-hide="!logs.ListVersions.length" class="panel panel-primary">
+                        <div class="panel-heading">
+                            <localize key="FALM_VersionsManager.VersionsPanelTitle">Versions panel</localize>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="search" class="sr-only"><localize key="FALM_VersionsManager.SearchLabel">Search:</localize></label>
+                                    <div class="input-group" style="float: left;">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </div>
+                                        <input type="text" ng-model="q" id="search" class="form-control" style="-webkit-border-top-right-radius: 4px !important; -webkit-border-bottom-right-radius: 4px !important; -moz-border-radius-topright: 4px !important; -moz-border-radius-bottomright: 4px !important; border-top-right-radius: 4px !important; border-bottom-right-radius: 4px !important; width: 300px;"/>
+                                    </div>
+                                    <div class="text-right">
+                                        <label for="itemsPerPage" style="vertical-align: bottom;"><localize key="FALM_VersionsManager.ItemsPerPage">Items per page:</localize></label>
+                                        <select ng-model="pageSize" id="itemsPerPage" class="form-control">
+                                            <option value="10">10</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- QUI CI VA LA TABELLA -->
+                        </div>
+                        <div class="panel-footer">
+                            <form id="logsCleanupForm" ng-submit="deleteFilteredDBLogs(filteredLogs)" role="form" style="float: left; margin: 0 10px 0 0;">
+                                <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
+                                    <localize key="FALM_VersionsManager.StartCleanupButton">Cleanup current visible Logs</localize>
+                                </button>
+                            </form>
+                            <a ng-click="reloadRoute()" class="btn btn-default">
+                                <localize key="FALM_VersionsManager.RestartSearchLogs">Restart logs search</localize>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div ng-hide="!showNoDBLogsFound" class="noLogsFound">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <localize key="FALM_VersionsManager.VersionsPanelTitle">DB Log events</localize>
+                            </div>
+                            <div class="panel-body">
+                                <p><localize key="FALM_VersionsManager.NoLogsFound">No Logs found.</localize></p>
+                            </div>
+                            <div class="panel-footer">
+                                <a ng-click="reloadRoute()" class="btn btn-default">
+                                    <localize key="FALM_VersionsManager.RestartSearchLogs">Restart logs search</localize>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer>
+            <div class="umb-dialog-footer">
+                <p style="margin: 20px;"><localize key="FALM_MediaManager.FooterMessage"></localize></p>
+            </div>
+        </umb-footer>
+    </umb-panel>
+</div>

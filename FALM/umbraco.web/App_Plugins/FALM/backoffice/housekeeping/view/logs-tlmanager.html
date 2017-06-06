@@ -89,14 +89,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListTraceLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage" ng-class="{'Error': logItem.LogLevel == 'Error'}">
-                                            <td style="width: 140px;">{{ logItem.LogDate | date: 'HH:mm:ss' }}</td>
-                                            <td class="text-center" style="width: 120px;"><span ng-class="getLabelType(logItem.LogLevel)">{{ logItem.LogLevel }}</span></td>
+                                        <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListTraceLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td class="text-center" style="width: 60px;">{{ logItem.LogDate | date: 'HH:mm:ss' }}</td>
+                                            <td class="text-center" style="width: 100px;"><span ng-class="getLabelType(logItem.LogLevel)">{{ logItem.LogLevel }}</span></td>
                                             <td class="text-center" style="width: 50px;">{{ logItem.LogProcess }}</td>
                                             <td class="text-center" style="width: 50px;">{{ logItem.LogDomain }}</td>
                                             <td class="text-center" style="width: 50px;">{{ logItem.LogThread }}</td>
                                             <td style="width: 120px;">{{ logItem.LogLogger }}</td>
-                                            <td>{{ logItem.LogMessage | limitTo:60 }}<span ng-if="logItem.LogMessage.length > 60">...</span></td>
+                                            <td>{{ logItem.LogMessage | limitTo:80 }}<span ng-if="logItem.LogMessage.length > 60">...</span></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>

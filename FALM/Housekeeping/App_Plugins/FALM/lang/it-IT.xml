@@ -143,13 +143,13 @@ Si prega di riprovare o di contattare l'autore del package."]]></key>
 
     <!-- VERSIONS MANAGER -->
     <key alias="VersionsManager.TreeSection"><![CDATA[VERSIONI]]></key>
-    <key alias="VersionsManager.TreeActionShow"><![CDATA[Consultazione]]></key>
+    <key alias="VersionsManager.TreeActionManager"><![CDATA[Gestione]]></key>
     <key alias="VersionsManager.TreeActionCleanupByCount"><![CDATA[Cancellazione per numero]]></key>
-    <key alias="VersionsManager.TreeActionCleanupByDate"><![CDATA[Cancellazione per data]]></key>
     <key alias="VersionsManager.Title"><![CDATA[Gestione Versioni]]></key>
-    <key alias="VersionsManager.Show.SubTitle"><![CDATA[Consultazione]]></key>
-    <key alias="VersionsManager.Show.Description"><![CDATA[Questo strumento permette di visualizzare le versioni che Umbraco mantiene per ogni nodo del content.]]></key>
-    <key alias="VersionsManager.Show.FooterMessage"><![CDATA[Imposta il filtro e premi il pulsante per visualizzare le versioni.]]></key>
+    <key alias="VersionsManager.SubTitle"><![CDATA[]]></key>
+    <key alias="VersionsManager.Description"><![CDATA[Questo strumento permette di gestire le versioni che Umbraco mantiene per ogni nodo del content.]]></key>
+    <key alias="VersionsManager.SearchInProgress"><![CDATA[Ricerca in corso. Si prega di attendere fino a quando non vengono visualizzati gli eventi]]></key>
+    <key alias="VersionsManager.FooterMessage"><![CDATA[Imposta il filtro e premi il pulsante per visualizzare le versioni.]]></key>
     <key alias="VersionsManager.CleanupByCount.SubTitle"><![CDATA[Cancellazione per numero]]></key>
     <key alias="VersionsManager.CleanupByCount.Description"><![CDATA[Questo strumento permette di eliminare le versioni che Umbraco mantiene per ogni nodo del content.]]></key>
     <key alias="VersionsManager.CleanupByCount.AttentionMessage"><![CDATA[ATTENZIONE: Umbraco richiede che ogni nodo abbia almeno 2 versioni (quella pubblicata e l'ultima salvata). 
@@ -158,11 +158,5 @@ Queste versioni non verrano mai cancellate.
 
 Il processo potrebbe richiedere molto tempo se il numero di versioni da cancellare è molto alto.]]></key>
     <key alias="VersionsManager.CleanupByCount.FooterMessage"><![CDATA[Imposta il numero di versioni da mantenere e premi il pusante per procedere con l'eliminazione.]]></key>
-    <key alias="VersionsManager.CleanupByCount.SubTitle"><![CDATA[Cancellazione per data]]></key>
-    <key alias="VersionsManager.CleanupByCount.Description"><![CDATA[Con questo strumento è possibile eliminare le vecchie versioni dei nodi, fino alla data indicata.]]></key>
-    <key alias="VersionsManager.CleanupByDate.AttentionMessage"><![CDATA[ATTENZIONE: Umbraco richiede che ogni nodo abbia almeno 2 versioni (quella pubblicata e l'ultima salvata). Queste versioni non verrano mai cancellate.
-
-Il processo potrebbe richiedere molto tempo se il numero di versioni da cancellare è molto alto.]]></key>
-    <key alias="VersionsManager.CleanupByCount.FooterMessage"><![CDATA[Imposta la data e premi il pusante per procedere con l'eliminazione.]]></key>
 </area>
 </language>
