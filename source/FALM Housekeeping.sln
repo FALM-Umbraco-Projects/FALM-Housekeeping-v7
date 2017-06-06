@@ -1,17 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALMHousekeepingLogsManager", "HousekeepingLogsManager\FALMHousekeepingLogsManager.csproj", "{3D372EB8-ED22-4C5F-9964-440CDC9A0F1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housekeeping", "Housekeeping\Housekeeping.csproj", "{26C54771-07CD-45AB-88DC-0AF871BE8E0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALMHousekeepingUsersManager", "HousekeepingUsersManager\FALMHousekeepingUsersManager.csproj", "{AA98672E-2113-41F9-A47A-D948A186FEBA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALMHousekeepingMediaManager", "HousekeepingMediaManager\FALMHousekeepingMediaManager.csproj", "{1922BB59-8016-455A-AF19-4DAF4B655B5A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALMHousekeeping", "HousekeepingCommon\FALMHousekeeping.csproj", "{49A2B2DF-9C9E-4728-8B96-146855C96CF0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FALMHousekeepingVersionsManager", "HousekeepingVersionsManager\FALMHousekeepingVersionsManager.csproj", "{88C26A45-5C8C-4103-B1CF-1F97B46528AC}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "umbraco.web", "umbraco.web\", "{63442539-9352-4A54-A1F4-02C0A6E1B3FC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_55412"
+		Debug.AspNetCompiler.PhysicalPath = "umbraco.web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55412\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_55412"
+		Release.AspNetCompiler.PhysicalPath = "umbraco.web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55412\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55412"
+		SlnRelativePath = "umbraco.web\"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E} = {26C54771-07CD-45AB-88DC-0AF871BE8E0E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +35,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D372EB8-ED22-4C5F-9964-440CDC9A0F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D372EB8-ED22-4C5F-9964-440CDC9A0F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D372EB8-ED22-4C5F-9964-440CDC9A0F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D372EB8-ED22-4C5F-9964-440CDC9A0F1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA98672E-2113-41F9-A47A-D948A186FEBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA98672E-2113-41F9-A47A-D948A186FEBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA98672E-2113-41F9-A47A-D948A186FEBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA98672E-2113-41F9-A47A-D948A186FEBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1922BB59-8016-455A-AF19-4DAF4B655B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1922BB59-8016-455A-AF19-4DAF4B655B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1922BB59-8016-455A-AF19-4DAF4B655B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1922BB59-8016-455A-AF19-4DAF4B655B5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49A2B2DF-9C9E-4728-8B96-146855C96CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49A2B2DF-9C9E-4728-8B96-146855C96CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49A2B2DF-9C9E-4728-8B96-146855C96CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49A2B2DF-9C9E-4728-8B96-146855C96CF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88C26A45-5C8C-4103-B1CF-1F97B46528AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88C26A45-5C8C-4103-B1CF-1F97B46528AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88C26A45-5C8C-4103-B1CF-1F97B46528AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88C26A45-5C8C-4103-B1CF-1F97B46528AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63442539-9352-4A54-A1F4-02C0A6E1B3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63442539-9352-4A54-A1F4-02C0A6E1B3FC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

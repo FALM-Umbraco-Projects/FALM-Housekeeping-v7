@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en-US" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+    <creator>
+        <name>F.A.L.M.</name>
+        <link>http://mydomain.com</link>
+    </creator>
+    <area alias="FALM">
+        <!-- DASHBOARD -->
+        <key alias="Dashboard.SubTitle">
+            <![CDATA[Welcome to new generation of our tools]]>
+        </key>
+        <key alias="Dashboard.Description">
+            <![CDATA[<p>This package adds a tree node to the developer sect on with the following tools:</p><ul><li><strong>Umbraco logs manager</strong>: with this tool you can view and delete Umbraco log events.<br />N.B.: in order to improve the performance of the log viewer, you can add SQL indexes to the coloumns DateStamp, UserId and LogHeader of umbracoLog table.</li><li><strong>Media folder cleanup</strong>: with this tool you can delete those file system folders under '/media' which have no entry in the DB (orphans)<br />N.B.: in the current release this feature works only with "UploadAllowDirectories" set to "true".</li><li><strong>Delete users manager</strong>: with this tool you can completely remove Umbraco users.</li><li><strong>Version manager</strong>: with this tool you can view and cleanup the version history that Umbraco mantains for each content node.</li></ul><p>Latest Changes<br />=================<br />v7.4 - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility<br />v7.0.0.1 - Bug Fix: Resolved Error 404 when click all main headers (Logs, Media, Users, Versions) and resolved conflict in Users Manager</p><p>Version History<br />=================<br />v7.4.0.0 - For Umbraco v7+<br />v7.0.0.1 - For Umbraco v7+<br />v6.1.3.0 - For Umbraco v6 to v7.2<br />v4.11.0.2 - For Umbraco v4.8 to v4.11<br />v4.5.0.1  - For Umbraco v4.5 to v4.7.2<br />v1.1.0.0  - For Umbraco v3 to v4.0</p>]]>
+        </key>
+
+        <!-- LOGS MANAGER -->
+        <key alias="LogsManager.TreeSection">
+            <![CDATA[Logs Manager]]>
+        </key>
+        <key alias="LogsManager.TreeActionShow">
+            <![CDATA[Show]]>
+        </key>
+        <key alias="LogsManager.TreeActionCleanup">
+            <![CDATA[Cleanup]]>
+        </key>
+        <key alias="LogsManager.Title">
+            <![CDATA[Logs Manager]]>
+        </key>
+        <key alias="LogsManager.Show.SubTitle">
+            <![CDATA[Show]]>
+        </key>
+        <key alias="LogsManager.Show.Description">
+            <![CDATA[With this tool you can view Umbraco log events.]]>
+        </key>
+        <key alias="LogsManager.Show.FooterMessage">
+            <![CDATA[Set filters and press button to show logs.]]>
+        </key>
+        <key alias="LogsManager.Cleanup.SubTitle">
+            <![CDATA[Cleanup]]>
+        </key>
+        <key alias="LogsManager.Cleanup.Description">
+            <![CDATA[With this tool you can delete Umbraco log events.]]>
+        </key>
+        <key alias="LogsManager.Cleanup.FooterMessage">
+            <![CDATA[Set filters and press button to delete logs.]]>
+        </key>
+
+        <!-- MEDIA MANAGER -->
+        <key alias="MediaManager.TreeSection">
+            <![CDATA[Media Manager]]>
+        </key>
+        <key alias="MediaManager.TreeActionCleanup">
+            <![CDATA[Cleanup File System]]>
+        </key>
+        <key alias="MediaManager.Title">
+            <![CDATA[Media Manager]]>
+        </key>
+        <key alias="MediaManager.Cleanup.SubTitle">
+            <![CDATA[Cleanup File System]]>
+        </key>
+        <key alias="MediaManager.Cleanup.Description">
+            <![CDATA[With this tool you can delete file system folders under '/media' which have no entry in the DB (orphans).]]>
+        </key>
+        <key alias="MediaManager.Cleanup.SearchInProgress">
+            <![CDATA[Search in progress. Please wait until you see results]]>
+        </key>
+        <key alias="MediaManager.Cleanup.TableOfWarningsTitle">
+            <![CDATA[These Media folders will not be deleted]]>
+        </key>
+        <key alias="MediaManager.Cleanup.TableOfOrphansTitle">
+            <![CDATA[These Media folders can be deleted]]>
+        </key>
+        <key alias="MediaManager.Cleanup.FolderNameNotNumber">
+            <![CDATA[Folder name is not a number]]>
+        </key>
+        <key alias="MediaManager.Cleanup.FolderFoundInFileSystemAndUploadedTroughDatatype">
+            <![CDATA[Folder created by upload through Datatype]]>
+        </key>
+        <key alias="MediaManager.Cleanup.DBNotMatchFormat">
+            <![CDATA[DB entry doesn't match the format]]>
+        </key>
+        <key alias="MediaManager.Cleanup.Contains">
+            <![CDATA[Folder contains ]]>
+        </key>
+        <key alias="MediaManager.Cleanup.Items">
+            <![CDATA[item(s)]]>
+        </key>
+        <key alias="MediaManager.Cleanup.Entry">
+            <![CDATA[Entry]]>
+        </key>
+        <key alias="MediaManager.Cleanup.Details">
+            <![CDATA[Details]]>
+        </key>
+        <key alias="MediaManager.Cleanup.StartCleanupButton">
+            <![CDATA[Cleanup Media Oprhans]]>
+        </key>
+        <key alias="MediaManager.Cleanup.ConfirmationMessage">
+            <![CDATA[This action will permanently delete all Media orphan folders listed in the orphans table from File Sytem and from DB.\r\nMake sure you have made a backup copy of the site and the DB before proceed.\r\nAre you sure you want to permanently delete listed folder(s)?]]>
+        </key>
+        <key alias="MediaManager.Cleanup.FooterMessage">
+            <![CDATA[Press button to show the folder list that can be deleted.]]>
+        </key>
+
+        <!-- USERS MANAGER -->
+        <key alias="UsersManager.TreeSection">
+            <![CDATA[Users Manager]]>
+        </key>
+        <key alias="UsersManager.TreeActionCleanup">
+            <![CDATA[Cleanup]]>
+        </key>
+        <key alias="UsersManager.Title">
+            <![CDATA[Users Manager]]>
+        </key>
+        <key alias="UsersManager.SubTitle">
+            <![CDATA[Cleanup]]>
+        </key>
+        <key alias="UsersManager.Description">
+            <![CDATA[With this tool you can delete one or more users.]]>
+        </key>
+        <key alias="UsersManager.CleanupFooterMessage">
+            <![CDATA[Select one or more users and press button to delete.]]>
+        </key>
+        <key alias="UsersManager.ConfirmDeleteActionMessage">
+            <![CDATA[You have selected one or more users.<br />Every object belonging to the selected user(s) will be associated to user 'admin'/n/nAre you sure you want to delete the selected user(s)?]]>
+        </key>
+        <key alias="UsersManager.DeleteSelectedUsers">
+            <![CDATA[Delete selected user(s)]]>
+        </key>
+        <key alias="UsersManager.DeleteSelectedUsersSuccessMessage">
+            <![CDATA[Success!!! All selected users have been deleted.]]>
+        </key>
+        <key alias="UsersManager.DeleteSelectedUsersErrorMessage">
+            <![CDATA[Fail!!! There was a problem during users delete action.\r\nPlease retry or contact the author."]]>
+        </key>
+        <key alias="UsersManager.NoUserSelectedMessage">
+            <![CDATA[You must select at least one user to delete]]>
+        </key>
+        <key alias="UsersManager.NoUsersToDelete">
+            <![CDATA[There are no users to delete]]>
+        </key>
+        <key alias="UsersManager.User.Id">
+            <![CDATA[Id]]>
+        </key>
+        <key alias="UsersManager.User.Name">
+            <![CDATA[Name]]>
+        </key>
+        <key alias="UsersManager.User.Username">
+            <![CDATA[Username]]>
+        </key>
+        <key alias="UsersManager.User.Email">
+            <![CDATA[Email]]>
+        </key>
+        <key alias="UsersManager.User.UserType">
+            <![CDATA[User type]]>
+        </key>
+
+        <!-- VERSIONS MANAGER -->
+        <key alias="VersionsManager.TreeSection">
+            <![CDATA[Versions Manager]]>
+        </key>
+        <key alias="VersionsManager.TreeActionShow">
+            <![CDATA[Show]]>
+        </key>
+        <key alias="VersionsManager.TreeActionCleanupByCount">
+            <![CDATA[Cleanup by Count]]>
+        </key>
+        <key alias="VersionsManager.TreeActionCleanupByDate">
+            <![CDATA[Cleanup by Date]]>
+        </key>
+        <key alias="VersionsManager.Title">
+            <![CDATA[Versions Manager]]>
+        </key>
+        <key alias="VersionsManager.Show.SubTitle">
+            <![CDATA[Show]]>
+        </key>
+        <key alias="VersionsManager.Show.Description">
+            <![CDATA[With this tool you can view the Umbraco history versions.]]>
+        </key>
+        <key alias="VersionsManager.Show.FooterMessage">
+            <![CDATA[Set filters and press button to show history versions.]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.SubTitle">
+            <![CDATA[Cleanup by Count]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.Description">
+            <![CDATA[With this tool you can cleanup the version history, keeping a given number of versions for each content node.]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.AttentionMessage">
+            <![CDATA[Please note that Umbraco requires each node to have at least 2 versions (the currently published and the latest). These versions will never be deleted.\r\nThe process may take a long time if the number of versions to delete is very high.]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.FooterMessage">
+            <![CDATA[Set the number of versions to keep and press button to show history versions.]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.SubTitle">
+            <![CDATA[Cleanup by Date]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.Description">
+            <![CDATA[With this tool you can cleanup the version history, deleting every version up to a given date.]]>
+        </key>
+        <key alias="VersionsManager.CleanupByDate.AttentionMessage">
+            <![CDATA[Please note that Umbraco requires each node to have at least 2 versions (the currently published and the latest). These versions will never be deleted.\r\nThe process may take a long time if the number of versions to delete is very high.]]>
+        </key>
+        <key alias="VersionsManager.CleanupByCount.FooterMessage">
+            <![CDATA[Set the date and press button to delete logs.]]>
+        </key>
+    </area>
+</language>
