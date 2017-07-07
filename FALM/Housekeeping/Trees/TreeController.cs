@@ -14,13 +14,17 @@ using Umbraco.Web.Trees;
 
 namespace FALM.Housekeeping
 {
+    /// <summary>
+    /// Tree(HKConstants.Application.Alias, HKConstants.Tree.Alias, HKConstants.Tree.Title)
+    /// PluginController(HKConstants.Controller.Alias)
+    /// HKTreeController
+    /// </summary>
     [Tree(HKConstants.Application.Alias, HKConstants.Tree.Alias, HKConstants.Tree.Title)]
     [PluginController(HKConstants.Controller.Alias)]
     public class HKTreeController : TreeController
     {
         /// <summary>
         /// GetTreeNodes(string id, FormDataCollection queryStrings)
-        /// 
         /// This method create the Base Tree of FALM custom section
         /// </summary>
         /// <param name="id"></param>
@@ -97,7 +101,7 @@ namespace FALM.Housekeeping
                     case "versions": //check if we're rendering Versions node's children
                         tree = new TreeNodeCollection {
                             CreateTreeNode("versions-manager", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionManager", CultureInfo.CurrentCulture), "icon-diagnostics color-green", false),
-                            CreateTreeNode("versions-cleanup-by-count", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByCount", CultureInfo.CurrentCulture), "icon-delete color-red", false),
+                            //CreateTreeNode("versions-cleanup-by-count", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByCount", CultureInfo.CurrentCulture), "icon-delete color-red", false),
                             //CreateTreeNode("versions-cleanup-by-date",  id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByDate", CultureInfo.CurrentCulture), "icon-delete color-red", false)
                         };
                         break;
@@ -112,7 +116,6 @@ namespace FALM.Housekeeping
 
         /// <summary>
         /// GetMenuForNode(string id, FormDataCollection queryStrings)
-        /// 
         /// This method create the actions on a single menu item (by pressing "..." symbol)
         /// </summary>
         /// <param name="id"></param>

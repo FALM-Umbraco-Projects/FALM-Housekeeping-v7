@@ -14,19 +14,24 @@ using Umbraco.Core;
 
 namespace FALM.Housekeeping.Services
 {
+    /// <summary>
+    /// LogsService
+    /// </summary>
     public class LogsService
     {
         private static string _baseTraceLogPath                   = string.Empty;
         private static string _defaultTraceLogPath                = "~/App_Data/Logs/";
         private static string _baseTraceLogFilename               = string.Empty;
         private static string _defautlTraceLogFileNamePattern     = "Umbraco(TraceLog)?";
-
         private static string dateFormat = @"(?<date>\d{4}-\d{2}-\d{2})";
         private static string datePattern; // matches date pattern in log file name
         private static string machinePattern;
         private static string filePattern; // matches valid log file name      
         private readonly Regex filePatternRegex;
 
+        /// <summary>
+        /// Logs Service
+        /// </summary>
         public LogsService()
         {
             datePattern = @"((" + dateFormat + ".txt)$|(txt." + dateFormat + ")$)";
@@ -39,6 +44,10 @@ namespace FALM.Housekeeping.Services
             filePatternRegex = new Regex(filePattern, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture);
         }
 
+        /// <summary>
+        /// Get Base Trace Log Path
+        /// </summary>
+        /// <returns>string</returns>
         public static string getBaseTraceLogPath()
         {
             var loggerRepo = log4net.LogManager.GetRepository();
@@ -54,6 +63,10 @@ namespace FALM.Housekeeping.Services
             return HostingEnvironment.MapPath(_defaultTraceLogPath);
         }
 
+        /// <summary>
+        /// Get Base Trace Log File Name
+        /// </summary>
+        /// <returns>string</returns>
         public static string getBaseTraceLogFileName()
         {
             var logRepository = log4net.LogManager.GetRepository();
@@ -72,6 +85,10 @@ namespace FALM.Housekeeping.Services
             return _defautlTraceLogFileNamePattern;
         }
 
+        /// <summary>
+        /// Get Trace Log Files
+        /// </summary>
+        /// <returns>IEnumerable<TraceLogFileModel></returns>
         public IEnumerable<TraceLogFileModel> getTraceLogFiles()
         {
             _baseTraceLogPath       = getBaseTraceLogPath();

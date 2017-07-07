@@ -11,6 +11,7 @@ namespace FALM.Housekeeping.Helper
 {
     /// <summary>
     /// Checks and/or installs language settings on first request
+    /// HKLanguageInstaller
     /// </summary>
     public class HKLanguageInstaller
     {
@@ -87,8 +88,8 @@ namespace FALM.Housekeeping.Helper
         /// <summary>
         /// Returns the url with the correct Umbraco folder
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
+        /// <param name="url">url</param>
+        /// <returns>string</returns>
         private static string FormatUrl(string url)
         {
             return VirtualPathUtility.ToAbsolute(GlobalSettings.Path + url);

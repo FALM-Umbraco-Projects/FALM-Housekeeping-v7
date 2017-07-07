@@ -15,23 +15,24 @@ using Umbraco.Web.WebApi;
 
 namespace FALM.Housekeeping.Controllers
 {
+    /// <summary>
+    /// PluginController("FALMHousekeeping")
+    /// LogsApiController
+    /// </summary>
     [PluginController("FALMHousekeeping")]
     public class LogsApiController : UmbracoApiController
     {
         protected DBLogsModel DBLogsModel = new DBLogsModel();
         protected List<DBLogModel> ListDBLogs = new List<DBLogModel>();
-
         protected TraceLogsModel traceLogsModel = new TraceLogsModel();
         protected List<TraceLogDataModel> ListTraceLogs = new List<TraceLogDataModel>();
-
         protected const string CombinedLogEntryPattern = @"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}\s(\[(?<PROCESS1>.+)\]|\s) (?<LEVEL>\w+) {1,5}(?<LOGGER>.+?) -(\s\[(?<PROCESS2>[A-Z]\d{1,6}/[A-Z]\d{1,6}/[A-Z]\d{1,6}|Thread \d.?)\]\s|\s)(?<MESSAGE>.+)";
         protected readonly Regex LogEntryRegex = new Regex(CombinedLogEntryPattern, RegexOptions.Singleline | RegexOptions.Compiled);
-        
         protected const string ThreadProcessPattern = @"T(?<THREAD>\d+)|D(?<DOMAIN>\d+)|P(?<PROCESS>\d+)|Thread (?<THREADOLD>\d+)";
         protected static readonly Regex ThreadProcessRegex = new Regex(ThreadProcessPattern, RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         /// <summary>
-        /// Show logs
+        /// Show all DB logs
         /// </summary>
         /// <returns>DBLogsModel</returns>
         [HttpGet]
@@ -41,7 +42,7 @@ namespace FALM.Housekeeping.Controllers
 
             try
             {
-                string sqlLog    = "SELECT TOP 30 umbracoLog.id AS logId, umbracoLog.userId AS UserId, umbracoUser.userName AS UserName, umbracoUser.userLogin AS UserLogin, umbracoLog.NodeId AS NodeId, umbracoNode.text AS NodeName, umbracoLog.DateStamp AS LogDate, umbracoLog.logHeader AS LogHeader, umbracoLog.logComment AS LogComment ";
+                string sqlLog    = "SELECT umbracoLog.id AS logId, umbracoLog.userId AS UserId, umbracoUser.userName AS UserName, umbracoUser.userLogin AS UserLogin, umbracoLog.NodeId AS NodeId, umbracoNode.text AS NodeName, umbracoLog.DateStamp AS LogDate, umbracoLog.logHeader AS LogHeader, umbracoLog.logComment AS LogComment ";
                 sqlLog          += "FROM umbracoLog INNER JOIN umbracoUser ON umbracoLog.userId = umbracoUser.id LEFT OUTER JOIN umbracoNode ON umbracoLog.NodeId = umbracoNode.id ";
                 sqlLog          += "ORDER BY umbracoLog.DateStamp DESC";
 
@@ -61,11 +62,10 @@ namespace FALM.Housekeeping.Controllers
         }
 
         /// <summary>
-        /// Delete filtered logs
-        /// The method name MUST START with Post, because is an HttpPost method
+        /// Delete filtered DB logs
         /// </summary>
-        /// <param name="selectedUsersToDelete"></param>
-        /// <returns></returns>
+        /// <param name="LogsToDelete"></param>
+        /// <returns>bool</returns>
         [HttpPost]
         public bool PostDeleteDBLogs(List<DBLogModel> LogsToDelete)
         {
@@ -100,8 +100,9 @@ namespace FALM.Housekeeping.Controllers
         }
 
         /// <summary>
-        /// Show Trace Logs
+        /// Show selected Trace Log
         /// </summary>
+        /// <param name="filename"></param>
         /// <returns>TraceLogsModel</returns>
         [HttpGet]
         public TraceLogsModel GetTraceLogs(string filename)

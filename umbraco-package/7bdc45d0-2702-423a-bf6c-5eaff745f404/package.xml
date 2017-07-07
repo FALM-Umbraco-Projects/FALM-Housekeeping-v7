@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>FALM.Housekeeping.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>FALM.Housekeeping.dll</orgName>
+    </file>
+    <file>
+      <guid>housekeeping.resource.js</guid>
+      <orgPath>/App_Plugins/FALM</orgPath>
+      <orgName>housekeeping.resource.js</orgName>
+    </file>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/FALM</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>dashboard.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping</orgPath>
+      <orgName>dashboard.html</orgName>
+    </file>
+    <file>
+      <guid>edit.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping</orgPath>
+      <orgName>edit.html</orgName>
+    </file>
+    <file>
+      <guid>edittl.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping</orgPath>
+      <orgName>edittl.html</orgName>
+    </file>
+    <file>
+      <guid>edit.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>edit.js</orgName>
+    </file>
+    <file>
+      <guid>logs.controller.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>logs.controller.js</orgName>
+    </file>
+    <file>
+      <guid>logs.modals.controller.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>logs.modals.controller.js</orgName>
+    </file>
+    <file>
+      <guid>media.controller.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>media.controller.js</orgName>
+    </file>
+    <file>
+      <guid>users.controller.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>users.controller.js</orgName>
+    </file>
+    <file>
+      <guid>versions.controller.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>versions.controller.js</orgName>
+    </file>
+    <file>
+      <guid>versions.modals.controller.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/controller</orgPath>
+      <orgName>versions.modals.controller.js</orgName>
+    </file>
+    <file>
+      <guid>fhbootstrap.css</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/css</orgPath>
+      <orgName>fhbootstrap.css</orgName>
+    </file>
+    <file>
+      <guid>fhstyle.css</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/css</orgPath>
+      <orgName>fhstyle.css</orgName>
+    </file>
+    <file>
+      <guid>bootstrap-datepicker3.min.css</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/css/bootstrap-datepicker</orgPath>
+      <orgName>bootstrap-datepicker3.min.css</orgName>
+    </file>
+    <file>
+      <guid>bootstrap-datepicker3.min.css.map</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/css/bootstrap-datepicker</orgPath>
+      <orgName>bootstrap-datepicker3.min.css.map</orgName>
+    </file>
+    <file>
+      <guid>searching.gif</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/css/img</orgPath>
+      <orgName>searching.gif</orgName>
+    </file>
+    <file>
+      <guid>logs.directive.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/directive</orgPath>
+      <orgName>logs.directive.js</orgName>
+    </file>
+    <file>
+      <guid>media.directive.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/directive</orgPath>
+      <orgName>media.directive.js</orgName>
+    </file>
+    <file>
+      <guid>users.directive.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/directive</orgPath>
+      <orgName>users.directive.js</orgName>
+    </file>
+    <file>
+      <guid>versions.directive.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/directive</orgPath>
+      <orgName>versions.directive.js</orgName>
+    </file>
+    <file>
+      <guid>glyphicons-halflings-regular.eot</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/fonts</orgPath>
+      <orgName>glyphicons-halflings-regular.eot</orgName>
+    </file>
+    <file>
+      <guid>glyphicons-halflings-regular.svg</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/fonts</orgPath>
+      <orgName>glyphicons-halflings-regular.svg</orgName>
+    </file>
+    <file>
+      <guid>glyphicons-halflings-regular.ttf</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/fonts</orgPath>
+      <orgName>glyphicons-halflings-regular.ttf</orgName>
+    </file>
+    <file>
+      <guid>glyphicons-halflings-regular.woff</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/fonts</orgPath>
+      <orgName>glyphicons-halflings-regular.woff</orgName>
+    </file>
+    <file>
+      <guid>glyphicons-halflings-regular.woff2</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/fonts</orgPath>
+      <orgName>glyphicons-halflings-regular.woff2</orgName>
+    </file>
+    <file>
+      <guid>logs.resource.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/resource</orgPath>
+      <orgName>logs.resource.js</orgName>
+    </file>
+    <file>
+      <guid>media.resource.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/resource</orgPath>
+      <orgName>media.resource.js</orgName>
+    </file>
+    <file>
+      <guid>users.resource.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/resource</orgPath>
+      <orgName>users.resource.js</orgName>
+    </file>
+    <file>
+      <guid>versions.resource.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/resource</orgPath>
+      <orgName>versions.resource.js</orgName>
+    </file>
+    <file>
+      <guid>dirPagination.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/scripts</orgPath>
+      <orgName>dirPagination.js</orgName>
+    </file>
+    <file>
+      <guid>bootstrap-datepicker.min.js</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/scripts/bootstrap-datepicker</orgPath>
+      <orgName>bootstrap-datepicker.min.js</orgName>
+    </file>
+    <file>
+      <guid>dirPagination.tpl.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/template</orgPath>
+      <orgName>dirPagination.tpl.html</orgName>
+    </file>
+    <file>
+      <guid>logs-dbmanager-modal-details.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>logs-dbmanager-modal-details.html</orgName>
+    </file>
+    <file>
+      <guid>logs-dbmanager.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>logs-dbmanager.html</orgName>
+    </file>
+    <file>
+      <guid>logs-tlmanager-modal-details.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>logs-tlmanager-modal-details.html</orgName>
+    </file>
+    <file>
+      <guid>logs-tlmanager.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>logs-tlmanager.html</orgName>
+    </file>
+    <file>
+      <guid>media-cleanup.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>media-cleanup.html</orgName>
+    </file>
+    <file>
+      <guid>users-cleanup.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>users-cleanup.html</orgName>
+    </file>
+    <file>
+      <guid>versions-manager-modal-cleanupbycount.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>versions-manager-modal-cleanupbycount.html</orgName>
+    </file>
+    <file>
+      <guid>versions-manager-modal-details.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>versions-manager-modal-details.html</orgName>
+    </file>
+    <file>
+      <guid>versions-manager.html</guid>
+      <orgPath>/App_Plugins/FALM/backoffice/housekeeping/view</orgPath>
+      <orgName>versions-manager.html</orgName>
+    </file>
+    <file>
+      <guid>en-GB.xml</guid>
+      <orgPath>/App_Plugins/FALM/lang</orgPath>
+      <orgName>en-GB.xml</orgName>
+    </file>
+    <file>
+      <guid>en-US.xml</guid>
+      <orgPath>/App_Plugins/FALM/lang</orgPath>
+      <orgName>en-US.xml</orgName>
+    </file>
+    <file>
+      <guid>it-IT.xml</guid>
+      <orgPath>/App_Plugins/FALM/lang</orgPath>
+      <orgName>it-IT.xml</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>FALM Housekeeping</name>
+      <version>7.6.0.0</version>
+      <iconUrl />
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>https://our.umbraco.org/projects/backoffice-extensions/falm-housekeeping</url>
+      <requirements type="strict">
+        <major>7</major>
+        <minor>5</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Adriano Fabri</name>
+      <website>https://github.com/afabri73</website>
+    </author>
+    <readme><![CDATA[FALM Housekeeping
+=================
+
+Welcome to new generation of our cleaning tools totally rewrite using AngularJS and now in a Custom Section.
+
+This package adds a new section with the following tools:
+- Umbraco logs manager: with this tool you can view and delete Umbraco log events.
+Now you can manage DB Log and the TraceLog (this is a simplified version of Diplo Trace Log Viewer project - https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/)
+- Media folder cleanup: with this tool you can delete those file system folders under '/media' which have no entry in the DB (orphans)
+- Delete users: with this tool you can completely remove Umbraco users.
+- Version manager: with this tool you can view and cleanup the version history that Umbraco mantains for each content node.
+
+=================
+ATTENTION! To view the new FALM section you must enable it for all users that can use this tool.
+=================
+
+Latest Changes
+=================
+v7.6.0.0 - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)
+v7.0.0.1 - Bug Fix: Resolved Error 404 when click all main headers (Logs, Media, Users, Versions) and resolved conflict in Users Manager
+
+Version History
+=================
+v7.6.0.0 - For Umbraco v7.5+
+v7.0.0.1 - For Umbraco v7+
+v6.1.3.0 - For Umbraco v6 to v7.2
+v4.11.0.2 - For Umbraco v4.8 to v4.11
+v4.5.0.1 - For Umbraco v4.5 to v4.7.2
+v1.1.0.0 - For Umbraco v3 to v4.0]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" undo="true" alias="addDashboardSection" dashboardAlias="StartupFALMSection">
+      <section>
+        <areas>
+          <area>FALM</area>
+        </areas>
+        <tab caption="Dashboard">
+          <control>/App_Plugins/FALM/backoffice/housekeeping/dashboard.html</control>
+        </tab>
+      </section>
+    </Action>
+  </Actions>
+</umbPackage>

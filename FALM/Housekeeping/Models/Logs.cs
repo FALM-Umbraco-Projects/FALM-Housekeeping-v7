@@ -4,11 +4,17 @@ using System.Collections.Generic;
 
 namespace FALM.Housekeeping.Models
 {
+    /// <summary>
+    /// List of DB Log
+    /// </summary>
     public class DBLogsModel
     {
         public List<DBLogModel> ListDBLogs { get; set; }
     }
 
+    /// <summary>
+    /// DB Log
+    /// </summary>
     public class DBLogModel
     {
         public int      LogId       { get; set; }
@@ -22,6 +28,17 @@ namespace FALM.Housekeeping.Models
         public string   LogComment  { get; set; }
     }
 
+    /// <summary>
+    /// List of Trace Log
+    /// </summary>
+    public class TraceLogsModel
+    {
+        public List<TraceLogDataModel> ListTraceLogs { get; set; }
+    }
+
+    /// <summary>
+    /// Trace Log File
+    /// </summary>
     public class TraceLogFileModel
     {
         public DateTime LogDate         { get; set; }
@@ -29,11 +46,9 @@ namespace FALM.Housekeeping.Models
         public string   LogMachineName  { get; set; }
     }
 
-    public class TraceLogsModel
-    {
-        public List<TraceLogDataModel> ListTraceLogs { get; set; }
-    }
-
+    /// <summary>
+    /// Trace Log Data
+    /// </summary>
     public class TraceLogDataModel
     {
         // Trace Log Data Format

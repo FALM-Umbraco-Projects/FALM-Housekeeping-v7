@@ -1,5 +1,8 @@
 ﻿namespace FALM.Housekeeping.Models
 {
+    /// <summary>
+    /// UsersModel
+    /// </summary>
     public class UsersModel
     {
         public bool Selected { get; set; }

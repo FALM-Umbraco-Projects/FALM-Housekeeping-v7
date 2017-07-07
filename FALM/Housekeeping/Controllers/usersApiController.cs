@@ -16,19 +16,19 @@ using Umbraco.Web.WebApi;
 
 namespace FALM.Housekeeping.Controllers
 {
+    /// <summary>
+    /// PluginController("FALMHousekeeping")
+    /// UsersApiController
+    /// </summary>
     [PluginController("FALMHousekeeping")]
     public class UsersApiController : UmbracoApiController
     {
-        /// <summary>
-        /// 
-        /// </summary>
         protected IUserService userService = ApplicationContext.Current.Services.UserService;
 
         /// <summary>
         /// Return all user excluding the administrator
-        /// The method name MUST START with Get, because is an HttpGet method
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List<UsersModel></returns>
         [HttpGet]
         public List<UsersModel> GetAllUsers()
         {
@@ -59,10 +59,9 @@ namespace FALM.Housekeeping.Controllers
 
         /// <summary>
         /// Delete all selected users
-        /// The method name MUST START with Post, because is an HttpPost method
         /// </summary>
         /// <param name="selectedUsersToDelete"></param>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         [HttpPost]
         public bool PostDeleteSelectedUsers(List<UsersModel> selectedUsersToDelete)
         {

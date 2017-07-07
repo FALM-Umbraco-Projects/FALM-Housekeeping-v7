@@ -4,6 +4,7 @@ using FALM.Housekeeping.Models;
 //SYSTEM
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Web.Mvc;
 //UMBRACO
@@ -17,11 +18,14 @@ using Umbraco.Web.WebApi;
 
 namespace FALMHousekeeping.Controllers
 {
+    /// <summary>
+    /// PluginController("FALMHousekeeping")
+    /// MediaApiController
+    /// </summary>
     [PluginController("FALMHousekeeping")]
     public class MediaApiController : UmbracoApiController
     {
         protected IMediaService mediaService = ApplicationContext.Current.Services.MediaService;
-
         protected MediaModel mediaModel = new MediaModel();
         protected List<MediaWarningModel> listMediaWarnings = new List<MediaWarningModel>();
         protected List<MediaToDeleteModel> listMediaToDelete = new List<MediaToDeleteModel>();
@@ -31,10 +35,12 @@ namespace FALMHousekeeping.Controllers
         /// </summary>
         /// <returns>MediaModel</returns>
         [HttpGet]
-        public MediaModel GetMediaToDelete()
+        public MediaModel GetMediaToDelete(string userLocale)
         {
             listMediaWarnings = new List<MediaWarningModel>();
             listMediaToDelete = new List<MediaToDeleteModel>();
+
+            var currentUserCultureInfo = CultureInfo.GetCultureInfo(userLocale);
 
             try
             {
@@ -76,8 +82,7 @@ namespace FALMHousekeeping.Controllers
                         List<MediaPIdModel> allMediaPId = db.Fetch<MediaPIdModel>(strSQLGetMedia);
                         int pId;
 
-                        if (allMediaPId.Count > 0)
-                        {
+                        
                             // Create an array with the list of media directories
 				            DirectoryInfo dir = new DirectoryInfo(_filePath);
 				            DirectoryInfo[] subDirs = dir.GetDirectories();
@@ -109,6 +114,9 @@ namespace FALMHousekeeping.Controllers
                                 {
                                     bool mediaAlreadyAddedToDeleteList = false;
 
+                                if (allMediaPId.Count > 0)
+                                {
+
                                     foreach (var media in allMediaPId)
                                     {
                                         if (int.TryParse(media.pId, out pId))
@@ -136,7 +144,7 @@ namespace FALMHousekeeping.Controllers
                                                         // ### DELETEBLE ###
                                                         mediaToDeleteModel = new MediaToDeleteModel();
                                                         mediaToDeleteModel.Entry = subDir.Name;
-                                                        mediaToDeleteModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Contains") + " " + subDir.GetFileSystemInfos().Length + " " + Services.TextService.Localize("FALM/MediaManager.Cleanup.Items");
+                                                        mediaToDeleteModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Contains", currentUserCultureInfo) + " " + subDir.GetFileSystemInfos().Length + " " + Services.TextService.Localize("FALM/MediaManager.Cleanup.Items", currentUserCultureInfo);
                                                         listMediaToDelete.Add(mediaToDeleteModel);
                                                         mediaToSkip.Add(subDir.Name);
                                                         mediaAlreadyAddedToDeleteList = true;
@@ -147,7 +155,7 @@ namespace FALMHousekeeping.Controllers
                                                         {
                                                             mediaWarningModel = new MediaWarningModel();
                                                             mediaWarningModel.Entry = subDir.Name;
-                                                            mediaWarningModel.Message = "###" + Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderFoundInFileSystemAndUploadedTroughDatatype");
+                                                            mediaWarningModel.Message = "###" + Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderFoundInFileSystemAndUploadedTroughDatatype", currentUserCultureInfo);
                                                             listMediaWarnings.Add(mediaWarningModel);
                                                             mediaToSkip.Add(subDir.Name);
                                                             break;
@@ -161,9 +169,11 @@ namespace FALMHousekeeping.Controllers
                                             // MEDIA IGNORED - NO MATCH STANDARD FORMAT INTO DB
                                             mediaWarningModel = new MediaWarningModel();
                                             mediaWarningModel.Entry = pId.ToString();
-                                            mediaWarningModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.DBNotMatchFormat") + " '/media/&lt;propertyid&gt;/'";
+                                            mediaWarningModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.DBNotMatchFormat", currentUserCultureInfo) + " '/media/&lt;propertyid&gt;/'";
                                             listMediaWarnings.Add(mediaWarningModel);
                                         }
+                                    }
+
                                     }
 
                                     if (!mediaToSkip.Contains(subDir.Name))
@@ -182,7 +192,7 @@ namespace FALMHousekeeping.Controllers
                                             // ### DELETEBLE ###
                                             mediaToDeleteModel = new MediaToDeleteModel();
                                             mediaToDeleteModel.Entry = subDir.Name;
-                                            mediaToDeleteModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Contains") + " " + subDir.GetFileSystemInfos().Length + " " + Services.TextService.Localize("FALM/MediaManager.Cleanup.Items");
+                                            mediaToDeleteModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Contains", currentUserCultureInfo) + " " + subDir.GetFileSystemInfos().Length + " " + Services.TextService.Localize("FALM/MediaManager.Cleanup.Items", currentUserCultureInfo);
                                             listMediaToDelete.Add(mediaToDeleteModel);
                                         }
                                         else
@@ -190,7 +200,7 @@ namespace FALMHousekeeping.Controllers
                                             // MEDIA FOUND IN FILE SYSTEM AND UPLOADED TROUGH DATATYPE
                                             mediaWarningModel = new MediaWarningModel();
                                             mediaWarningModel.Entry = subDir.Name;
-                                            mediaWarningModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FoundInFileSystemAndUploadedTroughDatatype");
+                                            mediaWarningModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FoundInFileSystemAndUploadedTroughDatatype", currentUserCultureInfo);
                                             listMediaWarnings.Add(mediaWarningModel);
                                         }
                                     }
@@ -200,15 +210,15 @@ namespace FALMHousekeeping.Controllers
                                     // MEDIA IGNORED - NON STANDARD FOLDER
                                     mediaWarningModel = new MediaWarningModel();
                                     mediaWarningModel.Entry = subDir.Name;
-                                    mediaWarningModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderNameNotNumber");
+                                    mediaWarningModel.Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderNameNotNumber", currentUserCultureInfo);
                                     listMediaWarnings.Add(mediaWarningModel);
                                 }
                             }
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    return null;
+                        //}
                     }
                 }
 
@@ -227,7 +237,8 @@ namespace FALMHousekeeping.Controllers
         /// <summary>
         /// Delete media orphans
         /// </summary>
-        /// <returns>bool</returns>
+        /// <param name="mediaOrphansToDelete"></param>
+        /// <returns>MediaModel</returns>
         [HttpPost]
         public MediaModel PostDeleteMediaOrphans(List<MediaToDeleteModel> mediaOrphansToDelete)
         {
@@ -275,7 +286,7 @@ namespace FALMHousekeeping.Controllers
         /// </summary>
         /// <param name="db"></param>
         /// <param name="subDirName"></param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         protected int GetCountFromCmsContentXml(Database db, string subDirName)
         {
             var strSQLCheckMedia = "SELECT COUNT(nodeId) As Count ";
@@ -296,7 +307,7 @@ namespace FALMHousekeeping.Controllers
         /// </summary>
         /// <param name="db"></param>
         /// <param name="subDirName"></param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         protected int GetCountFromCmsPropertyData(Database db, string subDirName)
         {
             var strSQLCheckMedia = "SELECT COUNT(id) As Count ";
