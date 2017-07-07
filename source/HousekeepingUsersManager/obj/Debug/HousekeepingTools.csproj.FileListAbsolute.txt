@@ -1,5 +1,0 @@
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\HousekeepingTools\bin\FALMHousekeepingTools.dll
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\HousekeepingTools\bin\FALMHousekeepingTools.pdb
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\HousekeepingTools\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\HousekeepingTools\obj\Debug\FALMHousekeepingTools.dll
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\HousekeepingTools\obj\Debug\FALMHousekeepingTools.pdb

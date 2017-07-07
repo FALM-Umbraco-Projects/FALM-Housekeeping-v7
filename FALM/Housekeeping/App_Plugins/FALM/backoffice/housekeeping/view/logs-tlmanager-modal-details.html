@@ -1,0 +1,48 @@
+﻿<umb-panel ng-controller="FALMHousekeepingLogsTLManagerDetailsController">
+    <div class="umb-panel-header" id="falm-header">
+        <h3 class="title"><localize key="FALM_LogsManager.DBLogsDialog-Title">Event details</localize></h3>
+    </div>
+    <div class="umb-panel-body with-header with-footer" id="falm-content">
+        <table id="FHLogDetailTable" class="table" style="">
+            <tbody style="font-size: 12px;">
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event">Event</localize></th>
+                    <td style="padding: 15px; border-top: 0;"><span class="label label-{{ logTypeLabel }}">{{ dialogData.logItem.LogLevel }}</span></td>
+                </tr>
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogDate">Date</localize></th>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogDate | date: 'dd MMMM yyyy' }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogTime">Time</localize></th>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogDate | date: 'HH:mm:ss' }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogProcess">Process</localize></th>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogProcess }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogDomain">Domain</localize></th>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogDomain }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogThread">Thread</localize></th>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogThread }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogLogger">Logger</localize></th>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogLogger }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="padding: 15px; word-wrap: break-word;">
+            <p><strong><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogMessage">Description:</localize></strong></p>
+            <p>{{ dialogData.logItem.LogMessage }}</p>
+        </div>
+    </div>
+    <div class="umb-panel-footer" id="falm-footer">
+        <a href="" ng-click="close()" class="btn pull-right">
+            <localize key="general_close">Close</localize>
+        </a>
+    </div>
+</umb-panel>

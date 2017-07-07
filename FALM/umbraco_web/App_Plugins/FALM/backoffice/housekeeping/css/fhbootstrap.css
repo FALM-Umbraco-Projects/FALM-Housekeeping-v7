@@ -1,0 +1,1715 @@
+/*###################################################*/
+/* F.A.L.M. Housekeeping Custom Bootstrap Stylesheet */
+/*###################################################*/
+#falm-content .panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+#falm-content .panel-body {
+    padding: 15px;
+}
+#falm-content .panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+#falm-content .panel-heading > .dropdown .dropdown-toggle {
+    color: inherit;
+}
+#falm-content .panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+}
+#falm-content .panel-title > a,
+#falm-content .panel-title > small,
+#falm-content .panel-title > .small,
+#falm-content .panel-title > small > a,
+#falm-content .panel-title > .small > a {
+    color: inherit;
+}
+#falm-content .panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#falm-content .panel > .list-group,
+#falm-content .panel > .panel-collapse > .list-group {
+    margin-bottom: 0;
+}
+#falm-content .panel > .list-group .list-group-item,
+#falm-content .panel > .panel-collapse > .list-group .list-group-item {
+  border-width: 1px 0;
+  border-radius: 0;
+}
+#falm-content .panel > .list-group:first-child .list-group-item:first-child,
+#falm-content .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
+  border-top: 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#falm-content .panel > .list-group:last-child .list-group-item:last-child,
+#falm-content .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+#falm-content .panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#falm-content .panel-heading + .list-group .list-group-item:first-child {
+    border-top-width: 0;
+}
+#falm-content .list-group + .panel-footer {
+    border-top-width: 0;
+}
+#falm-content .panel > .table,
+#falm-content .panel > .table-responsive > .table,
+#falm-content .panel > .panel-collapse > .table {
+    margin-bottom: 0;
+}
+#falm-content .panel > .table caption,
+#falm-content .panel > .table-responsive > .table caption,
+#falm-content .panel > .panel-collapse > .table caption {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+#falm-content .panel > .table:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#falm-content .panel > .table:first-child > thead:first-child > tr:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,
+#falm-content .panel > .table:first-child > tbody:first-child > tr:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#falm-content .panel > .table:first-child > thead:first-child > tr:first-child td:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,
+#falm-content .panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,
+#falm-content .panel > .table:first-child > thead:first-child > tr:first-child th:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,
+#falm-content .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {
+  border-top-left-radius: 3px;
+}
+#falm-content .panel > .table:first-child > thead:first-child > tr:first-child td:last-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,
+#falm-content .panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,
+#falm-content .panel > .table:first-child > thead:first-child > tr:first-child th:last-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,
+#falm-content .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,
+#falm-content .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {
+  border-top-right-radius: 3px;
+}
+#falm-content .panel > .table:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+#falm-content .panel > .table:last-child > tbody:last-child > tr:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,
+#falm-content .panel > .table:last-child > tfoot:last-child > tr:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+#falm-content .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,
+#falm-content .panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
+#falm-content .panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,
+#falm-content .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {
+  border-bottom-left-radius: 3px;
+}
+#falm-content .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,
+#falm-content .panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
+#falm-content .panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,
+#falm-content .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
+#falm-content .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {
+  border-bottom-right-radius: 3px;
+}
+#falm-content .panel > .panel-body + .table,
+#falm-content .panel > .panel-body + .table-responsive,
+#falm-content .panel > .table + .panel-body,
+#falm-content .panel > .table-responsive + .panel-body {
+  border-top: 1px solid #ddd;
+}
+#falm-content .panel > .table > tbody:first-child > tr:first-child th,
+#falm-content .panel > .table > tbody:first-child > tr:first-child td {
+  border-top: 0;
+}
+#falm-content .panel > .table-bordered,
+#falm-content .panel > .table-responsive > .table-bordered {
+    border: 0;
+}
+#falm-content .panel > .table-bordered > thead > tr > th:first-child,
+#falm-content .panel > .table-responsive > .table-bordered > thead > tr > th:first-child,
+#falm-content .panel > .table-bordered > tbody > tr > th:first-child,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr > th:first-child,
+#falm-content .panel > .table-bordered > tfoot > tr > th:first-child,
+#falm-content .panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+#falm-content .panel > .table-bordered > thead > tr > td:first-child,
+#falm-content .panel > .table-responsive > .table-bordered > thead > tr > td:first-child,
+#falm-content .panel > .table-bordered > tbody > tr > td:first-child,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr > td:first-child,
+#falm-content .panel > .table-bordered > tfoot > tr > td:first-child,
+#falm-content .panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+  border-left: 0;
+}
+#falm-content .panel > .table-bordered > thead > tr > th:last-child,
+#falm-content .panel > .table-responsive > .table-bordered > thead > tr > th:last-child,
+#falm-content .panel > .table-bordered > tbody > tr > th:last-child,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,
+#falm-content .panel > .table-bordered > tfoot > tr > th:last-child,
+#falm-content .panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+#falm-content .panel > .table-bordered > thead > tr > td:last-child,
+#falm-content .panel > .table-responsive > .table-bordered > thead > tr > td:last-child,
+#falm-content .panel > .table-bordered > tbody > tr > td:last-child,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,
+#falm-content .panel > .table-bordered > tfoot > tr > td:last-child,
+#falm-content .panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+  border-right: 0;
+}
+#falm-content .panel > .table-bordered > thead > tr:first-child > td,
+#falm-content .panel > .table-responsive > .table-bordered > thead > tr:first-child > td,
+#falm-content .panel > .table-bordered > tbody > tr:first-child > td,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr:first-child > td,
+#falm-content .panel > .table-bordered > thead > tr:first-child > th,
+#falm-content .panel > .table-responsive > .table-bordered > thead > tr:first-child > th,
+#falm-content .panel > .table-bordered > tbody > tr:first-child > th,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {
+  border-bottom: 0;
+}
+#falm-content .panel > .table-bordered > tbody > tr:last-child > td,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr:last-child > td,
+#falm-content .panel > .table-bordered > tfoot > tr:last-child > td,
+#falm-content .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td,
+#falm-content .panel > .table-bordered > tbody > tr:last-child > th,
+#falm-content .panel > .table-responsive > .table-bordered > tbody > tr:last-child > th,
+#falm-content .panel > .table-bordered > tfoot > tr:last-child > th,
+#falm-content .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {
+  border-bottom: 0;
+}
+#falm-content .panel > .table-responsive {
+    margin-bottom: 0;
+    border: 0;
+}
+#falm-content .panel-group {
+    margin-bottom: 20px;
+}
+#falm-content .panel-group .panel {
+  margin-bottom: 0;
+  border-radius: 4px;
+}
+#falm-content .panel-group .panel + .panel {
+  margin-top: 5px;
+}
+#falm-content .panel-group .panel-heading {
+  border-bottom: 0;
+}
+#falm-content .panel-group .panel-heading + .panel-collapse > .panel-body,
+#falm-content .panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: 1px solid #ddd;
+}
+#falm-content .panel-group .panel-footer {
+  border-top: 0;
+}
+#falm-content .panel-group .panel-footer + .panel-collapse .panel-body {
+  border-bottom: 1px solid #ddd;
+}
+#falm-content .panel-default {
+  border-color: #ddd;
+}
+#falm-content .panel-default > .panel-heading {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+#falm-content .panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ddd;
+}
+#falm-content .panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #333;
+}
+#falm-content .panel-default > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ddd;
+}
+#falm-content .panel-primary {
+    border-color: #337ab7;
+}
+#falm-content .panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+#falm-content .panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #337ab7;
+}
+#falm-content .panel-primary > .panel-heading .badge {
+  color: #337ab7;
+  background-color: #fff;
+}
+#falm-content .panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #337ab7;
+}
+#falm-content .panel-success {
+  border-color: #d6e9c6;
+}
+#falm-content .panel-success > .panel-heading {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+#falm-content .panel-success > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #d6e9c6;
+}
+#falm-content .panel-success > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
+#falm-content .panel-success > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #d6e9c6;
+}
+#falm-content .panel-info {
+  border-color: #bce8f1;
+}
+#falm-content .panel-info > .panel-heading {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+#falm-content .panel-info > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #bce8f1;
+}
+#falm-content .panel-info > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+#falm-content .panel-info > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #bce8f1;
+}
+#falm-content .panel-warning {
+  border-color: #faebcc;
+}
+#falm-content .panel-warning > .panel-heading {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+#falm-content .panel-warning > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #faebcc;
+}
+#falm-content .panel-warning > .panel-heading .badge {
+  color: #fcf8e3;
+  background-color: #8a6d3b;
+}
+#falm-content .panel-warning > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #faebcc;
+}
+#falm-content .panel-danger {
+  border-color: #ebccd1;
+}
+#falm-content .panel-danger > .panel-heading {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+#falm-content .panel-danger > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ebccd1;
+}
+#falm-content .panel-danger > .panel-heading .badge {
+  color: #f2dede;
+  background-color: #a94442;
+}
+#falm-content .panel-danger > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ebccd1;
+}
+
+/* FORM */
+#falm-content .form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+#falm-content .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+#falm-content .form-inline .input-group {
+    display: inline-table;
+    vertical-align: middle;
+}
+#falm-content .form-inline .input-group .input-group-addon,
+#falm-content .form-inline .input-group .input-group-btn,
+#falm-content .form-inline .input-group .form-control {
+    width: auto;
+}
+#falm-content .form-inline .input-group > .form-control {
+    width: 100%;
+}
+#falm-content .input-group-addon,
+#falm-content .input-group-btn,
+#falm-content .input-group .form-control {
+    display: table-cell;
+}
+#falm-content .input-group-addon:not(:first-child):not(:last-child),
+#falm-content .input-group-btn:not(:first-child):not(:last-child),
+#falm-content .input-group .form-control:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+#falm-content .input-group-addon,
+#falm-content .input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+#falm-content .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#falm-content .input-group-addon.input-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+#falm-content .input-group-addon.input-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 6px;
+}
+#falm-content .input-group-addon input[type="radio"],
+#falm-content .input-group-addon input[type="checkbox"] {
+    margin-top: 0;
+}
+#falm-content .input-group .form-control:first-child,
+#falm-content .input-group-addon:first-child,
+#falm-content .input-group-btn:first-child > .btn,
+#falm-content .input-group-btn:first-child > .btn-group > .btn,
+#falm-content .input-group-btn:first-child > .dropdown-toggle,
+#falm-content .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+#falm-content .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#falm-content .input-group-addon:first-child {
+    border-right: 0;
+}
+#falm-content .input-group .form-control:last-child,
+#falm-content .input-group-addon:last-child,
+#falm-content .input-group-btn:last-child > .btn,
+#falm-content .input-group-btn:last-child > .btn-group > .btn,
+#falm-content .input-group-btn:last-child > .dropdown-toggle,
+#falm-content .input-group-btn:first-child > .btn:not(:first-child),
+#falm-content .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#falm-content .input-group-addon:last-child {
+    border-left: 0;
+}
+#falm-content .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+#falm-content .sr-only-focusable:active,
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+}
+#falm-content .has-feedback label.sr-only ~ .form-control-feedback {
+    top: 0;
+}
+
+/* PAGINATION */
+#falm-content .pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+#falm-content .pagination > li {
+    display: inline;
+}
+
+#falm-content .pagination > li > a,
+#falm-content .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#falm-content .pagination > li:first-child > a,
+#falm-content .pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#falm-content .pagination > li:last-child > a,
+#falm-content .pagination > li:last-child > span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+#falm-content .pagination > li > a:hover,
+#falm-content .pagination > li > span:hover,
+#falm-content .pagination > li > a:focus,
+#falm-content .pagination > li > span:focus {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+#falm-content .pagination > .active > a,
+#falm-content .pagination > .active > span,
+#falm-content .pagination > .active > a:hover,
+#falm-content .pagination > .active > span:hover,
+#falm-content .pagination > .active > a:focus,
+#falm-content .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+#falm-content .pagination > .disabled > span,
+#falm-content .pagination > .disabled > span:hover,
+#falm-content .pagination > .disabled > span:focus,
+#falm-content .pagination > .disabled > a,
+#falm-content .pagination > .disabled > a:hover,
+#falm-content .pagination > .disabled > a:focus {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+#falm-content .pagination-lg > li > a,
+#falm-content .pagination-lg > li > span {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+
+#falm-content .pagination-lg > li:first-child > a,
+#falm-content .pagination-lg > li:first-child > span {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+#falm-content .pagination-lg > li:last-child > a,
+#falm-content .pagination-lg > li:last-child > span {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+#falm-content .pagination-sm > li > a,
+#falm-content .pagination-sm > li > span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#falm-content .pagination-sm > li:first-child > a,
+#falm-content .pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#falm-content .pagination-sm > li:last-child > a,
+#falm-content .pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* LABELS */
+#falm-content label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+#falm-content .label-default {
+    background-color: #777;
+}
+#falm-content .label-default[href]:hover,
+#falm-content .label-default[href]:focus {
+    background-color: #5e5e5e;
+}
+#falm-content .label-primary {
+    background-color: #337ab7;
+}
+#falm-content .label-primary[href]:hover,
+#falm-content .label-primary[href]:focus {
+    background-color: #286090;
+}
+#falm-content .label-success {
+    background-color: #5cb85c;
+}
+#falm-content .label-success[href]:hover,
+#falm-content .label-success[href]:focus {
+    background-color: #449d44;
+}
+#falm-content .label-info {
+    background-color: #5bc0de;
+}
+#falm-content .label-info[href]:hover,
+#falm-content .label-info[href]:focus {
+    background-color: #31b0d5;
+}
+#falm-content .label-warning {
+    background-color: #f0ad4e;
+}
+#falm-content .label-warning[href]:hover,
+#falm-content .label-warning[href]:focus {
+    background-color: #ec971f;
+}
+#falm-content .label-danger {
+    background-color: #d9534f;
+}
+#falm-content .label-danger[href]:hover,
+#falm-content .label-danger[href]:focus {
+    background-color: #c9302c;
+}
+
+/* TEXT ALIGN */
+#falm-content .text-left {
+    text-align: left;
+}
+#falm-content .text-right {
+    text-align: right;
+}
+#falm-content .text-center {
+    text-align: center;
+}
+#falm-content .text-justify {
+    text-align: justify;
+}
+#falm-content .text-nowrap {
+    white-space: nowrap;
+}
+#falm-content .text-lowercase {
+    text-transform: lowercase;
+}
+#falm-content .text-uppercase {
+    text-transform: uppercase;
+}
+#falm-content .text-capitalize {
+    text-transform: capitalize;
+}
+
+/* GLYPHICON */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/glyphicons-halflings-regular.eot');
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+#falm-content .glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#falm-content .glyphicon-asterisk:before {
+    content: "\002a";
+}
+
+#falm-content .glyphicon-plus:before {
+    content: "\002b";
+}
+
+#falm-content .glyphicon-euro:before,
+#falm-content .glyphicon-eur:before {
+    content: "\20ac";
+}
+
+#falm-content .glyphicon-minus:before {
+    content: "\2212";
+}
+
+#falm-content .glyphicon-cloud:before {
+    content: "\2601";
+}
+
+#falm-content .glyphicon-envelope:before {
+    content: "\2709";
+}
+
+#falm-content .glyphicon-pencil:before {
+    content: "\270f";
+}
+
+#falm-content .glyphicon-glass:before {
+    content: "\e001";
+}
+
+#falm-content .glyphicon-music:before {
+    content: "\e002";
+}
+
+#falm-content .glyphicon-search:before {
+    content: "\e003";
+}
+
+#falm-content .glyphicon-heart:before {
+    content: "\e005";
+}
+
+#falm-content .glyphicon-star:before {
+    content: "\e006";
+}
+
+#falm-content .glyphicon-star-empty:before {
+    content: "\e007";
+}
+
+#falm-content .glyphicon-user:before {
+    content: "\e008";
+}
+
+#falm-content .glyphicon-film:before {
+    content: "\e009";
+}
+
+#falm-content .glyphicon-th-large:before {
+    content: "\e010";
+}
+
+#falm-content .glyphicon-th:before {
+    content: "\e011";
+}
+
+#falm-content .glyphicon-th-list:before {
+    content: "\e012";
+}
+
+#falm-content .glyphicon-ok:before {
+    content: "\e013";
+}
+
+#falm-content .glyphicon-remove:before {
+    content: "\e014";
+}
+
+#falm-content .glyphicon-zoom-in:before {
+    content: "\e015";
+}
+
+#falm-content .glyphicon-zoom-out:before {
+    content: "\e016";
+}
+
+#falm-content .glyphicon-off:before {
+    content: "\e017";
+}
+
+#falm-content .glyphicon-signal:before {
+    content: "\e018";
+}
+
+#falm-content .glyphicon-cog:before {
+    content: "\e019";
+}
+
+#falm-content .glyphicon-trash:before {
+    content: "\e020";
+}
+
+#falm-content .glyphicon-home:before {
+    content: "\e021";
+}
+
+#falm-content .glyphicon-file:before {
+    content: "\e022";
+}
+
+#falm-content .glyphicon-time:before {
+    content: "\e023";
+}
+
+#falm-content .glyphicon-road:before {
+    content: "\e024";
+}
+
+#falm-content .glyphicon-download-alt:before {
+    content: "\e025";
+}
+
+#falm-content .glyphicon-download:before {
+    content: "\e026";
+}
+
+#falm-content .glyphicon-upload:before {
+    content: "\e027";
+}
+
+#falm-content .glyphicon-inbox:before {
+    content: "\e028";
+}
+
+#falm-content .glyphicon-play-circle:before {
+    content: "\e029";
+}
+
+#falm-content .glyphicon-repeat:before {
+    content: "\e030";
+}
+
+#falm-content .glyphicon-refresh:before {
+    content: "\e031";
+}
+
+#falm-content .glyphicon-list-alt:before {
+    content: "\e032";
+}
+
+#falm-content .glyphicon-lock:before {
+    content: "\e033";
+}
+
+#falm-content .glyphicon-flag:before {
+    content: "\e034";
+}
+
+#falm-content .glyphicon-headphones:before {
+    content: "\e035";
+}
+
+#falm-content .glyphicon-volume-off:before {
+    content: "\e036";
+}
+
+#falm-content .glyphicon-volume-down:before {
+    content: "\e037";
+}
+
+#falm-content .glyphicon-volume-up:before {
+    content: "\e038";
+}
+
+#falm-content .glyphicon-qrcode:before {
+    content: "\e039";
+}
+
+#falm-content .glyphicon-barcode:before {
+    content: "\e040";
+}
+
+#falm-content .glyphicon-tag:before {
+    content: "\e041";
+}
+
+#falm-content .glyphicon-tags:before {
+    content: "\e042";
+}
+
+#falm-content .glyphicon-book:before {
+    content: "\e043";
+}
+
+#falm-content .glyphicon-bookmark:before {
+    content: "\e044";
+}
+
+#falm-content .glyphicon-print:before {
+    content: "\e045";
+}
+
+#falm-content .glyphicon-camera:before {
+    content: "\e046";
+}
+
+#falm-content .glyphicon-font:before {
+    content: "\e047";
+}
+
+#falm-content .glyphicon-bold:before {
+    content: "\e048";
+}
+
+#falm-content .glyphicon-italic:before {
+    content: "\e049";
+}
+
+#falm-content .glyphicon-text-height:before {
+    content: "\e050";
+}
+
+#falm-content .glyphicon-text-width:before {
+    content: "\e051";
+}
+
+#falm-content .glyphicon-align-left:before {
+    content: "\e052";
+}
+
+#falm-content .glyphicon-align-center:before {
+    content: "\e053";
+}
+
+#falm-content .glyphicon-align-right:before {
+    content: "\e054";
+}
+
+#falm-content .glyphicon-align-justify:before {
+    content: "\e055";
+}
+
+#falm-content .glyphicon-list:before {
+    content: "\e056";
+}
+
+#falm-content .glyphicon-indent-left:before {
+    content: "\e057";
+}
+
+#falm-content .glyphicon-indent-right:before {
+    content: "\e058";
+}
+
+#falm-content .glyphicon-facetime-video:before {
+    content: "\e059";
+}
+
+#falm-content .glyphicon-picture:before {
+    content: "\e060";
+}
+
+#falm-content .glyphicon-map-marker:before {
+    content: "\e062";
+}
+
+#falm-content .glyphicon-adjust:before {
+    content: "\e063";
+}
+
+#falm-content .glyphicon-tint:before {
+    content: "\e064";
+}
+
+#falm-content .glyphicon-edit:before {
+    content: "\e065";
+}
+
+#falm-content .glyphicon-share:before {
+    content: "\e066";
+}
+
+#falm-content .glyphicon-check:before {
+    content: "\e067";
+}
+
+#falm-content .glyphicon-move:before {
+    content: "\e068";
+}
+
+#falm-content .glyphicon-step-backward:before {
+    content: "\e069";
+}
+
+#falm-content .glyphicon-fast-backward:before {
+    content: "\e070";
+}
+
+#falm-content .glyphicon-backward:before {
+    content: "\e071";
+}
+
+#falm-content .glyphicon-play:before {
+    content: "\e072";
+}
+
+#falm-content .glyphicon-pause:before {
+    content: "\e073";
+}
+
+#falm-content .glyphicon-stop:before {
+    content: "\e074";
+}
+
+#falm-content .glyphicon-forward:before {
+    content: "\e075";
+}
+
+#falm-content .glyphicon-fast-forward:before {
+    content: "\e076";
+}
+
+#falm-content .glyphicon-step-forward:before {
+    content: "\e077";
+}
+
+#falm-content .glyphicon-eject:before {
+    content: "\e078";
+}
+
+#falm-content .glyphicon-chevron-left:before {
+    content: "\e079";
+}
+
+#falm-content .glyphicon-chevron-right:before {
+    content: "\e080";
+}
+
+#falm-content .glyphicon-plus-sign:before {
+    content: "\e081";
+}
+
+#falm-content .glyphicon-minus-sign:before {
+    content: "\e082";
+}
+
+#falm-content .glyphicon-remove-sign:before {
+    content: "\e083";
+}
+
+#falm-content .glyphicon-ok-sign:before {
+    content: "\e084";
+}
+
+#falm-content .glyphicon-question-sign:before {
+    content: "\e085";
+}
+
+#falm-content .glyphicon-info-sign:before {
+    content: "\e086";
+}
+
+#falm-content .glyphicon-screenshot:before {
+    content: "\e087";
+}
+
+#falm-content .glyphicon-remove-circle:before {
+    content: "\e088";
+}
+
+#falm-content .glyphicon-ok-circle:before {
+    content: "\e089";
+}
+
+#falm-content .glyphicon-ban-circle:before {
+    content: "\e090";
+}
+
+#falm-content .glyphicon-arrow-left:before {
+    content: "\e091";
+}
+
+#falm-content .glyphicon-arrow-right:before {
+    content: "\e092";
+}
+
+#falm-content .glyphicon-arrow-up:before {
+    content: "\e093";
+}
+
+#falm-content .glyphicon-arrow-down:before {
+    content: "\e094";
+}
+
+#falm-content .glyphicon-share-alt:before {
+    content: "\e095";
+}
+
+#falm-content .glyphicon-resize-full:before {
+    content: "\e096";
+}
+
+#falm-content .glyphicon-resize-small:before {
+    content: "\e097";
+}
+
+#falm-content .glyphicon-exclamation-sign:before {
+    content: "\e101";
+}
+
+#falm-content .glyphicon-gift:before {
+    content: "\e102";
+}
+
+#falm-content .glyphicon-leaf:before {
+    content: "\e103";
+}
+
+#falm-content .glyphicon-fire:before {
+    content: "\e104";
+}
+
+#falm-content .glyphicon-eye-open:before {
+    content: "\e105";
+}
+
+#falm-content .glyphicon-eye-close:before {
+    content: "\e106";
+}
+
+#falm-content .glyphicon-warning-sign:before {
+    content: "\e107";
+}
+
+#falm-content .glyphicon-plane:before {
+    content: "\e108";
+}
+
+#falm-content .glyphicon-calendar:before {
+    content: "\e109";
+}
+
+#falm-content .glyphicon-random:before {
+    content: "\e110";
+}
+
+#falm-content .glyphicon-comment:before {
+    content: "\e111";
+}
+
+#falm-content .glyphicon-magnet:before {
+    content: "\e112";
+}
+
+#falm-content .glyphicon-chevron-up:before {
+    content: "\e113";
+}
+
+#falm-content .glyphicon-chevron-down:before {
+    content: "\e114";
+}
+
+#falm-content .glyphicon-retweet:before {
+    content: "\e115";
+}
+
+#falm-content .glyphicon-shopping-cart:before {
+    content: "\e116";
+}
+
+#falm-content .glyphicon-folder-close:before {
+    content: "\e117";
+}
+
+#falm-content .glyphicon-folder-open:before {
+    content: "\e118";
+}
+
+#falm-content .glyphicon-resize-vertical:before {
+    content: "\e119";
+}
+
+#falm-content .glyphicon-resize-horizontal:before {
+    content: "\e120";
+}
+
+#falm-content .glyphicon-hdd:before {
+    content: "\e121";
+}
+
+#falm-content .glyphicon-bullhorn:before {
+    content: "\e122";
+}
+
+#falm-content .glyphicon-bell:before {
+    content: "\e123";
+}
+
+#falm-content .glyphicon-certificate:before {
+    content: "\e124";
+}
+
+#falm-content .glyphicon-thumbs-up:before {
+    content: "\e125";
+}
+
+#falm-content .glyphicon-thumbs-down:before {
+    content: "\e126";
+}
+
+#falm-content .glyphicon-hand-right:before {
+    content: "\e127";
+}
+
+#falm-content .glyphicon-hand-left:before {
+    content: "\e128";
+}
+
+#falm-content .glyphicon-hand-up:before {
+    content: "\e129";
+}
+
+#falm-content .glyphicon-hand-down:before {
+    content: "\e130";
+}
+
+#falm-content .glyphicon-circle-arrow-right:before {
+    content: "\e131";
+}
+
+#falm-content .glyphicon-circle-arrow-left:before {
+    content: "\e132";
+}
+
+#falm-content .glyphicon-circle-arrow-up:before {
+    content: "\e133";
+}
+
+#falm-content .glyphicon-circle-arrow-down:before {
+    content: "\e134";
+}
+
+#falm-content .glyphicon-globe:before {
+    content: "\e135";
+}
+
+#falm-content .glyphicon-wrench:before {
+    content: "\e136";
+}
+
+#falm-content .glyphicon-tasks:before {
+    content: "\e137";
+}
+
+#falm-content .glyphicon-filter:before {
+    content: "\e138";
+}
+
+#falm-content .glyphicon-briefcase:before {
+    content: "\e139";
+}
+
+#falm-content .glyphicon-fullscreen:before {
+    content: "\e140";
+}
+
+#falm-content .glyphicon-dashboard:before {
+    content: "\e141";
+}
+
+#falm-content .glyphicon-paperclip:before {
+    content: "\e142";
+}
+
+#falm-content .glyphicon-heart-empty:before {
+    content: "\e143";
+}
+
+#falm-content .glyphicon-link:before {
+    content: "\e144";
+}
+
+#falm-content .glyphicon-phone:before {
+    content: "\e145";
+}
+
+#falm-content .glyphicon-pushpin:before {
+    content: "\e146";
+}
+
+#falm-content .glyphicon-usd:before {
+    content: "\e148";
+}
+
+#falm-content .glyphicon-gbp:before {
+    content: "\e149";
+}
+
+#falm-content .glyphicon-sort:before {
+    content: "\e150";
+}
+
+#falm-content .glyphicon-sort-by-alphabet:before {
+    content: "\e151";
+}
+
+#falm-content .glyphicon-sort-by-alphabet-alt:before {
+    content: "\e152";
+}
+
+#falm-content .glyphicon-sort-by-order:before {
+    content: "\e153";
+}
+
+#falm-content .glyphicon-sort-by-order-alt:before {
+    content: "\e154";
+}
+
+#falm-content .glyphicon-sort-by-attributes:before {
+    content: "\e155";
+}
+
+#falm-content .glyphicon-sort-by-attributes-alt:before {
+    content: "\e156";
+}
+
+#falm-content .glyphicon-unchecked:before {
+    content: "\e157";
+}
+
+#falm-content .glyphicon-expand:before {
+    content: "\e158";
+}
+
+#falm-content .glyphicon-collapse-down:before {
+    content: "\e159";
+}
+
+#falm-content .glyphicon-collapse-up:before {
+    content: "\e160";
+}
+
+#falm-content .glyphicon-log-in:before {
+    content: "\e161";
+}
+
+#falm-content .glyphicon-flash:before {
+    content: "\e162";
+}
+
+#falm-content .glyphicon-log-out:before {
+    content: "\e163";
+}
+
+#falm-content .glyphicon-new-window:before {
+    content: "\e164";
+}
+
+#falm-content .glyphicon-record:before {
+    content: "\e165";
+}
+
+#falm-content .glyphicon-save:before {
+    content: "\e166";
+}
+
+#falm-content .glyphicon-open:before {
+    content: "\e167";
+}
+
+#falm-content .glyphicon-saved:before {
+    content: "\e168";
+}
+
+#falm-content .glyphicon-import:before {
+    content: "\e169";
+}
+
+#falm-content .glyphicon-export:before {
+    content: "\e170";
+}
+
+#falm-content .glyphicon-send:before {
+    content: "\e171";
+}
+
+#falm-content .glyphicon-floppy-disk:before {
+    content: "\e172";
+}
+
+#falm-content .glyphicon-floppy-saved:before {
+    content: "\e173";
+}
+
+#falm-content .glyphicon-floppy-remove:before {
+    content: "\e174";
+}
+
+#falm-content .glyphicon-floppy-save:before {
+    content: "\e175";
+}
+
+#falm-content .glyphicon-floppy-open:before {
+    content: "\e176";
+}
+
+#falm-content .glyphicon-credit-card:before {
+    content: "\e177";
+}
+
+#falm-content .glyphicon-transfer:before {
+    content: "\e178";
+}
+
+#falm-content .glyphicon-cutlery:before {
+    content: "\e179";
+}
+
+#falm-content .glyphicon-header:before {
+    content: "\e180";
+}
+
+#falm-content .glyphicon-compressed:before {
+    content: "\e181";
+}
+
+#falm-content .glyphicon-earphone:before {
+    content: "\e182";
+}
+
+#falm-content .glyphicon-phone-alt:before {
+    content: "\e183";
+}
+
+#falm-content .glyphicon-tower:before {
+    content: "\e184";
+}
+
+#falm-content .glyphicon-stats:before {
+    content: "\e185";
+}
+
+#falm-content .glyphicon-sd-video:before {
+    content: "\e186";
+}
+
+#falm-content .glyphicon-hd-video:before {
+    content: "\e187";
+}
+
+#falm-content .glyphicon-subtitles:before {
+    content: "\e188";
+}
+
+#falm-content .glyphicon-sound-stereo:before {
+    content: "\e189";
+}
+
+#falm-content .glyphicon-sound-dolby:before {
+    content: "\e190";
+}
+
+#falm-content .glyphicon-sound-5-1:before {
+    content: "\e191";
+}
+
+#falm-content .glyphicon-sound-6-1:before {
+    content: "\e192";
+}
+
+#falm-content .glyphicon-sound-7-1:before {
+    content: "\e193";
+}
+
+#falm-content .glyphicon-copyright-mark:before {
+    content: "\e194";
+}
+
+#falm-content .glyphicon-registration-mark:before {
+    content: "\e195";
+}
+
+#falm-content .glyphicon-cloud-download:before {
+    content: "\e197";
+}
+
+#falm-content .glyphicon-cloud-upload:before {
+    content: "\e198";
+}
+
+#falm-content .glyphicon-tree-conifer:before {
+    content: "\e199";
+}
+
+#falm-content .glyphicon-tree-deciduous:before {
+    content: "\e200";
+}
+
+#falm-content .glyphicon-cd:before {
+    content: "\e201";
+}
+
+#falm-content .glyphicon-save-file:before {
+    content: "\e202";
+}
+
+#falm-content .glyphicon-open-file:before {
+    content: "\e203";
+}
+
+#falm-content .glyphicon-level-up:before {
+    content: "\e204";
+}
+
+#falm-content .glyphicon-copy:before {
+    content: "\e205";
+}
+
+#falm-content .glyphicon-paste:before {
+    content: "\e206";
+}
+
+#falm-content .glyphicon-alert:before {
+    content: "\e209";
+}
+
+#falm-content .glyphicon-equalizer:before {
+    content: "\e210";
+}
+
+#falm-content .glyphicon-king:before {
+    content: "\e211";
+}
+
+#falm-content .glyphicon-queen:before {
+    content: "\e212";
+}
+
+#falm-content .glyphicon-pawn:before {
+    content: "\e213";
+}
+
+#falm-content .glyphicon-bishop:before {
+    content: "\e214";
+}
+
+#falm-content .glyphicon-knight:before {
+    content: "\e215";
+}
+
+#falm-content .glyphicon-baby-formula:before {
+    content: "\e216";
+}
+
+#falm-content .glyphicon-tent:before {
+    content: "\26fa";
+}
+
+#falm-content .glyphicon-blackboard:before {
+    content: "\e218";
+}
+
+#falm-content .glyphicon-bed:before {
+    content: "\e219";
+}
+
+#falm-content .glyphicon-apple:before {
+    content: "\f8ff";
+}
+
+#falm-content .glyphicon-erase:before {
+    content: "\e221";
+}
+
+#falm-content .glyphicon-hourglass:before {
+    content: "\231b";
+}
+
+#falm-content .glyphicon-lamp:before {
+    content: "\e223";
+}
+
+#falm-content .glyphicon-duplicate:before {
+    content: "\e224";
+}
+
+#falm-content .glyphicon-piggy-bank:before {
+    content: "\e225";
+}
+
+#falm-content .glyphicon-scissors:before {
+    content: "\e226";
+}
+
+#falm-content .glyphicon-bitcoin:before {
+    content: "\e227";
+}
+
+#falm-content .glyphicon-btc:before {
+    content: "\e227";
+}
+
+#falm-content .glyphicon-xbt:before {
+    content: "\e227";
+}
+
+#falm-content .glyphicon-yen:before {
+    content: "\00a5";
+}
+
+#falm-content .glyphicon-jpy:before {
+    content: "\00a5";
+}
+
+#falm-content .glyphicon-ruble:before {
+    content: "\20bd";
+}
+
+#falm-content .glyphicon-rub:before {
+    content: "\20bd";
+}
+
+#falm-content .glyphicon-scale:before {
+    content: "\e230";
+}
+
+#falm-content .glyphicon-ice-lolly:before {
+    content: "\e231";
+}
+
+#falm-content .glyphicon-ice-lolly-tasted:before {
+    content: "\e232";
+}
+
+#falm-content .glyphicon-education:before {
+    content: "\e233";
+}
+
+#falm-content .glyphicon-option-horizontal:before {
+    content: "\e234";
+}
+
+#falm-content .glyphicon-option-vertical:before {
+    content: "\e235";
+}
+
+#falm-content .glyphicon-menu-hamburger:before {
+    content: "\e236";
+}
+
+#falm-content .glyphicon-modal-window:before {
+    content: "\e237";
+}
+
+#falm-content .glyphicon-oil:before {
+    content: "\e238";
+}
+
+#falm-content .glyphicon-grain:before {
+    content: "\e239";
+}
+
+#falm-content .glyphicon-sunglasses:before {
+    content: "\e240";
+}
+
+#falm-content .glyphicon-text-size:before {
+    content: "\e241";
+}
+
+#falm-content .glyphicon-text-color:before {
+    content: "\e242";
+}
+
+#falm-content .glyphicon-text-background:before {
+    content: "\e243";
+}
+
+#falm-content .glyphicon-object-align-top:before {
+    content: "\e244";
+}
+
+#falm-content .glyphicon-object-align-bottom:before {
+    content: "\e245";
+}
+
+#falm-content .glyphicon-object-align-horizontal:before {
+    content: "\e246";
+}
+
+#falm-content .glyphicon-object-align-left:before {
+    content: "\e247";
+}
+
+#falm-content .glyphicon-object-align-vertical:before {
+    content: "\e248";
+}
+
+#falm-content .glyphicon-object-align-right:before {
+    content: "\e249";
+}
+
+#falm-content .glyphicon-triangle-right:before {
+    content: "\e250";
+}
+
+#falm-content .glyphicon-triangle-left:before {
+    content: "\e251";
+}
+
+#falm-content .glyphicon-triangle-bottom:before {
+    content: "\e252";
+}
+
+#falm-content .glyphicon-triangle-top:before {
+    content: "\e253";
+}
+
+#falm-content .glyphicon-console:before {
+    content: "\e254";
+}
+
+#falm-content .glyphicon-superscript:before {
+    content: "\e255";
+}
+
+#falm-content .glyphicon-subscript:before {
+    content: "\e256";
+}
+
+#falm-content .glyphicon-menu-left:before {
+    content: "\e257";
+}
+
+#falm-content .glyphicon-menu-right:before {
+    content: "\e258";
+}
+
+#falm-content .glyphicon-menu-down:before {
+    content: "\e259";
+}
+
+#falm-content .glyphicon-menu-up:before {
+    content: "\e260";
+}

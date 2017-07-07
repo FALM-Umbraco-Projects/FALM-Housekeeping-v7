@@ -1,0 +1,38 @@
+﻿<script>
+    'use strict';
+    // Create Dasboard controller
+    function FALMHousekeepingDashboardController($scope, $routeParams) {
+        // Set a property on the scope equal to the current route id
+        $scope.id = $routeParams.id;
+    }
+</script>
+
+<div ng-controller="FALMHousekeepingDashboardController">
+    <umb-panel>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body no-header umb-scrollable with-footer" style="padding: 0 20px;">
+                <h2 class="title"><localize key="FALM_Dashboard.Title">F.A.L.M.</localize></h2>
+                <div class="subtitle"><localize key="FALM_Dashboard.SubTitle">Welcome to new generation of our cleaning tools totally rewrite using AngularJS and Bootstrap and now in a Custom Section.</localize></div>
+                <div class="description">
+                    <localize key="FALM_Dashboard.Description"><p>This package adds a new section with the following tools:</p><ul><li><strong>Umbraco logs manager</strong>: with this tool you can view and delete Umbraco log events.<br />Now you can manage DB Log and the TraceLog (this is a simplified version of <a href="https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/" target="_blank">Diplo Trace Log Viewer</a> project)</li><li><strong>Media folder cleanup</strong>: with this tool you can delete those file system folders under '/media' which have no entry in the DB (orphans)</li><li><strong>Delete users manager</strong>: with this tool you can completely remove Umbraco users.</li><li><strong>Version manager</strong>: with this tool you can view and cleanup the version history that Umbraco mantains for each content node.</li></ul></localize>
+                </div>
+                <div class="infoBox">
+                    <localize key="FALM_Dashboard.LatestChanges"><p><span class="title">Latest Changes</span></p>
+                        <p class="text">v7.6.0.0 - New version: totally rewrite using AngularJS and Bootstrap and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)</p>
+                        <p class="text">v7.0.0.1 - Bug Fix: Resolved Error 404 when click all main headers (Logs, Media, Users, Versions) and resolved conflict in Users Manager</p>
+                    </localize>
+                </div>
+                <div class="infoBox">
+                    <localize key="FALM_Dashboard.VersionHistory"><p><span class="title">Version History</span></p>
+                        <p class="text">v7.6.0.0 - Umbraco v7.5+</p>
+                        <p class="text">v7.0.0.1 - Umbraco v7+</p>
+                        <p class="text">v6.1.3.0 - Umbraco v6 to v7.2</p>
+                        <p class="text">v4.11.0.2 - Umbraco v4.8 to v4.11</p>
+                        <p class="text">v4.5.0.1  - Umbraco v4.5 to v4.7.2</p>
+                        <p class="text">v1.1.0.0  - Umbraco v3 to v4.0</p>
+                    </localize>
+                </div>
+            </div>
+        </umb-content>
+    </umb-panel>
+</div>

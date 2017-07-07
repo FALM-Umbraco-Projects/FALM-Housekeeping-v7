@@ -1,0 +1,107 @@
+﻿/*##################################*/
+/* F.A.L.M. Housekeeping Stylesheet */
+/*##################################*/
+#falm-header h3.title {
+    color: darkblue !important;
+}
+#falm-content h2.title {
+    font-size: 28px !important;
+    color: darkblue !important;
+}
+#falm-content .subtitle {
+
+}
+#falm-content .description {
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+}
+#falm-content .infoBox {
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+}
+#falm-content .infoBox .title {
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: double;
+}
+#falm-content .infoBox .text {
+    font-size: 12px;
+}
+#falm-content #infoTable {
+    margin-top: 30px;
+}
+#falm-content #orphansTable {
+    margin-top: 30px;
+}
+#falm-content .noUserToDelete {
+    margin-top: 30px !important;
+    font-weight: bold !important;
+}
+#falm-content .userForm {
+    margin-top: 30px !important;
+}
+#falm-content .form-control {
+    height: auto !important;
+}
+#falm-content .table-striped > tbody > tr:nth-child(odd) > td,
+#falm-content .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #edf7ff;
+}
+#falm-content .table-hover tbody tr:hover > td,
+#falm-content .table-hover tbody tr:hover > th {
+    background-color: #f5f5f5;
+}
+#falm-content tr[ng-click] {
+    cursor: pointer;
+}
+
+/* TABLE LOG */
+#falm-content #FHLogTable tbody tr {
+    font-size: 0.8em;
+}
+#falm-content #FHLogTable tbody td {
+    min-width: 20px;
+}
+#falm-content #FHLogTable thead th {
+    background-color: #f5f5f5;
+}
+
+#falm-content .border-radius-left {
+    -webkit-border-top-left-radius: 4px !important;
+    -webkit-border-bottom-left-radius: 4px !important;
+    -moz-border-radius-topleft: 4px !important;
+    -moz-border-radius-bottomleft: 4px !important;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+/* TABLE VERSIONS */
+#falm-content #FHVersionsTable tbody tr {
+    font-size: 0.8em;
+}
+
+#falm-content #FHVersionsTable tbody td {
+    min-width: 20px;
+}
+
+#falm-content #FHVersionsTable thead th {
+    background-color: #f5f5f5;
+}
+
+#falm-content #FHVersionsTable thead th label {
+    font-size: 1em;
+}
+
+/* PAGINATION */
+#falm-content .pagination-total-pages {
+    float: right;
+    color: #337ab7;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+/* OVERRIDE UMBRACO CLASSES */
+#falm-footer .umb-panel-footer {
+    background: #f8f8f8;
+    border-top: 1px solid #d9d9d9;
+}

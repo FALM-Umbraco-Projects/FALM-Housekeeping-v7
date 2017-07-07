@@ -1,0 +1,117 @@
+﻿<div ng-controller="FALMHousekeepingVersionsController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h2 class="title"><localize key="FALM_VersionsManager.Title">Umbraco Versions Manager</localize></h2>
+                <div class="description">
+                    <localize key="FALM_VersionsManager.Description">With this tool you can manage the Umbraco history versions.</localize>
+                </div>
+                <div ng-switch="id">
+                    <div ng-hide="!showSearchPanel">
+                        <div ng-hide="!showLoader" class="loading">
+                            <localize key="FALM_VersionsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
+                            <umb-load-indicator></umb-load-indicator>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <localize key="FALM_VersionsManager.VersionsPanelTitle">Versions panel</localize>
+                        </div>
+                        <div class="panel-body">
+                            <div ng-hide="!showVersions">
+                                <form class="form">
+                                    <table id="FHVersionFiltersTable" class="table">
+                                        <thead>
+                                            <tr style="font-size: 10px;">
+                                                <th class="text-left"><label for="NodeId"><localize key="FALM_VersionsManager.FilterByNodeId">Filter by node Id</localize></label></th>
+                                                <th class="text-left"><label for="NodeName"><localize key="FALM_VersionsManager.FilterByNodeName">Filter by node name</localize></label></th>
+                                                <th class="text-right"><label for="itemsPerPage"><localize key="FALM_VersionsManager.ItemsPerPage">Items per page:</localize></label></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="form-group" style="border: none; padding-top: 0; width: 100px;">
+                                                    <input type="text" ng-model="search.NodeId" id="search.NodeId" class="form-control" style="width: 100px;" />
+                                                </td>
+                                                <td class="form-group" style="border: none; padding-top: 0; width: 300px;">
+                                                    <input type="text" ng-model="search.NodeName" id="search.NodeName" class="form-control" style="width: 300px;" />
+                                                </td>
+                                                <td class="form-group text-right" style="border: none; padding-top: 0;">
+                                                    <select ng-model="pageSize" id="itemsPerPage" style="width: 100px;">
+                                                        <option value="10">10</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <table id="FHVersionsTable" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="vertical-align: middle;">
+                                                <localize key="FALM_VersionsManager.NodeId">Node Id</localize>
+                                            </th>
+                                            <th class="text-center" style="vertical-align: middle;">
+                                                <localize key="FALM_VersionsManager.NodeName">Node Name</localize>
+                                            </th>
+                                            <th class="text-center" style="vertical-align: middle;">
+                                                <localize key="FALM_VersionsManager.CurrentPublishedVersionDate">Published Version</localize><br />
+                                                <span style="font-size: small; color: darkgray">(dd/MM/yyyy HH:mm:ss)</span>
+                                            </th>
+                                            <th class="text-center" style="vertical-align: middle;">
+                                                <localize key="FALM_VersionsManager.TotalVersions">Other versions</localize>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-click="openDetailsModal(versionItem)" dir-paginate="versionItem in filteredVersions = (versions.ListCurrentPublishedVersions | filter:search) | itemsPerPage:pageSize" pagination-id="Versions" current-page="currentPage">
+                                            <td class="text-center" style="width: 8%;">{{ versionItem.NodeId }}</td>
+                                            <td>{{ versionItem.NodeName }}</td>
+                                            <td class="text-center" style="width: 20%;">{{ versionItem.PublishedDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                            <td class="text-center" style="width: 8%;">{{ versionItem.VersionsCount }}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="7">
+                                                <dir-pagination-controls boundary-links="true" template-url="/App_Plugins/FALM/backoffice/housekeeping/template/dirPagination.tpl.html" pagination-id="Versions"></dir-pagination-controls>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <form id="versionsCleanupForm" ng-submit="deleteVersionsByCount(0)" role="form" style="float: left; margin: 0 10px 0 0;">
+                                <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
+                                    <localize key="FALM_VersionsManager.StartCleanupButton">Cleanup all Versions</localize>
+                                </button>
+                            </form>
+                            <a ng-click="openCleanupByCountModal()" class="btn btn-warning" style="margin: 0 6px 0 0;">
+                                <localize key="FALM_VersionsManager.StartCleanupByCount">Cleanup versions by count</localize>
+                            </a>
+                            <a ng-click="reloadRoute()" class="btn btn-default">
+                                <localize key="FALM_VersionsManager.RestartSearchVersions">Restart versions search</localize>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer id="falm-footer" />
+        </umb-footer>
+    </umb-panel>
+</div>

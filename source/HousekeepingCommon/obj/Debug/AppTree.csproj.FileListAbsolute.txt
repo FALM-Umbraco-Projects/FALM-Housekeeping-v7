@@ -1,5 +1,0 @@
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\AppTree\bin\Debug\FALMHousekeepingAppTree.dll
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\AppTree\bin\Debug\FALMHousekeepingAppTree.pdb
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\AppTree\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\AppTree\obj\Debug\FALMHousekeepingAppTree.dll
-C:\Users\Adriano\Documents\Visual Studio 2010\Projects\FALMHousekeeping\AppTree\obj\Debug\FALMHousekeepingAppTree.pdb

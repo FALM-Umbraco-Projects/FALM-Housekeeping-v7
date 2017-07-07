@@ -1,0 +1,149 @@
+﻿<div ng-controller="FALMHousekeepingLogsDBManagerController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h2 class="title"><localize key="FALM_LogsManager.Title_DB">Umbraco Logs Manager (DB)</localize></h2>
+                <div class="description">
+                    <localize key="FALM_LogsManager.Description_DB">With this tool you can manage Umbraco DB log events.</localize>
+                </div>
+                <div ng-switch="id">
+                    <div ng-hide="!showSearchPanel">
+                        <div ng-hide="!showLoader" class="loading">
+                            <localize key="FALM_LogsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
+                            <umb-load-indicator></umb-load-indicator>
+                        </div>
+                        
+                        <div ng-hide="!logs.ListDBLogs.length" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <localize key="FALM_LogsManager.DBLogsPanelTitle">DB Log</localize> <localize key="FALM_LogsManager.Contains">contains</localize> <span class="badge">{{ filteredLogs.length }}</span> <localize key="FALM_LogsManager.Events">events</localize>
+                            </div>
+                            <div class="panel-body">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="search" class="sr-only"><localize key="FALM_LogsManager.SearchLabel">Search:</localize></label>
+                                        <div class="input-group" style="float: left; margin-right: 10px;">
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </div>
+                                            <input type="text" ng-model="q" id="search" class="form-control" style="-webkit-border-top-right-radius: 4px !important; -webkit-border-bottom-right-radius: 4px !important; -moz-border-radius-topright: 4px !important; -moz-border-radius-bottomright: 4px !important; border-top-right-radius: 4px !important; border-bottom-right-radius: 4px !important; width: 300px;"/>
+                                        </div>
+                                        <div class="text-right" style="float: right;">
+                                            <label for="itemsPerPage" style="vertical-align: bottom;"><localize key="FALM_LogsManager.ItemsPerPage">Items per page:</localize></label>
+                                            <select ng-model="pageSize" id="itemsPerPage" class="form-control">
+                                                <option value="10">10</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <table id="FHLogTable" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <localize key="FALM_LogsManager.LogId">Id</localize>
+                                            </th>
+                                            <th class="text-center">
+                                                <a href="" ng-click="sortKey='LogHeader';reverse=!reverse">
+                                                    <localize key="FALM_LogsManager.LogHeader">Type</localize>
+                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='LogHeader'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                </a>
+                                            </th>
+                                            <th class="text-center">
+                                                <a href="" ng-click="sortKey='LogDate';reverse=!reverse">
+                                                    <localize key="FALM_LogsManager.LogDate">Date</localize>
+                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='LogDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                </a>
+                                            </th>
+                                            <th class="text-center">
+                                                <a href="" ng-click="sortKey='UserName';reverse=!reverse">
+                                                    <localize key="FALM_LogsManager.Username">Username</localize>
+                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='UserName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                </a>
+                                            </th>
+                                            <th class="text-center">
+                                                <a href="" ng-click="sortKey='NodeId';reverse=!reverse">
+                                                    <localize key="FALM_LogsManager.NodeId">Node</localize>
+                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='NodeId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                </a>
+                                            </th>
+                                            <th class="text-center">
+                                                <a href="" ng-click="sortKey='NodeName';reverse=!reverse">
+                                                    <localize key="FALM_LogsManager.NodeName">Node Name</localize>
+                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='NodeName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                </a>
+                                            </th>
+                                            <th class="text-center">
+                                                <a href="" ng-click="sortKey='LogComment';reverse=!reverse">
+                                                    <localize key="FALM_LogsManager.LogComment">Detail</localize>
+                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='LogComment'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                </a>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListDBLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td class="text-center" style="width: 50px;">{{ logItem.LogId }}</td>
+                                            <td class="text-center" style="width: 120px;"><span ng-class="getLabelType(logItem.LogHeader)">{{ logItem.LogHeader }}</span></td>
+                                            <td class="text-center" style="width: 140px;">{{ logItem.LogDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                            <td style="width: 120px;">{{ logItem.UserName }}</td>
+                                            <td class="text-center" style="width: 50px;">{{ logItem.NodeId }}</td>
+                                            <td style="width: 150px;">{{ logItem.NodeName | limitTo:20 }}<span ng-if="logItem.NodeName.length > 20">...</span></td>
+                                            <td>{{ logItem.LogComment | limitTo:60 }}<span ng-if="logItem.LogComment.length > 60">...</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="7">
+                                                <dir-pagination-controls boundary-links="true" template-url="/App_Plugins/FALM/backoffice/housekeeping/template/dirPagination.tpl.html"></dir-pagination-controls>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                <form id="logsCleanupForm" ng-submit="deleteFilteredDBLogs(filteredLogs)" role="form" style="float: left; margin: 0 10px 0 0;">
+                                    <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
+                                        <localize key="FALM_LogsManager.StartCleanupButton">Cleanup current visible Logs</localize>
+                                    </button>
+                                </form>
+                                <a ng-click="reloadRoute()" class="btn btn-default">
+                                    <localize key="FALM_LogsManager.RestartSearchLogs">Restart logs search</localize>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div ng-hide="!showNoDBLogsFound" class="noLogsFound">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <localize key="FALM_LogsManager.DBLogsPanelTitle">DB Log events</localize>
+                                </div>
+                                <div class="panel-body">
+                                    <p><localize key="FALM_LogsManager.NoLogsFound">No Logs found.</localize></p>
+                                </div>
+                                <div class="panel-footer">
+                                    <a ng-click="reloadRoute()" class="btn btn-default">
+                                        <localize key="FALM_LogsManager.RestartSearchLogs">Restart logs search</localize>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer id="falm-footer" />
+    </umb-panel>
+</div>

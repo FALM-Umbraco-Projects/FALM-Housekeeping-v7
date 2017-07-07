@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="it-IT" intName="Italian" localName="Italiano" lcid="16" culture="it-IT">
+<creator>
+<name>FALM</name>
+<link>https://our.umbraco.org/projects/backoffice-extensions/falm-housekeeping/</link>
+</creator>
+<area alias="FALM">
+    <!-- DASHBOARD -->
+    <key alias="Dashboard.Title"><![CDATA[Housekeeping]]></key>
+    <key alias="Dashboard.SubTitle"><![CDATA[Benvenuti nella nuova generazione del nostro tool di pulizia totalmente riscritta in AngularJS e Bootstrap e ora in una Custom Section]]></key>
+    <key alias="Dashboard.Description"><![CDATA[<p>Questo package aggiunge una nuova sezione in Umbraco.<br />All'interno della sezione troverete un albero con i seguenti strumenti:</p><ul><li><strong>Gestione dei Log di Umbraco</strong>: questo strumento permette di visualizzare ed eliminare gli eventi registrati nel log di Umbraco.<br />Ora si può gestire il DB Log e il TraceLog (questa una versione semplificata del progetto <a href="https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/" target="_blank">Diplo Trace Log Viewer</a>)</li><li><strong>Gestione Media</strong>:Questo strumento permette di eliminare dalla cartella "/media" nel File System, tutte le cartelle e i relativi file che non hanno una corrispondenza nel DB (orfani).</li><li><strong>Gestione Utenti</strong>: Questo strumento permette di eliminare uno o più utenti.</li><li><strong>Gestione Versioni</strong>: questo strumento permette di visualizzare ed eliminare versioni dei nodi che Umbraco mantiene per ogni nodo del content.</li></ul>]]></key>
+    <key alias="Dashboard.LatestChanges"><![CDATA[<p><span class="title">Ultime Modifiche</span></p><p class="text">v7.6.0.0 - Nuova versione: completamente riscritta usando AngularJS e Bootstrap e ora spostata in una sezione indipendente. Risolto il problema di compatibilità con SQL CE per tutte le funzionalità tranne che per la gestione delle versioni che ancora hanno il problema.</p><p class="text">v7.0.0.1 - Bug Fix: Risolto l'errore 404 quando si clicca su tutte le main headers (Logs, Media, Users, Versions) e risolto il conflitto nella Gestione Utenti</p>]]></key>
+    <key alias="Dashboard.VersionHistory"><![CDATA[<p><span class="title">Version History</span></p><p class="text">v7.6.0.0 - For Umbraco v7.5+</p><p class="text">v7.0.0.1 - For Umbraco v7+</p><p class="text">v6.1.3.0 - For Umbraco v6 to v7.2</p><p class="text">v4.11.0.2 - For Umbraco v4.8 to v4.11</p><p class="text">v4.5.0.1  - For Umbraco v4.5 to v4.7.2</p><p class="text">v1.1.0.0  - For Umbraco v3 to v4.0</p>]]></key>
+
+    <!-- LOGS MANAGER -->
+    <key alias="LogsManager.TreeSection"><![CDATA[LOG]]></key>
+    <key alias="LogsManager.TreeActionManagerDB"><![CDATA[Eventi sul DB]]></key>
+    <key alias="LogsManager.TreeActionManagerTL"><![CDATA[Trace Log]]></key>
+    <key alias="LogsManager.TreeActionManagerTL.Today"><![CDATA[Oggi]]></key>
+    <key alias="LogsManager.Title_DB"><![CDATA[Gestione Log di Umbraco (DB)]]></key>
+    <key alias="LogsManager.SubTitle_DB"><![CDATA[ ]]></key>
+    <key alias="LogsManager.Description_DB"><![CDATA[Questo strumento permette di gestire il DB Log di Umbraco.]]></key>
+    <key alias="LogsManager.FooterMessage_DB"><![CDATA[ ]]></key>
+    <key alias="LogsManager.DBLogsPanelTitle"><![CDATA[Il DB Log]]></key>
+    <key alias="LogsManager.Events"><![CDATA[eventi]]></key>
+    <key alias="LogsManager.Contains"><![CDATA[contiene]]></key>
+    <key alias="LogsManager.SearchLabel"><![CDATA[Cerca:]]></key>
+    <key alias="LogsManager.ItemsPerPage"><![CDATA[Eventi per pagina:]]></key>
+    <key alias="LogsManager.LogId">Id</key>
+    <key alias="LogsManager.Username">Username</key>
+    <key alias="LogsManager.NodeId">Nodo</key>
+    <key alias="LogsManager.NodeName">Nome del nodo</key>
+    <key alias="LogsManager.LogDate">Data</key>
+    <key alias="LogsManager.LogHeader">Tipo</key>
+    <key alias="LogsManager.LogLevel">Tipo</key>
+    <key alias="LogsManager.LogProcess">Processo</key>
+    <key alias="LogsManager.LogDomain">Dominio</key>
+    <key alias="LogsManager.LogThread">Thread</key>
+    <key alias="LogsManager.LogLogger">Logger</key>
+    <key alias="LogsManager.LogComment">Descrizione</key>
+    <key alias="LogsManager.LogMessage">Descrizione</key>
+    <key alias="LogsManager.Page">Pagina</key>
+    <key alias="LogsManager.Of">di</key>
+    <key alias="LogsManager.NoLogsFound"><![CDATA[Non sono stati trvati Log]]></key>
+    <key alias="LogsManager.StartCleanupButton"><![CDATA[Elimina Log]]></key>
+    <key alias="LogsManager.RestartSearchLogs"><![CDATA[Ricarica]]></key>
+    <key alias="LogsManager.Title_TL"><![CDATA[Gestione Log di Umbraco (TraceLog)]]></key>
+    <key alias="LogsManager.SubTitle_TL"><![CDATA[ ]]></key>
+    <key alias="LogsManager.Description_TL"><![CDATA[Questo strumento permette di consultare il Trace Log di Umbraco]]></key>
+    <key alias="LogsManager.FooterMessage_TL"><![CDATA[ ]]></key>
+    <key alias="LogsManager.TraceLogsPanelTitle"><![CDATA[Il Trace Log]]></key>
+    <key alias="LogsManager.TLLogsPanelTitle"><![CDATA[Il Trace Log]]></key>
+    <key alias="LogsManager.SearchInProgress"><![CDATA[Ricerca in corso. Si prega di attendere fino a quando non vengono visualizzati gli eventi]]></key>
+    <key alias="LogsManager.DeleteInProgress"><![CDATA[Cancellazione in corso. Si prega di attendere fino a quando verrà visualizzato il risultato dell'operazione]]></key>
+    <key alias="LogsManager.DBLogsDialog-Title">Dettagli dell'evento</key>
+    <key alias="LogsManager.DBLogsDialog-Event">Evento</key>
+    <key alias="LogsManager.DBLogsDialog-Event-LogId">Id</key>
+    <key alias="LogsManager.DBLogsDialog-Event-LogDate">Data</key>
+    <key alias="LogsManager.DBLogsDialog-Event-LogTime">Ora</key>
+    <key alias="LogsManager.DBLogsDialog-Event-UserName">Utente</key>
+    <key alias="LogsManager.DBLogsDialog-Event-NodeId">ID del nodo</key>
+    <key alias="LogsManager.DBLogsDialog-Event-NodeName">Nome del nodo</key>
+    <key alias="LogsManager.DBLogsDialog-Event-LogComment">Descrizione:</key>
+    <key alias="LogsManager.TraceLogsDialog-Title">Dettagli dell'evento</key>
+    <key alias="LogsManager.TraceLogsDialog-Event">Evento</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogDate">Data</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogTime">Ora</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogProcess">Processo</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogDomain">Dominio</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogThread">Thread</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogLogger">Logger</key>
+    <key alias="LogsManager.TraceLogsDialog-Event-LogMessage">Descrizione:</key>
+    <key alias="LogsManager.Cleanup.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellati dal DB tutti i log visualizzati.
+Si consiglia di effettuare un backup del DB prima di continuare.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+    <key alias="LogsManager.Cleanup.DeleteLogsSuccessHeadline"><![CDATA[OK]]></key>
+    <key alias="LogsManager.Cleanup.DeleteLogsSuccessMessage"><![CDATA[Tutti gli eventi selezionati sono stati rimossi con successo.]]></key>
+    <key alias="LogsManager.Cleanup.DeleteLogsErrorHeadline"><![CDATA[Errore]]></key>
+    <key alias="LogsManager.Cleanup.DeleteLogsErrorMessage"><![CDATA[Sono stati riscontrati problemi durante il processo di eliminazione dei log.
+
+Si prega di riprovare o di contattare l'autore del package indicando i dettagli dell'errore."]]></key>
+    
+    <!-- MEDIA MANAGER -->
+    <key alias="MediaManager.TreeSection"><![CDATA[MEDIA]]></key>
+    <key alias="MediaManager.TreeActionCleanup"><![CDATA[Pulizia del File System]]></key>
+    <key alias="MediaManager.Title"><![CDATA[Gestione Cartelle Media (File System)]]></key>
+    <key alias="MediaManager.Cleanup.SubTitle"><![CDATA[ ]]></key>
+    <key alias="MediaManager.Cleanup.Description"><![CDATA[Questo strumento permette di eliminare dalla cartella "/media" nel File System, tutte le cartelle e i relativi file che non hanno una corrispondenza nel DB (orfani).]]></key>
+    <key alias="MediaManager.Cleanup.WarningsPanelTitle"><![CDATA[Informazioni]]></key>
+    <key alias="MediaManager.Cleanup.WarningsPanelDescription"><![CDATA[Le seguenti cartelle non possono essere cancellate]]></key>
+    <key alias="MediaManager.Cleanup.WarningsPanelDescriptionResults"><![CDATA[Le seguenti cartelle non sono state eliminate]]></key>
+    <key alias="MediaManager.Cleanup.OrphansPanelTitle"><![CDATA[Pulizia del File System]]></key>
+    <key alias="MediaManager.Cleanup.OrphansPanelDescription"><![CDATA[Le seguenti cartelle possono essere eliminate]]></key>
+    <key alias="MediaManager.Cleanup.OrphansPanelDescriptionResults"><![CDATA[Le seguenti cartelle sono state eliminate]]></key>
+    <key alias="MediaManager.Cleanup.SearchInProgress"><![CDATA[Ricerca in corso. Si prega di attendere finché il risultato non viene visualizzato]]></key>
+    <key alias="MediaManager.Cleanup.DeleteInProgress"><![CDATA[Cancellazione in corso. Si prega di attendere fino a quando verrà visualizzato il risultato dell'operazione]]></key>
+    <key alias="MediaManager.Cleanup.Deleted"><![CDATA[ ]]></key>
+    <key alias="MediaManager.Cleanup.FolderNameNotNumber"><![CDATA[Il nome della cartella non è standard (numero)]]></key>
+    <key alias="MediaManager.Cleanup.FolderFoundInFileSystemAndUploadedTroughDatatype"><![CDATA[La cartella è stata creata tramite upload da Datatype]]></key>
+    <key alias="MediaManager.Cleanup.DBNotMatchFormat"><![CDATA[La voce nel DB non è nel formato corretto]]></key>
+    <key alias="MediaManager.Cleanup.Contains"><![CDATA[La cartella contiene ]]></key>
+    <key alias="MediaManager.Cleanup.Items"><![CDATA[oggetto/i]]></key>
+    <key alias="MediaManager.Cleanup.Entry"><![CDATA[Voce]]></key>
+    <key alias="MediaManager.Cleanup.Details"><![CDATA[Dettagli]]></key>
+    <key alias="MediaManager.Cleanup.StartCleanupButton"><![CDATA[Elimina tutti gli orfani]]></key>
+    <key alias="MediaManager.Cleanup.RestartSearchOrphans"><![CDATA[Esegui una nuova ricerca]]></key>
+    <key alias="MediaManager.Cleanup.NoMediaToDelete"><![CDATA[Il File System è pulito]]></key>
+    <key alias="MediaManager.Cleanup.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate dal File System tutte le cartelle elencate.
+Si consiglia di effettuare un backup dell'intero sito (root e DB) prima di continuare.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+    <key alias="MediaManager.DeleteMediaOrphansSuccessMessage"><![CDATA[La cancellazione è andata a buon fine.]]></key>
+    <key alias="MediaManager.DeleteMediaOrphansErrorMessage"><![CDATA[Errore!!! E' stato riscontrato un problema durante la cancellazione.
+Si prega di riprovare oppure contattare l'autore indicando i dettagli dell'errore."]]></key>
+    <key alias="MediaManager.Cleanup.FooterMessage"><![CDATA[ ]]></key>
+
+    <!-- USERS MANAGER -->
+    <key alias="UsersManager.TreeSection"><![CDATA[UTENTI]]></key>
+    <key alias="UsersManager.TreeActionCleanup"><![CDATA[Cancellazione utenti]]></key>
+    <key alias="UsersManager.Title"><![CDATA[Gestione Utenti]]></key>
+    <key alias="UsersManager.Cleanup.UsersPanelTitle"><![CDATA[Utenti]]></key>
+    <key alias="UsersManager.Cleanup.UsersPanelDescription"><![CDATA[I seguenti utenti possono essere cancellati.]]></key>
+    <key alias="UsersManager.Cleanup.SubTitle"><![CDATA[Cancellazione]]></key>
+    <key alias="UsersManager.Cleanup.Description"><![CDATA[Questo strumento permette di eliminare uno o più utenti.]]></key>
+    <key alias="UsersManager.Cleanup.FooterMessage"><![CDATA[Selezionare uno o più utenti e premere il pulsante per eliminare.]]></key>
+    <key alias="UsersManager.Cleanup.ConfirmDeleteActionMessage"><![CDATA[Hai selezionato uno o più utenti.
+Proseguendo con l'eliminazione, ogni oggetto associato agli utenti selezionati, verranno associati all'utente 'admin'
+
+Sei sicuro di voler eliminare gli utenti selezionati?]]></key>
+    <key alias="UsersManager.Cleanup.DeleteSelectedUsers"><![CDATA[Elimina gli utenti selezionati]]></key>
+    <key alias="UsersManager.Cleanup.DeleteSelectedUsersSuccessHeadline"><![CDATA[OK]]></key>
+    <key alias="UsersManager.Cleanup.DeleteSelectedUsersSuccessMessage"><![CDATA[Gli utenti selezionati sono stati rimossi con successo.]]></key>
+    <key alias="UsersManager.Cleanup.DeleteSelectedUsersErrorHeadline"><![CDATA[Errore]]></key>
+    <key alias="UsersManager.Cleanup.DeleteSelectedUsersErrorMessage"><![CDATA[Sono stati riscontrati problemi durante il processo di eliminazione degli utenti.
+
+Si prega di riprovare o di contattare l'autore del package indicando i dettagli dell'errore."]]></key>
+    <key alias="UsersManager.Cleanup.NoUserSelectedMessage"><![CDATA[E' obbligatorio selezionare almeno un utente da eliminare.]]></key>
+    <key alias="UsersManager.Cleanup.NoUsersToDelete"><![CDATA[Non sono stati trovati utenti da gestire.]]></key>
+    <key alias="UsersManager.User.Id"><![CDATA[Id]]></key>
+    <key alias="UsersManager.User.Name"><![CDATA[Nome]]></key>
+    <key alias="UsersManager.User.Username"><![CDATA[Username]]></key>
+    <key alias="UsersManager.User.Email"><![CDATA[Email]]></key>
+    <key alias="UsersManager.User.UserType"><![CDATA[Tipo di utente]]></key>
+
+    <!-- VERSIONS MANAGER -->
+    <key alias="VersionsManager.TreeSection"><![CDATA[VERSIONI]]></key>
+    <key alias="VersionsManager.TreeActionManager"><![CDATA[Gestione delle versioni]]></key>
+    <key alias="VersionsManager.Title"><![CDATA[Gestione Versioni]]></key>
+    <key alias="VersionsManager.SubTitle"><![CDATA[ ]]></key>
+    <key alias="VersionsManager.Description"><![CDATA[Questo strumento permette di gestire le versioni che Umbraco mantiene per ogni nodo del content.]]></key>
+    <key alias="VersionsManager.SearchInProgress"><![CDATA[Ricerca in corso. Si prega di attendere fino a quando non vengono visualizzati i dati]]></key>
+    <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Riepilogo Versioni]]></key>
+    <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filtra con Id del nodo]]></key>
+    <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filtra con nome del nodo]]></key>
+    <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filtra per data (da)]]></key>
+    <key alias="VersionsManager.FilterByDateTo"><![CDATA[Filtra per data (a)]]></key>
+    <key alias="VersionsManager.NodeId"><![CDATA[Id nodo]]></key>
+    <key alias="VersionsManager.NodeName"><![CDATA[Nome nodo]]></key>
+    <key alias="VersionsManager.CurrentPublishedVersionDate"><![CDATA[Versione pubblicata]]></key>
+    <key alias="VersionsManager.TotalVersions"><![CDATA[Altre Versioni]]></key>
+    <key alias="VersionsManager.ItemsPerPage"><![CDATA[Nodi per pagina:]]></key>
+    <key alias="VersionsManager.FooterMessage"><![CDATA[Clicca sulle righe per visualizzare i dettagli]]></key>
+    <key alias="VersionsManager.StartCleanupButton"><![CDATA[Elimina tutte le versioni]]></key>
+    <key alias="VersionsManager.Cleanup.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate tutte le versioni presenti nel sito escluse le versioni "publish" e "newest".
+Il processo potrebbe richiedere molto tempo se il numero di versioni da cancellare è molto alto.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+    <key alias="VersionsManager.StartCleanupByCount"><![CDATA[Elimina le versioni per numero]]></key>
+    <key alias="VersionsManager.Cleanup.DeleteLogsSuccessHeadline"><![CDATA[OK]]></key>
+    <key alias="VersionsManager.Cleanup.DeleteLogsSuccessMessage"><![CDATA[Tutte le versioni sono state rimosse con successo.]]></key>
+    <key alias="VersionsManager.Cleanup.DeleteLogsErrorHeadline"><![CDATA[Errore]]></key>
+    <key alias="VersionsManager.Cleanup.DeleteLogsErrorMessage"><![CDATA[Sono stati riscontrati problemi durante il processo di eliminazione delle versioni.
+
+Si prega di riprovare o di contattare l'autore del package indicando i dettagli dell'errore."]]></key>
+    <key alias="VersionsManager.CleanupCurrentNodeVersions"><![CDATA[Elimina le versioni del nodo]]></key>
+    <key alias="VersionsManager.CleanupCurrentNodeVersions.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate tutte le versioni del nodo corrente escluse le versioni "publish" e "newest".
+Il processo potrebbe richiedere molto tempo se il numero di versioni da cancellare è molto alto.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+    <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsSuccessHeadline"><![CDATA[OK]]></key>
+    <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsSuccessMessage"><![CDATA[Tutte le versioni del nodo corrente sono state rimosse con successo.]]></key>
+    <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsErrorHeadline"><![CDATA[Errore]]></key>
+    <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsErrorMessage"><![CDATA[Sono stati riscontrati problemi durante il processo di eliminazione delle versioni del nodo corrente.
+
+Si prega di riprovare o di contattare l'autore del package."]]></key>
+    <key alias="VersionsManager.RestartSearchVersions"><![CDATA[Esegui una nuova ricerca]]></key>
+    <key alias="VersionsManager.Dialog-Title"><![CDATA[Dettagli della versione]]></key>
+    <key alias="VersionsManager.Dialog-NodeId"><![CDATA[Id]]></key>
+    <key alias="VersionsManager.Dialog-NodeName"><![CDATA[Nome nodo]]></key>
+    <key alias="VersionsManager.Dialog-CurrentPublishedVersionDate"><![CDATA[Data e ora della versione pubblicata]]></key>
+    <key alias="VersionsManager.Dialog-UserName"><![CDATA[Utente]]></key>
+    <key alias="VersionsManager.Dialog-HistoryVersions"><![CDATA[Elenco versioni]]></key>
+    <key alias="VersionsManager.Dialog-GUID"><![CDATA[GUID]]></key>
+    <key alias="VersionsManager.Dialog-VersionDate"><![CDATA[Data]]></key>
+    <key alias="VersionsManager.Dialog-Published"><![CDATA[Published]]></key>
+    <key alias="VersionsManager.Dialog-Newest"><![CDATA[Newest]]></key>
+    <key alias="VersionsManager.CleanupByCount.Dialog-Title"><![CDATA[Cancellazione per numero]]></key>
+    <key alias="VersionsManager.CleanupByCount.Dialog-Description"><![CDATA[<p>Questo strumento permette di eliminare le versioni che Umbraco mantiene per ogni nodo del content.</p><p>Si fa presente che Umbraco richiede che ogni nodo abbia almeno 2 versioni (quella pubblicata e l'ultima salvata).</p><p>Queste versioni non verrano mai cancellate.</p>]]></key>
+    <key alias="VersionsManager.CleanupByCount.Dialog-VersionsCount"><![CDATA[Numero delle versioni da mantenere]]></key>
+    <key alias="VersionsManager.CleanupByCount.Dialog-ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate tutte le versioni presenti nel sito escluse quelle specificate e le versioni "publish" e "newest".
+Il processo potrebbe richiedere molto tempo se il numero di versioni da cancellare è molto alto.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+    <key alias="VersionsManager.Cleanup.Dialog-CleanupInProgress"><![CDATA[Cancellazione in corso. Si prega di attendere fino a quando non vengono visualizzati gli eventi]]></key>
+    <key alias="VersionsManager.Cleanup.Dialog-Summary"><![CDATA[Riepilogo della cancellazione]]></key>
+    <key alias="VersionsManager.Cleanup.Dialog-CleanupResult"><![CDATA[Righe cancellate in ]]></key>
+    <key alias="VersionsManager.Cleanup.Dialog-SummaryError"><![CDATA[ATTENZIONE, è stato riscontrato un errore durante la cancellazione delle versioni.
+Si prega di riprovare oppure contattare l'autore del package indicando i dettagli dell'errore.]]></key>
+    <key alias="VersionsManager.CleanupByCount.Dialog-StartCleanupButton"><![CDATA[Elimina versioni indicate]]></key>
+    <key alias="VersionsManager.Dialog-NodeId"><![CDATA[Id]]></key>
+    <key alias="VersionsManager.CleanupById.Dialog-ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate tutte le versioni del presente nodo escluse le versioni "publish" e "newest".
+Il processo potrebbe richiedere molto tempo se il numero di versioni da cancellare è molto alto.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+</area>
+</language>
