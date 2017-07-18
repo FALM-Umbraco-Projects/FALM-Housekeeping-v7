@@ -43,6 +43,7 @@
     <key alias="LogsManager.Of">di</key>
     <key alias="LogsManager.NoLogsFound"><![CDATA[Non sono stati trvati Log]]></key>
     <key alias="LogsManager.StartCleanupButton"><![CDATA[Elimina Log]]></key>
+    <key alias="LogsManager.StartCleanupOlder6MonthsButton"><![CDATA[Elimina i Log più vecchi di 6 mesi]]></key>
     <key alias="LogsManager.RestartSearchLogs"><![CDATA[Ricarica]]></key>
     <key alias="LogsManager.Title_TL"><![CDATA[Gestione Log di Umbraco (TraceLog)]]></key>
     <key alias="LogsManager.SubTitle_TL"><![CDATA[ ]]></key>
@@ -71,6 +72,10 @@
     <key alias="LogsManager.TraceLogsDialog-Event-LogLogger">Logger</key>
     <key alias="LogsManager.TraceLogsDialog-Event-LogMessage">Descrizione:</key>
     <key alias="LogsManager.Cleanup.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellati dal DB tutti i log visualizzati.
+Si consiglia di effettuare un backup del DB prima di continuare.
+
+Sei sicuro di voler proseguire con la cancellazione?]]></key>
+    <key alias="LogsManager.Cleanup.confirmDeleteLogOlder6MonthsActionMessage"><![CDATA[Proseguendo, verranno definitivamente cancellati dal DB tutti i log più vecchi di 6 mesi.
 Si consiglia di effettuare un backup del DB prima di continuare.
 
 Sei sicuro di voler proseguire con la cancellazione?]]></key>

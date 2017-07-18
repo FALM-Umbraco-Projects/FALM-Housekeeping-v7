@@ -130,6 +130,10 @@ app.requires.push('angularUtils.directives.dirPagination');
             $scope.confirmDeleteActionMessage = value;
         });
 
+        localizationService.localize("FALM_LogsManager.Cleanup.confirmDeleteLogOlder6MonthsActionMessage").then(function (value) {
+            $scope.confirmDeleteLogOlder6MonthsActionMessage = value;
+        });
+
         $scope.showDeletePanel = false;
         $scope.showDeleteLoader = false;
 
@@ -151,6 +155,27 @@ app.requires.push('angularUtils.directives.dirPagination');
                 });
             }
         };
+
+        $scope.deleteDBLogsByDate = function () {
+            if (confirm($scope.confirmDeleteLogOlder6MonthsActionMessage)) {
+                $scope.showSearchPanel = false;
+                $scope.showDeletePanel = true;
+                $scope.showDeleteLoader = true;
+                $scope.d = new Date();
+                $scope.d.setMonth(d.getMonth() - 6);
+                hkLogsResource.deleteDBLogsByDate($scope.d).then(function (response) {
+                    if (response.data = true) {
+                        notificationsService.add($scope.logsSuccessNotification);
+                        $route.reload();
+                    }
+                    else {
+                        notificationsService.add($scope.logsErrorNotification);
+                        $scope.showDeletePanel = false;
+                    }
+                    $scope.d;
+                });
+            }
+        }
     };
 
     // Create Edit controller for Trace Logs
