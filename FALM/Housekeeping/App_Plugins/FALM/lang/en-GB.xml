@@ -43,6 +43,7 @@
     <key alias="LogsManager.Of">of</key>
     <key alias="LogsManager.NoLogsFound"><![CDATA[No Logs Found]]></key>
     <key alias="LogsManager.StartCleanupButton"><![CDATA[Delete Log]]></key>
+    <key alias="LogsManager.StartCleanupOlder6MonthsButton"><![CDATA[Cleanup Logs older than 6 months]]></key>
     <key alias="LogsManager.RestartSearchLogs"><![CDATA[Restart logs search]]></key>
     <key alias="LogsManager.Title_TL"><![CDATA[Umbraco Logs Manager (TraceLog)]]></key>
     <key alias="LogsManager.SubTitle_TL"><![CDATA[ ]]></key>
@@ -71,6 +72,10 @@
     <key alias="LogsManager.TraceLogsDialog-Event-LogLogger">Logger</key>
     <key alias="LogsManager.TraceLogsDialog-Event-LogMessage">Description:</key>
     <key alias="LogsManager.Cleanup.ConfirmationMessage"><![CDATA[This action will permanently delete all DB logs show.
+Make sure you have made a backup copy of the site and the DB before proceed.
+
+Are you sure you want to continue with the deletion?]]></key>
+    <key alias="LogsManager.Cleanup.confirmDeleteLogOlder6MonthsActionMessage"><![CDATA[This action will permanently delete all DB logs older than 6 months.
 Make sure you have made a backup copy of the site and the DB before proceed.
 
 Are you sure you want to continue with the deletion?]]></key>
