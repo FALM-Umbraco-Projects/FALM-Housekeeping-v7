@@ -114,7 +114,12 @@
                                 </table>
                             </div>
                             <div class="panel-footer">
-                                <form id="logsCleanupForm" ng-submit="deleteFilteredDBLogs(filteredLogs)" role="form" style="float: left; margin: 0 10px 0 0;">
+                                <form id="logsCleanupOlder6MonthsForm" ng-submit="deleteDBLogsBDate()" role="form" style="float: left; margin: 0 10px 0 0;">
+                                    <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
+                                        <localize key="FALM_LogsManager.StartCleanupOlder6MonthsButton">Cleanup Logs older than 6 months</localize>
+                                    </button>
+                                </form>
+                                <form id="logsCleanupByDateForm" ng-submit="deleteFilteredDBLogsByDate()" role="form" style="float: left; margin: 0 10px 0 0;">
                                     <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
                                         <localize key="FALM_LogsManager.StartCleanupButton">Cleanup current visible Logs</localize>
                                     </button>
