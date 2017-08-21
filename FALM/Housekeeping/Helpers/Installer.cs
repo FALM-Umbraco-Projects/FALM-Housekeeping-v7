@@ -18,7 +18,7 @@ namespace FALM.Housekeeping.Helper
         private static bool _executed;
 
         /// <summary>
-        /// We need to add the text label on the actions otherwise they don;t appear on the context menu,
+        /// We need to add the text label on the actions otherwise they don't appear on the context menu,
         /// Check each label and if not in the Umbraco langua file, add it to the actions node
         /// </summary>
         public static void CheckAndInstallLanguageActions()
@@ -51,7 +51,9 @@ namespace FALM.Housekeeping.Helper
                     try
                     {
                         //Strip 2digit langcode from filename
-                        var langcode = languagefile.Substring(languagefile.Length - 6, 2).ToLower();
+                        //var langcode = languagefile.Substring(languagefile.Length - 6, 2).ToLower();
+                        var langcode = Path.GetFileNameWithoutExtension(languagefile);
+                        //var langcode = languagefile.ToLower().Replace(".xml", string.Empty);
                         UpdateActionsForLanguageFile(string.Format("{0}.xml", langcode), area, key, value);
 
                     }
