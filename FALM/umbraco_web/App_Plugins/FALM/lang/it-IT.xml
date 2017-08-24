@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<language alias="it-IT" intName="Italian" localName="Italiano" lcid="16" culture="it-IT">
+<language alias="it" intName="Italian" localName="italiano" lcid="16" culture="it-IT">
 <creator>
 <name>FALM</name>
 <link>https://our.umbraco.org/projects/backoffice-extensions/falm-housekeeping/</link>
