@@ -101,8 +101,6 @@ namespace FALM.Housekeeping
                     case "versions": //check if we're rendering Versions node's children
                         tree = new TreeNodeCollection {
                             CreateTreeNode("versions-manager", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionManager", CultureInfo.CurrentCulture), "icon-diagnostics color-green", false),
-                            //CreateTreeNode("versions-cleanup-by-count", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByCount", CultureInfo.CurrentCulture), "icon-delete color-red", false),
-                            //CreateTreeNode("versions-cleanup-by-date",  id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionCleanupByDate", CultureInfo.CurrentCulture), "icon-delete color-red", false)
                         };
                         break;
                 }
