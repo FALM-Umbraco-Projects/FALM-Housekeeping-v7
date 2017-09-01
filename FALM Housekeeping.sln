@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housekeeping", "src\FALMHousekeeping\Housekeeping.csproj", "{26C54771-07CD-45AB-88DC-0AF871BE8E0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{F47987BA-B5FD-41F4-90B6-4A792AFB4D14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{15D6B276-BEDC-4480-8071-17D2F2BCA6CD}"
+	ProjectSection(SolutionItems) = preProject
+		build\FALM_Housekeeping_7.6.0.0.zip = build\FALM_Housekeeping_7.6.0.0.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1962FCFE-6D42-48C3-A21B-4F904695CFFB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "screenshot", "screenshot", "{179A96CD-FD0D-466E-9A3E-C2EA8C83A1EE}"
+	ProjectSection(SolutionItems) = preProject
+		content\screenshot\FALM - Custom Section.png = content\screenshot\FALM - Custom Section.png
+		content\screenshot\FALM - DB Log - Details Dialog.png = content\screenshot\FALM - DB Log - Details Dialog.png
+		content\screenshot\FALM - DB Log.png = content\screenshot\FALM - DB Log.png
+		content\screenshot\FALM - Media Manager.png = content\screenshot\FALM - Media Manager.png
+		content\screenshot\FALM - Trace Log - Details Dialog.png = content\screenshot\FALM - Trace Log - Details Dialog.png
+		content\screenshot\FALM - Trace Log.png = content\screenshot\FALM - Trace Log.png
+		content\screenshot\FALM - User Manager.png = content\screenshot\FALM - User Manager.png
+		content\screenshot\FALM - Versions Manager - Cleanup by count Dialog.png = content\screenshot\FALM - Versions Manager - Cleanup by count Dialog.png
+		content\screenshot\FALM - Versions Manager - Details Dialog.png = content\screenshot\FALM - Versions Manager - Details Dialog.png
+		content\screenshot\FALM - Versions Manager.png = content\screenshot\FALM - Versions Manager.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F47987BA-B5FD-41F4-90B6-4A792AFB4D14} = {1962FCFE-6D42-48C3-A21B-4F904695CFFB}
+		{15D6B276-BEDC-4480-8071-17D2F2BCA6CD} = {1962FCFE-6D42-48C3-A21B-4F904695CFFB}
+		{179A96CD-FD0D-466E-9A3E-C2EA8C83A1EE} = {F47987BA-B5FD-41F4-90B6-4A792AFB4D14}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB831319-EEDE-4DB6-835E-82C91EBBD763}
+	EndGlobalSection
+EndGlobal
