@@ -1,18 +1,18 @@
-####################################################################
-PLEASE CREATE NEW DISCUSSIONS ONLY ON MY GITHUB BITBUCKET CHANNEL
+***
+**PLEASE CREATE NEW DISCUSSIONS ONLY ON MY GITHUB BITBUCKET CHANNEL**
 -----------------------------------------------------------------
-https://github.com/FALM-Umbraco-Projects/FALM-Housekeeping-v7/issues
-https://bitbucket.org/amxlab/falm-housekeeping-v7/issues
+- _https://github.com/FALM-Umbraco-Projects/FALM-Housekeeping-v7/issues_
+- _https://bitbucket.org/amxlab/falm-housekeeping-v7/issues_
 
-NUGET PACKAGE
+**NUGET PACKAGE**
 -------------
 Now it is available the FALM Housekeeping NuGet Package:
-You can find it at: https://www.nuget.org/packages/FALMHousekeeping/
+You can find it at: _https://www.nuget.org/packages/FALMHousekeeping/_
 Or you can install directly from command line:
-PM> Install-Package FALMHousekeeping -Version 7.6.0.2
-####################################################################
+_PM> Install-Package FALMHousekeeping -Version 7.6.0.2_
+***
 
-FALM Housekeeping
+**FALM Housekeeping**
 =================
 Welcome to new generation of our cleaning tools totally rewrite using AngularJS and now in a Custom Section.
 
@@ -23,16 +23,16 @@ Now you can manage DB Log and the TraceLog (this is a simplified version of Dipl
 - Delete users: with this tool you can completely remove Umbraco users.
 - Version manager: with this tool you can view and cleanup the version history that Umbraco mantains for each content node.
 
-# ATTENTION! To view the new FALM section you must enable it for all users that can use this tool.
+**ATTENTION! To view the new FALM section you must enable it for all users that can use this tool**
 
-Latest Changes
+**Latest Changes**
 ==============
 - v7.6.0.2 - Updated NuGet Package
 - v7.6.0.1 - Minor fixes
 - v7.6.0.0 - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)
 - v7.0.0.1 - Bug Fix: Resolved Error 404 when click all main headers (Logs, Media, Users, Versions) and resolved conflict in Users Manager
 
-Version History
+**Version History**
 ===============
 - v7.6.0.2 - For Umbraco v7.5+
 - v7.0.0.1 - For Umbraco v7+
