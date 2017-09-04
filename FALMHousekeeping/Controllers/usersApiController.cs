@@ -33,8 +33,9 @@ namespace FALM.Housekeeping.Controllers
         [HttpGet]
         public List<UsersModel> GetAllUsers()
         {
+            var totalUsers = 0;
             var userService = ApplicationContext.Services.UserService;
-            var allUsers = userService.GetAll(0, int.MaxValue, out int totalUsers);
+            var allUsers = userService.GetAll(0, int.MaxValue, totalRecords: out totalUsers);
 
             List<UsersModel> allUsersWithoutAdmin = new List<UsersModel>();
 

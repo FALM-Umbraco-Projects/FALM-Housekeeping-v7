@@ -84,6 +84,7 @@ namespace FALMHousekeeping.Controllers
                         MediaToDeleteModel mediaToDeleteModel = new MediaToDeleteModel();
 
                         List<MediaPIdModel> allMediaPId = db.Fetch<MediaPIdModel>(strSQLGetMedia);
+                        int pId;
 
                         // Create an array with the list of media directories
                         DirectoryInfo dir = new DirectoryInfo(_filePath);
@@ -95,7 +96,9 @@ namespace FALMHousekeeping.Controllers
 				            // Sort Directories by name
 				            Array.Sort<DirectoryInfo>(subDirs, new Comparison<DirectoryInfo>(delegate(DirectoryInfo d1, DirectoryInfo d2)
 				            {
-                                if (int.TryParse(d1.Name, out int n1) && int.TryParse(d2.Name, out int n2))
+                                int n1, n2;
+
+                                if (int.TryParse(d1.Name, out n1) && int.TryParse(d2.Name, out n2))
                                 {
                                     return n1 - n2;
                                 }
@@ -119,7 +122,7 @@ namespace FALMHousekeeping.Controllers
 
                                     foreach (var media in allMediaPId)
                                     {
-                                        if (int.TryParse(media.PId, out int pId))
+                                        if (int.TryParse(media.PId, out pId))
                                         {
                                             if (!mediaToSkip.Contains(pId.ToString()))
                                             {

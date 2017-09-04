@@ -19,10 +19,10 @@ namespace FALM.Housekeeping.Services
     /// </summary>
     public class LogsService
     {
-        private static string _baseTraceLogPath                   = string.Empty;
-        private static string _defaultTraceLogPath                = "~/App_Data/Logs/";
-        private static string _baseTraceLogFilename               = string.Empty;
-        private static string _defautlTraceLogFileNamePattern     = "Umbraco(TraceLog)?";
+        private static string _baseTraceLogPath = string.Empty;
+        private static string _defaultTraceLogPath = "~/App_Data/Logs/";
+        private static string _baseTraceLogFilename = string.Empty;
+        private static string _defautlTraceLogFileNamePattern = "Umbraco(TraceLog)?";
         private static string dateFormat = @"(?<date>\d{4}-\d{2}-\d{2})";
         private static string datePattern; // matches date pattern in log file name
         private static string machinePattern;
@@ -53,7 +53,9 @@ namespace FALM.Housekeeping.Services
             var loggerRepo = log4net.LogManager.GetRepository();
             if (loggerRepo != null)
             {
-                if (loggerRepo.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) is RollingFileAppender appender)
+                var appender = loggerRepo.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) as RollingFileAppender;
+
+                if (appender != null)
                 {
                     return Path.GetDirectoryName(appender.File);
                 }
@@ -71,7 +73,9 @@ namespace FALM.Housekeeping.Services
 
             if (logRepository != null)
             {
-                if (logRepository.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) is RollingFileAppender logAppender)
+                var logAppender = logRepository.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) as RollingFileAppender;
+
+                if (logAppender != null)
                 {
                     var _fileName = Path.GetFileName(logAppender.File);
                     return _fileName.Split('.')[0];
@@ -87,8 +91,8 @@ namespace FALM.Housekeeping.Services
         /// <returns>IEnumerable of TraceLogFileModel</returns>
         public IEnumerable<TraceLogFileModel> GetTraceLogFiles()
         {
-            _baseTraceLogPath       = GetBaseTraceLogPath();
-            _baseTraceLogFilename   = GetBaseTraceLogFileName();
+            _baseTraceLogPath = GetBaseTraceLogPath();
+            _baseTraceLogFilename = GetBaseTraceLogFileName();
 
             var TraceLogFiles = Directory.GetFiles(_baseTraceLogPath, _baseTraceLogFilename + ".*");
 
@@ -118,12 +122,10 @@ namespace FALM.Housekeeping.Services
                     var machineGroup = fileMatch.Groups["machine"].Value;
                     machineName = string.IsNullOrWhiteSpace(machineGroup) ? null : machineGroup;
 
-                    TraceLogFileModel tlFile = new TraceLogFileModel
-                    {
-                        LogDate = logDate.Date,
-                        LogFileName = TraceLogFile,
-                        LogMachineName = machineName
-                    };
+                    TraceLogFileModel tlFile = new TraceLogFileModel();
+                    tlFile.LogDate = logDate.Date;
+                    tlFile.LogFileName = TraceLogFile;
+                    tlFile.LogMachineName = machineName;
 
                     tlFileList.Add(tlFile);
                 }

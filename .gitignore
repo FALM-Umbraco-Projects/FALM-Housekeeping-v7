@@ -29,6 +29,8 @@ bld/
 [Uu]mbraco.web/
 [Uu]mbraco_web/
 [Nn]uget/
+*.nuspec
+*.nupkg
 *VikThunder*/
 
 # MSTest test Results
