@@ -29,6 +29,7 @@ bld/
 [Uu]mbraco.web/
 [Uu]mbraco_web/
 [Nn]uget/
+_screenshot/[Ll]ogo*.*
 *.nuspec
 *.nupkg
 *VikThunder*/
