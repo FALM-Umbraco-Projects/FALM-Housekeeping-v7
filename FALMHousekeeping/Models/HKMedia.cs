@@ -6,7 +6,7 @@ namespace FALM.Housekeeping.Models
     /// <summary>
     /// List of Warnings and List of Media to delete
     /// </summary>
-    public class MediaModel
+    public class HKMediaModel
     {
         /// <summary></summary>
         public List<MediaWarningModel> ListMediaWarnings { get; set; }

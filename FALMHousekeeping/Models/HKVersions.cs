@@ -7,7 +7,7 @@ namespace FALM.Housekeeping.Models
     /// <summary>
     /// List of Versions
     /// </summary>
-    public class VersionsModel
+    public class HKVersionsModel
     {
         /// <summary></summary>
         public List<CurrentPublishedVersionModel> ListCurrentPublishedVersions { get; set; }

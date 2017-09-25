@@ -1,15 +1,8 @@
 ***
-**PLEASE CREATE NEW DISCUSSIONS ONLY ON MY GITHUB BITBUCKET CHANNEL**
+**PLEASE CREATE NEW DISCUSSIONS ONLY ON MY GITHUB OR BITBUCKET CHANNEL**
 -----------------------------------------------------------------
 - _https://github.com/FALM-Umbraco-Projects/FALM-Housekeeping-v7/issues_
 - _https://bitbucket.org/amxlab/falm-housekeeping-v7/issues_
-
-**NUGET PACKAGE**
--------------
-Now it is available the FALM Housekeeping NuGet Package:
-You can find it at: _https://www.nuget.org/packages/FALMHousekeeping/_
-Or you can install directly from command line:
-_PM> Install-Package FALMHousekeeping -Version 7.6.0.2_
 ***
 
 **FALM Housekeeping**
@@ -27,6 +20,7 @@ Now you can manage DB Log and the TraceLog (this is a simplified version of Dipl
 
 **Latest Changes**
 ==============
+- v7.6.0.3 - Updated naming to prevent conflicts
 - v7.6.0.2 - Updated NuGet Package
 - v7.6.0.1 - Minor fixes
 - v7.6.0.0 - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)
@@ -34,7 +28,7 @@ Now you can manage DB Log and the TraceLog (this is a simplified version of Dipl
 
 **Version History**
 ===============
-- v7.6.0.2 - For Umbraco v7.5+
+- v7.6.0.3 - For Umbraco v7.5+
 - v7.0.0.1 - For Umbraco v7+
 - v6.1.3.0 - For Umbraco v6 to v7.2
 - v4.11.0.2 - For Umbraco v4.8 to v4.11

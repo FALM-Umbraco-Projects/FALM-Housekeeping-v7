@@ -7,7 +7,7 @@ namespace FALM.Housekeeping.Models
     /// <summary>
     /// List of DB Log
     /// </summary>
-    public class DBLogsModel
+    public class HKDBLogsModel
     {
         /// <summary></summary>
         public List<DBLogModel> ListDBLogs { get; set; }

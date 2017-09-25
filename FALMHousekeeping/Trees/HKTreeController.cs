@@ -1,4 +1,5 @@
 ﻿// FALM
+using FALM.Housekeeping.Constants;
 using FALM.Housekeeping.Services;
 // SYSTEM
 using System;
@@ -35,10 +36,6 @@ namespace FALM.Housekeeping
             var tree = new TreeNodeCollection();
             var textService = ApplicationContext.Services.TextService;
 
-            LogsService logsService = new LogsService();
-            string currentMachineName = Environment.MachineName;
-            int iCount = 1;
-
             // check if we're rendering the root node's children
             if (id == global::Umbraco.Core.Constants.System.Root.ToInvariantString())
             {
@@ -65,6 +62,11 @@ namespace FALM.Housekeeping
 
                     case "logs-tlmanager": // check if we're rendering Logs node's children
                         tree = new TreeNodeCollection();
+
+                        // LogService
+                        HKLogsService logsService = new HKLogsService();
+                        string currentMachineName = Environment.MachineName;
+                        int iCount = 1;
 
                         // Create TraceLog tree
                         foreach (var logFile in logsService.GetTraceLogFiles())

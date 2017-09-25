@@ -16,19 +16,19 @@ using Umbraco.Core.Services;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
 
-namespace FALMHousekeeping.Controllers
+namespace FALM.Housekeeping.Controllers
 {
     /// <summary>
     /// PluginController("FALMHousekeeping")
     /// MediaApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class MediaApiController : UmbracoApiController
+    public class HKMediaApiController : UmbracoApiController
     {
         /// <summary></summary>
         protected IMediaService mediaService = ApplicationContext.Current.Services.MediaService;
         /// <summary></summary>
-        protected MediaModel mediaModel = new MediaModel();
+        protected HKMediaModel mediaModel = new HKMediaModel();
         /// <summary></summary>
         protected List<MediaWarningModel> listMediaWarnings = new List<MediaWarningModel>();
         /// <summary></summary>
@@ -39,7 +39,7 @@ namespace FALMHousekeeping.Controllers
         /// </summary>
         /// <returns>MediaModel</returns>
         [HttpGet]
-        public MediaModel GetMediaToDelete(string userLocale)
+        public HKMediaModel GetMediaToDelete(string userLocale)
         {
             listMediaWarnings = new List<MediaWarningModel>();
             listMediaToDelete = new List<MediaToDeleteModel>();
@@ -78,7 +78,7 @@ namespace FALMHousekeeping.Controllers
                     strSQLGetMedia      += "ORDER BY pId";
 				
                     // Show orphan directories
-                    using (var db = DbHelper.ResolveDatabase())
+                    using (var db = HKDbHelper.ResolveDatabase())
                     {
                         MediaWarningModel mediaWarningModel = new MediaWarningModel();
                         MediaToDeleteModel mediaToDeleteModel = new MediaToDeleteModel();
@@ -255,7 +255,7 @@ namespace FALMHousekeeping.Controllers
         /// <param name="mediaOrphansToDelete"></param>
         /// <returns>MediaModel</returns>
         [HttpPost]
-        public MediaModel PostDeleteMediaOrphans(List<MediaToDeleteModel> mediaOrphansToDelete)
+        public HKMediaModel PostDeleteMediaOrphans(List<MediaToDeleteModel> mediaOrphansToDelete)
         {
             string _filePath = System.Web.HttpContext.Current.Server.MapPath(umbraco.GlobalSettings.Path + "/../media/");
 			string _dirPathToDelete = string.Empty;

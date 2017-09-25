@@ -3,21 +3,13 @@
     return {
         //this calls the Api Controller and execute GetPublishedNodes()
         getPublishedNodes: function () {
-            return $http.get("FALMHousekeeping/VersionsApi/GetPublishedNodes");
+            return $http.get("FALMHousekeeping/HKVersionsApi/GetPublishedNodes");
         },
-        //this calls the Api Controller and execute PostDeleteVersions(filteredVersions) method
-        //deleteFilteredVersions: function (filteredVersions) {
-        //    return $http({
-        //        method: 'POST',
-        //        url: 'FALMHousekeeping/VersionsApi/PostDeleteVersions',
-        //        data: angular.toJson(filteredVersions)
-        //    });
-        //},
         //this calls the Api Controller and execute GetVersionsByNodeId(nodeId)
         getVersionsByNodeId: function (publishedNodeId) {
             return $http({
                 method: 'GET',
-                url: 'FALMHousekeeping/VersionsApi/GetVersionsByNodeId',
+                url: 'FALMHousekeeping/HKVersionsApi/GetVersionsByNodeId',
                 params: { publishedNodeId: publishedNodeId }
             });
         },
@@ -25,7 +17,7 @@
         deleteVersionsByNodeId: function (publishedNodeId, versionsToKeep) {
             return $http({
                 method: 'POST',
-                url: 'FALMHousekeeping/VersionsApi/PostDeleteVersionsByNodeId',
+                url: 'FALMHousekeeping/HKVersionsApi/PostDeleteVersionsByNodeId',
                 params: { publishedNodeId: publishedNodeId, versionsToKeep: versionsToKeep }
             });
         },
@@ -33,7 +25,7 @@
         deleteVersionsByCount: function (versionsToKeep) {
             return $http({
                 method: 'POST',
-                url: 'FALMHousekeeping/VersionsApi/PostDeleteVersionsByCount',
+                url: 'FALMHousekeeping/HKVersionsApi/PostDeleteVersionsByCount',
                 params: { versionsToKeep: versionsToKeep }
             });
         }

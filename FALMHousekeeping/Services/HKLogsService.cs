@@ -17,7 +17,7 @@ namespace FALM.Housekeeping.Services
     /// <summary>
     /// LogsService
     /// </summary>
-    public class LogsService
+    public class HKLogsService
     {
         private static string _baseTraceLogPath = string.Empty;
         private static string _defaultTraceLogPath = "~/App_Data/Logs/";
@@ -32,7 +32,7 @@ namespace FALM.Housekeeping.Services
         /// <summary>
         /// Logs Service
         /// </summary>
-        public LogsService()
+        public HKLogsService()
         {
             datePattern = @"((" + dateFormat + ".txt)$|(txt." + dateFormat + ")$)";
             machinePattern = @"(?<machine>((?!" + dateFormat + @").*))";

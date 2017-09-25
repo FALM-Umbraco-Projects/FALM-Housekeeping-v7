@@ -4,92 +4,92 @@
         <name>FALM.Housekeeping</name>
     </assembly>
     <members>
-        <member name="T:FALM.Housekeeping.HKConstants">
+        <member name="T:FALM.Housekeeping.Constants.HKConstants">
             <summary>
             HKConstants
             </summary>
         </member>
-        <member name="T:FALM.Housekeeping.HKConstants.Application">
+        <member name="T:FALM.Housekeeping.Constants.HKConstants.Application">
             <summary>
             Application
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Application.Name">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Name">
             <summary>Name of the Application</summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Application.Alias">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Alias">
             <summary>Alias of the Application</summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Application.Icon">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Icon">
             <summary>Icon of the Application</summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Application.Title">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Title">
             <summary>Title of the Application</summary>
         </member>
-        <member name="T:FALM.Housekeeping.HKConstants.Tree">
+        <member name="T:FALM.Housekeeping.Constants.HKConstants.Tree">
             <summary>
             Tree
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Tree.Name">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Name">
             <summary>Name of the Tree</summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Tree.Alias">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Alias">
             <summary>Alias of the Tree</summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Tree.Icon">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Icon">
             <summary>Icon of the Tree</summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Tree.Title">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Title">
             <summary>Title of the Tree</summary>
         </member>
-        <member name="T:FALM.Housekeeping.HKConstants.Controller">
+        <member name="T:FALM.Housekeeping.Constants.HKConstants.Controller">
             <summary>
             Controller
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.HKConstants.Controller.Alias">
+        <member name="F:FALM.Housekeeping.Constants.HKConstants.Controller.Alias">
             <summary>Alias of the Controller</summary>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.VersionsApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HKVersionsApiController">
             <summary>
             PluginController("FALMHousekeeping")
             VersionsApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.VersionsApiController.CurrentPublishedVersionsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.CurrentPublishedVersionsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.VersionsApiController.ListCurrentPublishedVersions">
+        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.ListCurrentPublishedVersions">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.VersionsApiController.HistoryVersionsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.HistoryVersionsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.VersionsApiController.ListHistoryVersions">
+        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.ListHistoryVersions">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.VersionsApiController.GetPublishedNodes">
+        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.GetPublishedNodes">
             <summary>
             Get all published versions
             </summary>
             <returns>VersionsModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.VersionsApiController.GetVersionsByNodeId(System.Int32)">
+        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.GetVersionsByNodeId(System.Int32)">
             <summary>
             Get versions of a published node
             </summary>
             <param name="publishedNodeId"></param>
             <returns>HistoryVersionsModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.VersionsApiController.PostDeleteVersionsByCount(System.Int32)">
+        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.PostDeleteVersionsByCount(System.Int32)">
             <summary>
             Delete all versions by count, except the published and the newest
             </summary>
             <param name="versionsToKeep"></param>
             <returns>List of CleanupResultModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.VersionsApiController.PostDeleteVersionsByNodeId(System.Int32,System.Int32)">
+        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.PostDeleteVersionsByNodeId(System.Int32,System.Int32)">
             <summary>
             Delete all versions of specific nodeId, except the published and the newest
             </summary>
@@ -97,104 +97,151 @@
             <param name="versionsToKeep"></param>
             <returns>List of CleanupResultModel</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.LogsApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HKLogsApiController">
             <summary>
             PluginController("FALMHousekeeping")
             LogsApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.DBLogsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.DBLogsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.ListDBLogs">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ListDBLogs">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.traceLogsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.traceLogsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.ListTraceLogs">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ListTraceLogs">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.CombinedLogEntryPattern">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.CombinedLogEntryPattern">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.LogEntryRegex">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.LogEntryRegex">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.ThreadProcessPattern">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ThreadProcessPattern">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.LogsApiController.ThreadProcessRegex">
+        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ThreadProcessRegex">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.LogsApiController.GetDBLogs">
+        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.GetDBLogs">
             <summary>
             Show all DB logs
             </summary>
             <returns>DBLogsModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.LogsApiController.PostDeleteDBLogs(System.Collections.Generic.List{FALM.Housekeeping.Models.DBLogModel})">
+        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.PostDeleteDBLogs(System.Collections.Generic.List{FALM.Housekeeping.Models.DBLogModel})">
             <summary>
             Delete filtered DB logs
             </summary>
             <param name="LogsToDelete"></param>
             <returns>bool</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.LogsApiController.PostDeleteDBLogsBeforeMonths">
+        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.PostDeleteDBLogsBeforeMonths">
             <summary>
             Delete DB logs older than 6 months
             </summary>
             <returns>bool</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.LogsApiController.GetTraceLogs(System.String)">
+        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.GetTraceLogs(System.String)">
             <summary>
             Show selected Trace Log
             </summary>
             <param name="filename"></param>
             <returns>TraceLogsModel</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.UsersApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HKMediaApiController">
+            <summary>
+            PluginController("FALMHousekeeping")
+            MediaApiController
+            </summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.mediaService">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.mediaModel">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.listMediaWarnings">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.listMediaToDelete">
+            <summary></summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.GetMediaToDelete(System.String)">
+            <summary>
+            Show media to delete
+            </summary>
+            <returns>MediaModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.PostDeleteMediaOrphans(System.Collections.Generic.List{FALM.Housekeeping.Models.MediaToDeleteModel})">
+            <summary>
+            Delete media orphans
+            </summary>
+            <param name="mediaOrphansToDelete"></param>
+            <returns>MediaModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.GetCountFromCmsContentXml(Umbraco.Core.Persistence.Database,System.String)">
+            <summary>
+            Check media forlder in cmsContentXml
+            </summary>
+            <param name="db"></param>
+            <param name="subDirName"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.GetCountFromCmsPropertyData(Umbraco.Core.Persistence.Database,System.String)">
+            <summary>
+            Check media forlder in cmsPropertyData
+            </summary>
+            <param name="db"></param>
+            <param name="subDirName"></param>
+            <returns>int</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Controllers.HKUsersApiController">
             <summary>
             PluginController("FALMHousekeeping")
             UsersApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.UsersApiController.userService">
+        <member name="F:FALM.Housekeeping.Controllers.HKUsersApiController.userService">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.UsersApiController.GetAllUsers">
+        <member name="M:FALM.Housekeeping.Controllers.HKUsersApiController.GetAllUsers">
             <summary>
             Return all user excluding the administrator
             </summary>
             <returns>List of UsersModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.UsersApiController.PostDeleteSelectedUsers(System.Collections.Generic.List{FALM.Housekeeping.Models.UsersModel})">
+        <member name="M:FALM.Housekeeping.Controllers.HKUsersApiController.PostDeleteSelectedUsers(System.Collections.Generic.List{FALM.Housekeeping.Models.HKUsersModel})">
             <summary>
             Delete all selected users
             </summary>
             <param name="selectedUsersToDelete"></param>
             <returns>bool</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Helpers.DbHelper">
+        <member name="T:FALM.Housekeeping.Helpers.HKDbHelper">
             <summary>
             DbHelper
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Helpers.DbHelper.Database">
+        <member name="F:FALM.Housekeeping.Helpers.HKDbHelper.Database">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Helpers.DbHelper.ResolveDatabase">
+        <member name="M:FALM.Housekeeping.Helpers.HKDbHelper.ResolveDatabase">
             <summary>
             Resolve Database connection
             </summary>
             <returns>Database</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Models.VersionsModel">
+        <member name="T:FALM.Housekeeping.Models.HKVersionsModel">
             <summary>
             List of Versions
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.VersionsModel.ListCurrentPublishedVersions">
+        <member name="P:FALM.Housekeeping.Models.HKVersionsModel.ListCurrentPublishedVersions">
             <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.CurrentPublishedVersionModel">
@@ -253,12 +300,12 @@
         <member name="P:FALM.Housekeeping.Models.CleanupResultModel.Result">
             <summary></summary>
         </member>
-        <member name="T:FALM.Housekeeping.Models.DBLogsModel">
+        <member name="T:FALM.Housekeeping.Models.HKDBLogsModel">
             <summary>
             List of DB Log
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.DBLogsModel.ListDBLogs">
+        <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.ListDBLogs">
             <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.DBLogModel">
@@ -344,15 +391,15 @@
         <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogMessage">
             <summary></summary>
         </member>
-        <member name="T:FALM.Housekeeping.Models.MediaModel">
+        <member name="T:FALM.Housekeeping.Models.HKMediaModel">
             <summary>
             List of Warnings and List of Media to delete
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.MediaModel.ListMediaWarnings">
+        <member name="P:FALM.Housekeeping.Models.HKMediaModel.ListMediaWarnings">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.MediaModel.ListMediaToDelete">
+        <member name="P:FALM.Housekeeping.Models.HKMediaModel.ListMediaToDelete">
             <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.MediaWarningModel">
@@ -401,52 +448,52 @@
         <member name="P:FALM.Housekeeping.Models.AllMediaModel.Count">
             <summary></summary>
         </member>
-        <member name="T:FALM.Housekeeping.Models.UsersModel">
+        <member name="T:FALM.Housekeeping.Models.HKUsersModel">
             <summary>
             UsersModel
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.UsersModel.Selected">
+        <member name="P:FALM.Housekeeping.Models.HKUsersModel.Selected">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.UsersModel.Id">
+        <member name="P:FALM.Housekeeping.Models.HKUsersModel.Id">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.UsersModel.Name">
+        <member name="P:FALM.Housekeeping.Models.HKUsersModel.Name">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.UsersModel.Username">
+        <member name="P:FALM.Housekeeping.Models.HKUsersModel.Username">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.UsersModel.Email">
+        <member name="P:FALM.Housekeeping.Models.HKUsersModel.Email">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.UsersModel.UserType">
+        <member name="P:FALM.Housekeeping.Models.HKUsersModel.UserType">
             <summary></summary>
         </member>
-        <member name="T:FALM.Housekeeping.Services.LogsService">
+        <member name="T:FALM.Housekeeping.Services.HKLogsService">
             <summary>
             LogsService
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.Services.LogsService.#ctor">
+        <member name="M:FALM.Housekeeping.Services.HKLogsService.#ctor">
             <summary>
             Logs Service
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.Services.LogsService.GetBaseTraceLogPath">
+        <member name="M:FALM.Housekeeping.Services.HKLogsService.GetBaseTraceLogPath">
             <summary>
             Get Base Trace Log Path
             </summary>
             <returns>string</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Services.LogsService.GetBaseTraceLogFileName">
+        <member name="M:FALM.Housekeeping.Services.HKLogsService.GetBaseTraceLogFileName">
             <summary>
             Get Base Trace Log File Name
             </summary>
             <returns>string</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Services.LogsService.GetTraceLogFiles">
+        <member name="M:FALM.Housekeeping.Services.HKLogsService.GetTraceLogFiles">
             <summary>
             Get Trace Log Files
             </summary>
@@ -513,64 +560,17 @@
             <param name="url">url</param>
             <returns>string</returns>
         </member>
-        <member name="T:FALM.Housekeeping.HKRegisterEvents">
+        <member name="T:FALM.Housekeeping.Handlers.HKRegisterEvents">
             <summary>
             HKRegisterEvents
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.HKRegisterEvents.ApplicationStarted(Umbraco.Core.UmbracoApplicationBase,Umbraco.Core.ApplicationContext)">
+        <member name="M:FALM.Housekeeping.Handlers.HKRegisterEvents.ApplicationStarted(Umbraco.Core.UmbracoApplicationBase,Umbraco.Core.ApplicationContext)">
             <summary>
             Check and Install Languages on application started
             </summary>
             <param name="umbracoApplication"></param>
             <param name="applicationContext"></param>
-        </member>
-        <member name="T:FALMHousekeeping.Controllers.MediaApiController">
-            <summary>
-            PluginController("FALMHousekeeping")
-            MediaApiController
-            </summary>
-        </member>
-        <member name="F:FALMHousekeeping.Controllers.MediaApiController.mediaService">
-            <summary></summary>
-        </member>
-        <member name="F:FALMHousekeeping.Controllers.MediaApiController.mediaModel">
-            <summary></summary>
-        </member>
-        <member name="F:FALMHousekeeping.Controllers.MediaApiController.listMediaWarnings">
-            <summary></summary>
-        </member>
-        <member name="F:FALMHousekeeping.Controllers.MediaApiController.listMediaToDelete">
-            <summary></summary>
-        </member>
-        <member name="M:FALMHousekeeping.Controllers.MediaApiController.GetMediaToDelete(System.String)">
-            <summary>
-            Show media to delete
-            </summary>
-            <returns>MediaModel</returns>
-        </member>
-        <member name="M:FALMHousekeeping.Controllers.MediaApiController.PostDeleteMediaOrphans(System.Collections.Generic.List{FALM.Housekeeping.Models.MediaToDeleteModel})">
-            <summary>
-            Delete media orphans
-            </summary>
-            <param name="mediaOrphansToDelete"></param>
-            <returns>MediaModel</returns>
-        </member>
-        <member name="M:FALMHousekeeping.Controllers.MediaApiController.GetCountFromCmsContentXml(Umbraco.Core.Persistence.Database,System.String)">
-            <summary>
-            Check media forlder in cmsContentXml
-            </summary>
-            <param name="db"></param>
-            <param name="subDirName"></param>
-            <returns>int</returns>
-        </member>
-        <member name="M:FALMHousekeeping.Controllers.MediaApiController.GetCountFromCmsPropertyData(Umbraco.Core.Persistence.Database,System.String)">
-            <summary>
-            Check media forlder in cmsPropertyData
-            </summary>
-            <param name="db"></param>
-            <param name="subDirName"></param>
-            <returns>int</returns>
         </member>
     </members>
 </doc>

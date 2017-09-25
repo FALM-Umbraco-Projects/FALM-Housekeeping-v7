@@ -21,7 +21,7 @@ namespace FALM.Housekeeping.Controllers
     /// UsersApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class UsersApiController : UmbracoApiController
+    public class HKUsersApiController : UmbracoApiController
     {
         /// <summary></summary>
         protected IUserService userService = ApplicationContext.Current.Services.UserService;
@@ -31,19 +31,19 @@ namespace FALM.Housekeeping.Controllers
         /// </summary>
         /// <returns>List of UsersModel</returns>
         [HttpGet]
-        public List<UsersModel> GetAllUsers()
+        public List<HKUsersModel> GetAllUsers()
         {
             var totalUsers = 0;
             var userService = ApplicationContext.Services.UserService;
             var allUsers = userService.GetAll(0, int.MaxValue, totalRecords: out totalUsers);
 
-            List<UsersModel> allUsersWithoutAdmin = new List<UsersModel>();
+            List<HKUsersModel> allUsersWithoutAdmin = new List<HKUsersModel>();
 
             foreach (IUser user in allUsers)
             {
                 if (user.Id != 0)
                 {
-                    var userToAdd = new UsersModel
+                    var userToAdd = new HKUsersModel
                     {
                         Selected = false,
                         Id = user.Id.ToString(),
@@ -66,13 +66,13 @@ namespace FALM.Housekeeping.Controllers
         /// <param name="selectedUsersToDelete"></param>
         /// <returns>bool</returns>
         [HttpPost]
-        public bool PostDeleteSelectedUsers(List<UsersModel> selectedUsersToDelete)
+        public bool PostDeleteSelectedUsers(List<HKUsersModel> selectedUsersToDelete)
         {
             try
             {
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
-                    foreach (UsersModel user in selectedUsersToDelete)
+                    foreach (HKUsersModel user in selectedUsersToDelete)
                     {
                         if (user.Selected)
                         {

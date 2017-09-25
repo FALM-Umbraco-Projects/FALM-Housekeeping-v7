@@ -17,10 +17,10 @@ namespace FALM.Housekeeping.Controllers
     /// VersionsApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class VersionsApiController : UmbracoApiController
+    public class HKVersionsApiController : UmbracoApiController
     {
         /// <summary></summary>
-        protected VersionsModel CurrentPublishedVersionsModel = new VersionsModel();
+        protected HKVersionsModel CurrentPublishedVersionsModel = new HKVersionsModel();
         /// <summary></summary>
         protected List<CurrentPublishedVersionModel> ListCurrentPublishedVersions = new List<CurrentPublishedVersionModel>();
         /// <summary></summary>
@@ -33,7 +33,7 @@ namespace FALM.Housekeeping.Controllers
         /// </summary>
         /// <returns>VersionsModel</returns>
         [HttpGet]
-        public VersionsModel GetPublishedNodes()
+        public HKVersionsModel GetPublishedNodes()
         {
             try
             {
@@ -49,7 +49,7 @@ namespace FALM.Housekeeping.Controllers
                 sqlVersions         += "WHERE (CurDoc.published = 1 AND curdoc.nodeid = curdoc.nodeid) ";
                 sqlVersions         += "ORDER BY CurDoc.nodeId; ";
 
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     ListCurrentPublishedVersions = db.Fetch<CurrentPublishedVersionModel>(sqlVersions);
                     CurrentPublishedVersionsModel.ListCurrentPublishedVersions = ListCurrentPublishedVersions;
@@ -79,7 +79,7 @@ namespace FALM.Housekeeping.Controllers
                 sqlVersions         += "WHERE (nodeId = " + publishedNodeId + ") ";
                 sqlVersions         += "ORDER BY VersionDate DESC, published DESC, newest DESC, VersionGUID DESC; ";
 
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     ListHistoryVersions = db.Fetch<HistoryVersionModel>(sqlVersions);
                     HistoryVersionsModel.ListNodeVersions = ListHistoryVersions;
@@ -107,7 +107,7 @@ namespace FALM.Housekeeping.Controllers
                 List<CleanupResultModel> cleanupSummary = new List<CleanupResultModel>();
                 CleanupResultModel cleanupResult;
 
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     // Begin Transaction
                     db.BeginTransaction();
@@ -191,7 +191,7 @@ namespace FALM.Housekeeping.Controllers
                 List<CleanupResultModel> cleanupSummary = new List<CleanupResultModel>();
                 CleanupResultModel cleanupResult;
 
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     // Begin Transaction
                     db.BeginTransaction();

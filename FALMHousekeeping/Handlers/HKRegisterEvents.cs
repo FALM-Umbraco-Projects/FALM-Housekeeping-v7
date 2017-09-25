@@ -1,7 +1,7 @@
 ﻿// UMBRACO
 using Umbraco.Core;
 
-namespace FALM.Housekeeping
+namespace FALM.Housekeeping.Handlers
 {
     /// <summary>
     /// HKRegisterEvents

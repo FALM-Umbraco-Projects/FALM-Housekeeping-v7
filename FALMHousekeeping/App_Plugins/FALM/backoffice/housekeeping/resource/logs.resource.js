@@ -3,13 +3,13 @@
     return {
         //this calls the Api Controller and execute GetDBLogs()
         getDBLogs: function () {
-            return $http.get("FALMHousekeeping/LogsApi/GetDBLogs");
+            return $http.get("FALMHousekeeping/HKLogsApi/GetDBLogs");
         },
         //this calls the Api Controller and execute PostDeleteDBLogs(filteredLogs) method
         deleteFilteredDBLogs: function (filteredLogs) {
             return $http({
                 method: 'POST',
-                url: 'FALMHousekeeping/LogsApi/PostDeleteDBLogs',
+                url: 'FALMHousekeeping/HKLogsApi/PostDeleteDBLogs',
                 data: angular.toJson(filteredLogs)
             });
         },
@@ -17,14 +17,14 @@
         deleteDBLogsBeforeMonths: function () {
             return $http({
                 method: 'POST',
-                url: 'FALMHousekeeping/LogsApi/PostDeleteDBLogsBeforeMonths'
+                url: 'FALMHousekeeping/HKLogsApi/PostDeleteDBLogsBeforeMonths'
             });
         },
         //this calls the Api Controller and execute GetTraceLogs()
         getTraceLogs: function (id) {
             return $http({
                 method: 'GET',
-                url: 'FALMHousekeeping/LogsApi/GetTraceLogs',
+                url: 'FALMHousekeeping/HKLogsApi/GetTraceLogs',
                 params: { filename: id }
             });
         }

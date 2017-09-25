@@ -3,7 +3,7 @@
     /// <summary>
     /// UsersModel
     /// </summary>
-    public class UsersModel
+    public class HKUsersModel
     {
         /// <summary></summary>
         public bool Selected { get; set; }

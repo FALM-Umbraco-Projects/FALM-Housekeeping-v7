@@ -1,4 +1,4 @@
-﻿namespace FALM.Housekeeping
+﻿namespace FALM.Housekeeping.Constants
 {
     /// <summary>
     /// HKConstants

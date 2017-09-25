@@ -7,7 +7,7 @@ namespace FALM.Housekeeping.Helpers
     /// <summary>
     /// DbHelper
     /// </summary>
-    public class DbHelper
+    public class HKDbHelper
     {
         /// <summary></summary>
         public static Database Database;

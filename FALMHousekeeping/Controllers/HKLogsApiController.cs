@@ -20,10 +20,10 @@ namespace FALM.Housekeeping.Controllers
     /// LogsApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class LogsApiController : UmbracoApiController
+    public class HKLogsApiController : UmbracoApiController
     {
         /// <summary></summary>
-        protected DBLogsModel DBLogsModel = new DBLogsModel();
+        protected HKDBLogsModel DBLogsModel = new HKDBLogsModel();
         /// <summary></summary>
         protected List<DBLogModel> ListDBLogs = new List<DBLogModel>();
         /// <summary></summary>
@@ -44,7 +44,7 @@ namespace FALM.Housekeeping.Controllers
         /// </summary>
         /// <returns>DBLogsModel</returns>
         [HttpGet]
-        public DBLogsModel GetDBLogs()
+        public HKDBLogsModel GetDBLogs()
         {
             ListDBLogs = new List<DBLogModel>();
 
@@ -54,7 +54,7 @@ namespace FALM.Housekeeping.Controllers
                 sqlLog          += "FROM umbracoLog INNER JOIN umbracoUser ON umbracoLog.userId = umbracoUser.id LEFT OUTER JOIN umbracoNode ON umbracoLog.NodeId = umbracoNode.id ";
                 sqlLog          += "ORDER BY umbracoLog.DateStamp DESC";
 
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     ListDBLogs = db.Fetch<DBLogModel>(sqlLog);
                     DBLogsModel.ListDBLogs = ListDBLogs;
@@ -79,7 +79,7 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     string sqlDeleteLog = "DELETE FROM umbracoLog WHERE umbracoLog.id in (";
 
@@ -116,7 +116,7 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
-                using (var db = DbHelper.ResolveDatabase())
+                using (var db = HKDbHelper.ResolveDatabase())
                 {
                     string sqlDeleteLog = "DELETE FROM umbracoLog WHERE Datestamp < DATEADD(MONTH, -6, GETDATE())";
 
@@ -145,9 +145,9 @@ namespace FALM.Housekeeping.Controllers
                 ListTraceLogs = new List<TraceLogDataModel>();
                 TraceLogDataModel traceLogItem = new TraceLogDataModel();
 
-                LogsService logsService = new LogsService();
+                HKLogsService logsService = new HKLogsService();
             
-                var currentTraceLogFile = Path.Combine(LogsService.GetBaseTraceLogPath(), filename);
+                var currentTraceLogFile = Path.Combine(HKLogsService.GetBaseTraceLogPath(), filename);
 
                 if (File.Exists(currentTraceLogFile))
                 {
