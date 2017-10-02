@@ -3,13 +3,13 @@
     return {
         //this calls the Api Controller and execute GetPublishedNodes()
         getPublishedNodes: function () {
-            return $http.get("FALMHousekeeping/HKVersionsApi/GetPublishedNodes");
+            return $http.get("FALMHousekeeping/HkVersionsApi/GetPublishedNodes");
         },
         //this calls the Api Controller and execute GetVersionsByNodeId(nodeId)
         getVersionsByNodeId: function (publishedNodeId) {
             return $http({
                 method: 'GET',
-                url: 'FALMHousekeeping/HKVersionsApi/GetVersionsByNodeId',
+                url: 'FALMHousekeeping/HkVersionsApi/GetVersionsByNodeId',
                 params: { publishedNodeId: publishedNodeId }
             });
         },
@@ -17,7 +17,7 @@
         deleteVersionsByNodeId: function (publishedNodeId, versionsToKeep) {
             return $http({
                 method: 'POST',
-                url: 'FALMHousekeeping/HKVersionsApi/PostDeleteVersionsByNodeId',
+                url: 'FALMHousekeeping/HkVersionsApi/PostDeleteVersionsByNodeId',
                 params: { publishedNodeId: publishedNodeId, versionsToKeep: versionsToKeep }
             });
         },
@@ -25,7 +25,7 @@
         deleteVersionsByCount: function (versionsToKeep) {
             return $http({
                 method: 'POST',
-                url: 'FALMHousekeeping/HKVersionsApi/PostDeleteVersionsByCount',
+                url: 'FALMHousekeeping/HkVersionsApi/PostDeleteVersionsByCount',
                 params: { versionsToKeep: versionsToKeep }
             });
         }

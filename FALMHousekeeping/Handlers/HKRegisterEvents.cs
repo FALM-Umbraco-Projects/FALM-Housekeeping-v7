@@ -1,12 +1,12 @@
-﻿// UMBRACO
+﻿using FALM.Housekeeping.Helpers;
 using Umbraco.Core;
 
 namespace FALM.Housekeeping.Handlers
 {
     /// <summary>
-    /// HKRegisterEvents
+    /// HkRegisterEvents
     /// </summary>
-    public class HKRegisterEvents : ApplicationEventHandler
+    public class HkRegisterEvents : ApplicationEventHandler
     {
         /// <summary>
         /// Check and Install Languages on application started
@@ -15,7 +15,7 @@ namespace FALM.Housekeeping.Handlers
         /// <param name="applicationContext"></param>
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            Helper.HKLanguageInstaller.CheckAndInstallLanguageActions();
+            HkLanguageInstaller.CheckAndInstallLanguageActions();
         }
     }
 }

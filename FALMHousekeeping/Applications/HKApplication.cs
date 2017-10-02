@@ -1,18 +1,13 @@
-﻿// FALM
-using FALM.Housekeeping.Constants;
-// UMBRACO
+﻿using FALM.Housekeeping.Constants;
 using umbraco.businesslogic;
 using umbraco.interfaces;
 
-namespace FALM.Housekeeping
+namespace FALM.Housekeeping.Applications
 {
     /// <summary>
-    /// Application(HKConstants.Application.Alias, HKConstants.Application.Name, HKConstants.Application.Icon, 50)
-    /// HKApplication
+    /// Application(HkConstants.Application.Alias, HkConstants.Application.Name, HkConstants.Application.Icon, 50)
+    /// HkApplication
     /// </summary>
-    [Application(HKConstants.Application.Alias, HKConstants.Application.Name, HKConstants.Application.Icon, 50)]
-    public class HKApplication : IApplication
-    {
-
-    }
+    [Application(HkConstants.Application.Alias, HkConstants.Application.Name, HkConstants.Application.Icon, 50)]
+    public class HkApplication : IApplication { }
 }

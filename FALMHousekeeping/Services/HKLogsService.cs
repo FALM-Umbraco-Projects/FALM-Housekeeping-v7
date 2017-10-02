@@ -1,47 +1,43 @@
-﻿// FALM
-using FALM.Housekeeping.Models;
-// LOG4NET
+﻿using FALM.Housekeeping.Models;
 using log4net.Appender;
-// SYSTEM
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Hosting;
-// UMBRACO
 using Umbraco.Core;
 
 namespace FALM.Housekeeping.Services
 {
     /// <summary>
-    /// LogsService
+    /// HkLogsService
     /// </summary>
-    public class HKLogsService
+    public class HkLogsService
     {
         private static string _baseTraceLogPath = string.Empty;
         private static string _defaultTraceLogPath = "~/App_Data/Logs/";
         private static string _baseTraceLogFilename = string.Empty;
         private static string _defautlTraceLogFileNamePattern = "Umbraco(TraceLog)?";
-        private static string dateFormat = @"(?<date>\d{4}-\d{2}-\d{2})";
-        private static string datePattern; // matches date pattern in log file name
-        private static string machinePattern;
-        private static string filePattern; // matches valid log file name      
-        private readonly Regex filePatternRegex;
+        private static string _dateFormat = @"(?<date>\d{4}-\d{2}-\d{2})";
+        private static string _datePattern;
+        private static string _machinePattern;
+        private static string _filePattern;
+        private readonly Regex _filePatternRegex;
 
         /// <summary>
         /// Logs Service
         /// </summary>
-        public HKLogsService()
+        public HkLogsService()
         {
-            datePattern = @"((" + dateFormat + ".txt)$|(txt." + dateFormat + ")$)";
-            machinePattern = @"(?<machine>((?!" + dateFormat + @").*))";
-            filePattern = @"(?<path>.*)" +
+            _datePattern = @"((" + _dateFormat + ".txt)$|(txt." + _dateFormat + ")$)";
+            _machinePattern = @"(?<machine>((?!" + _dateFormat + @").*))";
+            _filePattern = @"(?<path>.*)" +
                           @"(?<file>" + GetBaseTraceLogFileName() + @")\." +
-                          @"(" + machinePattern + @"\.)?" +
-                          @"(" + datePattern + "|txt$)";
+                          @"(" + _machinePattern + @"\.)?" +
+                          @"(" + _datePattern + "|txt$)";
 
-            filePatternRegex = new Regex(filePattern, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture);
+            _filePatternRegex = new Regex(_filePattern, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture);
         }
 
         /// <summary>
@@ -51,14 +47,11 @@ namespace FALM.Housekeeping.Services
         public static string GetBaseTraceLogPath()
         {
             var loggerRepo = log4net.LogManager.GetRepository();
-            if (loggerRepo != null)
-            {
-                var appender = loggerRepo.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) as RollingFileAppender;
+            var appender = loggerRepo?.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) as RollingFileAppender;
 
-                if (appender != null)
-                {
-                    return Path.GetDirectoryName(appender.File);
-                }
+            if (appender != null)
+            {
+                return Path.GetDirectoryName(appender.File);
             }
             return HostingEnvironment.MapPath(_defaultTraceLogPath);
         }
@@ -71,16 +64,10 @@ namespace FALM.Housekeeping.Services
         {
             var logRepository = log4net.LogManager.GetRepository();
 
-            if (logRepository != null)
-            {
-                var logAppender = logRepository.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) as RollingFileAppender;
+            var logAppender = logRepository?.GetAppenders().FirstOrDefault(a => "rollingFile".InvariantEquals(a.Name)) as RollingFileAppender;
 
-                if (logAppender != null)
-                {
-                    var _fileName = Path.GetFileName(logAppender.File);
-                    return _fileName.Split('.')[0];
-                }
-            }
+            var fileName = Path.GetFileName(logAppender?.File);
+            if (fileName != null) return fileName.Split('.')[0];
 
             return _defautlTraceLogFileNamePattern;
         }
@@ -94,20 +81,18 @@ namespace FALM.Housekeeping.Services
             _baseTraceLogPath = GetBaseTraceLogPath();
             _baseTraceLogFilename = GetBaseTraceLogFileName();
 
-            var TraceLogFiles = Directory.GetFiles(_baseTraceLogPath, _baseTraceLogFilename + ".*");
+            var traceLogFiles = Directory.GetFiles(_baseTraceLogPath, _baseTraceLogFilename + ".*");
 
-            if (TraceLogFiles == null)
+            if (traceLogFiles == null)
             {
                 throw new ArgumentNullException("allTLFiles");
             };
 
             List<TraceLogFileModel> tlFileList = new List<TraceLogFileModel>();
 
-            foreach (var TraceLogFile in TraceLogFiles)
+            foreach (var traceLogFile in traceLogFiles)
             {
-                string machineName = null;
-
-                Match fileMatch = filePatternRegex.Match(TraceLogFile);
+                Match fileMatch = _filePatternRegex.Match(traceLogFile);
 
                 if (fileMatch.Success)
                 {
@@ -120,11 +105,11 @@ namespace FALM.Housekeeping.Services
                     }
 
                     var machineGroup = fileMatch.Groups["machine"].Value;
-                    machineName = string.IsNullOrWhiteSpace(machineGroup) ? null : machineGroup;
+                    var machineName = string.IsNullOrWhiteSpace(machineGroup) ? null : machineGroup;
 
-                    TraceLogFileModel tlFile = new TraceLogFileModel();
+                    var tlFile = new TraceLogFileModel();
                     tlFile.LogDate = logDate.Date;
-                    tlFile.LogFileName = TraceLogFile;
+                    tlFile.LogFileName = traceLogFile;
                     tlFile.LogMachineName = machineName;
 
                     tlFileList.Add(tlFile);

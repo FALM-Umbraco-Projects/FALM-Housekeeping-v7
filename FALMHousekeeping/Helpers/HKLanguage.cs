@@ -1,22 +1,19 @@
-﻿// FALM
-using FALM.Housekeeping.Constants;
-// SYSTEM
-using System;
+﻿using System;
 using System.IO;
 using System.Web;
-// UMBRACO
+using FALM.Housekeeping.Constants;
 using umbraco;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Services;
 
-namespace FALM.Housekeeping.Helper
+namespace FALM.Housekeeping.Helpers
 {
     /// <summary>
     /// Checks and/or installs language settings on first request
-    /// HKLanguageInstaller
+    /// HkLanguageInstaller
     /// </summary>
-    public class HKLanguageInstaller
+    public class HkLanguageInstaller
     {
         private static bool _executed;
 
@@ -28,7 +25,7 @@ namespace FALM.Housekeeping.Helper
         {
             if (!_executed)
             {
-                InstallLanguageKey("sections", HKConstants.Application.Alias, HKConstants.Application.Name);                
+                InstallLanguageKey("sections", HkConstants.Application.Alias, HkConstants.Application.Name);
                 _executed = true;
             }
         }
@@ -61,7 +58,7 @@ namespace FALM.Housekeeping.Helper
                     }
                     catch (Exception ex)
                     {
-                        LogHelper.Error<HKLanguageInstaller>("NewPackage Error in language installer", ex);
+                        LogHelper.Error<HkLanguageInstaller>("NewPackage Error in language installer", ex);
                     }
                 }
             }

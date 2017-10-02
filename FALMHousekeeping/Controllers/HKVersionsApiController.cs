@@ -1,11 +1,8 @@
-﻿// FALM
-using FALM.Housekeeping.Helpers;
-using FALM.Housekeeping.Models;
-// SYSTEM
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-// UMBRACO
+using FALM.Housekeeping.Helpers;
+using FALM.Housekeeping.Models;
 using Umbraco.Core.Logging;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
@@ -14,10 +11,10 @@ namespace FALM.Housekeeping.Controllers
 {
     /// <summary>
     /// PluginController("FALMHousekeeping")
-    /// VersionsApiController
+    /// HkVersionsApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class HKVersionsApiController : UmbracoApiController
+    public class HkVersionsApiController : UmbracoApiController
     {
         /// <summary></summary>
         protected HKVersionsModel CurrentPublishedVersionsModel = new HKVersionsModel();
@@ -37,19 +34,19 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
-                string sqlVersions   = "SELECT CurDoc.nodeId, CurDoc.text AS NodeName, umbracoUser.userName AS NodeUser, CurDoc.updateDate AS PublishedDate, HistDoc.VersionsCount AS VersionsCount ";
-                sqlVersions         += "FROM cmsDocument AS CurDoc ";
-                sqlVersions         += "INNER JOIN umbracoUser ON CurDoc.documentUser = umbracoUser.id ";
-                sqlVersions         += "LEFT OUTER JOIN (";
-                sqlVersions         += "SELECT COUNT(1) as VersionsCount, nodeId ";
-                sqlVersions         += "FROM cmsDocument ";
-                sqlVersions         += "WHERE (published = 0) ";
-                sqlVersions         += "GROUP BY nodeid ";
-                sqlVersions         += ") AS HistDoc ON CurDoc.nodeId = HistDoc.nodeId ";
-                sqlVersions         += "WHERE (CurDoc.published = 1 AND curdoc.nodeid = curdoc.nodeid) ";
-                sqlVersions         += "ORDER BY CurDoc.nodeId; ";
+                var sqlVersions = "SELECT CurDoc.nodeId, CurDoc.text AS NodeName, umbracoUser.userName AS NodeUser, CurDoc.updateDate AS PublishedDate, HistDoc.VersionsCount AS VersionsCount ";
+                sqlVersions += "FROM cmsDocument AS CurDoc ";
+                sqlVersions += "INNER JOIN umbracoUser ON CurDoc.documentUser = umbracoUser.id ";
+                sqlVersions += "LEFT OUTER JOIN (";
+                sqlVersions += "SELECT COUNT(1) as VersionsCount, nodeId ";
+                sqlVersions += "FROM cmsDocument ";
+                sqlVersions += "WHERE (published = 0) ";
+                sqlVersions += "GROUP BY nodeid ";
+                sqlVersions += ") AS HistDoc ON CurDoc.nodeId = HistDoc.nodeId ";
+                sqlVersions += "WHERE (CurDoc.published = 1 AND curdoc.nodeid = curdoc.nodeid) ";
+                sqlVersions += "ORDER BY CurDoc.nodeId; ";
 
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
                     ListCurrentPublishedVersions = db.Fetch<CurrentPublishedVersionModel>(sqlVersions);
                     CurrentPublishedVersionsModel.ListCurrentPublishedVersions = ListCurrentPublishedVersions;
@@ -74,12 +71,12 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
-                string sqlVersions   = "SELECT CAST(versionId AS NVARCHAR(50)) AS VersionGUID, updateDate AS VersionDate, CAST(published AS INT) AS Published, CAST(newest AS INT) AS Newest ";
-                sqlVersions         += "FROM CMSDocument ";
-                sqlVersions         += "WHERE (nodeId = " + publishedNodeId + ") ";
-                sqlVersions         += "ORDER BY VersionDate DESC, published DESC, newest DESC, VersionGUID DESC; ";
+                string sqlVersions = "SELECT CAST(versionId AS NVARCHAR(50)) AS VersionGUID, updateDate AS VersionDate, CAST(published AS INT) AS Published, CAST(newest AS INT) AS Newest ";
+                sqlVersions += "FROM CMSDocument ";
+                sqlVersions += "WHERE (nodeId = " + publishedNodeId + ") ";
+                sqlVersions += "ORDER BY VersionDate DESC, published DESC, newest DESC, VersionGUID DESC; ";
 
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
                     ListHistoryVersions = db.Fetch<HistoryVersionModel>(sqlVersions);
                     HistoryVersionsModel.ListNodeVersions = ListHistoryVersions;
@@ -104,20 +101,19 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
-                List<CleanupResultModel> cleanupSummary = new List<CleanupResultModel>();
-                CleanupResultModel cleanupResult;
+                var cleanupSummary = new List<CleanupResultModel>();
 
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
                     // Begin Transaction
                     db.BeginTransaction();
 
                     // Delete versions from cmsPreviewXml
-                    string sqlDeletePreviewXml = @"DELETE FROM cmsPreviewXml WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    var dbComm = db.CreateCommand(db.Connection, sqlDeletePreviewXml, new { versionsToKeep = versionsToKeep });
+                    const string sqlDeletePreviewXml = @"DELETE FROM cmsPreviewXml WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    var dbComm = db.CreateCommand(db.Connection, sqlDeletePreviewXml, new { versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     int iResultCount = dbComm.ExecuteNonQuery();
-                    cleanupResult = new CleanupResultModel
+                    var cleanupResult = new CleanupResultModel
                     {
                         Type = "cmsPreviewXml",
                         Result = iResultCount
@@ -126,8 +122,8 @@ namespace FALM.Housekeeping.Controllers
                     dbComm.Dispose();
 
                     // Delete versions from cmsContentVersion
-                    string sqlDeleteContentVersions = @"DELETE FROM cmsContentVersion WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    dbComm = db.CreateCommand(db.Connection, sqlDeleteContentVersions, new { versionsToKeep = versionsToKeep });
+                    const string sqlDeleteContentVersions = @"DELETE FROM cmsContentVersion WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    dbComm = db.CreateCommand(db.Connection, sqlDeleteContentVersions, new { versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     iResultCount = dbComm.ExecuteNonQuery();
                     cleanupResult = new CleanupResultModel
@@ -139,8 +135,8 @@ namespace FALM.Housekeeping.Controllers
                     dbComm.Dispose();
 
                     // Delete all properties data of each versions to delete from cmsPropertyData
-                    string sqlDeletePropertyData = @"DELETE FROM cmsPropertyData WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    dbComm = db.CreateCommand(db.Connection, sqlDeletePropertyData, new { versionsToKeep = versionsToKeep });
+                    const string sqlDeletePropertyData = @"DELETE FROM cmsPropertyData WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    dbComm = db.CreateCommand(db.Connection, sqlDeletePropertyData, new { versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     iResultCount = dbComm.ExecuteNonQuery();
                     cleanupResult = new CleanupResultModel
@@ -152,8 +148,8 @@ namespace FALM.Housekeeping.Controllers
                     dbComm.Dispose();
 
                     // Delete versions from cmsDocument
-                    string sqlDeleteDocument = @"DELETE FROM cmsDocument WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    dbComm = db.CreateCommand(db.Connection, sqlDeleteDocument, new { versionsToKeep = versionsToKeep });
+                    const string sqlDeleteDocument = @"DELETE FROM cmsDocument WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    dbComm = db.CreateCommand(db.Connection, sqlDeleteDocument, new { versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     iResultCount = dbComm.ExecuteNonQuery();
                     cleanupResult = new CleanupResultModel
@@ -188,20 +184,19 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
-                List<CleanupResultModel> cleanupSummary = new List<CleanupResultModel>();
-                CleanupResultModel cleanupResult;
+                var cleanupSummary = new List<CleanupResultModel>();
 
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
                     // Begin Transaction
                     db.BeginTransaction();
 
                     // Delete versions from cmsPreviewXml
-                    string sqlDeletePreviewXml = @"DELETE FROM cmsPreviewXml WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    var dbComm = db.CreateCommand(db.Connection, sqlDeletePreviewXml, new { publishedNodeId = publishedNodeId, versionsToKeep = versionsToKeep });
+                    const string sqlDeletePreviewXml = @"DELETE FROM cmsPreviewXml WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    var dbComm = db.CreateCommand(db.Connection, sqlDeletePreviewXml, new { publishedNodeId, versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     int iResultCount = dbComm.ExecuteNonQuery();
-                    cleanupResult = new CleanupResultModel
+                    var cleanupResult = new CleanupResultModel
                     {
                         Type = "cmsPreviewXml",
                         Result = iResultCount
@@ -210,8 +205,8 @@ namespace FALM.Housekeeping.Controllers
                     dbComm.Dispose();
 
                     // Delete versions from cmsContentVersion
-                    string sqlDeleteContentVersions = @"DELETE FROM cmsContentVersion WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    dbComm = db.CreateCommand(db.Connection, sqlDeleteContentVersions, new { publishedNodeId = publishedNodeId, versionsToKeep = versionsToKeep });
+                    const string sqlDeleteContentVersions = @"DELETE FROM cmsContentVersion WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    dbComm = db.CreateCommand(db.Connection, sqlDeleteContentVersions, new { publishedNodeId, versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     iResultCount = dbComm.ExecuteNonQuery();
                     cleanupResult = new CleanupResultModel
@@ -223,8 +218,8 @@ namespace FALM.Housekeeping.Controllers
                     dbComm.Dispose();
 
                     // Delete all properties data of each versions to delete from cmsPropertyData
-                    string sqlDeletePropertyData = @"DELETE FROM cmsPropertyData WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    dbComm = db.CreateCommand(db.Connection, sqlDeletePropertyData, new { publishedNodeId = publishedNodeId, versionsToKeep = versionsToKeep });
+                    const string sqlDeletePropertyData = @"DELETE FROM cmsPropertyData WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    dbComm = db.CreateCommand(db.Connection, sqlDeletePropertyData, new { publishedNodeId, versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     iResultCount = dbComm.ExecuteNonQuery();
                     cleanupResult = new CleanupResultModel
@@ -236,8 +231,8 @@ namespace FALM.Housekeeping.Controllers
                     dbComm.Dispose();
 
                     // Delete versions from cmsDocument
-                    string sqlDeleteDocument = @"DELETE FROM cmsDocument WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
-                    dbComm = db.CreateCommand(db.Connection, sqlDeleteDocument, new { publishedNodeId = publishedNodeId, versionsToKeep = versionsToKeep });
+                    const string sqlDeleteDocument = @"DELETE FROM cmsDocument WHERE VersionId IN (SELECT FALMtmp1.VersionId FROM (SELECT nodeId, published, documentUser, versionId, text, releaseDate, expireDate, updateDate, templateId, newest FROM cmsDocument WHERE nodeId = @publishedNodeId AND versionID NOT IN (SELECT D.versionId FROM cmsDocument D WHERE D.versionId IN (SELECT versionId FROM (SELECT CV.versionId, published, newest, RANK() OVER(ORDER BY CV.versionDate DESC) RowNum FROM cmsContentVersion CV JOIN cmsDocument DD ON CV.versionId = DD.versionId WHERE DD.nodeId = D.nodeId) AS tmp WHERE tmp.RowNum <= @versionsToKeep OR tmp.published = 1 OR tmp.newest = 1))) AS FALMtmp1 WHERE FALMtmp1.published = 0 AND FALMtmp1.newest = 0);";
+                    dbComm = db.CreateCommand(db.Connection, sqlDeleteDocument, new { publishedNodeId, versionsToKeep });
                     dbComm.CommandTimeout = 100000;
                     iResultCount = dbComm.ExecuteNonQuery();
                     cleanupResult = new CleanupResultModel

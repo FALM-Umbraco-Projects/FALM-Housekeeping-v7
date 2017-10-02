@@ -1,13 +1,12 @@
-﻿// UMBRACO
-using Umbraco.Core;
+﻿using Umbraco.Core;
 using Umbraco.Core.Persistence;
 
 namespace FALM.Housekeeping.Helpers
 {
     /// <summary>
-    /// DbHelper
+    /// HkDbHelper
     /// </summary>
-    public class HKDbHelper
+    public class HkDbHelper
     {
         /// <summary></summary>
         public static Database Database;

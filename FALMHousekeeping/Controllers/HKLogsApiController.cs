@@ -1,14 +1,11 @@
-﻿// FALM
-using FALM.Housekeeping.Helpers;
-using FALM.Housekeeping.Models;
-using FALM.Housekeeping.Services;
-//SYSTEM
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
-//UMBRACO
+using FALM.Housekeeping.Helpers;
+using FALM.Housekeeping.Models;
+using FALM.Housekeeping.Services;
 using Umbraco.Core.Logging;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
@@ -17,17 +14,17 @@ namespace FALM.Housekeeping.Controllers
 {
     /// <summary>
     /// PluginController("FALMHousekeeping")
-    /// LogsApiController
+    /// HkLogsApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class HKLogsApiController : UmbracoApiController
+    public class HkLogsApiController : UmbracoApiController
     {
         /// <summary></summary>
-        protected HKDBLogsModel DBLogsModel = new HKDBLogsModel();
+        protected HKDBLogsModel DbLogsModel = new HKDBLogsModel();
         /// <summary></summary>
-        protected List<DBLogModel> ListDBLogs = new List<DBLogModel>();
+        protected List<DBLogModel> ListDbLogs = new List<DBLogModel>();
         /// <summary></summary>
-        protected TraceLogsModel traceLogsModel = new TraceLogsModel();
+        protected TraceLogsModel TraceLogsModel = new TraceLogsModel();
         /// <summary></summary>
         protected List<TraceLogDataModel> ListTraceLogs = new List<TraceLogDataModel>();
         /// <summary></summary>
@@ -44,51 +41,51 @@ namespace FALM.Housekeeping.Controllers
         /// </summary>
         /// <returns>DBLogsModel</returns>
         [HttpGet]
-        public HKDBLogsModel GetDBLogs()
+        public HKDBLogsModel GetDbLogs()
         {
-            ListDBLogs = new List<DBLogModel>();
+            ListDbLogs = new List<DBLogModel>();
 
             try
             {
-                string sqlLog    = "SELECT umbracoLog.id AS logId, umbracoLog.userId AS UserId, umbracoUser.userName AS UserName, umbracoUser.userLogin AS UserLogin, umbracoLog.NodeId AS NodeId, umbracoNode.text AS NodeName, umbracoLog.DateStamp AS LogDate, umbracoLog.logHeader AS LogHeader, umbracoLog.logComment AS LogComment ";
-                sqlLog          += "FROM umbracoLog INNER JOIN umbracoUser ON umbracoLog.userId = umbracoUser.id LEFT OUTER JOIN umbracoNode ON umbracoLog.NodeId = umbracoNode.id ";
-                sqlLog          += "ORDER BY umbracoLog.DateStamp DESC";
+                var sqlLog = "SELECT umbracoLog.id AS logId, umbracoLog.userId AS UserId, umbracoUser.userName AS UserName, umbracoUser.userLogin AS UserLogin, umbracoLog.NodeId AS NodeId, umbracoNode.text AS NodeName, umbracoLog.DateStamp AS LogDate, umbracoLog.logHeader AS LogHeader, umbracoLog.logComment AS LogComment ";
+                sqlLog += "FROM umbracoLog INNER JOIN umbracoUser ON umbracoLog.userId = umbracoUser.id LEFT OUTER JOIN umbracoNode ON umbracoLog.NodeId = umbracoNode.id ";
+                sqlLog += "ORDER BY umbracoLog.DateStamp DESC";
 
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
-                    ListDBLogs = db.Fetch<DBLogModel>(sqlLog);
-                    DBLogsModel.ListDBLogs = ListDBLogs;
+                    ListDbLogs = db.Fetch<DBLogModel>(sqlLog);
+                    DbLogsModel.ListDBLogs = ListDbLogs;
                 }
             }
             catch (Exception ex)
             {
                 LogHelper.Error<Exception>(ex.Message, ex);
-                return DBLogsModel;
+                return DbLogsModel;
             }
 
-            return DBLogsModel;
+            return DbLogsModel;
         }
 
         /// <summary>
         /// Delete filtered DB logs
         /// </summary>
-        /// <param name="LogsToDelete"></param>
+        /// <param name="logsToDelete"></param>
         /// <returns>bool</returns>
         [HttpPost]
-        public bool PostDeleteDBLogs(List<DBLogModel> LogsToDelete)
+        public bool PostDeleteDbLogs(List<DBLogModel> logsToDelete)
         {
             try
             {
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
-                    string sqlDeleteLog = "DELETE FROM umbracoLog WHERE umbracoLog.id in (";
+                    var sqlDeleteLog = "DELETE FROM umbracoLog WHERE umbracoLog.id in (";
 
                     var iCount = 1;
 
-                    foreach (DBLogModel logItem in LogsToDelete)
+                    foreach (var logItem in logsToDelete)
                     {
                         sqlDeleteLog += logItem.LogId.ToString();
-                        sqlDeleteLog += iCount < LogsToDelete.Count ? ", " : string.Empty;
+                        sqlDeleteLog += iCount < logsToDelete.Count ? ", " : string.Empty;
 
                         iCount++;
                     }
@@ -112,13 +109,13 @@ namespace FALM.Housekeeping.Controllers
         /// </summary>
         /// <returns>bool</returns>
         [HttpPost]
-        public bool PostDeleteDBLogsBeforeMonths()
+        public bool PostDeleteDbLogsBeforeMonths()
         {
             try
             {
-                using (var db = HKDbHelper.ResolveDatabase())
+                using (var db = HkDbHelper.ResolveDatabase())
                 {
-                    string sqlDeleteLog = "DELETE FROM umbracoLog WHERE Datestamp < DATEADD(MONTH, -6, GETDATE())";
+                    const string sqlDeleteLog = "DELETE FROM umbracoLog WHERE Datestamp < DATEADD(MONTH, -6, GETDATE())";
 
                     db.Execute(sqlDeleteLog);
                 }
@@ -143,35 +140,29 @@ namespace FALM.Housekeeping.Controllers
             try
             {
                 ListTraceLogs = new List<TraceLogDataModel>();
-                TraceLogDataModel traceLogItem = new TraceLogDataModel();
 
-                HKLogsService logsService = new HKLogsService();
-            
-                var currentTraceLogFile = Path.Combine(HKLogsService.GetBaseTraceLogPath(), filename);
+                var currentTraceLogFile = Path.Combine(HkLogsService.GetBaseTraceLogPath(), filename);
 
                 if (File.Exists(currentTraceLogFile))
                 {
-                    TextReader traceLogEventsReader = File.OpenText(currentTraceLogFile);
-
                     var logFile = File.ReadAllLines(currentTraceLogFile);
-                    List<string> LogList = new List<string>(logFile);
+                    var logList = new List<string>(logFile);
 
-                    foreach (var logEntry in LogList)
+                    foreach (var logEntry in logList)
                     {
                         var match = LogEntryRegex.Match(logEntry);
 
+                        TraceLogDataModel traceLogItem;
                         if (match.Success)
                         {
-                            logEntry.Trim();
-                            
                             // Get Log Entry Date Format yyyy-MM-dd HH:mm:ss (first 19 chars)
-                            string logEntryData = logEntry.Substring(0, 19);
+                            var logEntryData = logEntry.Trim().Substring(0, 19);
 
                             var date = DateTime.Parse(logEntryData);
 
-                            string threadProcess = match.Groups["PROCESS2"].Value;
+                            var threadProcess = match.Groups["PROCESS2"].Value;
 
-                            if (String.IsNullOrEmpty(threadProcess))
+                            if (string.IsNullOrEmpty(threadProcess))
                             {
                                 threadProcess = match.Groups["PROCESS1"].Value;
                             }
@@ -180,40 +171,36 @@ namespace FALM.Housekeeping.Controllers
                             string processId = null;
                             string domainId = null;
 
-                            if (!String.IsNullOrEmpty(threadProcess))
+                            if (!string.IsNullOrEmpty(threadProcess))
                             {
                                 var procMatches = ThreadProcessRegex.Matches(threadProcess);
 
                                 foreach (Match procMatch in procMatches)
                                 {
-                                    if (procMatch.Success)
+                                    if (!procMatch.Success) continue;
+                                    var grp = procMatch.Groups["THREAD"];
+                                    if (grp.Success)
                                     {
-                                        var grp = procMatch.Groups["THREAD"];
-                                        if (grp.Success)
-                                        {
-                                            threadId = grp.Value;
-                                        }
+                                        threadId = grp.Value;
+                                    }
 
-                                        grp = procMatch.Groups["PROCESS"];
-                                        if (grp.Success)
-                                        {
-                                            processId = grp.Value;
-                                        }
+                                    grp = procMatch.Groups["PROCESS"];
+                                    if (grp.Success)
+                                    {
+                                        processId = grp.Value;
+                                    }
 
-                                        grp = procMatch.Groups["DOMAIN"];
-                                        if (grp.Success)
-                                        {
-                                            domainId = grp.Value;
-                                        }
+                                    grp = procMatch.Groups["DOMAIN"];
+                                    if (grp.Success)
+                                    {
+                                        domainId = grp.Value;
+                                    }
 
-                                        if (threadId == null)
-                                        {
-                                            grp = procMatch.Groups["THREADOLD"];
-                                            if (grp.Success)
-                                            {
-                                                threadId = grp.Value;
-                                            }
-                                        }
+                                    if (threadId != null) continue;
+                                    grp = procMatch.Groups["THREADOLD"];
+                                    if (grp.Success)
+                                    {
+                                        threadId = grp.Value;
                                     }
                                 }
                             }
@@ -244,7 +231,7 @@ namespace FALM.Housekeeping.Controllers
                         }
 
                         ListTraceLogs.Sort((x, y) => y.LogDate.CompareTo(x.LogDate));
-                        traceLogsModel.ListTraceLogs = ListTraceLogs;
+                        TraceLogsModel.ListTraceLogs = ListTraceLogs;
                     }
                 }
                 else
@@ -255,9 +242,9 @@ namespace FALM.Housekeeping.Controllers
             catch (Exception ex)
             {
                 LogHelper.Error<Exception>(ex.Message, ex);
-                return traceLogsModel;
+                return TraceLogsModel;
             }
-            return traceLogsModel;
+            return TraceLogsModel;
         }
     }
 }

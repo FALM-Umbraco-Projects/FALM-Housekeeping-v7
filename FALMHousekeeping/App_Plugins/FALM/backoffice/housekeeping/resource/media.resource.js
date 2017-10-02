@@ -6,7 +6,7 @@
             getMediaToDelete: function (userLocale) {
                 return $http({
                     method: 'GET',
-                    url: 'FALMHousekeeping/HKMediaApi/GetMediaToDelete',
+                    url: 'FALMHousekeeping/HkMediaApi/GetMediaToDelete',
                     params: { userLocale: userLocale }
                 });
             },
@@ -14,7 +14,7 @@
             postDeleteMediaOrphans: function (mediaOrphansToDelete) {
                 return $http({
                     method: 'POST',
-                    url: 'FALMHousekeeping/HKMediaApi/PostDeleteMediaOrphans',
+                    url: 'FALMHousekeeping/HkMediaApi/PostDeleteMediaOrphans',
                     data: angular.toJson(mediaOrphansToDelete)
                 });
             }

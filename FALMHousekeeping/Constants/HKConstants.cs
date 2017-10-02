@@ -1,9 +1,9 @@
 ﻿namespace FALM.Housekeeping.Constants
 {
     /// <summary>
-    /// HKConstants
+    /// HkConstants
     /// </summary>
-    public class HKConstants
+    public class HkConstants
     {
         /// <summary>
         /// Application
@@ -11,13 +11,13 @@
         public class Application
         {
             /// <summary>Name of the Application</summary>
-            public const string Name    = "F.A.L.M.";
+            public const string Name = "F.A.L.M.";
             /// <summary>Alias of the Application</summary>
-            public const string Alias   = "FALM";
+            public const string Alias = "FALM";
             /// <summary>Icon of the Application</summary>
-            public const string Icon    = "icon-speed-gauge color-yellow";
+            public const string Icon = "icon-speed-gauge color-yellow";
             /// <summary>Title of the Application</summary>
-            public const string Title   = "F.A.L.M. Housekeeping";
+            public const string Title = "F.A.L.M. Housekeeping";
         }
 
         /// <summary>
@@ -26,13 +26,13 @@
         public class Tree
         {
             /// <summary>Name of the Tree</summary>
-            public const string Name    = "Housekeeping Tools";
+            public const string Name = "Housekeeping Tools";
             /// <summary>Alias of the Tree</summary>
-            public const string Alias   = "housekeeping";
+            public const string Alias = "housekeeping";
             /// <summary>Icon of the Tree</summary>
-            public const string Icon    = "icon-umb-deploy";
+            public const string Icon = "icon-umb-deploy";
             /// <summary>Title of the Tree</summary>
-            public const string Title   = "Menu";
+            public const string Title = "Menu";
         }
 
         /// <summary>
@@ -41,7 +41,7 @@
         public class Controller
         {
             /// <summary>Alias of the Controller</summary>
-            public const string Alias   = "FALM";
+            public const string Alias = "FALM";
         }
     }
 }

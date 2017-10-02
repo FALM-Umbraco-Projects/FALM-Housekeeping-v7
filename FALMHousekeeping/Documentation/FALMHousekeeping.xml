@@ -4,92 +4,92 @@
         <name>FALM.Housekeeping</name>
     </assembly>
     <members>
-        <member name="T:FALM.Housekeeping.Constants.HKConstants">
+        <member name="T:FALM.Housekeeping.Constants.HkConstants">
             <summary>
-            HKConstants
+            HkConstants
             </summary>
         </member>
-        <member name="T:FALM.Housekeeping.Constants.HKConstants.Application">
+        <member name="T:FALM.Housekeeping.Constants.HkConstants.Application">
             <summary>
             Application
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Name">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Application.Name">
             <summary>Name of the Application</summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Alias">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Application.Alias">
             <summary>Alias of the Application</summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Icon">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Application.Icon">
             <summary>Icon of the Application</summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Application.Title">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Application.Title">
             <summary>Title of the Application</summary>
         </member>
-        <member name="T:FALM.Housekeeping.Constants.HKConstants.Tree">
+        <member name="T:FALM.Housekeeping.Constants.HkConstants.Tree">
             <summary>
             Tree
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Name">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Tree.Name">
             <summary>Name of the Tree</summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Alias">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Tree.Alias">
             <summary>Alias of the Tree</summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Icon">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Tree.Icon">
             <summary>Icon of the Tree</summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Tree.Title">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Tree.Title">
             <summary>Title of the Tree</summary>
         </member>
-        <member name="T:FALM.Housekeeping.Constants.HKConstants.Controller">
+        <member name="T:FALM.Housekeeping.Constants.HkConstants.Controller">
             <summary>
             Controller
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Constants.HKConstants.Controller.Alias">
+        <member name="F:FALM.Housekeeping.Constants.HkConstants.Controller.Alias">
             <summary>Alias of the Controller</summary>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.HKVersionsApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HkVersionsApiController">
             <summary>
             PluginController("FALMHousekeeping")
-            VersionsApiController
+            HkVersionsApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.CurrentPublishedVersionsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.CurrentPublishedVersionsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.ListCurrentPublishedVersions">
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.ListCurrentPublishedVersions">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.HistoryVersionsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.HistoryVersionsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKVersionsApiController.ListHistoryVersions">
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.ListHistoryVersions">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.GetPublishedNodes">
+        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.GetPublishedNodes">
             <summary>
             Get all published versions
             </summary>
             <returns>VersionsModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.GetVersionsByNodeId(System.Int32)">
+        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.GetVersionsByNodeId(System.Int32)">
             <summary>
             Get versions of a published node
             </summary>
             <param name="publishedNodeId"></param>
             <returns>HistoryVersionsModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.PostDeleteVersionsByCount(System.Int32)">
+        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.PostDeleteVersionsByCount(System.Int32)">
             <summary>
             Delete all versions by count, except the published and the newest
             </summary>
             <param name="versionsToKeep"></param>
             <returns>List of CleanupResultModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKVersionsApiController.PostDeleteVersionsByNodeId(System.Int32,System.Int32)">
+        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.PostDeleteVersionsByNodeId(System.Int32,System.Int32)">
             <summary>
             Delete all versions of specific nodeId, except the published and the newest
             </summary>
@@ -97,94 +97,94 @@
             <param name="versionsToKeep"></param>
             <returns>List of CleanupResultModel</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.HKLogsApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HkLogsApiController">
             <summary>
             PluginController("FALMHousekeeping")
-            LogsApiController
+            HkLogsApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.DBLogsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.DbLogsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ListDBLogs">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.ListDbLogs">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.traceLogsModel">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.TraceLogsModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ListTraceLogs">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.ListTraceLogs">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.CombinedLogEntryPattern">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.CombinedLogEntryPattern">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.LogEntryRegex">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.LogEntryRegex">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ThreadProcessPattern">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.ThreadProcessPattern">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKLogsApiController.ThreadProcessRegex">
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.ThreadProcessRegex">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.GetDBLogs">
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.GetDbLogs">
             <summary>
             Show all DB logs
             </summary>
             <returns>DBLogsModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.PostDeleteDBLogs(System.Collections.Generic.List{FALM.Housekeeping.Models.DBLogModel})">
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.PostDeleteDbLogs(System.Collections.Generic.List{FALM.Housekeeping.Models.DBLogModel})">
             <summary>
             Delete filtered DB logs
             </summary>
-            <param name="LogsToDelete"></param>
+            <param name="logsToDelete"></param>
             <returns>bool</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.PostDeleteDBLogsBeforeMonths">
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.PostDeleteDbLogsBeforeMonths">
             <summary>
             Delete DB logs older than 6 months
             </summary>
             <returns>bool</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKLogsApiController.GetTraceLogs(System.String)">
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.GetTraceLogs(System.String)">
             <summary>
             Show selected Trace Log
             </summary>
             <param name="filename"></param>
             <returns>TraceLogsModel</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.HKMediaApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HkMediaApiController">
             <summary>
             PluginController("FALMHousekeeping")
-            MediaApiController
+            HkMediaApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.mediaService">
+        <member name="F:FALM.Housekeeping.Controllers.HkMediaApiController.MediaService">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.mediaModel">
+        <member name="F:FALM.Housekeeping.Controllers.HkMediaApiController.MediaModel">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.listMediaWarnings">
+        <member name="F:FALM.Housekeeping.Controllers.HkMediaApiController.ListMediaWarnings">
             <summary></summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKMediaApiController.listMediaToDelete">
+        <member name="F:FALM.Housekeeping.Controllers.HkMediaApiController.ListMediaToDelete">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.GetMediaToDelete(System.String)">
+        <member name="M:FALM.Housekeeping.Controllers.HkMediaApiController.GetMediaToDelete(System.String)">
             <summary>
             Show media to delete
             </summary>
             <returns>MediaModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.PostDeleteMediaOrphans(System.Collections.Generic.List{FALM.Housekeeping.Models.MediaToDeleteModel})">
+        <member name="M:FALM.Housekeeping.Controllers.HkMediaApiController.PostDeleteMediaOrphans(System.Collections.Generic.List{FALM.Housekeeping.Models.MediaToDeleteModel})">
             <summary>
             Delete media orphans
             </summary>
             <param name="mediaOrphansToDelete"></param>
             <returns>MediaModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.GetCountFromCmsContentXml(Umbraco.Core.Persistence.Database,System.String)">
+        <member name="M:FALM.Housekeeping.Controllers.HkMediaApiController.GetCountFromCmsContentXml(Umbraco.Core.Persistence.Database,System.String)">
             <summary>
             Check media forlder in cmsContentXml
             </summary>
@@ -192,7 +192,7 @@
             <param name="subDirName"></param>
             <returns>int</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKMediaApiController.GetCountFromCmsPropertyData(Umbraco.Core.Persistence.Database,System.String)">
+        <member name="M:FALM.Housekeeping.Controllers.HkMediaApiController.GetCountFromCmsPropertyData(Umbraco.Core.Persistence.Database,System.String)">
             <summary>
             Check media forlder in cmsPropertyData
             </summary>
@@ -200,41 +200,71 @@
             <param name="subDirName"></param>
             <returns>int</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Controllers.HKUsersApiController">
+        <member name="T:FALM.Housekeeping.Controllers.HkUsersApiController">
             <summary>
             PluginController("FALMHousekeeping")
-            UsersApiController
+            HkUsersApiController
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Controllers.HKUsersApiController.userService">
+        <member name="F:FALM.Housekeeping.Controllers.HkUsersApiController.UserService">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKUsersApiController.GetAllUsers">
+        <member name="M:FALM.Housekeeping.Controllers.HkUsersApiController.GetAllUsers">
             <summary>
             Return all user excluding the administrator
             </summary>
             <returns>List of UsersModel</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HKUsersApiController.PostDeleteSelectedUsers(System.Collections.Generic.List{FALM.Housekeeping.Models.HKUsersModel})">
+        <member name="M:FALM.Housekeeping.Controllers.HkUsersApiController.PostDeleteSelectedUsers(System.Collections.Generic.List{FALM.Housekeeping.Models.HKUsersModel})">
             <summary>
             Delete all selected users
             </summary>
             <param name="selectedUsersToDelete"></param>
             <returns>bool</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Helpers.HKDbHelper">
+        <member name="T:FALM.Housekeeping.Helpers.HkDbHelper">
             <summary>
-            DbHelper
+            HkDbHelper
             </summary>
         </member>
-        <member name="F:FALM.Housekeeping.Helpers.HKDbHelper.Database">
+        <member name="F:FALM.Housekeeping.Helpers.HkDbHelper.Database">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Helpers.HKDbHelper.ResolveDatabase">
+        <member name="M:FALM.Housekeeping.Helpers.HkDbHelper.ResolveDatabase">
             <summary>
             Resolve Database connection
             </summary>
             <returns>Database</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Helpers.HkLanguageInstaller">
+            <summary>
+            Checks and/or installs language settings on first request
+            HkLanguageInstaller
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.CheckAndInstallLanguageActions">
+            <summary>
+            We need to add the text label on the actions otherwise they don't appear on the context menu,
+            Check each label and if not in the Umbraco langua file, add it to the actions node
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.InstallLanguageKey(System.String,System.String,System.String)">
+            <summary>
+            Loop through the language config folder and add language nodes to the language files
+            If the language is not in our language file install the english variant.
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.UpdateActionsForLanguageFile(System.String,System.String,System.String,System.String)">
+            <summary>
+            Update a language file withe the language xml
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.FormatUrl(System.String)">
+            <summary>
+            Returns the url with the correct Umbraco folder
+            </summary>
+            <param name="url">url</param>
+            <returns>string</returns>
         </member>
         <member name="T:FALM.Housekeeping.Models.HKVersionsModel">
             <summary>
@@ -277,7 +307,7 @@
             History Version
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.HistoryVersionModel.VersionGUID">
+        <member name="P:FALM.Housekeeping.Models.HistoryVersionModel.VersionGuid">
             <summary></summary>
         </member>
         <member name="P:FALM.Housekeeping.Models.HistoryVersionModel.VersionDate">
@@ -471,42 +501,42 @@
         <member name="P:FALM.Housekeeping.Models.HKUsersModel.UserType">
             <summary></summary>
         </member>
-        <member name="T:FALM.Housekeeping.Services.HKLogsService">
+        <member name="T:FALM.Housekeeping.Services.HkLogsService">
             <summary>
-            LogsService
+            HkLogsService
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.Services.HKLogsService.#ctor">
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.#ctor">
             <summary>
             Logs Service
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.Services.HKLogsService.GetBaseTraceLogPath">
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.GetBaseTraceLogPath">
             <summary>
             Get Base Trace Log Path
             </summary>
             <returns>string</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Services.HKLogsService.GetBaseTraceLogFileName">
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.GetBaseTraceLogFileName">
             <summary>
             Get Base Trace Log File Name
             </summary>
             <returns>string</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Services.HKLogsService.GetTraceLogFiles">
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.GetTraceLogFiles">
             <summary>
             Get Trace Log Files
             </summary>
             <returns>IEnumerable of TraceLogFileModel</returns>
         </member>
-        <member name="T:FALM.Housekeeping.HKTreeController">
+        <member name="T:FALM.Housekeeping.Trees.HkTreeController">
             <summary>
-            Tree(HKConstants.Application.Alias, HKConstants.Tree.Alias, HKConstants.Tree.Title)
-            PluginController(HKConstants.Controller.Alias)
-            HKTreeController
+            Tree(HkConstants.Application.Alias, HkConstants.Tree.Alias, HkConstants.Tree.Title)
+            PluginController(HkConstants.Controller.Alias)
+            HkTreeController
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.HKTreeController.GetTreeNodes(System.String,System.Net.Http.Formatting.FormDataCollection)">
+        <member name="M:FALM.Housekeeping.Trees.HkTreeController.GetTreeNodes(System.String,System.Net.Http.Formatting.FormDataCollection)">
             <summary>
             GetTreeNodes(string id, FormDataCollection queryStrings)
             This method create the Base Tree of FALM custom section
@@ -515,7 +545,7 @@
             <param name="queryStrings"></param>
             <returns>tree</returns>
         </member>
-        <member name="M:FALM.Housekeeping.HKTreeController.GetMenuForNode(System.String,System.Net.Http.Formatting.FormDataCollection)">
+        <member name="M:FALM.Housekeeping.Trees.HkTreeController.GetMenuForNode(System.String,System.Net.Http.Formatting.FormDataCollection)">
             <summary>
             GetMenuForNode(string id, FormDataCollection queryStrings)
             This method create the actions on a single menu item (by pressing "..." symbol)
@@ -524,48 +554,18 @@
             <param name="queryStrings"></param>
             <returns>menu</returns>
         </member>
-        <member name="T:FALM.Housekeeping.HKApplication">
+        <member name="T:FALM.Housekeeping.Applications.HkApplication">
             <summary>
-            Application(HKConstants.Application.Alias, HKConstants.Application.Name, HKConstants.Application.Icon, 50)
-            HKApplication
+            Application(HkConstants.Application.Alias, HkConstants.Application.Name, HkConstants.Application.Icon, 50)
+            HkApplication
             </summary>
         </member>
-        <member name="T:FALM.Housekeeping.Helper.HKLanguageInstaller">
+        <member name="T:FALM.Housekeeping.Handlers.HkRegisterEvents">
             <summary>
-            Checks and/or installs language settings on first request
-            HKLanguageInstaller
+            HkRegisterEvents
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.Helper.HKLanguageInstaller.CheckAndInstallLanguageActions">
-            <summary>
-            We need to add the text label on the actions otherwise they don't appear on the context menu,
-            Check each label and if not in the Umbraco langua file, add it to the actions node
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helper.HKLanguageInstaller.InstallLanguageKey(System.String,System.String,System.String)">
-            <summary>
-            Loop through the language config folder and add language nodes to the language files
-            If the language is not in our language file install the english variant.
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helper.HKLanguageInstaller.UpdateActionsForLanguageFile(System.String,System.String,System.String,System.String)">
-            <summary>
-            Update a language file withe the language xml
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helper.HKLanguageInstaller.FormatUrl(System.String)">
-            <summary>
-            Returns the url with the correct Umbraco folder
-            </summary>
-            <param name="url">url</param>
-            <returns>string</returns>
-        </member>
-        <member name="T:FALM.Housekeeping.Handlers.HKRegisterEvents">
-            <summary>
-            HKRegisterEvents
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Handlers.HKRegisterEvents.ApplicationStarted(Umbraco.Core.UmbracoApplicationBase,Umbraco.Core.ApplicationContext)">
+        <member name="M:FALM.Housekeeping.Handlers.HkRegisterEvents.ApplicationStarted(Umbraco.Core.UmbracoApplicationBase,Umbraco.Core.ApplicationContext)">
             <summary>
             Check and Install Languages on application started
             </summary>

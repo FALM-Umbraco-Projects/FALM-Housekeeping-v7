@@ -14,6 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoWeb", "UmbracoWeb\UmbracoWeb.csproj", "{7AFA0E91-BB27-4271-94F0-38493AC2737D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{26C54771-07CD-45AB-88DC-0AF871BE8E0E} = {26C54771-07CD-45AB-88DC-0AF871BE8E0E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +29,8 @@ Global
 		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{26C54771-07CD-45AB-88DC-0AF871BE8E0E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7AFA0E91-BB27-4271-94F0-38493AC2737D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFA0E91-BB27-4271-94F0-38493AC2737D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

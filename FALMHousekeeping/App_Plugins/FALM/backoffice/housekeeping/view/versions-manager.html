@@ -33,21 +33,21 @@
                                 <form class="form">
                                     <table id="FHVersionFiltersTable" class="table">
                                         <thead>
-                                            <tr style="font-size: 10px;">
-                                                <th class="text-left"><label for="NodeId"><localize key="FALM_VersionsManager.FilterByNodeId">Filter by node Id</localize></label></th>
-                                                <th class="text-left"><label for="NodeName"><localize key="FALM_VersionsManager.FilterByNodeName">Filter by node name</localize></label></th>
+                                            <tr>
+                                                <th class="text-left"><label for="search.NodeId"><localize key="FALM_VersionsManager.FilterByNodeId">Filter by node Id</localize></label></th>
+                                                <th class="text-left"><label for="search.NodeName"><localize key="FALM_VersionsManager.FilterByNodeName">Filter by node name</localize></label></th>
                                                 <th class="text-right"><label for="itemsPerPage"><localize key="FALM_VersionsManager.ItemsPerPage">Items per page:</localize></label></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="form-group" style="border: none; padding-top: 0; width: 100px;">
+                                                <td class="form-group" style="border: none; width: 100px;">
                                                     <input type="text" ng-model="search.NodeId" id="search.NodeId" class="form-control" style="width: 100px;" />
                                                 </td>
-                                                <td class="form-group" style="border: none; padding-top: 0; width: 300px;">
+                                                <td class="form-group" style="border: none; width: 300px;">
                                                     <input type="text" ng-model="search.NodeName" id="search.NodeName" class="form-control" style="width: 300px;" />
                                                 </td>
-                                                <td class="form-group text-right" style="border: none; padding-top: 0;">
+                                                <td class="form-group text-right" style="border: none;">
                                                     <select ng-model="pageSize" id="itemsPerPage" style="width: 100px;">
                                                         <option value="10">10</option>
                                                         <option value="50">50</option>

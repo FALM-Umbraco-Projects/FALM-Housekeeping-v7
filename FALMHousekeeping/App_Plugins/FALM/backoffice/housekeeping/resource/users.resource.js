@@ -4,13 +4,13 @@
         return {
             //this calls the Api Controller we setup earlier
             getAllUsers: function () {
-                return $http.get("FALMHousekeeping/HKUsersApi/GetAllUsers");
+                return $http.get("FALMHousekeeping/HkUsersApi/GetAllUsers");
             },
             //this calls the Api Controller and execute deleteSelectedUsers(listufusers) method
             deleteSelectedUsers: function (selectedUsers) {
                 return $http({
                     method: 'POST',
-                    url: 'FALMHousekeeping/HKUsersApi/PostDeleteSelectedUsers',
+                    url: 'FALMHousekeeping/HkUsersApi/PostDeleteSelectedUsers',
                     data: angular.toJson(selectedUsers)
                 });
             }

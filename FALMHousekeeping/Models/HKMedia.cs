@@ -1,5 +1,4 @@
-﻿// SYSTEM
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FALM.Housekeeping.Models
 {

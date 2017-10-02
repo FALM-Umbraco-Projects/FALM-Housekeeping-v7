@@ -8,9 +8,6 @@
     font-size: 28px !important;
     color: darkblue !important;
 }
-#falm-content .subtitle {
-
-}
 #falm-content .description {
     margin-top: 40px !important;
     margin-bottom: 20px !important;
@@ -76,20 +73,27 @@
 }
 
 /* TABLE VERSIONS */
-#falm-content #FHVersionsTable tbody tr {
+#falm-content #FHVersionsTable tbody tr,
+#falm-content #FHVersionFiltersTable tbody tr {
     font-size: 0.8em;
 }
 
-#falm-content #FHVersionsTable tbody td {
+#falm-content #FHVersionsTable tbody td,
+#falm-content #FHVersionFiltersTable tbody td {
     min-width: 20px;
 }
 
-#falm-content #FHVersionsTable thead th {
+#falm-content #FHVersionsTable thead th,
+#falm-content #FHVersionFiltersTable thead th {
     background-color: #f5f5f5;
 }
 
 #falm-content #FHVersionsTable thead th label {
     font-size: 1em;
+}
+
+#falm-content #FHVersionFiltersTable thead th label {
+    font-size: 0.9em;
 }
 
 /* PAGINATION */

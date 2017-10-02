@@ -1,28 +1,25 @@
-﻿// FALM
-using FALM.Housekeeping.Constants;
-using FALM.Housekeeping.Services;
-// SYSTEM
-using System;
+﻿using System;
 using System.Globalization;
 using System.Net.Http.Formatting;
 using System.Web;
-// UMBRACO
+using FALM.Housekeeping.Constants;
+using FALM.Housekeeping.Services;
 using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Models.Trees;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.Trees;
 
-namespace FALM.Housekeeping
+namespace FALM.Housekeeping.Trees
 {
     /// <summary>
-    /// Tree(HKConstants.Application.Alias, HKConstants.Tree.Alias, HKConstants.Tree.Title)
-    /// PluginController(HKConstants.Controller.Alias)
-    /// HKTreeController
+    /// Tree(HkConstants.Application.Alias, HkConstants.Tree.Alias, HkConstants.Tree.Title)
+    /// PluginController(HkConstants.Controller.Alias)
+    /// HkTreeController
     /// </summary>
-    [Tree(HKConstants.Application.Alias, HKConstants.Tree.Alias, HKConstants.Tree.Title)]
-    [PluginController(HKConstants.Controller.Alias)]
-    public class HKTreeController : TreeController
+    [Tree(HkConstants.Application.Alias, HkConstants.Tree.Alias, HkConstants.Tree.Title)]
+    [PluginController(HkConstants.Controller.Alias)]
+    public class HkTreeController : TreeController
     {
         /// <summary>
         /// GetTreeNodes(string id, FormDataCollection queryStrings)
@@ -41,10 +38,10 @@ namespace FALM.Housekeeping
             {
                 tree = new TreeNodeCollection
             {
-                CreateTreeNode("logs", "-1", queryStrings, textService.Localize("FALM/LogsManager.TreeSection", CultureInfo.CurrentCulture), "icon-list", true, FormDataCollectionExtensions.GetValue<string>(queryStrings, "application")),
-                CreateTreeNode("media", "-1", queryStrings, textService.Localize("FALM/MediaManager.TreeSection", CultureInfo.CurrentCulture), "icon-umb-media", true, FormDataCollectionExtensions.GetValue<string>(queryStrings, "application")),
-                CreateTreeNode("users", "-1", queryStrings, textService.Localize("FALM/UsersManager.TreeSection", CultureInfo.CurrentCulture), "icon-users", true, FormDataCollectionExtensions.GetValue<string>(queryStrings, "application")),
-                CreateTreeNode("versions", "-1", queryStrings, textService.Localize("FALM/VersionsManager.TreeSection", CultureInfo.CurrentCulture), "icon-books", true, FormDataCollectionExtensions.GetValue<string>(queryStrings, "application"))
+                CreateTreeNode("logs", "-1", queryStrings, textService.Localize("FALM/LogsManager.TreeSection", CultureInfo.CurrentCulture), "icon-list", true, queryStrings.GetValue<string>("application")),
+                CreateTreeNode("media", "-1", queryStrings, textService.Localize("FALM/MediaManager.TreeSection", CultureInfo.CurrentCulture), "icon-umb-media", true, queryStrings.GetValue<string>("application")),
+                CreateTreeNode("users", "-1", queryStrings, textService.Localize("FALM/UsersManager.TreeSection", CultureInfo.CurrentCulture), "icon-users", true, queryStrings.GetValue<string>("application")),
+                CreateTreeNode("versions", "-1", queryStrings, textService.Localize("FALM/VersionsManager.TreeSection", CultureInfo.CurrentCulture), "icon-books", true, queryStrings.GetValue<string>("application"))
             };
 
                 return tree;
@@ -56,7 +53,7 @@ namespace FALM.Housekeeping
                     case "logs": // check if we're rendering Logs node's children
                         tree = new TreeNodeCollection {
                             CreateTreeNode("logs-dbmanager", id, queryStrings, textService.Localize("FALM/LogsManager.TreeActionManagerDB", CultureInfo.CurrentCulture), "icon-diagnostics color-green", false),
-                            CreateTreeNode("logs-tlmanager", id, queryStrings, textService.Localize("FALM/LogsManager.TreeActionManagerTL", CultureInfo.CurrentCulture), "icon-folder", true, FormDataCollectionExtensions.GetValue<string>(queryStrings, "application"))
+                            CreateTreeNode("logs-tlmanager", id, queryStrings, textService.Localize("FALM/LogsManager.TreeActionManagerTL", CultureInfo.CurrentCulture), "icon-folder", true, queryStrings.GetValue<string>("application"))
                         };
                         break;
 
@@ -64,7 +61,7 @@ namespace FALM.Housekeeping
                         tree = new TreeNodeCollection();
 
                         // LogService
-                        HKLogsService logsService = new HKLogsService();
+                        HkLogsService logsService = new HkLogsService();
                         string currentMachineName = Environment.MachineName;
                         int iCount = 1;
 
@@ -79,7 +76,7 @@ namespace FALM.Housekeeping
                             }
 
                             string path = HttpUtility.UrlEncode(System.IO.Path.GetFileName(logFile.LogFileName));
-                            string traceLogRoutePath = FormDataCollectionExtensions.GetValue<string>(queryStrings, "application") + "/housekeeping/edittl/" + path;
+                            string traceLogRoutePath = queryStrings.GetValue<string>("application") + "/housekeeping/edittl/" + path;
 
                             tree.Add(CreateTreeNode(path, id, queryStrings, title, "icon-calendar-alt color-green", false, traceLogRoutePath));
 
@@ -88,7 +85,7 @@ namespace FALM.Housekeeping
                         break;
 
                     case "media": //check if we're rendering Media node's children
-                        var mediaPath = FormDataCollectionExtensions.GetValue<string>(queryStrings, "application") + "/" + this.TreeAlias + "/media-cleanup";
+                        var mediaPath = queryStrings.GetValue<string>("application") + "/" + this.TreeAlias + "/media-cleanup";
                         tree = new TreeNodeCollection {
                             CreateTreeNode("media-cleanup", id, queryStrings, textService.Localize("FALM/MediaManager.TreeActionCleanup", CultureInfo.CurrentCulture), "icon-delete color-red", false)
                         };

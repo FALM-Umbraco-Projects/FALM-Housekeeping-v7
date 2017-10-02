@@ -1,5 +1,4 @@
-﻿// SYSTEM
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace FALM.Housekeeping.Models
@@ -19,23 +18,23 @@ namespace FALM.Housekeeping.Models
     public class DBLogModel
     {
         /// <summary></summary>
-        public int      LogId       { get; set; }
+        public int LogId { get; set; }
         /// <summary></summary>
-        public int      UserId      { get; set; }
+        public int UserId { get; set; }
         /// <summary></summary>
-        public string   UserName    { get; set; }
+        public string UserName { get; set; }
         /// <summary></summary>
-        public string   UserLogin   { get; set; }
+        public string UserLogin { get; set; }
         /// <summary></summary>
-        public int      NodeId      { get; set; }
+        public int NodeId { get; set; }
         /// <summary></summary>
-        public string   NodeName    { get; set; }
+        public string NodeName { get; set; }
         /// <summary></summary>
-        public DateTime LogDate     { get; set; }
+        public DateTime LogDate { get; set; }
         /// <summary></summary>
-        public string   LogHeader   { get; set; }
+        public string LogHeader { get; set; }
         /// <summary></summary>
-        public string   LogComment  { get; set; }
+        public string LogComment { get; set; }
     }
 
     /// <summary>
@@ -53,11 +52,11 @@ namespace FALM.Housekeeping.Models
     public class TraceLogFileModel
     {
         /// <summary></summary>
-        public DateTime LogDate         { get; set; }
+        public DateTime LogDate { get; set; }
         /// <summary></summary>
-        public string   LogFileName     { get; set; }
+        public string LogFileName { get; set; }
         /// <summary></summary>
-        public string   LogMachineName  { get; set; }
+        public string LogMachineName { get; set; }
     }
 
     /// <summary>
@@ -71,20 +70,20 @@ namespace FALM.Housekeeping.Models
         // DateTime - Process/Domain/Thread - Type - Logger - Message
 
         /// <summary></summary>
-        public int      LogId       { get; set; }
+        public int LogId { get; set; }
         /// <summary></summary>
-        public DateTime LogDate     { get; set; }
+        public DateTime LogDate { get; set; }
         /// <summary></summary>
-        public string   LogProcess  { get; set; }
+        public string LogProcess { get; set; }
         /// <summary></summary>
-        public string   LogDomain   { get; set; }
+        public string LogDomain { get; set; }
         /// <summary></summary>
-        public string   LogThread   { get; set; }
+        public string LogThread { get; set; }
         /// <summary></summary>
-        public string   LogLevel    { get; set; }
+        public string LogLevel { get; set; }
         /// <summary></summary>
-        public string   LogLogger   { get; set; }
+        public string LogLogger { get; set; }
         /// <summary></summary>
-        public string   LogMessage  { get; set; }
+        public string LogMessage { get; set; }
     }
 }

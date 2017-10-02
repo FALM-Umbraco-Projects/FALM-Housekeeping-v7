@@ -1,13 +1,12 @@
-﻿// FALM
-using FALM.Housekeeping.Helpers;
-using FALM.Housekeeping.Models;
-//SYSTEM
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Web;
 using System.Web.Mvc;
-//UMBRACO
+using FALM.Housekeeping.Helpers;
+using FALM.Housekeeping.Models;
+using umbraco;
 using Umbraco.Core;
 using Umbraco.Core.Configuration;
 using Umbraco.Core.Logging;
@@ -20,19 +19,19 @@ namespace FALM.Housekeeping.Controllers
 {
     /// <summary>
     /// PluginController("FALMHousekeeping")
-    /// MediaApiController
+    /// HkMediaApiController
     /// </summary>
     [PluginController("FALMHousekeeping")]
-    public class HKMediaApiController : UmbracoApiController
+    public class HkMediaApiController : UmbracoApiController
     {
         /// <summary></summary>
-        protected IMediaService mediaService = ApplicationContext.Current.Services.MediaService;
+        protected IMediaService MediaService = ApplicationContext.Current.Services.MediaService;
         /// <summary></summary>
-        protected HKMediaModel mediaModel = new HKMediaModel();
+        protected HKMediaModel MediaModel = new HKMediaModel();
         /// <summary></summary>
-        protected List<MediaWarningModel> listMediaWarnings = new List<MediaWarningModel>();
+        protected List<MediaWarningModel> ListMediaWarnings = new List<MediaWarningModel>();
         /// <summary></summary>
-        protected List<MediaToDeleteModel> listMediaToDelete = new List<MediaToDeleteModel>();
+        protected List<MediaToDeleteModel> ListMediaToDelete = new List<MediaToDeleteModel>();
 
         /// <summary>
         /// Show media to delete
@@ -41,82 +40,77 @@ namespace FALM.Housekeeping.Controllers
         [HttpGet]
         public HKMediaModel GetMediaToDelete(string userLocale)
         {
-            listMediaWarnings = new List<MediaWarningModel>();
-            listMediaToDelete = new List<MediaToDeleteModel>();
+            ListMediaWarnings = new List<MediaWarningModel>();
+            ListMediaToDelete = new List<MediaToDeleteModel>();
 
             var currentUserCultureInfo = CultureInfo.GetCultureInfo(userLocale);
 
             try
             {
                 // Find all media to be deleted and relative warning messages
-                string _filePath = System.Web.HttpContext.Current.Server.MapPath(umbraco.GlobalSettings.Path + "/../media/");
-            
-                // Check if the files are stored in the /media folder root with a unique ID prefixed to the filename
-			    if (UmbracoConfig.For.UmbracoSettings().Content.UploadAllowDirectories)
-			    {
-                    var strSQLGetMedia   = "SELECT SUBSTRING(cmsPropertyData.dataNvarchar, 8, CHARINDEX('/', cmsPropertyData.dataNvarchar, 8) - 8) AS pId ";
-                    strSQLGetMedia      += "FROM cmsPropertyData INNER JOIN cmsPropertyType ON cmsPropertyData.propertytypeid = cmsPropertyType.id ";
-                    strSQLGetMedia      += "WHERE (dataNvarchar LIKE '%media/%') AND (cmsPropertyType.Alias = 'umbracoFile') ";
-                    strSQLGetMedia      += "UNION ";
-                    strSQLGetMedia      += "SELECT SUBSTRING(";
-	                strSQLGetMedia      += "    SUBSTRING(";
-		            strSQLGetMedia      += "        cmsPropertyData.dataNtext, ";
-		            strSQLGetMedia      += "        CHARINDEX('/media/', cmsPropertyData.dataNtext) + 7, ";
-		            strSQLGetMedia      += "        LEN(RTRIM(CAST(cmsPropertyData.dataNtext as NVARCHAR(4000))))";
-	                strSQLGetMedia      += "    ), ";
-	                strSQLGetMedia      += "    0, ";
-	                strSQLGetMedia      += "    CHARINDEX('/', ";
-		            strSQLGetMedia      += "        SUBSTRING(";
-			        strSQLGetMedia      += "            cmsPropertyData.dataNtext, ";
-			        strSQLGetMedia      += "            CHARINDEX('/media/', cmsPropertyData.dataNtext) + 7, ";
-			        strSQLGetMedia      += "            LEN(RTRIM(CAST(cmsPropertyData.dataNtext as NVARCHAR(4000))))";
-		            strSQLGetMedia      += "        )";
-	                strSQLGetMedia      += "    )";
-                    strSQLGetMedia      += ")";
-                    strSQLGetMedia      += "FROM cmsPropertyData INNER JOIN cmsPropertyType ON cmsPropertyData.propertytypeid = cmsPropertyType.id ";
-                    strSQLGetMedia      += "WHERE (dataNtext LIKE '%media/%') AND (cmsPropertyType.Alias = 'umbracoFile') ";
-                    strSQLGetMedia      += "ORDER BY pId";
-				
-                    // Show orphan directories
-                    using (var db = HKDbHelper.ResolveDatabase())
-                    {
-                        MediaWarningModel mediaWarningModel = new MediaWarningModel();
-                        MediaToDeleteModel mediaToDeleteModel = new MediaToDeleteModel();
+                var filePath = HttpContext.Current.Server.MapPath(GlobalSettings.Path + "/../media/");
 
-                        List<MediaPIdModel> allMediaPId = db.Fetch<MediaPIdModel>(strSQLGetMedia);
-                        int pId;
+                // Check if the files are stored in the /media folder root with a unique ID prefixed to the filename
+                if (UmbracoConfig.For.UmbracoSettings().Content.UploadAllowDirectories)
+                {
+                    var strSqlGetMedia = "SELECT SUBSTRING(cmsPropertyData.dataNvarchar, 8, CHARINDEX('/', cmsPropertyData.dataNvarchar, 8) - 8) AS pId ";
+                    strSqlGetMedia += "FROM cmsPropertyData INNER JOIN cmsPropertyType ON cmsPropertyData.propertytypeid = cmsPropertyType.id ";
+                    strSqlGetMedia += "WHERE (dataNvarchar LIKE '%media/%') AND (cmsPropertyType.Alias = 'umbracoFile') ";
+                    strSqlGetMedia += "UNION ";
+                    strSqlGetMedia += "SELECT SUBSTRING(";
+                    strSqlGetMedia += "    SUBSTRING(";
+                    strSqlGetMedia += "        cmsPropertyData.dataNtext, ";
+                    strSqlGetMedia += "        CHARINDEX('/media/', cmsPropertyData.dataNtext) + 7, ";
+                    strSqlGetMedia += "        LEN(RTRIM(CAST(cmsPropertyData.dataNtext as NVARCHAR(4000))))";
+                    strSqlGetMedia += "    ), ";
+                    strSqlGetMedia += "    0, ";
+                    strSqlGetMedia += "    CHARINDEX('/', ";
+                    strSqlGetMedia += "        SUBSTRING(";
+                    strSqlGetMedia += "            cmsPropertyData.dataNtext, ";
+                    strSqlGetMedia += "            CHARINDEX('/media/', cmsPropertyData.dataNtext) + 7, ";
+                    strSqlGetMedia += "            LEN(RTRIM(CAST(cmsPropertyData.dataNtext as NVARCHAR(4000))))";
+                    strSqlGetMedia += "        )";
+                    strSqlGetMedia += "    )";
+                    strSqlGetMedia += ")";
+                    strSqlGetMedia += "FROM cmsPropertyData INNER JOIN cmsPropertyType ON cmsPropertyData.propertytypeid = cmsPropertyType.id ";
+                    strSqlGetMedia += "WHERE (dataNtext LIKE '%media/%') AND (cmsPropertyType.Alias = 'umbracoFile') ";
+                    strSqlGetMedia += "ORDER BY pId";
+
+                    // Show orphan directories
+                    using (var db = HkDbHelper.ResolveDatabase())
+                    {
+                        var allMediaPId = db.Fetch<MediaPIdModel>(strSqlGetMedia);
 
                         // Create an array with the list of media directories
-                        DirectoryInfo dir = new DirectoryInfo(_filePath);
-                        DirectoryInfo[] subDirs = dir.GetDirectories();
-                            int iDirectoryName = 0;
-                            List<int> mediaMatched = new List<int>();
-                            List<string> mediaToSkip = new List<string>();
+                        var dir = new DirectoryInfo(filePath);
+                        var subDirs = dir.GetDirectories();
 
-				            // Sort Directories by name
-				            Array.Sort<DirectoryInfo>(subDirs, new Comparison<DirectoryInfo>(delegate(DirectoryInfo d1, DirectoryInfo d2)
-				            {
-                                int n1, n2;
+                        var mediaToSkip = new List<string>();
 
-                                if (int.TryParse(d1.Name, out n1) && int.TryParse(d2.Name, out n2))
-                                {
-                                    return n1 - n2;
-                                }
-                                else
-                                {
-                                    return string.Compare(d1.Name, d2.Name);
-                                }
-                            }));
+                        // Sort Directories by name
+                        Array.Sort(subDirs, delegate (DirectoryInfo d1, DirectoryInfo d2)
+                        {
+                            int n1, n2;
 
-                            foreach (DirectoryInfo subDir in subDirs)
+                            if (int.TryParse(d1.Name, out n1) && int.TryParse(d2.Name, out n2))
                             {
-                                iDirectoryName = 0;
+                                return n1 - n2;
+                            }
+                            return string.CompareOrdinal(d1.Name, d2.Name);
+                        });
 
-                                // Do check only if the folder have a number as a name (STANDARD FOLDER)
-                                if (int.TryParse(subDir.Name, out iDirectoryName))
-                                {
-                                    bool mediaAlreadyAddedToDeleteList = false;
+                        foreach (var subDir in subDirs)
+                        {
+                            // Do check only if the folder have a number as a name (STANDARD FOLDER)
+                            MediaWarningModel mediaWarningModel;
 
+                            int iDirectoryName, pId;
+
+                            if (int.TryParse(subDir.Name, out iDirectoryName))
+                            {
+                                var mediaAlreadyAddedToDeleteList = false;
+
+                                MediaToDeleteModel mediaToDeleteModel;
                                 if (allMediaPId.Count > 0)
                                 {
 
@@ -131,7 +125,7 @@ namespace FALM.Housekeeping.Controllers
                                                     mediaToSkip.Add(subDir.Name);
                                                     break;
                                                 }
-                                                else if (iDirectoryName < pId)
+                                                if (iDirectoryName < pId)
                                                 {
                                                     // Check if the folder is used by data type that not store image informations (like Image Cropper)
                                                     int mediaCount = 0;
@@ -150,7 +144,7 @@ namespace FALM.Housekeeping.Controllers
                                                             Entry = subDir.Name,
                                                             Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Contains", currentUserCultureInfo) + " " + subDir.GetFileSystemInfos().Length + " " + Services.TextService.Localize("FALM/MediaManager.Cleanup.Items", currentUserCultureInfo)
                                                         };
-                                                        listMediaToDelete.Add(mediaToDeleteModel);
+                                                        ListMediaToDelete.Add(mediaToDeleteModel);
                                                         mediaToSkip.Add(subDir.Name);
                                                         mediaAlreadyAddedToDeleteList = true;
                                                     }
@@ -163,7 +157,7 @@ namespace FALM.Housekeeping.Controllers
                                                                 Entry = subDir.Name,
                                                                 Message = "###" + Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderFoundInFileSystemAndUploadedTroughDatatype", currentUserCultureInfo)
                                                             };
-                                                            listMediaWarnings.Add(mediaWarningModel);
+                                                            ListMediaWarnings.Add(mediaWarningModel);
                                                             mediaToSkip.Add(subDir.Name);
                                                             break;
                                                         }
@@ -179,24 +173,24 @@ namespace FALM.Housekeeping.Controllers
                                                 Entry = pId.ToString(),
                                                 Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.DBNotMatchFormat", currentUserCultureInfo) + " '/media/&lt;propertyid&gt;/'"
                                             };
-                                            listMediaWarnings.Add(mediaWarningModel);
+                                            ListMediaWarnings.Add(mediaWarningModel);
                                         }
                                     }
 
-                                    }
+                                }
 
-                                    if (!mediaToSkip.Contains(subDir.Name))
+                                if (!mediaToSkip.Contains(subDir.Name))
+                                {
+                                    // Check if the folder is used by data type that not store image informations (like Image Cropper)
+                                    var mediaCount = 0;
+
+                                    mediaCount += GetCountFromCmsContentXml(db, subDir.Name);
+
+                                    mediaCount += GetCountFromCmsPropertyData(db, subDir.Name);
+
+                                    // If the media is not used...it is deletable
+                                    if (mediaCount == 0)
                                     {
-                                        // Check if the folder is used by data type that not store image informations (like Image Cropper)
-                                        int mediaCount = 0;
-
-                                        mediaCount += GetCountFromCmsContentXml(db, subDir.Name);
-
-                                        mediaCount += GetCountFromCmsPropertyData(db, subDir.Name);
-
-                                        // If the media is not used...it is deletable
-                                        if (mediaCount == 0)
-                                        {
                                         // MEDIA FOUND IN FILE SYSTEM BUT NO CORRISPONDATION INTO DB OR BY DATATYPE UPLOAD
                                         // ### DELETEBLE ###
                                         mediaToDeleteModel = new MediaToDeleteModel
@@ -204,31 +198,31 @@ namespace FALM.Housekeeping.Controllers
                                             Entry = subDir.Name,
                                             Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Contains", currentUserCultureInfo) + " " + subDir.GetFileSystemInfos().Length + " " + Services.TextService.Localize("FALM/MediaManager.Cleanup.Items", currentUserCultureInfo)
                                         };
-                                        listMediaToDelete.Add(mediaToDeleteModel);
-                                        }
-                                        else
-                                        {
+                                        ListMediaToDelete.Add(mediaToDeleteModel);
+                                    }
+                                    else
+                                    {
                                         // MEDIA FOUND IN FILE SYSTEM AND UPLOADED TROUGH DATATYPE
                                         mediaWarningModel = new MediaWarningModel
                                         {
                                             Entry = subDir.Name,
                                             Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FoundInFileSystemAndUploadedTroughDatatype", currentUserCultureInfo)
                                         };
-                                        listMediaWarnings.Add(mediaWarningModel);
-                                        }
+                                        ListMediaWarnings.Add(mediaWarningModel);
                                     }
                                 }
-                                else
-                                {
+                            }
+                            else
+                            {
                                 // MEDIA IGNORED - NON STANDARD FOLDER
                                 mediaWarningModel = new MediaWarningModel
                                 {
                                     Entry = subDir.Name,
                                     Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderNameNotNumber", currentUserCultureInfo)
                                 };
-                                listMediaWarnings.Add(mediaWarningModel);
-                                }
+                                ListMediaWarnings.Add(mediaWarningModel);
                             }
+                        }
                         //}
                         //else
                         //{
@@ -237,16 +231,16 @@ namespace FALM.Housekeeping.Controllers
                     }
                 }
 
-                mediaModel.ListMediaToDelete = listMediaToDelete;
-                mediaModel.ListMediaWarnings = listMediaWarnings;
+                MediaModel.ListMediaToDelete = ListMediaToDelete;
+                MediaModel.ListMediaWarnings = ListMediaWarnings;
             }
             catch (Exception ex)
             {
                 LogHelper.Error<Exception>(ex.Message, ex);
-                return mediaModel;
+                return MediaModel;
             }
 
-            return mediaModel;
+            return MediaModel;
         }
 
         /// <summary>
@@ -257,47 +251,43 @@ namespace FALM.Housekeeping.Controllers
         [HttpPost]
         public HKMediaModel PostDeleteMediaOrphans(List<MediaToDeleteModel> mediaOrphansToDelete)
         {
-            string _filePath = System.Web.HttpContext.Current.Server.MapPath(umbraco.GlobalSettings.Path + "/../media/");
-			string _dirPathToDelete = string.Empty;
+            string filePath = HttpContext.Current.Server.MapPath(GlobalSettings.Path + "/../media/");
 
-            listMediaWarnings = new List<MediaWarningModel>();
-            listMediaToDelete = new List<MediaToDeleteModel>();
-
-            MediaWarningModel mediaWarningModel = new MediaWarningModel();
-            MediaToDeleteModel mediaDeletedModel = new MediaToDeleteModel();
+            ListMediaWarnings = new List<MediaWarningModel>();
+            ListMediaToDelete = new List<MediaToDeleteModel>();
 
             foreach (MediaToDeleteModel mediaOrphan in mediaOrphansToDelete)
             {
-                _dirPathToDelete = _filePath + mediaOrphan.Entry + "\\";
+                var dirPathToDelete = filePath + mediaOrphan.Entry + "\\";
 
-                if (Directory.Exists(_dirPathToDelete))
+                if (Directory.Exists(dirPathToDelete))
                 {
-                    Directory.Delete(_dirPathToDelete, true);
+                    Directory.Delete(dirPathToDelete, true);
 
                     // ### MEDIA DELETED ###
-                    mediaDeletedModel = new MediaToDeleteModel
+                    var mediaDeletedModel = new MediaToDeleteModel
                     {
                         Entry = mediaOrphan.Entry,
                         Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.Deleted")
                     };
-                    listMediaToDelete.Add(mediaDeletedModel);
+                    ListMediaToDelete.Add(mediaDeletedModel);
                 }
                 else
                 {
                     // MEDIA IGNORED - NON STANDARD FOLDER
-                    mediaWarningModel = new MediaWarningModel
+                    var mediaWarningModel = new MediaWarningModel
                     {
                         Entry = mediaOrphan.Entry,
                         Message = Services.TextService.Localize("FALM/MediaManager.Cleanup.FolderNotFound")
                     };
-                    listMediaWarnings.Add(mediaWarningModel);
+                    ListMediaWarnings.Add(mediaWarningModel);
                 }
             }
 
-            mediaModel.ListMediaToDelete = listMediaToDelete;
-            mediaModel.ListMediaWarnings = listMediaWarnings;
+            MediaModel.ListMediaToDelete = ListMediaToDelete;
+            MediaModel.ListMediaWarnings = ListMediaWarnings;
 
-            return mediaModel;
+            return MediaModel;
         }
 
         /// <summary>
@@ -308,11 +298,11 @@ namespace FALM.Housekeeping.Controllers
         /// <returns>int</returns>
         protected int GetCountFromCmsContentXml(Database db, string subDirName)
         {
-            var strSQLCheckMedia = "SELECT COUNT(nodeId) As Count ";
-            strSQLCheckMedia += "FROM cmsContentXml ";
-            strSQLCheckMedia += "WHERE xml LIKE '%/media/" + subDirName + "/%' ";
+            var strSqlCheckMedia = "SELECT COUNT(nodeId) As Count ";
+            strSqlCheckMedia += "FROM cmsContentXml ";
+            strSqlCheckMedia += "WHERE xml LIKE '%/media/" + subDirName + "/%' ";
 
-            List<int> countMediaInCmsContentXml = db.Fetch<int>(strSQLCheckMedia);
+            List<int> countMediaInCmsContentXml = db.Fetch<int>(strSqlCheckMedia);
             if (countMediaInCmsContentXml.Count > 0)
             {
                 return countMediaInCmsContentXml[0];
@@ -329,12 +319,12 @@ namespace FALM.Housekeeping.Controllers
         /// <returns>int</returns>
         protected int GetCountFromCmsPropertyData(Database db, string subDirName)
         {
-            var strSQLCheckMedia = "SELECT COUNT(id) As Count ";
-            strSQLCheckMedia += "FROM cmsPropertyData ";
-            strSQLCheckMedia += "WHERE [dataNtext] LIKE '%/media/" + subDirName + "/%' ";
-            strSQLCheckMedia += "AND [dataNvarchar] LIKE '%/media/" + subDirName + "/%' ";
+            var strSqlCheckMedia = "SELECT COUNT(id) As Count ";
+            strSqlCheckMedia += "FROM cmsPropertyData ";
+            strSqlCheckMedia += "WHERE [dataNtext] LIKE '%/media/" + subDirName + "/%' ";
+            strSqlCheckMedia += "AND [dataNvarchar] LIKE '%/media/" + subDirName + "/%' ";
 
-            List<int> countMediaInCmsPropertyData = db.Fetch<int>(strSQLCheckMedia);
+            List<int> countMediaInCmsPropertyData = db.Fetch<int>(strSqlCheckMedia);
             if (countMediaInCmsPropertyData.Count > 0)
             {
                 return countMediaInCmsPropertyData[0];

@@ -1,5 +1,4 @@
-﻿// SYSTEM
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace FALM.Housekeeping.Models
@@ -19,15 +18,15 @@ namespace FALM.Housekeeping.Models
     public class CurrentPublishedVersionModel
     {
         /// <summary></summary>
-        public int          NodeId                      { get; set; }
+        public int NodeId { get; set; }
         /// <summary></summary>
-        public string       NodeName                    { get; set; }
+        public string NodeName { get; set; }
         /// <summary></summary>
-        public string       NodeUser                    { get; set; }
+        public string NodeUser { get; set; }
         /// <summary></summary>
-        public DateTime     PublishedDate               { get; set; }
+        public DateTime PublishedDate { get; set; }
         /// <summary></summary>
-        public int          VersionsCount               { get; set; }
+        public int VersionsCount { get; set; }
     }
 
     /// <summary>
@@ -45,13 +44,13 @@ namespace FALM.Housekeeping.Models
     public class HistoryVersionModel
     {
         /// <summary></summary>
-        public string       VersionGUID                 { get; set; }
+        public string VersionGuid { get; set; }
         /// <summary></summary>
-        public DateTime     VersionDate                 { get; set; }
+        public DateTime VersionDate { get; set; }
         /// <summary></summary>
-        public int          Published                   { get; set; }
+        public int Published { get; set; }
         /// <summary></summary>
-        public int          Newest                      { get; set; }
+        public int Newest { get; set; }
     }
 
     /// <summary>
@@ -60,8 +59,8 @@ namespace FALM.Housekeeping.Models
     public class CleanupResultModel
     {
         /// <summary></summary>
-        public string       Type                        { get; set; }
+        public string Type { get; set; }
         /// <summary></summary>
-        public int          Result                      { get; set; }
+        public int Result { get; set; }
     }
 }
