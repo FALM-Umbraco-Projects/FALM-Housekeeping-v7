@@ -1,11 +1,11 @@
 ﻿<umb-panel ng-controller="FALMHousekeepingVersionsManagerDetailsController">
     <div class="umb-panel-header" id="falm-header">
-        <h3 class="title"><localize key="FALM_VersionsManager.Dialog-Title">Version details</localize> (<strong>Id: {{ dialogData.currentPublishedVersionItem.NodeId }}</strong>)</h3>
+        <h3 class="title"><localize key="FALM_VersionsManager.Dialog-Title">Version details</localize> (<span>Id: {{ dialogData.currentPublishedVersionItem.NodeId }}</span>)</h3>
     </div>
     <div class="umb-panel-body with-header with-footer" id="falm-content">
         <div ng-hide="!dialogData.showCleanupForm" class="loading">
-            <table id="FHDetailsTable" class="table" style="">
-                <tbody style="font-size: 12px;">
+            <table id="FHDetailsTable" class="table">
+                <tbody>
                     <tr>
                         <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_VersionsManager.Dialog-NodeName">Node name:</localize></th>
                         <td style="padding: 15px; border-top: 0;">{{ dialogData.currentPublishedVersionItem.NodeName }}</td>
