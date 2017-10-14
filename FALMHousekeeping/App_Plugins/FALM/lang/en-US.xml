@@ -156,7 +156,7 @@ Please try again or contact the author of the package with the details of the er
     <key alias="VersionsManager.SubTitle"><![CDATA[ ]]></key>
     <key alias="VersionsManager.Description"><![CDATA[With this tool you can manage the Umbraco history versions.]]></key>
     <key alias="VersionsManager.SearchInProgress"><![CDATA[Search in progress. Please wait until you see results]]></key>
-    <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions panel]]></key>
+    <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions]]></key>
     <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filter by node Id]]></key>
     <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filter by node name]]></key>
     <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filter by date range (from)]]></key>
