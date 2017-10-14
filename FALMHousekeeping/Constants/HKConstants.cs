@@ -15,7 +15,7 @@
             /// <summary>Alias of the Application</summary>
             public const string Alias = "FALM";
             /// <summary>Icon of the Application</summary>
-            public const string Icon = "icon-speed-gauge color-yellow";
+            public const string Icon = "icon-speed-gauge";
             /// <summary>Title of the Application</summary>
             public const string Title = "F.A.L.M. Housekeeping";
         }
