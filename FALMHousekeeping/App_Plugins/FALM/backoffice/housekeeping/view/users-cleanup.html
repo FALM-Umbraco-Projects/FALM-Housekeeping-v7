@@ -13,16 +13,16 @@
         </umb-header>
         <umb-content id="falm-content">
             <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
-                <h2 class="title"><localize key="FALM_UsersManager.Title">Users Manager</localize> - <localize key="FALM_UsersManager.Cleanup.SubTitle">Cleanup</localize></h2>
+                <h3 class="title"><localize key="FALM_UsersManager.Title">Users Manager</localize> - <localize key="FALM_UsersManager.Cleanup.SubTitle">Cleanup</localize></h3>
                 <div class="description">
                     <localize key="FALM_UsersManager.Cleanup.Description">With this tool you can delete one or more users</localize>
                 </div>
                 <div ng-switch="id">
                     <div ng-hide="!users.length" class="userForm">
                         <form id="deleteUsersForm" ng-submit="deleteSelectedUsers(users)" role="form">
-                            <div class="panel panel-primary">
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize>
+                                    <span class="bold"><localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize></span>
                                 </div>
                                 <div class="panel-body">
                                     <p><localize key="FALM_UsersManager.Cleanup.UsersPanelDescription">The following users can be deleted</localize></p>
@@ -61,9 +61,9 @@
                     </div>
 
                     <div ng-hide="users.length" class="noUserToDelete">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
-                                <localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize>
+                                <span class="bold"><localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize></span>
                             </div>
                             <div class="panel-body">
                                 <p><localize key="FALM_UsersManager.Cleanup.NoUsersToDelete">There are no users to delete.</localize></p>

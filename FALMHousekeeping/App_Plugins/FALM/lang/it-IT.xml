@@ -13,7 +13,7 @@
     <key alias="Dashboard.VersionHistory"><![CDATA[<p><span class="title">Version History</span></p><p class="text">v7.6.0.0 - For Umbraco v7.5+</p><p class="text">v7.0.0.1 - For Umbraco v7+</p><p class="text">v6.1.3.0 - For Umbraco v6 to v7.2</p><p class="text">v4.11.0.2 - For Umbraco v4.8 to v4.11</p><p class="text">v4.5.0.1  - For Umbraco v4.5 to v4.7.2</p><p class="text">v1.1.0.0  - For Umbraco v3 to v4.0</p>]]></key>
 
     <!-- LOGS MANAGER -->
-    <key alias="LogsManager.TreeSection"><![CDATA[LOG]]></key>
+    <key alias="LogsManager.TreeSection"><![CDATA[Log]]></key>
     <key alias="LogsManager.TreeActionManagerDB"><![CDATA[Eventi sul DB]]></key>
     <key alias="LogsManager.TreeActionManagerTL"><![CDATA[Trace Log]]></key>
     <key alias="LogsManager.TreeActionManagerTL.Today"><![CDATA[Oggi]]></key>
@@ -87,7 +87,7 @@ Sei sicuro di voler proseguire con la cancellazione?]]></key>
 Si prega di riprovare o di contattare l'autore del package indicando i dettagli dell'errore."]]></key>
     
     <!-- MEDIA MANAGER -->
-    <key alias="MediaManager.TreeSection"><![CDATA[MEDIA]]></key>
+    <key alias="MediaManager.TreeSection"><![CDATA[Media]]></key>
     <key alias="MediaManager.TreeActionCleanup"><![CDATA[Pulizia del File System]]></key>
     <key alias="MediaManager.Title"><![CDATA[Gestione Cartelle Media (File System)]]></key>
     <key alias="MediaManager.Cleanup.SubTitle"><![CDATA[ ]]></key>
@@ -121,7 +121,7 @@ Si prega di riprovare oppure contattare l'autore indicando i dettagli dell'error
     <key alias="MediaManager.Cleanup.FooterMessage"><![CDATA[ ]]></key>
 
     <!-- USERS MANAGER -->
-    <key alias="UsersManager.TreeSection"><![CDATA[UTENTI]]></key>
+    <key alias="UsersManager.TreeSection"><![CDATA[Utenti]]></key>
     <key alias="UsersManager.TreeActionCleanup"><![CDATA[Cancellazione utenti]]></key>
     <key alias="UsersManager.Title"><![CDATA[Gestione Utenti]]></key>
     <key alias="UsersManager.Cleanup.UsersPanelTitle"><![CDATA[Utenti]]></key>
@@ -149,7 +149,7 @@ Si prega di riprovare o di contattare l'autore del package indicando i dettagli 
     <key alias="UsersManager.User.UserType"><![CDATA[Tipo di utente]]></key>
 
     <!-- VERSIONS MANAGER -->
-    <key alias="VersionsManager.TreeSection"><![CDATA[VERSIONI]]></key>
+    <key alias="VersionsManager.TreeSection"><![CDATA[Versioni]]></key>
     <key alias="VersionsManager.TreeActionManager"><![CDATA[Gestione delle versioni]]></key>
     <key alias="VersionsManager.Title"><![CDATA[Gestione Versioni]]></key>
     <key alias="VersionsManager.SubTitle"><![CDATA[ ]]></key>

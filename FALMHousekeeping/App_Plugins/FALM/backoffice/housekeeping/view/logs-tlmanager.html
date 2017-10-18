@@ -13,7 +13,7 @@
         </umb-header>
         <umb-content id="falm-content">
             <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
-                <h2 class="title"><localize key="FALM_LogsManager.Title_TL">Umbraco Logs Manager (Trace Log)</localize></h2>
+                <h3 class="title"><localize key="FALM_LogsManager.Title_TL">Umbraco Logs Manager (Trace Log)</localize></h3>
                 <div class="description">
                     <localize key="FALM_LogsManager.Description_TL">With this tool you can view the Umbraco Trace Logs events</localize>
                 </div>
@@ -24,7 +24,7 @@
                             <umb-load-indicator></umb-load-indicator>
                         </div>
                         
-                        <div ng-hide="!logs.ListTraceLogs.length" class="panel panel-primary">
+                        <div ng-hide="!logs.ListTraceLogs.length" class="panel panel-default">
                             <div class="panel-heading">
                                 <localize key="FALM_LogsManager.TraceLogsPanelTitle">Trace Log</localize> <strong><i>"{{ id }}"</i></strong> <localize key="FALM_LogsManager.Contains">contains</localize> <span class="badge">{{ filteredLogs.length }}</span> <localize key="FALM_LogsManager.Events">events</localize>
                             </div>

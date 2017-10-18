@@ -1,16 +1,8 @@
 ﻿/*##################################*/
 /* F.A.L.M. Housekeeping Stylesheet */
 /*##################################*/
-#falm-header h3.title {
-    color: darkblue !important;
-}
-#falm-content h2.title {
-    font-size: 28px !important;
-    color: darkblue !important;
-}
-#falm-content .description {
-    margin-top: 40px !important;
-    margin-bottom: 20px !important;
+#falm-content .panel {
+    margin-top: 20px;
 }
 #falm-content .infoBox {
     margin-top: 40px !important;
@@ -18,11 +10,6 @@
 }
 #falm-content .infoBox .title {
     font-weight: bold;
-    font-style: italic;
-    border-bottom: double;
-}
-#falm-content .infoBox .text {
-    font-size: 12px;
 }
 #falm-content #infoTable {
     margin-top: 30px;
@@ -53,9 +40,6 @@
 }
 
 /* TABLE LOG */
-#falm-content #FHLogTable tbody tr {
-    font-size: 0.8em;
-}
 #falm-content #FHLogTable tbody td {
     min-width: 20px;
 }
@@ -73,11 +57,6 @@
 }
 
 /* TABLE VERSIONS */
-#falm-content #FHVersionsTable tbody tr,
-#falm-content #FHVersionFiltersTable tbody tr {
-    font-size: 0.8em;
-}
-
 #falm-content #FHVersionsTable tbody td,
 #falm-content #FHVersionFiltersTable tbody td {
     min-width: 20px;
@@ -88,18 +67,9 @@
     background-color: #f5f5f5;
 }
 
-#falm-content #FHVersionsTable thead th label {
-    font-size: 1em;
-}
-
-#falm-content #FHVersionFiltersTable thead th label {
-    font-size: 0.9em;
-}
-
 /* PAGINATION */
 #falm-content .pagination-total-pages {
     float: right;
-    color: #337ab7;
     font-weight: bold;
     margin: 30px 0;
 }

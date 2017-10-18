@@ -13,7 +13,7 @@
         </umb-header>
         <umb-content id="falm-content">
             <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
-                <h2 class="title"><localize key="FALM_MediaManager.Title">Media Folders Manager (File System)</localize></h2>
+                <h3 class="title"><localize key="FALM_MediaManager.Title">Media Folders Manager (File System)</localize></h3>
                 <div class="description">
                     <localize key="FALM_MediaManager.Cleanup.Description">With this tool you can delete file system folders under '/media' which have no entry in the DB (orphans).</localize>
                 </div>
@@ -26,9 +26,9 @@
                         </div>
                         
                         <div ng-hide="!media.ListMediaWarnings.length" class="mediaWarningsForm">
-                            <div class="panel panel-primary">
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize>
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
                                 </div>
                                 <div class="panel-body">
                                     <div><localize key="FALM_MediaManager.Cleanup.WarningsPanelDescription">The following folders will not be deleted</localize></div>
@@ -53,7 +53,7 @@
                         <div ng-hide="!media.ListMediaToDelete.length" class="mediaToDeleteForm">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
-                                    <localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize>
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
                                 </div>
                                 <div class="panel-body">
                                     <div><localize key="FALM_MediaManager.Cleanup.OrphansPanelDescription">The following folders can be deleted</localize></div>
@@ -88,7 +88,7 @@
                         <div ng-hide="!showNoMediaOrphans" class="noMediaToDelete">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
-                                    <localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize>
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
                                 </div>
                                 <div class="panel-body">
                                     <p><localize key="FALM_MediaManager.Cleanup.NoMediaToDelete">There are no media to delete.</localize></p>
@@ -110,9 +110,9 @@
 
                         
                         <div ng-hide="!media.ListMediaWarnings.length" class="mediaWarningsForm">
-                            <div class="panel panel-primary">
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize>
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
                                 </div>
                                 <div class="panel-body">
                                     <div><localize key="FALM_MediaManager.Cleanup.WarningsPanelDescriptionResults">The following folders haven't been deleted</localize></div>
@@ -137,7 +137,7 @@
                         <div ng-hide="!media.ListMediaToDelete.length" class="mediaToDeleteForm">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
-                                    <localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">File System Cleanup</localize>
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">File System Cleanup</localize></span>
                                 </div>
                                 <div class="panel-body">
                                     <div><localize key="FALM_MediaManager.Cleanup.OrphansPanelDescriptionResults">The following folders have been deleted</localize></div>

@@ -4,10 +4,10 @@
     </div>
     <div class="umb-panel-body with-header with-footer" id="falm-content">
         <div ng-hide="!dialogData.showCleanupForm" class="loading">
-            <h5>
+            <p>
                 <localize key="FALM_VersionsManager.CleanupByCount.Dialog-Description">With this tool you can cleanup the version history, keeping a given number of versions for each content node.<br />Please note that Umbraco requires each node to have at least 2 versions (the currently published and the newest). These versions will never be deleted.</localize>
-            </h5>
-        
+            </p>
+            
             <form id="versionsCleanupByCount" ng-submit="deleteVersionsByCount(dialogData.versionsToKeep)" class="form-inline" style="margin: 0 10px 0 0;">
                 <div class="form-group">
                     <label for="versionsToKeep"><localize key="FALM_VersionsManager.CleanupByCount.Dialog-VersionsCount">Number of versions to keep</localize></label><br />
