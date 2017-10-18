@@ -11,7 +11,7 @@
             <form id="versionsCleanupByCount" ng-submit="deleteVersionsByCount(dialogData.versionsToKeep)" class="form-inline" style="margin: 0 10px 0 0;">
                 <div class="form-group">
                     <label for="versionsToKeep"><localize key="FALM_VersionsManager.CleanupByCount.Dialog-VersionsCount">Number of versions to keep</localize></label><br />
-                    <input type="text" ng-model="dialogData.versionsToKeep" id="versionsToKeep" class="form-control" style="width: 100px;" />
+                    <input type="number" min="0" pattern="[0-9]*" ng-model="dialogData.versionsToKeep" id="versionsToKeep" class="form-control" style="width: 100px;" />
                 </div><br /><br />
                 <button type="submit" id="btnCleanupVersionsByCount" name="btnCleanupVersionsByCount" class="btn btn-danger">
                     <localize key="FALM_VersionsManager.CleanupByCount.Dialog-StartCleanupButton">Cleanup Versions</localize>
