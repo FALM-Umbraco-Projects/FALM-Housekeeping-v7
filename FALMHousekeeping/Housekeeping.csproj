@@ -108,7 +108,6 @@
     <Compile Include="Services\HKLogsService.cs" />
     <Compile Include="Trees\HKTreeController.cs" />
     <Compile Include="Applications\HKApplication.cs" />
-    <Compile Include="Helpers\HKLanguage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Handlers\HKRegisterEvents.cs" />
   </ItemGroup>

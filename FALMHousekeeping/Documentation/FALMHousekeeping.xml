@@ -236,36 +236,6 @@
             </summary>
             <returns>Database</returns>
         </member>
-        <member name="T:FALM.Housekeeping.Helpers.HkLanguageInstaller">
-            <summary>
-            Checks and/or installs language settings on first request
-            HkLanguageInstaller
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.CheckAndInstallLanguageActions">
-            <summary>
-            We need to add the text label on the actions otherwise they don't appear on the context menu,
-            Check each label and if not in the Umbraco langua file, add it to the actions node
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.InstallLanguageKey(System.String,System.String,System.String)">
-            <summary>
-            Loop through the language config folder and add language nodes to the language files
-            If the language is not in our language file install the english variant.
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.UpdateActionsForLanguageFile(System.String,System.String,System.String,System.String)">
-            <summary>
-            Update a language file withe the language xml
-            </summary>
-        </member>
-        <member name="M:FALM.Housekeeping.Helpers.HkLanguageInstaller.FormatUrl(System.String)">
-            <summary>
-            Returns the url with the correct Umbraco folder
-            </summary>
-            <param name="url">url</param>
-            <returns>string</returns>
-        </member>
         <member name="T:FALM.Housekeeping.Models.HKVersionsModel">
             <summary>
             List of Versions
