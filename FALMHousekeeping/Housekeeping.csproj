@@ -85,6 +85,7 @@
     <Content Include="App_Plugins\FALM\lang\en-US.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Plugins\FALM\lang\en.xml" />
     <Content Include="App_Plugins\FALM\lang\it-IT.xml">
       <SubType>Designer</SubType>
     </Content>
