@@ -1,34 +1,14 @@
 ﻿'use strict';
 (function () {
     // Create Edit controller
-    function UsersCleanupController($route, $scope, $routeParams, hkUsersResource, userService, notificationsService, localizationService, eventsService) {
+    function UsersCleanupController($route, $scope, $routeParams, appState, treeService, navigationService, hkUsersResource, userService, notificationsService, localizationService, eventsService) {
         // Set a property on the scope equal to the current route id
         $scope.id = $routeParams.id;
 
         // Reload page function
         $scope.reloadRoute = function () {
             $route.reload();
-        }
-
-        // Select current treenode
-        eventsService.on('appState.treeState.changed', function (event, args) {
-            if (args.key === 'selectedNode') {
-
-                function buildPath(node, path) {
-                    path.push(node.id);
-                    if (node.id === '-1') return path.reverse();
-                    var parent = node.parent();
-                    if (parent === undefined) return path;
-                    return buildPath(parent, path);
-                }
-
-                event.currentScope.nav.syncTree({
-                    tree: $routeParams.tree,
-                    path: buildPath(args.value, []),
-                    forceReload: false
-                });
-            }
-        });
+        };
 
         $scope.userSuccessNotification = {
             'type': 'success',
@@ -86,7 +66,7 @@
         $scope.deleteSelectedUsers = function (selectedUsers) {
             if (confirm($scope.confirmDeleteActionMessage)) {
                 hkUsersResource.deleteSelectedUsers(selectedUsers).then(function (response) {
-                    if (response.data = true) {
+                    if (response.data === true) {
                         notificationsService.add($scope.userSuccessNotification);
                         $route.reload();
                     }
@@ -96,7 +76,16 @@
                 });
             }
         };
-    };
+
+        // TREE NODE HIGHLIGHT
+        var activeNode = appState.getTreeState("selectedNode");
+        if (activeNode) {
+            var activeNodePath = treeService.getPath(activeNode).join();
+            navigationService.syncTree({ tree: $routeParams.tree, path: activeNodePath, forceReload: false, activate: true });
+        } else {
+            navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "users", $routeParams.id], forceReload: false, activate: true });
+        }
+    }
 
     // Register the controller
     angular.module("umbraco").controller("FALMHousekeepingUsersCleanupController", UsersCleanupController);

@@ -41,7 +41,7 @@
     <key alias="LogsManager.LogMessage">Descrizione</key>
     <key alias="LogsManager.Page">Pagina</key>
     <key alias="LogsManager.Of">di</key>
-    <key alias="LogsManager.NoLogsFound"><![CDATA[Non sono stati trvati Log]]></key>
+    <key alias="LogsManager.NoLogsFound"><![CDATA[Non sono stati trovati Log]]></key>
     <key alias="LogsManager.StartCleanupButton"><![CDATA[Elimina Log]]></key>
     <key alias="LogsManager.StartCleanupOlder6MonthsButton"><![CDATA[Elimina i Log più vecchi di 6 mesi]]></key>
     <key alias="LogsManager.RestartSearchLogs"><![CDATA[Ricarica]]></key>

@@ -2,34 +2,22 @@
 app.requires.push('angularUtils.directives.dirPagination');
 (function () {
     // Create DB Edit Controller for DB Events
-    function LogsDBManagerController($route, $scope, $routeParams, $filter, hkLogsResource, userService, notificationsService, localizationService, dialogService, navigationService, eventsService) {
+    function LogsDBManagerController($route, $scope, $routeParams, $filter, appState, treeService, navigationService, userService, notificationsService, localizationService, dialogService, eventsService, hkLogsResource) {
         // Set a property on the scope equal to the current route id
         $scope.id = $routeParams.id;
 
         // Reload page function
         $scope.reloadRoute = function () {
             $route.reload();
-        }
+        };
 
         // Select current treenode
-        eventsService.on('appState.treeState.changed', function (event, args) {
-            if (args.key === 'selectedNode') {
-
-                function buildPath(node, path) {
-                    path.push(node.id);
-                    if (node.id === '-1') return path.reverse();
-                    var parent = node.parent();
-                    if (parent === undefined) return path;
-                    return buildPath(parent, path);
-                }
-
-                event.currentScope.nav.syncTree({
-                    tree: $routeParams.tree,
-                    path: buildPath(args.value, []),
-                    forceReload: false
-                });
-            }
-        });
+        $scope.treeDebugNotification = {
+            'type': 'success',
+            'sticky': false
+        };
+        $scope.treeDebugNotification.headline = "";
+        $scope.treeDebugNotification.message = $routeParams.tree;
 
         // GET - VIEW LOGS
         $scope.showLoader = false;
@@ -44,7 +32,7 @@ app.requires.push('angularUtils.directives.dirPagination');
             $scope.sortType = 'LogDate'; // set the default sort type
             $scope.reverse = true;       // set the default sort order
 
-            if ($scope.logs.ListDBLogs.length == "0") {
+            if ($scope.logs.ListDBLogs.length === "0") {
                 $scope.showNoDBLogsFound = true;
             }
             $scope.showLoader = false;   // hide loader
@@ -59,7 +47,7 @@ app.requires.push('angularUtils.directives.dirPagination');
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;           //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse;   //if true make it false and vice versa
-        }
+        };
 
         // Table pagination
         $scope.currentPage = 1;
@@ -72,21 +60,20 @@ app.requires.push('angularUtils.directives.dirPagination');
                 case 'Error':
                 case 'LoginFailure':
                     return 'label label-danger';
-                    break;
+                    //break;
                 case 'Publish':
                     return 'label label-success';
-                    break;
+                    //break;
                 case 'UnPublish':
                     return 'label label-info';
-                    break;
+                    //break;
                 case 'SendToPublish':
                 case 'SendToTranslate':
                     return 'label label-warning';
-                    break;
+                    //break;
                 default:
                     return 'label label-default';
-            };
-            return 'label label-default';
+            }
         };
 
         // Open detail modal
@@ -100,7 +87,7 @@ app.requires.push('angularUtils.directives.dirPagination');
                 show: true,
                 width: 800
             });
-        }
+        };
 
         // POST - DELETE VIEWED LOGS
         $scope.logsSuccessNotification = {
@@ -144,7 +131,7 @@ app.requires.push('angularUtils.directives.dirPagination');
                 $scope.showDeletePanel = true;
                 $scope.showDeleteLoader = true;
                 hkLogsResource.deleteFilteredDBLogs(filteredLogs).then(function (response) {
-                    if (response.data = true) {
+                    if (response.data === true) {
                         notificationsService.add($scope.logsSuccessNotification);
                         $route.reload();
                     }
@@ -162,7 +149,7 @@ app.requires.push('angularUtils.directives.dirPagination');
                 $scope.showDeletePanel = true;
                 $scope.showDeleteLoader = true;
                 hkLogsResource.deleteDBLogsBeforeMonths().then(function (response) {
-                    if (response.data = true) {
+                    if (response.data === true) {
                         notificationsService.add($scope.logsSuccessNotification);
                         $route.reload();
                     }
@@ -173,37 +160,26 @@ app.requires.push('angularUtils.directives.dirPagination');
                     $scope.d;
                 });
             }
+        };
+
+        // TREE NODE HIGHLIGHT
+        var activeNode = appState.getTreeState("selectedNode");
+        if (activeNode) {
+            var activeNodePath = treeService.getPath(activeNode).join();
+            navigationService.syncTree({ tree: $routeParams.tree, path: activeNodePath, forceReload: false, activate: true });
+        } else {
+            navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "logs", $routeParams.id], forceReload: false, activate: true });
         }
-    };
+    }
 
     // Create Edit controller for Trace Logs
-    function LogsTLManagerController($route, $scope, $routeParams, $filter, hkLogsResource, userService, notificationsService, localizationService, dialogService, navigationService, eventsService) {
+    function LogsTLManagerController($route, $scope, $routeParams, $filter, appState, treeService, navigationService, hkLogsResource, userService, notificationsService, localizationService, dialogService, eventsService) {
         // Set a property on the scope equal to the current route id
         $scope.id = $routeParams.id;
 
         $scope.reloadRoute = function () {
             $route.reload();
-        }
-
-        // Select current treenode
-        eventsService.on('appState.treeState.changed', function (event, args) {
-            if (args.key === 'selectedNode') {
-
-                function buildPath(node, path) {
-                    path.push(node.id);
-                    if (node.id === '-1') return path.reverse();
-                    var parent = node.parent();
-                    if (parent === undefined) return path;
-                    return buildPath(parent, path);
-                }
-
-                event.currentScope.nav.syncTree({
-                    tree: $routeParams.tree,
-                    path: buildPath(args.value, []),
-                    forceReload: false
-                });
-            }
-        });
+        };
 
         // Table search
         $scope.q = '';
@@ -214,7 +190,7 @@ app.requires.push('angularUtils.directives.dirPagination');
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;           //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse;   //if true make it false and vice versa
-        }
+        };
 
         // Table pagination
         $scope.currentPage = 1;
@@ -234,7 +210,7 @@ app.requires.push('angularUtils.directives.dirPagination');
             $scope.sortType = 'LogDate'; // set the default sort type
             $scope.reverse = true;       // set the default sort order
 
-            if ($scope.logs.ListTraceLogs.length == "0") {
+            if ($scope.logs.ListTraceLogs.length === "0") {
                 $scope.showNoDBLogsFound = true;
             }
 
@@ -246,17 +222,16 @@ app.requires.push('angularUtils.directives.dirPagination');
             switch (LogLabel) {
                 case 'ERROR':
                     return 'label label-danger';
-                    break;
+                    //break;
                 case 'INFO':
                     return 'label label-info';
-                    break;
+                    //break;
                 case 'WARN':
                     return 'label label-warning';
-                    break;
+                    //break;
                 default:
                     return 'label label-default';
-            };
-            return 'label label-default';
+            }
         };
 
         // Open detail modal
@@ -270,8 +245,17 @@ app.requires.push('angularUtils.directives.dirPagination');
                 show: true,
                 width: 800
             });
+        };
+
+        // TREE NODE HIGHLIGHT
+        var activeNode = appState.getTreeState("selectedNode");
+        if (activeNode) {
+            var activeNodePath = treeService.getPath(activeNode).join();
+            navigationService.syncTree({ tree: $routeParams.tree, path: activeNodePath, forceReload: false, activate: true });
+        } else {
+            navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "logs", $routeParams.id], forceReload: false, activate: true });
         }
-    };
+    }
 
     // Register controllers
     angular.module("umbraco").controller("FALMHousekeepingLogsDBManagerController", LogsDBManagerController);

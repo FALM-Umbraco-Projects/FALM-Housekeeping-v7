@@ -1,33 +1,13 @@
 ﻿'use strict';
 (function () {
     // Create Edit controller
-    function VersionsController($route, $scope, $routeParams, $filter, hkVersionsResource, userService, notificationsService, localizationService, dialogService, navigationService, eventsService) {
+    function VersionsController($route, $scope, $routeParams, $filter, appState, treeService, navigationService, hkVersionsResource, userService, notificationsService, localizationService, dialogService, eventsService) {
         // Set a property on the scope equal to the current route id
         $scope.id = $routeParams.id;
 
         $scope.reloadRoute = function () {
             $route.reload();
-        }
-
-        // Select current treenode
-        eventsService.on('appState.treeState.changed', function (event, args) {
-            if (args.key === 'selectedNode') {
-
-                function buildPath(node, path) {
-                    path.push(node.id);
-                    if (node.id === '-1') return path.reverse();
-                    var parent = node.parent();
-                    if (parent === undefined) return path;
-                    return buildPath(parent, path);
-                }
-
-                event.currentScope.nav.syncTree({
-                    tree: $routeParams.tree,
-                    path: buildPath(args.value, []),
-                    forceReload: false
-                });
-            }
-        });
+        };
 
         localizationService.localize("FALM_VersionsManager.FilterByNodeId").then(function (value) {
             $scope.FilterByNodeId = value;
@@ -68,7 +48,7 @@
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;           //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse;   //if true make it false and vice versa
-        }
+        };
 
         // Table pagination
         $scope.currentPage = 1;
@@ -110,7 +90,7 @@
                 $scope.showLoader = true;
                 $scope.showVersions = false;
                 hkVersionsResource.deleteVersionsByCount(0).then(function (response) {
-                    if (response.data = true) {
+                    if (response.data === true) {
                         notificationsService.add($scope.versionsSuccessNotification);
                         $route.reload();
                     }
@@ -135,7 +115,7 @@
                 show: true,
                 width: 800
             });
-        }
+        };
 
         // Open cleanup by count modal
         $scope.openCleanupByCountModal = function () {
@@ -144,8 +124,17 @@
                 show: true,
                 width: 800
             });
+        };
+
+        // TREE NODE HIGHLIGHT
+        var activeNode = appState.getTreeState("selectedNode");
+        if (activeNode) {
+            var activeNodePath = treeService.getPath(activeNode).join();
+            navigationService.syncTree({ tree: $routeParams.tree, path: activeNodePath, forceReload: false, activate: true });
+        } else {
+            navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "versions", $routeParams.id], forceReload: false, activate: true });
         }
-    };
+    }
 
     // Register the controller
     angular.module("umbraco").controller("FALMHousekeepingVersionsController", VersionsController);

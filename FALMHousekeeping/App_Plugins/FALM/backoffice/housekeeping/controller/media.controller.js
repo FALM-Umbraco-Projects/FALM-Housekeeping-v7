@@ -1,38 +1,18 @@
 ﻿'use strict';
 (function () {
     // Create Edit controller
-    function MediaCleanupController($route, $scope, $routeParams, hkMediaResource, userService, notificationsService, localizationService, eventsService) {
+    function MediaCleanupController($route, $scope, $routeParams, appState, treeService, navigationService, hkMediaResource, userService, notificationsService, localizationService, eventsService) {
         // Set a property on the scope equal to the current route id
         $scope.id = $routeParams.id;
 
         $scope.reloadRoute = function () {
             $route.reload();
-        }
+        };
 
         $scope.currentUserLanguage = "en-GB";
 
         userService.getCurrentUser().then(function (user) {
             $scope.currentUserLanguage = user.locale;
-        });
-
-        // Select current treenode
-        eventsService.on('appState.treeState.changed', function (event, args) {
-            if (args.key === 'selectedNode') {
-
-                function buildPath(node, path) {
-                    path.push(node.id);
-                    if (node.id === '-1') return path.reverse();
-                    var parent = node.parent();
-                    if (parent === undefined) return path;
-                    return buildPath(parent, path);
-                }
-
-                event.currentScope.nav.syncTree({
-                    tree: $routeParams.tree,
-                    path: buildPath(args.value, []),
-                    forceReload: false
-                });
-            }
         });
 
         // GET - VIEW MEDIA ORPHANS
@@ -56,13 +36,11 @@
             $scope.showNoMediaOrphans = false;
             $scope.media = response.data;
             $scope.mediaToDelete = 0;
-            if (($scope.media.ListMediaToDelete == null) || ($scope.media.ListMediaToDelete.length == "0")) {
+            if ($scope.media.ListMediaToDelete === null || $scope.media.ListMediaToDelete.length === "0") {
                 $scope.showNoMediaOrphans = true;
             }
             $scope.showLoader = false;
         });
-
-        // POST - DELETE MEDIA ORPHANS
 
         // Post media orphans to delete via hkUsersResource
         $scope.deleteMediaOrphans = function (mediaOrphansToDelete) {
@@ -76,7 +54,16 @@
                 $scope.showLoader = false;
             }
         };
-    };
+
+        // TREE NODE HIGHLIGHT
+        var activeNode = appState.getTreeState("selectedNode");
+        if (activeNode) {
+            var activeNodePath = treeService.getPath(activeNode).join();
+            navigationService.syncTree({ tree: $routeParams.tree, path: activeNodePath, forceReload: false, activate: true });
+        } else {
+            navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "media", $routeParams.id], forceReload: false, activate: true });
+        }
+    }
 
     // Register the controller
     angular.module("umbraco").controller("FALMHousekeepingMediaCleanupController", MediaCleanupController);
