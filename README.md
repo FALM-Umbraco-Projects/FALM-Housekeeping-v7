@@ -2,7 +2,6 @@
 **PLEASE CREATE NEW DISCUSSIONS ONLY ON MY GITHUB OR BITBUCKET CHANNEL**
 -----------------------------------------------------------------
 - _https://github.com/FALM-Umbraco-Projects/FALM-Housekeeping-v7/issues_
-- _https://bitbucket.org/amxlab/falm-housekeeping-v7/issues_
 ***
 
 **FALM Housekeeping**
@@ -20,6 +19,9 @@ Now you can manage DB Log and the TraceLog (this is a simplified version of Dipl
 
 **Latest Changes**
 ==============
+- v7.6.0.8 - Fix: highlighting selected node + Update transaltions
+- v7.6.0.7 - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support
+- v7.6.0.6 - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support
 - v7.6.0.3 - Updated naming to prevent conflicts
 - v7.6.0.2 - Updated NuGet Package
 - v7.6.0.1 - Minor fixes
@@ -28,7 +30,7 @@ Now you can manage DB Log and the TraceLog (this is a simplified version of Dipl
 
 **Version History**
 ===============
-- v7.6.0.3 - For Umbraco v7.5+
+- v7.6.0.8 - For Umbraco v7.5+
 - v7.0.0.1 - For Umbraco v7+
 - v6.1.3.0 - For Umbraco v6 to v7.2
 - v4.11.0.2 - For Umbraco v4.8 to v4.11
