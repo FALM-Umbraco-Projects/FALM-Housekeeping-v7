@@ -2,8 +2,6 @@
 =================
 The new version of our cleaning tool is now in a custom section and has been completely rewritten to take advantage of AngularJS
 
-ATTENTION! To view the new FALM section you must enable it for all users that can use this tool.
-
 In the new FALM section you can find the following tools:
 - **Umbraco Logs Manager**: to view and delete Umbraco DB Logs events and to view the TraceLog (this new function is a simplified version of Diplo Trace Log Viewer project - https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/)
 - **Media Folder Manager**: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)
