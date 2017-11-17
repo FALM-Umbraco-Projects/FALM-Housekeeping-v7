@@ -26,11 +26,12 @@ bld/
 .vs/
 
 # Uncomment if you have tasks that create the project's static files in wwwroot
-[Uu]mbraco.web/
-[Uu]mbraco_web/
-[Uu]mbraco[Ww]eb/
+[Uu]mbraco.[Ww]eb*/
+[Uu]mbraco_[Ww]eb*/
+[Uu]mbraco[Ww]eb*/
 [Nn]uget/
 [Nn]u[Gg]et[Bb]ackup/
+[Oo]ld[Vv]ersions/
 _screenshot/[Ll]ogo*.*
 *.nuspec
 *.nupkg

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housekeeping", "FALMHousekeeping\Housekeeping.csproj", "{26C54771-07CD-45AB-88DC-0AF871BE8E0E}"
 EndProject
@@ -15,9 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoWeb", "UmbracoWeb\UmbracoWeb.csproj", "{7AFA0E91-BB27-4271-94F0-38493AC2737D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{26C54771-07CD-45AB-88DC-0AF871BE8E0E} = {26C54771-07CD-45AB-88DC-0AF871BE8E0E}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

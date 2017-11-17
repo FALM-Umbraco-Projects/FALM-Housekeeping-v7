@@ -9,5 +9,6 @@ namespace FALM.Housekeeping.Applications
     /// HkApplication
     /// </summary>
     [Application(HkConstants.Application.Alias, HkConstants.Application.Name, HkConstants.Application.Icon, 50)]
-    public class HkApplication : IApplication { }
+    public class HkApplication : IApplication
+    { }
 }
