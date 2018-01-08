@@ -10,6 +10,7 @@
             $route.reload();
         };
 
+        // Notification Message - Success
         $scope.userSuccessNotification = {
             'type': 'success',
             'sticky': false
@@ -21,6 +22,7 @@
             $scope.userSuccessNotification.message = value;
         });
 
+        // Notification Message - Error
         $scope.userErrorNotification = {
             "type": "error",
             "headline": "",
@@ -32,7 +34,7 @@
         localizationService.localize("FALM_UsersManager.Cleanup.DeleteSelectedUsersErrorMessage").then(function (value) {
             $scope.userErrorNotification.message = value;
         });
-        
+
         localizationService.localize("FALM_UsersManager.Cleanup.ConfirmDeleteActionMessage").then(function (value) {
             $scope.confirmDeleteActionMessage = value;
         });
@@ -66,12 +68,14 @@
         $scope.deleteSelectedUsers = function (selectedUsers) {
             if (confirm($scope.confirmDeleteActionMessage)) {
                 hkUsersResource.deleteSelectedUsers(selectedUsers).then(function (response) {
-                    if (response.data === true) {
+                    console.log(response.data);
+                    if (response.data === "true") {
                         notificationsService.add($scope.userSuccessNotification);
                         $route.reload();
                     }
                     else {
                         notificationsService.add($scope.userErrorNotification);
+                        $route.reload();
                     }
                 });
             }

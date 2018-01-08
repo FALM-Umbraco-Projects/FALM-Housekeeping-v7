@@ -10,10 +10,44 @@
 <area alias="FALM">
     <!-- DASHBOARD -->
     <key alias="Dashboard.Title"><![CDATA[Housekeeping]]></key>
-    <key alias="Dashboard.SubTitle"><![CDATA[The new version of our cleaning tool is now in a custom section and has been completely rewritten to take advantage of AngularJS and Bootstrap]]></key>
-    <key alias="Dashboard.Description"><![CDATA[<p>In the new FALM section you can find the following tools:</p><ul><li><strong>Umbraco Logs Manager</strong>: to view and delete Umbraco DB Logs events and to view the TraceLog (this new function is a simplified version of Diplo Trace Log Viewer project - https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/)</li><li><strong>Media Folder Manager</strong>: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)</li><li><strong>Delete Users Manager</strong>: to remove Umbraco users (except the admin user).</li><li><strong>Version manager</strong>: to view and cleanup the version history that Umbraco mantains for each content node.</li></ul>]]></key>
-    <key alias="Dashboard.LatestChanges"><![CDATA[<p><span class="title">Latest Changes</span></p><p class="text">v7.6.0.8 - Fix: highlighting selected node</p><p class="text">v7.6.0.7 - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support</p><p class="text">v7.6.0.6 - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support</p><p class="text">v7.6.0.3 - Updated naming to prevent conflicts</p><p class="text">v7.6.0.2 - Updated NuGet Package</p><p class="text">v7.6.0.1 - Minor fixes</p><p class="text">v7.6.0.0 - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)</p>]]></key>
-    <key alias="Dashboard.VersionHistory"><![CDATA[<p><span class="title">Version History</span></p><p class="text">v7.6.0.8 - For Umbraco v7.5+</p><p class="text">v7.0.0.1 - For Umbraco v7+</p><p class="text">v6.1.3.0 - For Umbraco v6 to v7.2</p><p class="text">v4.11.0.2 - For Umbraco v4.8 to v4.11</p><p class="text">v4.5.0.1 - For Umbraco v4.5 to v4.7.2</p><p class="text">v1.1.0.0 - For Umbraco v3 to v4.0]]></key>
+    <key alias="Dashboard.SubTitle"><![CDATA[The new version of our cleaning tool is now in a custom section and has been completely rewritten to take advantage of AngularJS]]></key>
+    <key alias="Dashboard.Description"><![CDATA[<p>In the new FALM section you can find the following tools:</p>
+<ul>
+<li><strong>Umbraco Logs Manager</strong>: to view and delete Umbraco DB Logs events and to view the TraceLog (this new function is a simplified version of Diplo Trace Log Viewer project - https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/)</li>
+<li><strong>Media Folder Manager</strong>: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)</li>
+<li><strong>Delete Users Manager</strong>: to remove Umbraco users (except the admin user).</li>
+<li><strong>Versions Manager</strong>: to view and cleanup the version history that Umbraco mantains for each content node.</li>
+</ul>]]></key>
+    <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Latest Changes</strong><br />=============</p>
+<ul>
+<li><strong><i>v7.7.0.0</i></strong> - Various Fixes<br />
+    <ul>
+        <li>Bug: Resolved issue #40 (GitHub) in Users manager</li>
+        <li>Fix: Updated Versions manager UI</li>
+        <li>Fix: Updated TraceLogs manager UI</li>
+        <li>Bug: Resolved issue #41 (GitHub) in Media manager (Thank you to TFAstudio for the support)</li>
+        <li>Fix: Updated Media manager UI</li>
+    </ul>
+</li>
+<li><strong><em>v7.6.0.9</em></strong>&nbsp;- Minor Fixes</li>
+<li><strong><em>v7.6.0.8</em></strong> - Fix: highlighting selected node</li>
+<li><strong><em>v7.6.0.7</em></strong> - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support</li>
+<li><strong><em>v7.6.0.6</em></strong> - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support</li>
+<li><strong><em>v7.6.0.3</em></strong> - Updated naming to prevent conflicts</li>
+<li><strong><em>v7.6.0.2</em></strong> - Updated NuGet Package</li>
+<li><strong><em>v7.6.0.1</em></strong> - Minor fixes</li>
+<li><strong><em>v7.6.0.0</em></strong> - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)</li>
+</ul>]]></key>
+    <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong><br>Version History<br /></strong>=============</p>
+<ul>
+<li><strong><em>v7.7.0.0</em></strong> - For Umbraco v7.6+</li>
+<li><strong><em>v7.6.0.3</em></strong>&nbsp;- For Umbraco until v7.5.14</li>
+<li><strong><em>v7.0.0.1</em></strong> - For Umbraco v7+</li>
+<li><strong><em>v6.1.3.0</em></strong> - For Umbraco v6 to v7.2</li>
+<li><strong><em>v4.11.0.2</em></strong> - For Umbraco v4.8 to v4.11</li>
+<li><strong><em>v4.5.0.1</em></strong> - For Umbraco v4.5 to v4.7.2</li>
+<li><strong><em>v1.1.0.0</em></strong> - For Umbraco v3 to v4.0</li>
+</ul>]]></key>
 
     <!-- LOGS MANAGER -->
     <key alias="LogsManager.TreeSection"><![CDATA[Log]]></key>
@@ -47,7 +81,7 @@
     <key alias="LogsManager.NoLogsFound"><![CDATA[No Logs Found]]></key>
     <key alias="LogsManager.StartCleanupButton"><![CDATA[Delete Logs]]></key>
     <key alias="LogsManager.StartCleanupOlder6MonthsButton"><![CDATA[Cleanup Logs older than 6 months]]></key>
-    <key alias="LogsManager.RestartSearchLogs"><![CDATA[Restart logs search]]></key>
+    <key alias="LogsManager.RestartSearchLogs"><![CDATA[Reload]]></key>
     <key alias="LogsManager.Title_TL"><![CDATA[Umbraco Logs Manager (TraceLog)]]></key>
     <key alias="LogsManager.SubTitle_TL"><![CDATA[ ]]></key>
     <key alias="LogsManager.Description_TL"><![CDATA[With this tool you can view the Umbraco Trace Logs events]]></key>
@@ -112,8 +146,8 @@ Please try again or contact the author of the package with the details of the er
     <key alias="MediaManager.Cleanup.Entry"><![CDATA[Entry]]></key>
     <key alias="MediaManager.Cleanup.Details"><![CDATA[Details]]></key>
     <key alias="MediaManager.Cleanup.StartCleanupButton"><![CDATA[Delete all orphans]]></key>
-    <key alias="MediaManager.Cleanup.RestartSearchOrphans"><![CDATA[Restart media search]]></key>
-    <key alias="MediaManager.Cleanup.NoMediaToDelete"><![CDATA[File System cleaned]]></key>
+    <key alias="MediaManager.Cleanup.RestartSearchOrphans"><![CDATA[Restart search]]></key>
+    <key alias="MediaManager.Cleanup.NoMediaToDelete"><![CDATA[No orphans to delete]]></key>
     <key alias="MediaManager.Cleanup.ConfirmationMessage"><![CDATA[This action will permanently delete all Media orphan folders listed in the orphans table from File Sytem and from DB.
 Make sure you have made a backup copy of the entire site (root e DB) before proceed.
 
@@ -151,6 +185,7 @@ Please try again or contact the author of the package with the details of the er
     <key alias="UsersManager.User.Username"><![CDATA[Username]]></key>
     <key alias="UsersManager.User.Email"><![CDATA[Email]]></key>
     <key alias="UsersManager.User.UserType"><![CDATA[User type]]></key>
+    <key alias="UsersManager.RestartSearchUsers"><![CDATA[Reload]]></key>
 
     <!-- VERSIONS MANAGER -->
     <key alias="VersionsManager.TreeSection"><![CDATA[Versions]]></key>
@@ -159,9 +194,10 @@ Please try again or contact the author of the package with the details of the er
     <key alias="VersionsManager.SubTitle"><![CDATA[ ]]></key>
     <key alias="VersionsManager.Description"><![CDATA[With this tool you can manage the Umbraco history versions.]]></key>
     <key alias="VersionsManager.SearchInProgress"><![CDATA[Search in progress. Please wait until you see results]]></key>
+    <key alias="VersionsManager.NoVersionsFound"><![CDATA[No version found]]></key>
     <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions]]></key>
-    <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filter by node Id]]></key>
-    <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filter by node name]]></key>
+    <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filter by<br />Node Id]]></key>
+    <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filter by<br />Node Name]]></key>
     <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filter by date range (from)]]></key>
     <key alias="VersionsManager.FilterByDateTo"><![CDATA[Filter by date range (to)]]></key>
     <key alias="VersionsManager.NodeId"><![CDATA[Node Id]]></key>
@@ -194,7 +230,7 @@ Are you sure you want to continue with the deletion of the versions?]]>
     <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsErrorMessage"><![CDATA[Error occur during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]></key>
-    <key alias="VersionsManager.RestartSearchVersions"><![CDATA[Restart versions search]]></key>
+    <key alias="VersionsManager.RestartSearchVersions"><![CDATA[Restart search]]></key>
     <key alias="VersionsManager.Dialog-Title"><![CDATA[Version details]]></key>
     <key alias="VersionsManager.Dialog-NodeId"><![CDATA[Id]]></key>
     <key alias="VersionsManager.Dialog-NodeName"><![CDATA[Node name]]></key>

@@ -43,6 +43,9 @@ namespace FALM.Housekeeping.Controllers
             ListMediaWarnings = new List<MediaWarningModel>();
             ListMediaToDelete = new List<MediaToDeleteModel>();
 
+            // Map of media folders to the count of information within them to minimize database calls
+            var mediaCountMap = new Dictionary<string, int>();
+
             var currentUserCultureInfo = CultureInfo.GetCultureInfo(userLocale);
 
             try
@@ -99,6 +102,8 @@ namespace FALM.Housekeeping.Controllers
                             return string.CompareOrdinal(d1.Name, d2.Name);
                         });
 
+                        int mediaCount = -1;
+
                         foreach (var subDir in subDirs)
                         {
                             // Do check only if the folder have a number as a name (STANDARD FOLDER)
@@ -128,11 +133,18 @@ namespace FALM.Housekeeping.Controllers
                                                 if (iDirectoryName < pId)
                                                 {
                                                     // Check if the folder is used by data type that not store image informations (like Image Cropper)
-                                                    int mediaCount = 0;
+                                                    //int mediaCount = 0;
 
-                                                    mediaCount += GetCountFromCmsContentXml(db, subDir.Name);
+                                                    //mediaCount += GetCountFromCmsContentXml(db, subDir.Name);
 
-                                                    mediaCount += GetCountFromCmsPropertyData(db, subDir.Name);
+                                                    //mediaCount += GetCountFromCmsPropertyData(db, subDir.Name);
+
+                                                    if (!mediaCountMap.ContainsKey(subDir.Name))
+                                                    {
+                                                        mediaCountMap[subDir.Name] = GetCountFromCmsContentXml(db, subDir.Name) + GetCountFromCmsPropertyData(db, subDir.Name);
+                                                    }
+
+                                                    mediaCount = mediaCountMap[subDir.Name];
 
                                                     // The Media is deletable if it isn't used
                                                     if ((mediaCount == 0) && (!mediaAlreadyAddedToDeleteList))
@@ -182,11 +194,18 @@ namespace FALM.Housekeeping.Controllers
                                 if (!mediaToSkip.Contains(subDir.Name))
                                 {
                                     // Check if the folder is used by data type that not store image informations (like Image Cropper)
-                                    var mediaCount = 0;
+                                    //var mediaCount = 0;
 
-                                    mediaCount += GetCountFromCmsContentXml(db, subDir.Name);
+                                    //mediaCount += GetCountFromCmsContentXml(db, subDir.Name);
 
-                                    mediaCount += GetCountFromCmsPropertyData(db, subDir.Name);
+                                    //mediaCount += GetCountFromCmsPropertyData(db, subDir.Name);
+
+                                    if (!mediaCountMap.ContainsKey(subDir.Name))
+                                    {
+                                        mediaCountMap[subDir.Name] = GetCountFromCmsContentXml(db, subDir.Name) + GetCountFromCmsPropertyData(db, subDir.Name);
+                                    }
+
+                                    mediaCount = mediaCountMap[subDir.Name];
 
                                     // If the media is not used...it is deletable
                                     if (mediaCount == 0)

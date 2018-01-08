@@ -10,9 +10,34 @@
 <area alias="FALM">    
     <!-- DASHBOARD -->
     <key alias="Dashboard.Title"><![CDATA[Housekeeping]]></key>
-    <key alias="Dashboard.SubTitle"><![CDATA[La nuova versione del nostro tool di pulizia è stata spostata in una custom section ed è stata completamente riscritta per sfruttare le potenzialità di AngularJS e Bootstrap]]></key>
-    <key alias="Dashboard.Description"><![CDATA[<p>Nella nuova sezione FALM si trovano i seguenti tool:</p><ul><li><strong>Gestione Log di Umbraco</strong>: per gestire i Log nel DB di Umbraco e per visualizzare il TraceLog (questa nuova funzione è una versione semplificata di Diplo Trace Log Viewer - https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/)</li><li><strong>Gestione Cartelle Media</strong>: per eliminare dal filesystem nella cartella '/media' tuttle le cartelle che non hanno una corrispondenza nel DB (orfani)</li><li><strong>Gestione Cancellazione Utenti</strong>: per rimuovere gli utenti del backoffice di Umbraco (eccetto l'utente admin)</li><li><strong>Gestione Versioni</strong>: per gestire le versioni che Umbraco mantiene per ogni nodo di contenuto</li></ul>]]></key>
-    <key alias="Dashboard.LatestChanges"><![CDATA[<p><span class="title">Ultime Modifiche</span></p><p class="text">v7.6.0.0 - Nuova versione: completamente riscritta usando AngularJS e Bootstrap e ora spostata in una sezione indipendente. Risolto il problema di compatibilità con SQL CE per tutte le funzionalità tranne che per la gestione delle versioni che ancora hanno il problema.</p><p class="text">v7.0.0.1 - Bug Fix: Risolto l'errore 404 quando si clicca su tutte le main headers (Logs, Media, Users, Versions) e risolto il conflitto nella Gestione Utenti</p>]]></key>
+    <key alias="Dashboard.SubTitle"><![CDATA[La nuova versione del nostro tool di pulizia è stata spostata in una custom section ed è stata completamente riscritta per sfruttare le potenzialità di AngularJS]]></key>
+    <key alias="Dashboard.Description"><![CDATA[<p>Nella nuova sezione FALM si trovano i seguenti tool:</p>
+<ul>
+<li><strong>Gestione Log di Umbraco</strong>: per gestire i Log nel DB di Umbraco e per visualizzare il TraceLog (questa nuova funzione è una versione semplificata di Diplo Trace Log Viewer - https://our.umbraco.org/projects/developer-tools/diplo-trace-log-viewer/)</li>
+<li><strong>Gestione Cartelle Media</strong>: per eliminare dal filesystem nella cartella '/media' tuttle le cartelle che non hanno una corrispondenza nel DB (orfani)</li>
+<li><strong>Gestione Cancellazione Utenti</strong>: per rimuovere gli utenti del backoffice di Umbraco (eccetto l'utente admin)</li>
+<li><strong>Gestione Versioni</strong>: per gestire le versioni che Umbraco mantiene per ogni nodo di contenuto</li>
+</ul>]]></key>
+    <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Ultime Modifiche</strong><br />=============</p>
+<ul>
+<li><strong><i>v7.7.0.0</i></strong> - Vari Fix<br />
+    <ul>
+        <li>Bug: Risolto errore #40 (GitHub) nella Gestione Cancellazione Utenti</li>
+        <li>Fix: Aggiornamento della UI per la Gestione Versioni</li>
+        <li>Fix: Aggiornamento della UI per la Gestione Log (TraceLogs)</li>
+        <li>Bug: Risolto errore #41 (GitHub) in Gestione Cartelle Media (Grazie a TFAstudio per il supporto)</li>
+        <li>Fix: Aggiornamento della UI per la Gestione Cartelle Media</li>
+    </ul>
+</li>
+<li><strong><em>v7.6.0.9</em></strong> - Fix Minori</li>
+<li><strong><em>v7.6.0.8</em></strong> - Fix: highlight selezionando un nodo</li>
+<li><strong><em>v7.6.0.7</em></strong> - Fix: rimosso controllo ed installazione della FALM key nei core language files. Grazie a Bjarne Fyrstenborg per il supporto</li>
+<li><strong><em>v7.6.0.6</em></strong> - Vari Fix UI. Grazie a Bjarne Fyrstenborg per il supporto</li>
+<li><strong><em>v7.6.0.3</em></strong> - Aggiornamento dei naming per prevenire conflitti</li>
+<li><strong><em>v7.6.0.2</em></strong> - Aggiornamento pacchetto NuGet</li>
+<li><strong><em>v7.6.0.1</em></strong> - Fix Minori</li>
+<li><strong><em>v7.6.0.0</em></strong> - Nuova versione: completamente riscritta usando AngularJS e ora spostata in una sezione indipendente. Risolto il problema di compatibilità con SQL CE per tutte le funzionalità tranne che per la gestione delle versioni che ancora hanno il problema.</li>
+</ul>]]></key>
     <key alias="Dashboard.VersionHistory"><![CDATA[<p><span class="title">Version History</span></p><p class="text">v7.6.0.0 - For Umbraco v7.5+</p><p class="text">v7.0.0.1 - For Umbraco v7+</p><p class="text">v6.1.3.0 - For Umbraco v6 to v7.2</p><p class="text">v4.11.0.2 - For Umbraco v4.8 to v4.11</p><p class="text">v4.5.0.1  - For Umbraco v4.5 to v4.7.2</p><p class="text">v1.1.0.0  - For Umbraco v3 to v4.0</p>]]></key>
 
     <!-- LOGS MANAGER -->
@@ -113,7 +138,7 @@ Si prega di riprovare o di contattare l'autore del package indicando i dettagli 
     <key alias="MediaManager.Cleanup.Details"><![CDATA[Dettagli]]></key>
     <key alias="MediaManager.Cleanup.StartCleanupButton"><![CDATA[Elimina tutti gli orfani]]></key>
     <key alias="MediaManager.Cleanup.RestartSearchOrphans"><![CDATA[Esegui una nuova ricerca]]></key>
-    <key alias="MediaManager.Cleanup.NoMediaToDelete"><![CDATA[Il File System è pulito]]></key>
+    <key alias="MediaManager.Cleanup.NoMediaToDelete"><![CDATA[Il File System è pulito. Non sono stati trovati orfani]]></key>
     <key alias="MediaManager.Cleanup.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate dal File System tutte le cartelle elencate.
 Si consiglia di effettuare un backup dell'intero sito (root e DB) prima di continuare.
 
@@ -150,6 +175,7 @@ Si prega di riprovare o di contattare l'autore del package indicando i dettagli 
     <key alias="UsersManager.User.Username"><![CDATA[Username]]></key>
     <key alias="UsersManager.User.Email"><![CDATA[Email]]></key>
     <key alias="UsersManager.User.UserType"><![CDATA[Tipo di utente]]></key>
+    <key alias="UsersManager.RestartSearchUsers"><![CDATA[Ricarica]]></key>
 
     <!-- VERSIONS MANAGER -->
     <key alias="VersionsManager.TreeSection"><![CDATA[Versioni]]></key>
@@ -158,9 +184,10 @@ Si prega di riprovare o di contattare l'autore del package indicando i dettagli 
     <key alias="VersionsManager.SubTitle"><![CDATA[ ]]></key>
     <key alias="VersionsManager.Description"><![CDATA[Questo strumento permette di gestire le versioni che Umbraco mantiene per ogni nodo del content.]]></key>
     <key alias="VersionsManager.SearchInProgress"><![CDATA[Ricerca in corso. Si prega di attendere fino a quando non vengono visualizzati i dati]]></key>
+    <key alias="VersionsManager.NoVersionsFound"><![CDATA[Nessuna versione trovata]]></key>
     <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Riepilogo Versioni]]></key>
-    <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filtra con Id del nodo]]></key>
-    <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filtra con nome del nodo]]></key>
+    <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filtra con<br />Id del nodo]]></key>
+    <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filtra con<br />Nome del nodo]]></key>
     <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filtra per data (da)]]></key>
     <key alias="VersionsManager.FilterByDateTo"><![CDATA[Filtra per data (a)]]></key>
     <key alias="VersionsManager.NodeId"><![CDATA[Id nodo]]></key>

@@ -12,19 +12,25 @@ In the new FALM section you can find the following tools:
 
 **Latest Changes**
 ==============
-- v7.6.0.9  - Minor Fixes
-- v7.6.0.8  - Fix: highlighting selected node + Update transaltions
-- v7.6.0.7  - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support
-- v7.6.0.6  - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support
-- v7.6.0.3  - Updated naming to prevent conflicts
-- v7.6.0.2  - Updated NuGet Package
-- v7.6.0.1  - Minor fixes
-- v7.6.0.0  - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)
-- v7.0.0.1  - Bug Fix: Resolved Error 404 when click all main headers (Logs, Media, Users, Versions) and resolved conflict in Users Manager
+- v7.7.0.0 - Various Fixes
+    - Bug: Resolved issue #40 (GitHub) in Users manager
+    - Fix: Updated Versions manager UI
+    - Fix: Updated TraceLogs manager UI
+    - Bug: Resolved issue #41 (GitHub) in Media manager (Thank you to TFAstudio for the support)
+    - Fix: Updated Media manager UI
+- v7.6.0.9 - Minor Fixes
+- v7.6.0.8 - Fix: highlighting selected node + Update transaltions
+- v7.6.0.7 - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support
+- v7.6.0.6 - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support
+- v7.6.0.3 - Updated naming to prevent conflicts
+- v7.6.0.2 - Updated NuGet Package
+- v7.6.0.1 - Minor fixes
+- v7.6.0.0 - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)
+- v7.0.0.1 - Bug Fix: Resolved Error 404 when click all main headers (Logs, Media, Users, Versions) and resolved conflict in Users Manager
 
 **Version History**
 ===============
-- v7.6.0.9  - For Umbraco v7.6+
+- v7.7.0.0  - For Umbraco v7.6+
 - v7.6.0.3  - For Umbraco until v7.5.14
 - v7.0.0.1  - For Umbraco v7+
 - v6.1.3.0  - For Umbraco v6 to v7.2

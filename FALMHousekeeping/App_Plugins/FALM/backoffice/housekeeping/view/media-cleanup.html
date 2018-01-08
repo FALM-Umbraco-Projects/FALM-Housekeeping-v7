@@ -19,13 +19,14 @@
                 </div>
                 <div ng-switch="id">
                     <div ng-hide="!showSearchPanel">
-
                         <div ng-hide="!showLoader" class="loading">
+                            <!-- LOADER -->
                             <localize key="FALM_MediaManager.Cleanup.SearchInProgress">Search in progress. Please wait until you see results</localize>
                             <umb-load-indicator></umb-load-indicator>
                         </div>
                         
                         <div ng-hide="!media.ListMediaWarnings.length" class="mediaWarningsForm">
+                            <!-- PANEL: INFORMATIONS AND WARNINGS -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
@@ -51,6 +52,7 @@
                         </div>
 
                         <div ng-hide="!media.ListMediaToDelete.length" class="mediaToDeleteForm">
+                            <!-- PANEL: MEDIA TO DELETE -->
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
@@ -73,30 +75,23 @@
                                     </table>
                                 </div>
                                 <div class="panel-footer">
-                                    <form id="mediaCleanupForm" ng-submit="deleteMediaOrphans(media.ListMediaToDelete)" role="form" style="float: left; margin: 0 10px 0 0;">
+                                    <form id="mediaCleanupForm" ng-submit="deleteMediaOrphans(media.ListMediaToDelete)" role="form" style="margin: 0 10px 0 0;">
                                         <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
                                             <localize key="FALM_MediaManager.Cleanup.StartCleanupButton">Cleanup media orphans</localize>
                                         </button>
                                     </form>
-                                    <a ng-click="reloadRoute()" class="btn btn-default">
-                                        <localize key="FALM_MediaManager.Cleanup.RestartSearchOrphans">Restart orphans search</localize>
-                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div ng-hide="!showNoMediaOrphans" class="noMediaToDelete">
-                            <div class="panel panel-danger">
+                        <div ng-hide="media.ListMediaToDelete.length" class="noMediaToDelete">
+                            <!-- PANEL: NO MEDIA TO DELETE -->
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
                                 </div>
                                 <div class="panel-body">
-                                    <p><localize key="FALM_MediaManager.Cleanup.NoMediaToDelete">There are no media to delete.</localize></p>
-                                </div>
-                                <div class="panel-footer">
-                                    <a ng-click="reloadRoute()" class="btn btn-default">
-                                        <localize key="FALM_MediaManager.Cleanup.RestartSearchOrphans">Restart orphans search</localize>
-                                    </a>
+                                    <p><localize key="FALM_MediaManager.Cleanup.NoMediaToDelete">No media to delete</localize></p>
                                 </div>
                             </div>
                         </div>
@@ -104,12 +99,13 @@
 
                     <div ng-hide="!showDeletePanel">
                         <div ng-hide="!showDeleteLoader" class="loading">
+                            <!-- LOADER -->
                             <localize key="FALM_MediaManager.Cleanup.DeleteInProgress">Delete in progress. Please wait until you see results</localize> 
                             <img src="/App_Plugins/FALM/backoffice/housekeeping/css/img/searching.gif" alt="Searching..." />
                         </div>
 
-                        
                         <div ng-hide="!media.ListMediaWarnings.length" class="mediaWarningsForm">
+                            <!-- PANEL: INFORMATIONS AND WARNINGS -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
@@ -135,6 +131,7 @@
                         </div>
 
                         <div ng-hide="!media.ListMediaToDelete.length" class="mediaToDeleteForm">
+                            <!-- PANEL: MEDIA DELETED -->
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">File System Cleanup</localize></span>
@@ -156,13 +153,15 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="panel-footer">
-                                    <a ng-click="reloadRoute()" class="btn btn-default">
-                                        <localize key="FALM_MediaManager.Cleanup.RestartSearchOrphans">Restart orphans search</localize>
-                                    </a>
-                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- RESTART SEARCH -->
+                    <div ng-hide="showLoader || showDeleteLoader">
+                        <a ng-click="reloadRoute()" class="btn btn-default">
+                            <localize key="FALM_MediaManager.Cleanup.RestartSearchOrphans">Restart orphans search</localize>
+                        </a>
                     </div>
                 </div>
             </div>

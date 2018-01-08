@@ -18,7 +18,6 @@
         // GET - VIEW MEDIA ORPHANS
         $scope.showSearchPanel = true;
         $scope.showLoader = true;
-        $scope.showNoMediaOrphans = false;
         $scope.showDeletePanel = false;
 
         localizationService.localize("FALM_MediaManager.Cleanup.NoMediaOrphansMessage").then(function (value) {
@@ -33,12 +32,8 @@
             $scope.showSearchPanel = true;
             $scope.showLoader = true;
             $scope.showDeletePanel = false;
-            $scope.showNoMediaOrphans = false;
             $scope.media = response.data;
             $scope.mediaToDelete = 0;
-            if ($scope.media.ListMediaToDelete === null || $scope.media.ListMediaToDelete.length === "0") {
-                $scope.showNoMediaOrphans = true;
-            }
             $scope.showLoader = false;
         });
 

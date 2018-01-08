@@ -24,19 +24,12 @@
 
         // GET - VIEW VERSIONS
         $scope.showLoader = false;
-        $scope.showSearchPanel = true;
 
         // Get all versions via hkVersionsResource
         hkVersionsResource.getPublishedNodes().then(function (response) {
-            $scope.showSearchPanel = true;
             $scope.showLoader = true;
-            $scope.showVersions = false;
             $scope.versions = response.data;
-            // $scope.sortType = 'LogDate'; set the default sort type
-            // $scope.reverse = true;       set the default sort order
             $scope.showLoader = false;   // hide loader
-            $scope.showSearchPanel = false;
-            $scope.showVersions = true;
         });
 
         // Table search
@@ -86,9 +79,7 @@
         // Delete filtered Logs via hkLogsResource
         $scope.deleteVersionsByCount = function () {
             if (confirm($scope.confirmDeleteActionMessage)) {
-                $scope.showSearchPanel = true;
                 $scope.showLoader = true;
-                $scope.showVersions = false;
                 hkVersionsResource.deleteVersionsByCount(0).then(function (response) {
                     if (response.data === true) {
                         notificationsService.add($scope.versionsSuccessNotification);
@@ -99,9 +90,7 @@
                         $scope.showDeletePanel = false;
                     }
                 });
-                $scope.showSearchPanel = false;
                 $scope.showLoader = false;
-                $scope.showVersions = true;
             }
         };
 

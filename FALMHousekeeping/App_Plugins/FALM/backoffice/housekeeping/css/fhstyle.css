@@ -57,6 +57,11 @@
 }
 
 /* TABLE VERSIONS */
+#falm-content #FHVersionsTable.table,
+#falm-content #FHVersionFiltersTable .table {
+    border: 1px solid #d8d7d9 !important;
+}
+
 #falm-content #FHVersionsTable tbody td,
 #falm-content #FHVersionFiltersTable tbody td {
     min-width: 20px;

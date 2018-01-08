@@ -138,24 +138,39 @@
   <ItemGroup>
     <Reference Include="businesslogic, Version=1.0.6471.23331, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UmbracoWeb\bin\businesslogic.dll</HintPath>
+      <HintPath>bin\businesslogic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="interfaces, Version=1.0.6345.13056, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UmbracoWeb\bin\interfaces.dll</HintPath>
+      <HintPath>bin\interfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UmbracoWeb\bin\log4net.dll</HintPath>
+      <HintPath>bin\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>bin\System.Web.Mvc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="umbraco, Version=1.0.6471.23334, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\umbraco.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Umbraco.Core, Version=1.0.6471.23325, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Umbraco.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http">
-      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -171,27 +186,12 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
-      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.WebRequest.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>..\UmbracoWeb\bin\System.Web.Mvc.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="umbraco, Version=1.0.6471.23334, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UmbracoWeb\bin\umbraco.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Umbraco.Core, Version=1.0.6471.23325, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UmbracoWeb\bin\Umbraco.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -221,13 +221,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)FALM*.*" "$(TargetDir)..\..\UmbracoWeb\bin" /y
-
-xcopy "$(TargetDir)..\App_Plugins\FALM\*.*" "$(TargetDir)..\..\UmbracoWeb\App_Plugins\FALM" /s /y
-
-xcopy "$(TargetDir)FALM*.*" "C:\inetpub\wwwroot_umb7514\bin" /y
-
-xcopy "$(TargetDir)..\App_Plugins\FALM\*.*" "C:\inetpub\wwwroot_umb7514\App_Plugins\FALM" /s /y</PostBuildEvent>
+    <PostBuildEvent />
   </PropertyGroup>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

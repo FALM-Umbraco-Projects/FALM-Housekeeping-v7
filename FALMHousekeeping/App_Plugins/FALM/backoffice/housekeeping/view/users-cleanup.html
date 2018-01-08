@@ -19,6 +19,7 @@
                 </div>
                 <div ng-switch="id">
                     <div ng-hide="!users.length" class="userForm">
+                        <!-- PANEL: LIST USERS -->
                         <form id="deleteUsersForm" ng-submit="deleteSelectedUsers(users)" role="form">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -61,6 +62,7 @@
                     </div>
 
                     <div ng-hide="users.length" class="noUserToDelete">
+                        <!-- PANEL: NO USERS TO DELETE -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <span class="bold"><localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize></span>
@@ -69,6 +71,13 @@
                                 <p><localize key="FALM_UsersManager.Cleanup.NoUsersToDelete">There are no users to delete.</localize></p>
                             </div>
                         </div>                        
+                    </div>
+
+                    <!-- RESTART SEARCH -->
+                    <div>
+                        <a ng-click="reloadRoute()" class="btn btn-default">
+                            <localize key="FALM_UsersManager.RestartSearchUsers">Restart users search</localize>
+                        </a>
                     </div>
                 </div>
             </div>

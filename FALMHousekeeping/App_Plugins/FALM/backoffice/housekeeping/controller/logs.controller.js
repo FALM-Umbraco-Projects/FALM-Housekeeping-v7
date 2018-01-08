@@ -22,7 +22,6 @@ app.requires.push('angularUtils.directives.dirPagination');
         // GET - VIEW LOGS
         $scope.showLoader = false;
         $scope.showSearchPanel = false;
-        $scope.showNoDBLogsFound = false;
 
         // Get all logs via hkLogsResource
         hkLogsResource.getDBLogs().then(function (response) {
@@ -31,10 +30,6 @@ app.requires.push('angularUtils.directives.dirPagination');
             $scope.logs = response.data;
             $scope.sortType = 'LogDate'; // set the default sort type
             $scope.reverse = true;       // set the default sort order
-
-            if ($scope.logs.ListDBLogs.length === "0") {
-                $scope.showNoDBLogsFound = true;
-            }
             $scope.showLoader = false;   // hide loader
         });
 
