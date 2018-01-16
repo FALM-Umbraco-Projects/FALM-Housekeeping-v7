@@ -34,6 +34,7 @@ function VersionsManagerDetailsController($route, $scope, hkVersionsResource, di
     };
 
     $scope.closeDialog = function () {
+        $route.reload();
         $scope.dismiss();
     };
 }

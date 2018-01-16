@@ -12,6 +12,7 @@ In the new FALM section you can find the following tools:
 
 **Latest Changes**
 ==============
+- v7.7.0.1 - Bug: Resolved issue #43 (GitHub) in Versions Manager
 - v7.7.0.0 - Various Fixes
     - Bug: Resolved issue #40 (GitHub) in Users manager
     - Fix: Updated Versions manager UI
@@ -30,7 +31,7 @@ In the new FALM section you can find the following tools:
 
 **Version History**
 ===============
-- v7.7.0.0  - For Umbraco v7.6+
+- v7.7.0.1  - For Umbraco v7.6+
 - v7.6.0.3  - For Umbraco until v7.5.14
 - v7.0.0.1  - For Umbraco v7+
 - v6.1.3.0  - For Umbraco v6 to v7.2

@@ -81,7 +81,7 @@
             if (confirm($scope.confirmDeleteActionMessage)) {
                 $scope.showLoader = true;
                 hkVersionsResource.deleteVersionsByCount(0).then(function (response) {
-                    if (response.data === true) {
+                    if (response.data != null) {
                         notificationsService.add($scope.versionsSuccessNotification);
                         $route.reload();
                     }

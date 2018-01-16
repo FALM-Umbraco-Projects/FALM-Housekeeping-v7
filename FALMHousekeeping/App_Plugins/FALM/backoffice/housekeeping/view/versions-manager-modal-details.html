@@ -74,7 +74,7 @@
     </div>
     <div class="umb-panel-footer" id="falm-footer">
         <div class="pull-right">
-            <a href="" ng-click="deleteVersionsByNodeId(dialogData.currentPublishedVersionItem.NodeId, 0)" class="btn btn-danger" style="margin-right: 10px;">
+            <a href="" ng-click="deleteVersionsByNodeId(dialogData.currentPublishedVersionItem.NodeId, 0)" ng-hide="dialogData.showCleanupSummary" class="btn btn-danger" style="margin-right: 10px;">
                 <localize key="FALM_VersionsManager.CleanupCurrentNodeVersions">Cleanup current node Versions</localize>
             </a>
             <a href="" ng-click="close()" class="btn pull-right">
