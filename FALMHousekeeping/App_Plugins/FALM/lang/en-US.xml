@@ -20,33 +20,35 @@
 </ul>]]></key>
     <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Latest Changes</strong><br />=============</p>
 <ul>
-<li><strong><i>v7.7.0.0</i></strong> - Various Fixes<br />
-    <ul>
-        <li>Bug: Resolved issue #40 (GitHub) in Users manager</li>
-        <li>Fix: Updated Versions manager UI</li>
-        <li>Fix: Updated TraceLogs manager UI</li>
-        <li>Bug: Resolved issue #41 (GitHub) in Media manager (Thank you to TFAstudio for the support)</li>
-        <li>Fix: Updated Media manager UI</li>
-    </ul>
-</li>
-<li><strong><em>v7.6.0.9</em></strong>&nbsp;- Minor Fixes</li>
-<li><strong><em>v7.6.0.8</em></strong> - Fix: highlighting selected node</li>
-<li><strong><em>v7.6.0.7</em></strong> - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support</li>
-<li><strong><em>v7.6.0.6</em></strong> - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support</li>
-<li><strong><em>v7.6.0.3</em></strong> - Updated naming to prevent conflicts</li>
-<li><strong><em>v7.6.0.2</em></strong> - Updated NuGet Package</li>
-<li><strong><em>v7.6.0.1</em></strong> - Minor fixes</li>
-<li><strong><em>v7.6.0.0</em></strong> - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)</li>
+    <li><strong><i>v7.7.0.2</i></strong> - Fix: Versions Manager now works with SQLCE</li>
+    <li><strong><i>v7.7.0.1</i></strong> - Bug: Resolved issue #43 (GitHub) in Versions Manager</li>
+    <li><strong><i>v7.7.0.0</i></strong> - Various Fixes<br />
+        <ul>
+            <li>Bug: Resolved issue #40 (GitHub) in Users manager</li>
+            <li>Fix: Updated Versions manager UI</li>
+            <li>Fix: Updated TraceLogs manager UI</li>
+            <li>Bug: Resolved issue #41 (GitHub) in Media manager (Thank you to TFAstudio for the support)</li>
+            <li>Fix: Updated Media manager UI</li>
+        </ul>
+    </li>
+    <li><strong><em>v7.6.0.9</em></strong> - Minor Fixes</li>
+    <li><strong><em>v7.6.0.8</em></strong> - Fix: highlighting selected node</li>
+    <li><strong><em>v7.6.0.7</em></strong> - Fix: removed control and installation of FALM key in core language files. Thanks to Bjarne Fyrstenborg for the support</li>
+    <li><strong><em>v7.6.0.6</em></strong> - Some UI Fixes. Many thanks to Bjarne Fyrstenborg for the support</li>
+    <li><strong><em>v7.6.0.3</em></strong> - Updated naming to prevent conflicts</li>
+    <li><strong><em>v7.6.0.2</em></strong> - Updated NuGet Package</li>
+    <li><strong><em>v7.6.0.1</em></strong> - Minor fixes</li>
+    <li><strong><em>v7.6.0.0</em></strong> - New version: totally rewrite using AngularJS and now in a Custom Section. Fixed SQLCE compatibility (Not yet for Versions manager)</li>
 </ul>]]></key>
-    <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong><br>Version History<br /></strong>=============</p>
+    <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Version History<br /></strong>=============</p>
 <ul>
-<li><strong><em>v7.7.0.0</em></strong> - For Umbraco v7.6+</li>
-<li><strong><em>v7.6.0.3</em></strong>&nbsp;- For Umbraco until v7.5.14</li>
-<li><strong><em>v7.0.0.1</em></strong> - For Umbraco v7+</li>
-<li><strong><em>v6.1.3.0</em></strong> - For Umbraco v6 to v7.2</li>
-<li><strong><em>v4.11.0.2</em></strong> - For Umbraco v4.8 to v4.11</li>
-<li><strong><em>v4.5.0.1</em></strong> - For Umbraco v4.5 to v4.7.2</li>
-<li><strong><em>v1.1.0.0</em></strong> - For Umbraco v3 to v4.0</li>
+    <li><strong><em>v7.7.0.2</em></strong> - For Umbraco v7.6+</li>
+    <li><strong><em>v7.6.0.3</em></strong> - For Umbraco until v7.5.14</li>
+    <li><strong><em>v7.0.0.1</em></strong> - For Umbraco v7+</li>
+    <li><strong><em>v6.1.3.0</em></strong> - For Umbraco v6 to v7.2</li>
+    <li><strong><em>v4.11.0.2</em></strong> - For Umbraco v4.8 to v4.11</li>
+    <li><strong><em>v4.5.0.1</em></strong> - For Umbraco v4.5 to v4.7.2</li>
+    <li><strong><em>v1.1.0.0</em></strong> - For Umbraco v3 to v4.0</li>
 </ul>]]></key>
 
     <!-- LOGS MANAGER -->

@@ -20,25 +20,36 @@
 </ul>]]></key>
     <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Ultime Modifiche</strong><br />=============</p>
 <ul>
-<li><strong><i>v7.7.0.0</i></strong> - Vari Fix<br />
-    <ul>
-        <li>Bug: Risolto errore #40 (GitHub) nella Gestione Cancellazione Utenti</li>
-        <li>Fix: Aggiornamento della UI per la Gestione Versioni</li>
-        <li>Fix: Aggiornamento della UI per la Gestione Log (TraceLogs)</li>
-        <li>Bug: Risolto errore #41 (GitHub) in Gestione Cartelle Media (Grazie a TFAstudio per il supporto)</li>
-        <li>Fix: Aggiornamento della UI per la Gestione Cartelle Media</li>
-    </ul>
-</li>
-<li><strong><em>v7.6.0.9</em></strong> - Fix Minori</li>
-<li><strong><em>v7.6.0.8</em></strong> - Fix: highlight selezionando un nodo</li>
-<li><strong><em>v7.6.0.7</em></strong> - Fix: rimosso controllo ed installazione della FALM key nei core language files. Grazie a Bjarne Fyrstenborg per il supporto</li>
-<li><strong><em>v7.6.0.6</em></strong> - Vari Fix UI. Grazie a Bjarne Fyrstenborg per il supporto</li>
-<li><strong><em>v7.6.0.3</em></strong> - Aggiornamento dei naming per prevenire conflitti</li>
-<li><strong><em>v7.6.0.2</em></strong> - Aggiornamento pacchetto NuGet</li>
-<li><strong><em>v7.6.0.1</em></strong> - Fix Minori</li>
-<li><strong><em>v7.6.0.0</em></strong> - Nuova versione: completamente riscritta usando AngularJS e ora spostata in una sezione indipendente. Risolto il problema di compatibilità con SQL CE per tutte le funzionalità tranne che per la gestione delle versioni che ancora hanno il problema.</li>
+    <li><strong><i>v7.7.0.2</i></strong> - Fix: Gestione Versioni ora funziona anche con SQLCE</li>
+    <li><strong><i>v7.7.0.1</i></strong> - Bug: Risolto errore #43 (GitHub) in Gestione Versioni</li>
+    <li><strong><i>v7.7.0.0</i></strong> - Vari Fix<br />
+        <ul>
+            <li>Bug: Risolto errore #40 (GitHub) nella Gestione Cancellazione Utenti</li>
+            <li>Fix: Aggiornamento della UI per la Gestione Versioni</li>
+            <li>Fix: Aggiornamento della UI per la Gestione Log (TraceLogs)</li>
+            <li>Bug: Risolto errore #41 (GitHub) in Gestione Cartelle Media (Grazie a TFAstudio per il supporto)</li>
+            <li>Fix: Aggiornamento della UI per la Gestione Cartelle Media</li>
+        </ul>
+    </li>
+    <li><strong><em>v7.6.0.9</em></strong> - Fix minori</li>
+    <li><strong><em>v7.6.0.8</em></strong> - Fix: Highlight selezionando un nodo</li>
+    <li><strong><em>v7.6.0.7</em></strong> - Fix: Rimosso controllo ed installazione della FALM key nei core language files. Grazie a Bjarne Fyrstenborg per il supporto</li>
+    <li><strong><em>v7.6.0.6</em></strong> - Vari Fix UI. Grazie a Bjarne Fyrstenborg per il supporto</li>
+    <li><strong><em>v7.6.0.3</em></strong> - Aggiornamento dei naming per prevenire conflitti</li>
+    <li><strong><em>v7.6.0.2</em></strong> - Aggiornamento pacchetto NuGet</li>
+    <li><strong><em>v7.6.0.1</em></strong> - Fix Minori</li>
+    <li><strong><em>v7.6.0.0</em></strong> - Nuova versione: Completamente riscritta usando AngularJS e ora spostata in una sezione indipendente. Risolto il problema di compatibilità con SQL CE per tutte le funzionalità tranne che per la gestione delle versioni che ancora hanno il problema.</li>
 </ul>]]></key>
-    <key alias="Dashboard.VersionHistory"><![CDATA[<p><span class="title">Version History</span></p><p class="text">v7.6.0.0 - For Umbraco v7.5+</p><p class="text">v7.0.0.1 - For Umbraco v7+</p><p class="text">v6.1.3.0 - For Umbraco v6 to v7.2</p><p class="text">v4.11.0.2 - For Umbraco v4.8 to v4.11</p><p class="text">v4.5.0.1  - For Umbraco v4.5 to v4.7.2</p><p class="text">v1.1.0.0  - For Umbraco v3 to v4.0</p>]]></key>
+    <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Cronologia delle Versioni<br /></strong>=============</p>
+<ul>
+    <li><strong><em>v7.7.0.2</em></strong> - Per Umbraco v7.6+</li>
+    <li><strong><em>v7.6.0.3</em></strong> - Per Umbraco fino alla v7.5.14</li>
+    <li><strong><em>v7.0.0.1</em></strong> - Per Umbraco v7+</li>
+    <li><strong><em>v6.1.3.0</em></strong> - Per Umbraco v6 fino alla v7.2</li>
+    <li><strong><em>v4.11.0.2</em></strong> - Per Umbraco v4.8 fino alla v4.11</li>
+    <li><strong><em>v4.5.0.1</em></strong> - Per Umbraco v4.5 fino alla v4.7.2</li>
+    <li><strong><em>v1.1.0.0</em></strong> - Per Umbraco fino alla v4.0</li>
+</ul>]]></key>
 
     <!-- LOGS MANAGER -->
     <key alias="LogsManager.TreeSection"><![CDATA[Log]]></key>

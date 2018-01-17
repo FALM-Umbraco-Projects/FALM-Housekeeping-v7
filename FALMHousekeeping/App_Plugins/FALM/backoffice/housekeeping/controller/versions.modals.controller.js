@@ -28,6 +28,7 @@ function VersionsManagerDetailsController($route, $scope, hkVersionsResource, di
             hkVersionsResource.deleteVersionsByNodeId($scope.nodeId, 0).then(function (response) {
                 $scope.dialogData.cleanupSummary = response.data;
             });
+
             $scope.dialogData.showLoader = false;
             $scope.dialogData.showCleanupSummary = true;
         }
