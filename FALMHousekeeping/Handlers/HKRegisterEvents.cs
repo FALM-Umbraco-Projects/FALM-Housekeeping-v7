@@ -1,5 +1,14 @@
-﻿using FALM.Housekeeping.Helpers;
+﻿using FALM.Housekeeping.Controllers;
+using System;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.Security;
 using Umbraco.Core;
+using Umbraco.Core.Models;
+using Umbraco.Web;
+using Umbraco.Web.Models;
+using Umbraco.Web.Mvc;
 
 namespace FALM.Housekeeping.Handlers
 {
@@ -9,13 +18,10 @@ namespace FALM.Housekeeping.Handlers
     public class HkRegisterEvents : ApplicationEventHandler
     {
         /// <summary>
-        /// Check and Install Languages on application started
+        /// Create the FALM custom routes on application started
         /// </summary>
         /// <param name="umbracoApplication"></param>
         /// <param name="applicationContext"></param>
-        protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
-        {
-            
-        }
+        protected override void ApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext) { }
     }
 }

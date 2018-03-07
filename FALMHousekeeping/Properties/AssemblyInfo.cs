@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("F.A.L.M. - Housekeeping")]
-[assembly: AssemblyDescription("FALM Housekeeping is a tool to cleanup umbraco logs, media, users and versions")]
+[assembly: AssemblyDescription("FALM Housekeeping is a tool to cleanup umbraco logs, media, users, versions and recycle bins")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("F.A.L.M. - Housekeeping")]
-[assembly: AssemblyCopyright("Copyright © F.A.L.M. 2017")]
+[assembly: AssemblyCopyright("Copyright © F.A.L.M. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("7.7.0.0")]
-[assembly: AssemblyFileVersion("7.7.0.0")]
+[assembly: AssemblyVersion("7.7.1.0")]
+[assembly: AssemblyFileVersion("7.7.1.0")]

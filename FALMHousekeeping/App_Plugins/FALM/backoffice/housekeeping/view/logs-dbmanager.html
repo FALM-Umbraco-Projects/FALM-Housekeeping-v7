@@ -19,7 +19,7 @@
                 </div>
                 <div ng-switch="id">
                     <div ng-hide="!showSearchPanel">
-                        <div ng-hide="!showLoader" class="loading">
+                        <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
                             <!-- LOADER -->
                             <localize key="FALM_LogsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
                             <umb-load-indicator></umb-load-indicator>
@@ -51,69 +51,71 @@
                                     </div>
                                 </form>
 
-                                <table id="FHLogTable" class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">
-                                                <localize key="FALM_LogsManager.LogId">Id</localize>
-                                            </th>
-                                            <th class="text-center">
-                                                <a href="" ng-click="sortKey='LogHeader';reverse=!reverse">
-                                                    <localize key="FALM_LogsManager.LogHeader">Type</localize>
-                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='LogHeader'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                                </a>
-                                            </th>
-                                            <th class="text-center">
-                                                <a href="" ng-click="sortKey='LogDate';reverse=!reverse">
-                                                    <localize key="FALM_LogsManager.LogDate">Date</localize>
-                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='LogDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                                </a>
-                                            </th>
-                                            <th class="text-center">
-                                                <a href="" ng-click="sortKey='UserName';reverse=!reverse">
-                                                    <localize key="FALM_LogsManager.Username">Username</localize>
-                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='UserName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                                </a>
-                                            </th>
-                                            <th class="text-center">
-                                                <a href="" ng-click="sortKey='NodeId';reverse=!reverse">
-                                                    <localize key="FALM_LogsManager.NodeId">Node</localize>
-                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='NodeId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                                </a>
-                                            </th>
-                                            <th class="text-center">
-                                                <a href="" ng-click="sortKey='NodeName';reverse=!reverse">
-                                                    <localize key="FALM_LogsManager.NodeName">Node Name</localize>
-                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='NodeName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                                </a>
-                                            </th>
-                                            <th class="text-center">
-                                                <a href="" ng-click="sortKey='LogComment';reverse=!reverse">
-                                                    <localize key="FALM_LogsManager.LogComment">Detail</localize>
-                                                    <span class="glyphicon sort-icon" ng-show="sortKey=='LogComment'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                                </a>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListDBLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage">
-                                            <td class="text-center" style="width: 50px;">{{ logItem.LogId }}</td>
-                                            <td class="text-center" style="width: 120px;"><span ng-class="getLabelType(logItem.LogHeader)">{{ logItem.LogHeader }}</span></td>
-                                            <td class="text-center" style="width: 140px;">{{ logItem.LogDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
-                                            <td style="width: 120px;">{{ logItem.UserName }}</td>
-                                            <td class="text-center" style="width: 50px;">{{ logItem.NodeId }}</td>
-                                            <td style="width: 150px;">{{ logItem.NodeName | limitTo:20 }}<span ng-if="logItem.NodeName.length > 20">...</span></td>
-                                            <td>{{ logItem.LogComment | limitTo:60 }}<span ng-if="logItem.LogComment.length > 60">...</span></td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="7">
-                                                <dir-pagination-controls boundary-links="true" template-url="/App_Plugins/FALM/backoffice/housekeeping/template/dirPagination.tpl.html"></dir-pagination-controls>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                <div class="table-responsive">
+                                    <table id="FHLogTable" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    <localize key="FALM_LogsManager.LogId">Id</localize>
+                                                </th>
+                                                <th class="text-center">
+                                                    <a href="" ng-click="sortKey='LogDate';reverse=!reverse">
+                                                        <localize key="FALM_LogsManager.LogDate">Date</localize>
+                                                        <span class="glyphicon sort-icon" ng-show="sortKey=='LogDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="text-center">
+                                                    <a href="" ng-click="sortKey='LogHeader';reverse=!reverse">
+                                                        <localize key="FALM_LogsManager.LogHeader">Type</localize>
+                                                        <span class="glyphicon sort-icon" ng-show="sortKey=='LogHeader'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="text-center">
+                                                    <a href="" ng-click="sortKey='UserName';reverse=!reverse">
+                                                        <localize key="FALM_LogsManager.Username">Username</localize>
+                                                        <span class="glyphicon sort-icon" ng-show="sortKey=='UserName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="text-center">
+                                                    <a href="" ng-click="sortKey='NodeId';reverse=!reverse">
+                                                        <localize key="FALM_LogsManager.NodeId">Node</localize>
+                                                        <span class="glyphicon sort-icon" ng-show="sortKey=='NodeId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="text-center">
+                                                    <a href="" ng-click="sortKey='NodeName';reverse=!reverse">
+                                                        <localize key="FALM_LogsManager.NodeName">Node Name</localize>
+                                                        <span class="glyphicon sort-icon" ng-show="sortKey=='NodeName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="text-center">
+                                                    <a href="" ng-click="sortKey='LogComment';reverse=!reverse">
+                                                        <localize key="FALM_LogsManager.LogComment">Detail</localize>
+                                                        <span class="glyphicon sort-icon" ng-show="sortKey=='LogComment'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                                    </a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-click="openDetailsModal(logItem, filteredLogs)" dir-paginate="logItem in filteredLogs = (logs.ListDBLogs | filter:q) | orderBy:sortKey:reverse | itemsPerPage:pageSize" current-page="currentPage" style="font-size: 0.8rem;">
+                                                <td class="text-center">{{ logItem.LogId }}</td>
+                                                <td class="text-center">{{ logItem.LogDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                                <td class="text-center"><span ng-class="getLabelType(logItem.LogHeader)">{{ logItem.LogHeader }}</span></td>
+                                                <td calss="text-left">{{ logItem.UserName }}</td>
+                                                <td class="text-center">{{ logItem.NodeId }}</td>
+                                                <td class="text-left">{{ logItem.NodeName | limitTo:20 }}<span ng-if="logItem.NodeName.length > 20">...</span></td>
+                                                <td class="text-left">{{ logItem.LogComment | limitTo:60 }}<span ng-if="logItem.LogComment.length > 60">...</span></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="7">
+                                                    <dir-pagination-controls boundary-links="true" template-url="/App_Plugins/FALM/backoffice/housekeeping/template/dirPagination.tpl.html"></dir-pagination-controls>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                             <div class="panel-footer">
                                 <form id="logsCleanupOlder6MonthsForm" ng-submit="deleteDBLogsBeforeMonths()" role="form" style="display: inline-block; margin: 0 10px 0 0;">

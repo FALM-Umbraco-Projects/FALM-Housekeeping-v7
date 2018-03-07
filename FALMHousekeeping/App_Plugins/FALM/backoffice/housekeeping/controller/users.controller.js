@@ -68,7 +68,6 @@
         $scope.deleteSelectedUsers = function (selectedUsers) {
             if (confirm($scope.confirmDeleteActionMessage)) {
                 hkUsersResource.deleteSelectedUsers(selectedUsers).then(function (response) {
-                    console.log(response.data);
                     if (response.data === "true") {
                         notificationsService.add($scope.userSuccessNotification);
                         $route.reload();

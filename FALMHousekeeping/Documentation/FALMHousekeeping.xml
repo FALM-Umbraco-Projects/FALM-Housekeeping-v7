@@ -51,6 +51,42 @@
         <member name="F:FALM.Housekeeping.Constants.HkConstants.Controller.Alias">
             <summary>Alias of the Controller</summary>
         </member>
+        <member name="T:FALM.Housekeeping.Controllers.HkRecycleBinApiController">
+            <summary>
+            PluginController("FALMHousekeeping")
+            HkRecycleBinApiController
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.GetAllItemsInRecycleBins">
+            <summary>
+            Get all items in all Umbraco Recycle Bins
+            </summary>
+            <returns>Dictionary(string, string)</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.PostEmptyContentRecycleBin">
+            <summary>
+            Empty Content Recycle Bin
+            </summary>
+            <returns>Dictionary(string, string)</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.PostEmptyMediaRecycleBin">
+            <summary>
+            Empty Media Recycle Bin
+            </summary>
+            <returns>Dictionary(string, string)</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.PostEmptyBothRecycleBins">
+            <summary>
+            Empty Both Recycle Bins
+            </summary>
+            <returns>Dictionary(string, string)</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.GetCreateServicePage">
+            <summary>
+            Create the Auto Empty Recycle Bins Service Page
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:FALM.Housekeeping.Controllers.HkVersionsApiController">
             <summary>
             PluginController("FALMHousekeeping")
@@ -215,6 +251,13 @@
             </summary>
             <returns>List of UsersModel</returns>
         </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkUsersApiController.GetAllUserGroups(System.Collections.Generic.IEnumerable{Umbraco.Core.Models.Membership.IReadOnlyUserGroup})">
+            <summary>
+            Retrieve all groups of a user
+            </summary>
+            <param name="userGroups"></param>
+            <returns></returns>
+        </member>
         <member name="M:FALM.Housekeeping.Controllers.HkUsersApiController.PostDeleteSelectedUsers(System.Collections.Generic.List{FALM.Housekeeping.Models.HKUsersModel})">
             <summary>
             Delete all selected users
@@ -235,6 +278,33 @@
             Resolve Database connection
             </summary>
             <returns>Database</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.HKRecycleBinModel">
+            <summary>
+            UsersModel
+            </summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKRecycleBinModel.ListItemsInRecycleBins">
+            <summary></summary>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.ItemsInRecycleBinsModel">
+            <summary>
+            Items to be deleted
+            </summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.ItemsInRecycleBinsModel.Type">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.ItemsInRecycleBinsModel.Value">
+            <summary></summary>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.HKRecycleBinPageModel">
+            <summary>
+            Items to be deleted
+            </summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKRecycleBinPageModel.IsBothRecycleBinsCleaned">
+            <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.HKVersionsModel">
             <summary>
@@ -535,9 +605,9 @@
             HkRegisterEvents
             </summary>
         </member>
-        <member name="M:FALM.Housekeeping.Handlers.HkRegisterEvents.ApplicationStarted(Umbraco.Core.UmbracoApplicationBase,Umbraco.Core.ApplicationContext)">
+        <member name="M:FALM.Housekeeping.Handlers.HkRegisterEvents.ApplicationStarting(Umbraco.Core.UmbracoApplicationBase,Umbraco.Core.ApplicationContext)">
             <summary>
-            Check and Install Languages on application started
+            Create the FALM custom routes on application started
             </summary>
             <param name="umbracoApplication"></param>
             <param name="applicationContext"></param>

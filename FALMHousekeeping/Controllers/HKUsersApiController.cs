@@ -1,11 +1,13 @@
 ﻿using FALM.Housekeeping.Helpers;
 using FALM.Housekeeping.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
+using Umbraco.Core.Models.Membership;
 using Umbraco.Core.Persistence;
 using Umbraco.Core.Services;
 using Umbraco.Web.Mvc;
@@ -30,9 +32,9 @@ namespace FALM.Housekeeping.Controllers
         [HttpGet]
         public List<HKUsersModel> GetAllUsers()
         {
-            int totalUsers;
 
-            var allUsers = UserService.GetAll(0, int.MaxValue, totalRecords: out totalUsers);
+            var allUsers = UserService.GetAll(0, int.MaxValue, totalRecords: out int totalUsers);
+            string userGroups = string.Empty;
 
             return (from user in allUsers
                     where user.Id != 0
@@ -43,8 +45,30 @@ namespace FALM.Housekeeping.Controllers
                         Name = user.Name,
                         Username = user.Username,
                         Email = user.Email,
-                        UserType = user.UserType.Alias.First().ToString().ToUpper() + user.UserType.Alias.Substring(1)
+                        UserType = GetAllUserGroups(user.Groups)
                     }).ToList();
+        }
+
+        /// <summary>
+        /// Retrieve all groups of a user
+        /// </summary>
+        /// <param name="userGroups"></param>
+        /// <returns></returns>
+        protected string GetAllUserGroups(IEnumerable<IReadOnlyUserGroup> userGroups)
+        {
+            string allUserGroupsAlias = string.Empty;
+
+            foreach (var g in userGroups)
+            {
+                allUserGroupsAlias += g.Name;
+
+                if (g != userGroups.Last())
+                {
+                    allUserGroupsAlias += ", ";
+                }
+            }
+
+            return allUserGroupsAlias;
         }
 
         /// <summary>

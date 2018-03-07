@@ -41,7 +41,8 @@ namespace FALM.Housekeeping.Trees
                 CreateTreeNode("logs", "-1", queryStrings, textService.Localize("FALM/LogsManager.TreeSection", CultureInfo.CurrentCulture), "icon-list", true, queryStrings.GetValue<string>("application")),
                 CreateTreeNode("media", "-1", queryStrings, textService.Localize("FALM/MediaManager.TreeSection", CultureInfo.CurrentCulture), "icon-umb-media", true, queryStrings.GetValue<string>("application")),
                 CreateTreeNode("users", "-1", queryStrings, textService.Localize("FALM/UsersManager.TreeSection", CultureInfo.CurrentCulture), "icon-users", true, queryStrings.GetValue<string>("application")),
-                CreateTreeNode("versions", "-1", queryStrings, textService.Localize("FALM/VersionsManager.TreeSection", CultureInfo.CurrentCulture), "icon-books", true, queryStrings.GetValue<string>("application"))
+                CreateTreeNode("versions", "-1", queryStrings, textService.Localize("FALM/VersionsManager.TreeSection", CultureInfo.CurrentCulture), "icon-books", true, queryStrings.GetValue<string>("application")),
+                CreateTreeNode("recyclebin", "-1", queryStrings, textService.Localize("FALM/RecycleBinManager.TreeSection", CultureInfo.CurrentCulture), "icon-trash", true, queryStrings.GetValue<string>("application"))
             };
 
                 return tree;
@@ -100,6 +101,11 @@ namespace FALM.Housekeeping.Trees
                     case "versions": //check if we're rendering Versions node's children
                         tree = new TreeNodeCollection {
                             CreateTreeNode("versions-manager", id, queryStrings, textService.Localize("FALM/VersionsManager.TreeActionManager", CultureInfo.CurrentCulture), "icon-diagnostics color-green", false),
+                        };
+                        break;
+                    case "recyclebin": //check if we're rendering Recycle Bin node's children
+                        tree = new TreeNodeCollection {
+                            CreateTreeNode("recyclebin-cleanup", id, queryStrings, textService.Localize("FALM/RecycleBinManager.TreeActionCleanup", CultureInfo.CurrentCulture), "icon-delete color-red", false)
                         };
                         break;
                 }
