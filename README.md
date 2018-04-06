@@ -16,7 +16,7 @@ In the new FALM section you can find the following tools:
 
 **Latest Changes**
 ==============
-- **v7.7.2.0** - New feature and Various Fixes
+- v7.7.2.0 - New feature and Various Fixes
     - New feature: Cache and TEMP directories Manager
         - "App_Data/cache" and "App_Data/TEMP" directories on File System
         - Possibility to create a Service Page to auto clean "App_Data/cache" directory on File System. This page can be used with a scheduler (for example I use "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) to be able to schedule automatic cleaning of both recycle bins.<br />
