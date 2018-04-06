@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
+using Umbraco.Core.Models;
+using Umbraco.Web.Models;
 
 namespace FALM.Housekeeping.Models
 {
@@ -25,8 +28,21 @@ namespace FALM.Housekeeping.Models
     /// <summary>
     /// Items to be deleted
     /// </summary>
-    public class HKRecycleBinPageModel
+    public class HKRecycleBinPageModel : RenderModel
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        public HKRecycleBinPageModel(IPublishedContent content) : base(content) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="culture"></param>
+        public HKRecycleBinPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture) { }
+
         /// <summary></summary>
         public bool IsBothRecycleBinsCleaned { get; set; }
     }

@@ -25,15 +25,20 @@
         </div>
 
         <div ng-hide="!dialogData.showCleanupSummary">
+            <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-Summary">Cleanup Summary</localize></h5>
             <div ng-if="dialogData.cleanupSummary">
-                <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-Summary">Cleanup Summary</localize></h5>
-                <p ng-repeat="item in dialogData.cleanupSummary">
-                    <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupResult">Deleted Rows in </localize> '{{ item.Type }}': {{ item.Result }}
-                </p>
+                <div class="alert alert-success" role="alert" style="padding-top: 20px;">
+                    <h6 style="font-size: 14px; margin-bottom: 20px;"><strong><localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccess">Versions deleted successfully!</localize></strong></h6>
+                    <p ng-repeat="item in dialogData.cleanupSummary" style="font-size: 12px;">
+                        <span class="badge">{{ item.Result }}</span> <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccessResultDeletedRows">rows deleted</localize> <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccessResultTable">in table</localize>: <strong>{{ item.Type }}</strong>
+                    </p>
+                </div>
             </div>
 
             <div ng-if="!dialogData.cleanupSummary">
-                <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-SummaryError">An Error occurred during cleanup</localize></h5>
+                <div class="alert alert-danger" role="alert" style="padding-top: 20px;">
+                    <h6 style="font-size: 14px;"><localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupError">An Error occurred during cleanup</localize></h6>
+                </div>
             </div>
         </div>
     </div>

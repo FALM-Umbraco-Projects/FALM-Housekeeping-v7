@@ -27,7 +27,7 @@
             $scope.confirmDeleteActionMessage = value;
         });
 
-        // Get all users via hkUsersResource
+        // Get all media orphans via hkMediaResource
         hkMediaResource.getMediaToDelete($scope.currentUserLanguage).then(function (response) {
             $scope.showSearchPanel = true;
             $scope.showLoader = true;

@@ -19,6 +19,12 @@
         "~/App_Plugins/FALM/backoffice/housekeeping/controller/recyclebin.controller.js",
         "~/App_Plugins/FALM/backoffice/housekeeping/resource/recyclebin.resource.js",
         "~/App_Plugins/FALM/backoffice/housekeeping/directive/recyclebin.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/cache.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/cache.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/cache.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/temp.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/temp.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/temp.directive.js",
         "~/App_Plugins/FALM/housekeeping.resource.js"
     ],
     "css": [

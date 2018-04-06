@@ -51,6 +51,66 @@
         <member name="F:FALM.Housekeeping.Constants.HkConstants.Controller.Alias">
             <summary>Alias of the Controller</summary>
         </member>
+        <member name="T:FALM.Housekeeping.Controllers.HkTempApiController">
+            <summary>
+            PluginController("FALMHousekeeping")
+            HkTempApiController
+            </summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkTempApiController.tempDI">
+            <summary>Cache directory</summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkTempApiController.GetTempContent">
+            <summary>
+            Get Cache and TEMP content summary
+            </summary>
+            <returns>HKCacheTempContentModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkTempApiController.PostEmptySelectedTempDirectories(System.Collections.Generic.List{FALM.Housekeeping.Models.HKTempModel})">
+            <summary>
+            Post Empty TEMP directory
+            </summary>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Controllers.HkCacheApiController">
+            <summary>
+            PluginController("FALMHousekeeping")
+            HkCacheApiController
+            </summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkCacheApiController.cacheDI">
+            <summary>Cache directory</summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkCacheApiController.GetCacheContent">
+            <summary>
+            Get Cache content summary
+            </summary>
+            <returns>HKCacheContentModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkCacheApiController.PostEmptyCacheDirectory">
+            <summary>
+            Post Empty Cache directory
+            </summary>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkCacheApiController.GetCreateServicePage">
+            <summary>
+            Create the Auto Clean Cache Service Page
+            </summary>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Controllers.falmHKCacheCleanupController">
+            <summary>
+            falmHKCacheCleanup is the controller used for service purposes
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.falmHKCacheCleanupController.Index(Umbraco.Web.Models.RenderModel)">
+            <summary>
+            This Action is a service page that auto empty Cache Directory on File System
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:FALM.Housekeeping.Controllers.HkRecycleBinApiController">
             <summary>
             PluginController("FALMHousekeeping")
@@ -61,30 +121,42 @@
             <summary>
             Get all items in all Umbraco Recycle Bins
             </summary>
-            <returns>Dictionary(string, string)</returns>
+            <returns>HKRecycleBinModel</returns>
         </member>
         <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.PostEmptyContentRecycleBin">
             <summary>
             Empty Content Recycle Bin
             </summary>
-            <returns>Dictionary(string, string)</returns>
+            <returns>HKRecycleBinModel</returns>
         </member>
         <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.PostEmptyMediaRecycleBin">
             <summary>
             Empty Media Recycle Bin
             </summary>
-            <returns>Dictionary(string, string)</returns>
+            <returns>HKRecycleBinModel</returns>
         </member>
         <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.PostEmptyBothRecycleBins">
             <summary>
             Empty Both Recycle Bins
             </summary>
-            <returns>Dictionary(string, string)</returns>
+            <returns>HKRecycleBinModel</returns>
         </member>
         <member name="M:FALM.Housekeeping.Controllers.HkRecycleBinApiController.GetCreateServicePage">
             <summary>
             Create the Auto Empty Recycle Bins Service Page
             </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Controllers.falmHKRecycleBinsCleanupController">
+            <summary>
+            falmHKRecycleBinsCleanupController is the controller used for service purposes
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.falmHKRecycleBinsCleanupController.Index(Umbraco.Web.Models.RenderModel)">
+            <summary>
+            This Action is a service page that auto empty both Content and Media Recycle Bins
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="T:FALM.Housekeeping.Controllers.HkVersionsApiController">
@@ -265,6 +337,45 @@
             <param name="selectedUsersToDelete"></param>
             <returns>bool</returns>
         </member>
+        <member name="T:FALM.Housekeeping.Helpers.HkFunctionsHelper">
+            <summary>
+            HkDbHelper
+            </summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Helpers.HkFunctionsHelper.SizeSuffixes">
+            <summary>
+            Size Suffixes
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkFunctionsHelper.DirSize(System.IO.DirectoryInfo)">
+            <summary>
+            Get the size of given directory
+            </summary>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkFunctionsHelper.SizeSuffix(System.Int64,System.Int32)">
+            <summary>
+            Prettify dimensions
+            </summary>
+            <param name="value"></param>
+            <param name="decimalPlaces"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkFunctionsHelper.DeleteFolderRecursive(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Delete folders recursively
+            </summary>
+            <param name="rootDir"></param>
+            <param name="baseDir"></param>
+        </member>
+        <member name="M:FALM.Housekeeping.Helpers.HkFunctionsHelper.DeleteFile(System.IO.DirectoryInfo,System.IO.FileInfo)">
+            <summary>
+            Delete file
+            </summary>
+            <param name="rootDir"></param>
+            <param name="fileToDelete"></param>
+        </member>
         <member name="T:FALM.Housekeeping.Helpers.HkDbHelper">
             <summary>
             HkDbHelper
@@ -278,6 +389,69 @@
             Resolve Database connection
             </summary>
             <returns>Database</returns>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.HKTempModel">
+            <summary>
+            Temp Model
+            </summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTempModel.Selected">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTempModel.Entry">
+            <summary>Name of the object</summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTempModel.Type">
+            <summary>Type of the object (file or folder)</summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTempModel.Dimension">
+            <summary>Dimension of the object</summary>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.HKCacheContentModel">
+            <summary>
+            List of all content of the Cache folders on File System
+            </summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKCacheContentModel.CacheDirectoryTotalDimension">
+            <summary>Total dimension of Cache directory on File Sytem</summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKCacheContentModel.ListCacheContent">
+            <summary>Content of the Cache folder on File Sytem</summary>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.HKCacheModel">
+            <summary>
+            Cache Model
+            </summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKCacheModel.Entry">
+            <summary>Name of the object</summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKCacheModel.Type">
+            <summary>Type of the object (file or folder)</summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKCacheModel.Dimension">
+            <summary>Dimension of the object</summary>
+        </member>
+        <member name="T:FALM.Housekeeping.Models.HKCachePageModel">
+            <summary>
+            Items to be deleted
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Models.HKCachePageModel.#ctor(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:FALM.Housekeeping.Models.HKCachePageModel.#ctor(Umbraco.Core.Models.IPublishedContent,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="content"></param>
+            <param name="culture"></param>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKCachePageModel.IsCacheDirectoryCleaned">
+            <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.HKRecycleBinModel">
             <summary>
@@ -302,6 +476,19 @@
             <summary>
             Items to be deleted
             </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Models.HKRecycleBinPageModel.#ctor(Umbraco.Core.Models.IPublishedContent)">
+            <summary>
+            
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:FALM.Housekeeping.Models.HKRecycleBinPageModel.#ctor(Umbraco.Core.Models.IPublishedContent,System.Globalization.CultureInfo)">
+            <summary>
+            
+            </summary>
+            <param name="content"></param>
+            <param name="culture"></param>
         </member>
         <member name="P:FALM.Housekeeping.Models.HKRecycleBinPageModel.IsBothRecycleBinsCleaned">
             <summary></summary>

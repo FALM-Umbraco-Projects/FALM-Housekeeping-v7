@@ -17,10 +17,26 @@
     <li><strong>Media Folder Manager</strong>: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)</li>
     <li><strong>Delete Users Manager</strong>: to remove Umbraco users (except the admin user)</li>
     <li><strong>Versions Manager</strong>: to view and cleanup the version history that Umbraco maintains for each content node.</li>
-    <li><strong>Recycle Bin Manager: to cleanup Content and Media Recycle Bin.</li>
+    <li><strong>Recycle Bin Manager</strong>: to cleanup Content and Media Recycle Bin.</li>
+    <li><strong>Cache and TEMP directories Manager</strong>: to cleanup "App_Data/cache" and "App_Data/TEMP" directories on File System.</li>
 </ul>]]></key>
         <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Latest Changes</strong><br />=============</p>
 <ul>
+    <li><strong><i>v7.7.2.0</i></strong> - New feature and Various Fixes
+        <ul>
+            <li>New feature: Cache and TEMP directories Manager
+                <ul>
+                    <li>Clean "App_Data/cache" and "App_Data/TEMP" directories on File System</li>
+                    <li>
+                        Possibility to create a Service Page to auto clean "App_Data/cache" directory on File System. It can be used with a scheduler (for example I use "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) to be able to schedule automatic cleaning of both recycle bins.<br />
+                        This action will create 2 FALM DocumentTypes, 1 FALM Template and 2 FALM nodes, simply by clicking a button.<br />
+                        <span style="color: darkred; font-style: italic; font-weight: bold;">After creation of the Service Page, I recommend to add all FALM nodes and template urls in the robots.txt file to avoid being indexed by search engines</span>
+                    </li>
+                </ul>
+            </li>
+        <li>Fix: Recycle Bins Cleanup Service Page</li>
+        </ul>
+    </li>
     <li><strong><i>v7.7.1.0</i></strong> - New feature and Various Fixes
         <ul>
             <li>New feature: Recycle Bins Manager
@@ -48,10 +64,10 @@
             <li>Fix: Updated Media manager UI</li>
         </ul>
     </li>
-    </ul>]]></key>
+</ul>]]></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Version History<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.1.0</i></strong> - For Umbraco v7.6+</li>
+    <li><strong><i>v7.7.2.0</i></strong> - For Umbraco v7.6+</li>
     <li><strong><i>v7.6.0.3</i></strong> - For Umbraco until v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - For Umbraco v7+</li>
     <li><strong><i>v6.1.3.0</i></strong> - For Umbraco v6 to v7.2</li>
@@ -222,6 +238,7 @@ Please try again or contact the author of the package with the details of the er
 The process may take a long time if the number of versions to be deleted is very high.
 
 Are you sure you want to continue with the deletion of the versions?]]></key>
+        <key alias="VersionsManager.Cleanup.NoVersionsToDelete"><![CDATA[No versions to delete]]></key>
         <key alias="VersionsManager.StartCleanupByCount"><![CDATA[Cleanup versions by count]]></key>
         <key alias="VersionsManager.Cleanup.DeleteLogsSuccessHeadline"><![CDATA[OK]]></key>
         <key alias="VersionsManager.Cleanup.DeleteLogsSuccessMessage"><![CDATA[All versions succefully removed.]]></key>
@@ -260,8 +277,10 @@ The process may take a long time if the number of versions to be deleted is very
 Are you sure you want to continue with the deletion of the versions?]]></key>
         <key alias="VersionsManager.Cleanup.Dialog-CleanupInProgress"><![CDATA[Cleanup in progress. Please wait until you see results]]></key>
         <key alias="VersionsManager.Cleanup.Dialog-Summary"><![CDATA[Cleanup Summary]]></key>
-        <key alias="VersionsManager.Cleanup.Dialog-CleanupResult"><![CDATA[Deleted Rows in ]]></key>
-        <key alias="VersionsManager.Cleanup.Dialog-SummaryError"><![CDATA[Error occur during deleting process.
+        <key alias="VersionsManager.Cleanup.Dialog-CleanupSuccess"><![CDATA[Versions deleted successfully!]]></key>
+        <key alias="VersionsManager.Cleanup.Dialog-CleanupSuccessResultTable"><![CDATA[in table]]></key>
+        <key alias="VersionsManager.Cleanup.Dialog-CleanupSuccessResultDeletedRows"><![CDATA[deleted rows]]></key>
+        <key alias="VersionsManager.Cleanup.Dialog-CleanupError"><![CDATA[Error occur during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]>
         </key>
@@ -329,7 +348,57 @@ The process may take a long time.
 Are you sure you want to continue?]]></key>
         <key alias="RecycleBinManager.ReloadPage"><![CDATA[Reload Page]]></key>
         <key alias="RecycleBinManager.FooterMessage"><![CDATA[ ]]></key>
-        <key alias="RecycleBinManager.CreateServicePageTitle">Create a Service Page to use to empty all Recycle Bins (this page can be used with a scheduler to schedule the automatic cleaning of the Umbraco recycle bins)</key>
-        <key alias="RecycleBinManager.CreateServicePageLink">Create the Service Page</key>
+        <key alias="RecycleBinManager.CreateServicePageTitle"><![CDATA[Create a Service Page to use to empty all Recycle Bins (this page can be used with a scheduler to schedule the automatic cleaning of the Umbraco recycle bins)]]></key>
+        <key alias="RecycleBinManager.CreateServicePageLink"><![CDATA[Create the Service Page]]></key>
+
+        <!-- CACHE/TEMP MANAGER -->
+        <key alias="CacheTempManager.TreeSection"><![CDATA[Cache and Temp]]></key>
+        <key alias="CacheTempManager.Cache.TreeActionCleanup"><![CDATA[App_Data/cache directory Manager]]></key>
+        <key alias="CacheTempManager.Cache.Title"><![CDATA[App_Data/cache directory management (File System)]]></key>
+        <key alias="CacheTempManager.Cache.Description"><![CDATA[With this tool you can easily empty the "App_Data/cache" folder (on File System)]]></key>
+        <key alias="CacheTempManager.Cache.ContentPanelTitle"><![CDATA["App_Data/cache" directory content]]></key>
+        <key alias="CacheTempManager.Cache.ContentPanelDescription"><![CDATA[List of directories and files found on File System]]></key>
+        <key alias="CacheTempManager.Cache.StartEmptyButton"><![CDATA[Empty cache directory]]></key>
+        <key alias="CacheTempManager.Cache.DirEmpty"><![CDATA[The "App_Data/cache" directory is empty]]></key>
+        <key alias="CacheTempManager.Cache.EmptyCacheDirectorySuccessHeadline"><![CDATA[OK]]></key>
+        <key alias="CacheTempManager.Cache.EmptyCacheDirectorySuccessMessage"><![CDATA[The "App_Data/cache" directory has been successfully emptied]]></key>
+        <key alias="CacheTempManager.Cache.EmptyCacheDirectoryErrorHeadline"><![CDATA[Error]]></key>
+        <key alias="CacheTempManager.Cache.EmptyCacheDirectoryErrorMessage"><![CDATA[An error occurred while emptying "App_Data/cache" directory]]></key>
+        <key alias="CacheTempManager.Cache.ConfirmEmptyCacheDirectoryMessage"><![CDATA[All files and Folders in "App_Data/cache" directory will be permanently deleted.
+The process may take a long time if the number of files and folders to be deleted is very high.
+
+Are you sure you want to continue?]]></key>
+        <key alias="CacheTempManager.Temp.TreeActionCleanup"><![CDATA[App_Data/TEMP directory Manager]]></key>
+        <key alias="CacheTempManager.Temp.Title"><![CDATA[App_Data/TEMP directory management (File System)]]></key>
+        <key alias="CacheTempManager.Temp.Description"><![CDATA[With this tool you can easily empty the "App_Data/TEMP" folder (on File System)]]></key>
+        <key alias="CacheTempManager.Temp.ContentPanelTitle"><![CDATA["App_Data/TEMP" directory content]]></key>
+        <key alias="CacheTempManager.Temp.ContentPanelDescription"><![CDATA[List of directories and files found on File System]]></key>
+        <key alias="CacheTempManager.Temp.StartEmptyButton"><![CDATA[Delete selected items]]></key>
+        <key alias="CacheTempManager.Temp.DirEmpty"><![CDATA[The "App_Data/TEMP" directory is empty]]></key>
+        <key alias="CacheTempManager.Temp.EmptyTempDirectorySuccessHeadline"><![CDATA[OK]]></key>
+        <key alias="CacheTempManager.Temp.EmptyTempDirectorySuccessMessage"><![CDATA[Selected files/directories have been successfully deleted from "App_Data/TEMP" directory]]></key>
+        <key alias="CacheTempManager.Temp.EmptyTempDirectoryErrorHeadline"><![CDATA[Error]]></key>
+        <key alias="CacheTempManager.Temp.EmptyTempDirectoryErrorMessage"><![CDATA[An error occurred during deleting selected files/directories from "App_Data/TEMP" directory]]></key>
+        <key alias="CacheTempManager.Temp.ConfirmEmptyTempDirectoryMessage"><![CDATA[All selected files/directories in "App_Data/TEMP" directory will be permanently deleted.
+The process may take a long time if the number of files and directories to be deleted is very high.
+
+Are you sure you want to continue?]]></key>
+        <key alias="CacheTempManager.SearchInProgress"><![CDATA[Search in progress. Please wait until you see results]]></key>
+        <key alias="CacheTempManager.DeletionInProgress"><![CDATA[Deletion in progress. Please wait until you see deletion's result]]></key>
+        <key alias="CacheTempManager.Entry"><![CDATA[Entry]]></key>
+        <key alias="CacheTempManager.Type"><![CDATA[Type]]></key>
+        <key alias="CacheTempManager.Dimension"><![CDATA[Dimension]]></key>
+        <key alias="CacheTempManager.RestartSearch"><![CDATA[Reload]]></key>
+        <key alias="CacheTempManager.CreateServicePageLink">Create the Service Page</key>
+        <key alias="CacheTempManager.ConfirmCreateFALMServicePageActionMessage"><![CDATA[WARNING! Will be created 2 DocumentTypes, 1 Template e 2 nodes.
+The process may take a long time.
+
+Are you sure you want to continue?]]></key>
+        <key alias="CacheTempManager.CreateFALMServicePageSuccessHeadline"><![CDATA[OK]]></key>
+        <key alias="CacheTempManager.CreateFALMServicePageSuccessMessage"><![CDATA[All Document Types, Template and Nodes of Service Page are ready to be used]]></key>
+        <key alias="CacheTempManager.CreateFALMServicePageErrorHeadline"><![CDATA[Error]]></key>
+        <key alias="CacheTempManager.CreateFALMServicePageErrorMessage"><![CDATA[An error occurred during Service Page creation process.
+    
+Please try again or contact the author of the package with the details of the error]]></key>
     </area>
 </language>

@@ -24,7 +24,7 @@ namespace FALM.Housekeeping.Controllers
         /// <summary>
         /// Get all items in all Umbraco Recycle Bins
         /// </summary>
-        /// <returns>Dictionary(string, string)</returns>
+        /// <returns>HKRecycleBinModel</returns>
         [HttpGet]
         public HKRecycleBinModel GetAllItemsInRecycleBins()
         {
@@ -72,7 +72,7 @@ namespace FALM.Housekeeping.Controllers
         /// <summary>
         /// Empty Content Recycle Bin
         /// </summary>
-        /// <returns>Dictionary(string, string)</returns>
+        /// <returns>HKRecycleBinModel</returns>
         [HttpDelete]
         [HttpPost]
         public HKRecycleBinModel PostEmptyContentRecycleBin()
@@ -115,7 +115,7 @@ namespace FALM.Housekeeping.Controllers
         /// <summary>
         /// Empty Media Recycle Bin
         /// </summary>
-        /// <returns>Dictionary(string, string)</returns>
+        /// <returns>HKRecycleBinModel</returns>
         [HttpDelete]
         [HttpPost]
         public HKRecycleBinModel PostEmptyMediaRecycleBin()
@@ -158,7 +158,7 @@ namespace FALM.Housekeeping.Controllers
         /// <summary>
         /// Empty Both Recycle Bins
         /// </summary>
-        /// <returns>Dictionary(string, string)</returns>
+        /// <returns>HKRecycleBinModel</returns>
         [HttpDelete]
         [HttpPost]
         public HKRecycleBinModel PostEmptyBothRecycleBins()
@@ -209,7 +209,7 @@ namespace FALM.Housekeeping.Controllers
         /// <summary>
         /// Create the Auto Empty Recycle Bins Service Page
         /// </summary>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         [HttpGet]
         public bool GetCreateServicePage()
         {
@@ -279,7 +279,7 @@ namespace FALM.Housekeeping.Controllers
                     // Get Template "falmHKRecycleBinsCleanup" and Set the Content
                     falmTemplate = new Template("FALM Housekeeping - Recycle Bins Cleanup", "falmHKRecycleBinsCleanup")
                     {
-                        Content = "@using FALM.Housekeeping.Models; @inherits Umbraco.Web.Mvc.UmbracoViewPage<HKRecycleBinPageModel>; @{Layout = null;}<html><head><title>FALM Housekeeping - Recycle Bins Cleanup</title></head><body><h1>FALM Housekeeping - Recycle Bins Cleanup</h1><div>Both Recycle Bins (content/media) has been emptied</div></body></html>"
+                        Content = "@inherits Umbraco.Web.Mvc.UmbracoTemplatePage" + System.Environment.NewLine + "@{ Layout = null; }" + System.Environment.NewLine + "@inherits Umbraco.Web.Mvc.UmbracoViewPage<FALM.Housekeeping.Models.HKRecycleBinPageModel>" + System.Environment.NewLine + "<html>" + System.Environment.NewLine + "<head>" + System.Environment.NewLine + "<title>FALM Housekeeping - Recycle Bins Cleanup</title>" + System.Environment.NewLine + "</head>" + System.Environment.NewLine + "<body>" + System.Environment.NewLine + "<h1>FALM Housekeeping - Recycle Bins Cleanup</h1>" + System.Environment.NewLine + "<div>Both Recycle Bins (content/ media) has been emptied</div>" + System.Environment.NewLine + "</body>" + System.Environment.NewLine + "</html>"
                     };
                     fileService.SaveTemplate(falmTemplate);
 
@@ -326,7 +326,6 @@ namespace FALM.Housekeeping.Controllers
                 {
                     LogHelper.Info<string>("FALM Housekeeping - Document Type 'FALM - Service Folder' already exist");
                 }
-
 
                 // CONTENT
 
@@ -394,6 +393,44 @@ namespace FALM.Housekeeping.Controllers
                 LogHelper.Error<Exception>("FALM Housekeeping - " + ex.Message, ex);
 
                 return false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// falmHKRecycleBinsCleanupController is the controller used for service purposes
+    /// </summary>
+    public class falmHKRecycleBinsCleanupController : RenderMvcController
+    {
+        /// <summary>
+        /// This Action is a service page that auto empty both Content and Media Recycle Bins
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public override ActionResult Index(RenderModel model)
+        {
+            try
+            {
+                HKRecycleBinPageModel HKRecycleBinPageModel = new HKRecycleBinPageModel(model.Content, model.CurrentCulture);
+
+                // Empty Content Recycle Bin
+                ApplicationContext.Current.Services.ContentService.EmptyRecycleBin();
+
+                // Empty Media Recycle Bin
+                ApplicationContext.Current.Services.MediaService.EmptyRecycleBin();
+
+                HKRecycleBinPageModel.IsBothRecycleBinsCleaned = true;
+
+                LogHelper.Info<string>("FALM Housekeeping - Cleanup Recycle Bins successfully completed");
+
+                return CurrentTemplate(HKRecycleBinPageModel);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error<Exception>("FALM Housekeeping - " + ex.Message, ex);
+
+                throw new Exception(ex.Message);
             }
         }
     }
