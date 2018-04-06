@@ -11,7 +11,8 @@ In the new FALM section you can find the following tools:
 - **Media Folder Manager**: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)
 - **Delete Users Manager**: to remove Umbraco users (except the admin user)
 - **Version Manager**: to view and cleanup the version history that Umbraco maintains for each content node
-- **Recycle Bin Manager**: to cleanup Content and Media Recycle Bin<br /><br />
+- **Recycle Bin Manager**: to cleanup Content and Media Recycle Bin
+- **Cache and TEMP directories Manager**: to cleanup "App_Data/cache" and "App_Data/TEMP" directories on File System<br /><br />
 
 **Latest Changes**
 ==============
