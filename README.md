@@ -11,13 +11,17 @@ In the new FALM section you can find the following tools:
 - **Media Folder Manager**: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)
 - **Delete Users Manager**: to remove Umbraco users (except the admin user)
 - **Version Manager**: to view and cleanup the version history that Umbraco maintains for each content node
-- **Recycle Bin Manager**: to cleanup Content and Media Recycle Bin<br /><br />
+- **Recycle Bin Manager**: to cleanup Content and Media Recycle Bin
+- **Cache and TEMP directories Manager**: to cleanup "App_Data/cache" and "App_Data/TEMP" directories on File System<br /><br />
 
 **Latest Changes**
 ==============
-- **v7.7.2.0** - New feature and Various Fixes
+- v7.7.2.1 - Various Fixes
+    - Fix: Resolved issue #48 (GitHub) in Versions manager UI
+    - Fix: DBLogs manager UI
+- v7.7.2.0 - New feature and Various Fixes
     - New feature: Cache and TEMP directories Manager
-        - "App_Data/cache" and "App_Data/TEMP" directories on File System
+        - Clean "App_Data/cache" and "App_Data/TEMP" directories on File System
         - Possibility to create a Service Page to auto clean "App_Data/cache" directory on File System. This page can be used with a scheduler (for example I use "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) to be able to schedule automatic cleaning of both recycle bins.<br />
           This action will create 2 FALM DocumentTypes, 1 FALM Template and 2 FALM nodes, simply by clicking a button.<br />
           **_After creation of the Service Page, I recommend to add all FALM nodes and template urls in the robots.txt file to avoid being indexed by search engines_**
@@ -42,6 +46,8 @@ In the new FALM section you can find the following tools:
 
 **Version History**
 ===============
+- v7.7.2.1 - For Umbraco v7.7+
+- v7.7.2.1_for_Umbraco_v7_6_13 - For Umbraco v7.6.0 to v7.6.13
 - v7.7.2.0  - For Umbraco v7.6+
 - v7.6.0.3  - For Umbraco until v7.5.14
 - v7.0.0.1  - For Umbraco v7+

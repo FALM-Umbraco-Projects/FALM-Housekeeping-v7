@@ -18,13 +18,13 @@
                     <localize key="FALM_LogsManager.Description_DB">With this tool you can manage Umbraco DB log events.</localize>
                 </div>
                 <div ng-switch="id">
-                    <div ng-hide="!showSearchPanel">
-                        <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
-                            <!-- LOADER -->
-                            <localize key="FALM_LogsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
-                            <umb-load-indicator></umb-load-indicator>
-                        </div>
-                        
+                    <div ng-show="showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
+                        <!-- LOADER -->
+                        <localize key="FALM_LogsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
+                        <umb-load-indicator></umb-load-indicator>
+                    </div>
+
+                    <div ng-show="showSearchPanel">
                         <div ng-hide="!logs.ListDBLogs.length" class="panel panel-default">
                             <!-- PANEL: DB Logs -->
                             <div class="panel-heading">

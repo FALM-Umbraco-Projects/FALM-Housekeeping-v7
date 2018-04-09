@@ -4,14 +4,17 @@
 function VersionsManagerDetailsController($route, $scope, hkVersionsResource, dialogService, notificationsService, localizationService) {
     $scope.dialogData.showCleanupForm = true;
     $scope.dialogData.showLoader = false;
-    $scope.dialogData.showCleanupSummary = false;
-    $scope.dialogData.cleanupSummary;
+    $scope.dialogData.showCleanupSummarySuccess = false;
+    $scope.dialogData.showCleanupSummaryError = false;
+    $scope.dialogData.cleanupSummary = "";
     $scope.histCurrentPage = 1;
     $scope.histPageSize = 10;
 
     // Get all versions via hkVersionsResource
     $scope.nodeId = $scope.dialogData.currentPublishedVersionItem.NodeId;
     hkVersionsResource.getVersionsByNodeId($scope.nodeId).then(function (response) {
+        $scope.dialogData.showCleanupSummarySuccess = false;
+        $scope.dialogData.showCleanupSummaryError = false;
         $scope.histVersions = response.data;
     });
 
@@ -23,14 +26,20 @@ function VersionsManagerDetailsController($route, $scope, hkVersionsResource, di
     // Delete filtered Logs via hkLogsResource
     $scope.deleteVersionsByNodeId = function () {
         if (confirm($scope.confirmDeleteActionMessage)) {
-            $scope.dialogData.showLoader = true;
+            $scope.dialogData.showCleanupSummarySuccess = false;
+            $scope.dialogData.showCleanupSummaryError = false;
             $scope.dialogData.showCleanupForm = false;
+            $scope.dialogData.showLoader = true;
             hkVersionsResource.deleteVersionsByNodeId($scope.nodeId, 0).then(function (response) {
-                $scope.dialogData.cleanupSummary = response.data;
+                if (response.data != "null") {
+                    $scope.dialogData.cleanupSummary = response.data;
+                    $scope.dialogData.showCleanupSummarySuccess = true;
+                }
+                else {
+                    $scope.dialogData.showCleanupSummaryError = true;
+                }
             });
-
             $scope.dialogData.showLoader = false;
-            $scope.dialogData.showCleanupSummary = true;
         }
     };
 
@@ -43,26 +52,35 @@ function VersionsManagerDetailsController($route, $scope, hkVersionsResource, di
 function VersionsManagerCleanupByCountController($route, $scope, hkVersionsResource, dialogService, notificationsService, localizationService) {
     $scope.dialogData.showCleanupForm = true;
     $scope.dialogData.showLoader = false;
-    $scope.dialogData.showCleanupSummary = false;
-    $scope.dialogData.cleanupSummary;
+    $scope.dialogData.showCleanupSummarySuccess = false;
+    $scope.dialogData.showCleanupSummaryError = false;
+    $scope.dialogData.cleanupSummary = "";
     $scope.dialogData.versionsToKeep = 0;
 
     // Delete filtered Logs via hkLogsResource
+    localizationService.localize("FALM_VersionsManager.CleanupByCount.Dialog-ConfirmationMessage").then(function (value) {
+        $scope.dialogData.confirmDeleteActionMessage = value;
+    });
+
     $scope.deleteVersionsByCount = function () {
         if (confirm($scope.dialogData.confirmDeleteActionMessage)) {
-            $scope.dialogData.showLoader = true;
+            $scope.dialogData.showCleanupSummarySuccess = false;
+            $scope.dialogData.showCleanupSummaryError = false;
             $scope.dialogData.showCleanupForm = false;
+            $scope.dialogData.showLoader = true;
             hkVersionsResource.deleteVersionsByCount($scope.dialogData.versionsToKeep).then(function (response) {
-                $scope.dialogData.cleanupSummary = response.data;
+                if (response.data != "null") {
+                    $scope.dialogData.cleanupSummary = response.data;
+                    $scope.dialogData.showCleanupSummarySuccess = true;
+                }
+                else {
+                    $scope.dialogData.showCleanupSummaryError = true;
+                }
             });
             $scope.dialogData.showLoader = false;
             $scope.dialogData.showCleanupSummary = true;
         }
     };
-
-    localizationService.localize("FALM_VersionsManager.CleanupByCount.Dialog-ConfirmationMessage").then(function (value) {
-        $scope.dialogData.confirmDeleteActionMessage = value;
-    });
 
     $scope.closeDialog = function () {
         $route.reload();

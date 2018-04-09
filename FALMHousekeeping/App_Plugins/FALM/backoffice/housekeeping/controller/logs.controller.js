@@ -25,12 +25,13 @@ app.requires.push('angularUtils.directives.dirPagination');
 
         // Get all logs via hkLogsResource
         hkLogsResource.getDBLogs().then(function (response) {
-            $scope.showSearchPanel = true;
+            $scope.showSearchPanel = false;
             $scope.showLoader = true;
             $scope.logs = response.data;
             $scope.sortType = 'LogDate'; // set the default sort type
             $scope.reverse = true;       // set the default sort order
             $scope.showLoader = false;   // hide loader
+            $scope.showSearchPanel = true;
         });
 
         // Table search
@@ -123,36 +124,35 @@ app.requires.push('angularUtils.directives.dirPagination');
         $scope.deleteFilteredDBLogs = function (filteredLogs) {
             if (confirm($scope.confirmDeleteActionMessage)) {
                 $scope.showSearchPanel = false;
-                $scope.showDeletePanel = true;
-                $scope.showDeleteLoader = true;
+                $scope.showLoader = true;
                 hkLogsResource.deleteFilteredDBLogs(filteredLogs).then(function (response) {
-                    if (response.data === true) {
+                    if (response.data === "true") {
                         notificationsService.add($scope.logsSuccessNotification);
-                        $route.reload();
                     }
                     else {
                         notificationsService.add($scope.logsErrorNotification);
-                        $scope.showDeletePanel = false;
                     }
                 });
+                $scope.showLoader = false;
+                $scope.showSearchPanel = true;
+                $route.reload();
             }
         };
 
         $scope.deleteDBLogsBeforeMonths = function () {
             if (confirm($scope.confirmDeleteLogOlder6MonthsActionMessage)) {
                 $scope.showSearchPanel = false;
-                $scope.showDeletePanel = true;
-                $scope.showDeleteLoader = true;
+                $scope.showLoader = true;
                 hkLogsResource.deleteDBLogsBeforeMonths().then(function (response) {
-                    if (response.data === true) {
+                    if (response.data === "true") {
                         notificationsService.add($scope.logsSuccessNotification);
-                        $route.reload();
                     }
                     else {
                         notificationsService.add($scope.logsErrorNotification);
-                        $scope.showDeletePanel = false;
                     }
-                    $scope.d;
+                    $scope.showLoader = false;
+                    $scope.showSearchPanel = true;
+                    $route.reload();
                 });
             }
         };

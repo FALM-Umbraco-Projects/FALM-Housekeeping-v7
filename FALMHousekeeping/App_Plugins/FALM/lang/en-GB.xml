@@ -17,57 +17,14 @@
     <li><strong>Media Folder Manager</strong>: to delete (in filesystem) under '/media' all folders which have no entry in the DB (orphans)</li>
     <li><strong>Delete Users Manager</strong>: to remove Umbraco users (except the admin user)</li>
     <li><strong>Versions Manager</strong>: to view and cleanup the version history that Umbraco maintains for each content node.</li>
-    <li><strong>Recycle Bin Manager</strong>: to cleanup Content and Media Recycle Bin.</li>
-    <li><strong>Cache and TEMP directories Manager</strong>: to cleanup "App_Data/cache" and "App_Data/TEMP" directories on File System.</li>
+    <li><strong>Recycle Bin Manager: to cleanup Content and Media Recycle Bin.</li>
+    <li><strong>Cache and TEMP directories Manager: to cleanup "App_Data/cache" and "App_Data/TEMP" directories on File System.</li>
 </ul>]]></key>
-        <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Latest Changes</strong><br />=============</p>
-<ul>
-    <li><strong><i>v7.7.2.0</i></strong> - New feature and Various Fixes
-        <ul>
-            <li>New feature: Cache and TEMP directories Manager
-                <ul>
-                    <li>Clean "App_Data/cache" and "App_Data/TEMP" directories on File System</li>
-                    <li>
-                        Possibility to create a Service Page to auto clean "App_Data/cache" directory on File System. It can be used with a scheduler (for example I use "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) to be able to schedule automatic cleaning of both recycle bins.<br />
-                        This action will create 2 FALM DocumentTypes, 1 FALM Template and 2 FALM nodes, simply by clicking a button.<br />
-                        <span style="color: darkred; font-style: italic; font-weight: bold;">After creation of the Service Page, I recommend to add all FALM nodes and template urls in the robots.txt file to avoid being indexed by search engines</span>
-                    </li>
-                </ul>
-            </li>
-        <li>Fix: Recycle Bins Cleanup Service Page</li>
-        </ul>
-    </li>
-    <li><strong><i>v7.7.1.0</i></strong> - New feature and Various Fixes
-        <ul>
-            <li>New feature: Recycle Bins Manager
-                <ul>
-                    <li>Clean Content and Media Recycle Bins</li>
-                    <li>
-                        Possibility to create a Service Page to auto clean both recycle bins. It can be used with a scheduler (for example I use "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) to be able to schedule automatic cleaning of both recycle bins.<br />
-                        This action will create 2 FALM DocumentTypes, 1 FALM Template and 2 FALM nodes, simply by clicking a button.<br />
-                        <span style="color: darkred; font-style: italic; font-weight: bold;">After creation of the Service Page, I recommend to add all FALM nodes and template urls in the robots.txt file to avoid being indexed by search engines</span>
-                    </li>
-                </ul>
-            </li>
-        <li>Fix: Resolved issue #45 (GitHub) with bootstrap-datapicker. Removed reference and files from package because the stile affected Umbraco core datepicker</li>
-        <li>Fix: Update the UI</li>
-        </ul>
-    </li>
-    <li><strong><i>v7.7.0.2</i></strong> - Fix: Versions Manager now works with SQLCE</li>
-    <li><strong><i>v7.7.0.1</i></strong> - Bug: Resolved issue #43 (GitHub) in Versions Manager</li>
-    <li><strong><i>v7.7.0.0</i></strong> - Various Fixes<br />
-        <ul>
-            <li>Bug: Resolved issue #40 (GitHub) in Users manager</li>
-            <li>Fix: Updated Versions manager UI</li>
-            <li>Fix: Updated TraceLogs manager UI</li>
-            <li>Bug: Resolved issue #41 (GitHub) in Media manager (Thank you to TFAstudio for the support)</li>
-            <li>Fix: Updated Media manager UI</li>
-        </ul>
-    </li>
-</ul>]]></key>
+        <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Version History<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.0</i></strong> - For Umbraco v7.6+</li>
+    <li><strong><i>v7.7.2.1</i></strong> - For Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - For Umbraco v7.6 to v7.6.13</li>
     <li><strong><i>v7.6.0.3</i></strong> - For Umbraco until v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - For Umbraco v7+</li>
     <li><strong><i>v6.1.3.0</i></strong> - For Umbraco v6 to v7.2</li>

@@ -18,62 +18,19 @@
     <li><strong>Gestione Cancellazione Utenti</strong>: per rimuovere gli utenti del backoffice di Umbraco (eccetto l'utente admin)</li>
     <li><strong>Gestione Versioni</strong>: per gestire le versioni che Umbraco mantiene per ogni nodo di contenuto</li>
     <li><strong>Gestione Cestini di Umbraco</strong>: per pulire i cestini del contenuto e dei media</li>
-    <li><strong>Gestione delle directory Cache e TEMP</strong>: per pulire le cartelle "App_Data/cache" e "App_Data/TEMP" nel File System.</li>
+    <li><strong>Gestione delle directory Cache e TEMP: per pulire le cartelle "App_Data/cache" e "App_Data/TEMP" nel File System.</li>
 </ul>]]></key>
-        <key alias="Dashboard.LatestChanges"><![CDATA[<p><strong>Ultime Modifiche</strong><br />=============</p>
-<ul>
-        <li><strong><i>v7.7.2.0</i></strong> - New feature and Various Fixes
-        <ul>
-            <li>Nuova feature: Gestione delle directory Cache e TEMP
-                <ul>
-                    <li>Pulizia delle cartelle "App_Data/cache" e "App_Data/TEMP" nel File System</li>
-                    <li>
-                        Possibilità di creare una Pagina di Servizio che consente di pulire automaticamente la directory "App_Data/cache" nel File System. Può essere usata con uno scheduler (ad esempio io uso "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) che permette di schedulare la pulizia automatica dei cestini.<br />
-                        Questa azione creerà 2 DocumentTypes FALM, 1 Template FALM e 2 nodi FALM, semplicemente premendo un bottone.<br />
-                        <span style="color: darkred; font-style: italic; font-weight: bold;">Dopo la creazione della Pagina di Servizio, consiglio di aggiungere le URL dei nodi e del template FALM nel file robots.txt per evitare che vegngano indicizzati dai motori di ricerca.</span>
-                    </li>
-                </ul>
-            </li>
-        <li>Fix: Pagina di Servizio per la pulizia automatica dei cestini (Content/Media)</li>
-        </ul>
-    </li>
-    <li><strong><i>v7.7.1.0</i></strong> - Nuova feature e Vari Fix
-        <ul>
-            <li>Nuova feature: Gestione Cestini
-                <ul>
-                    <li>Pulizia dei cestini delle sezioni Content e Media</li>
-                    <li>
-                        Possibilità di creare una Pagina di Servizio che consente di pulire automaticamente entrambi i cestioni di Umbraco (Content/Media). Può essere usata con uno scheduler (ad esempio io uso "Url Task Scheduler For V7" https://our.umbraco.org/projects/backoffice-extensions/url-task-scheduler-for-v7/) che permette di schedulare la pulizia automatica dei cestini.<br />
-                        Questa azione creerà 2 DocumentTypes FALM, 1 Template FALM e 2 nodi FALM, semplicemente premendo un bottone.<br />
-                        <span style="color: darkred; font-style: italic; font-weight: bold;">Dopo la creazione della Pagina di Servizio, consiglio di aggiungere le URL dei nodi e del template FALM nel file robots.txt per evitare che vegngano indicizzati dai motori di ricerca.</span>
-                    </li>
-                </ul>
-            </li>
-        <li>Fix: Risolto il problema #45 (GitHub) con bootstrap-datapicker. Rimosse le reference e i files dal package perché lo stile andava in conflitto con Umbraco core datepicker</li>
-        <li>Fix: Aggiornata la UI</li>
-        </ul>
-    </li>
-    <li><strong><i>v7.7.0.2</i></strong> - Fix: Gestione Versioni ora funziona anche con SQLCE</li>
-    <li><strong><i>v7.7.0.1</i></strong> - Bug: Risolto errore #43 (GitHub) in Gestione Versioni</li>
-    <li><strong><i>v7.7.0.0</i></strong> - Vari Fix<br />
-        <ul>
-            <li>Bug: Risolto errore #40 (GitHub) nella Gestione Cancellazione Utenti</li>
-            <li>Fix: Aggiornamento della UI per la Gestione Versioni</li>
-            <li>Fix: Aggiornamento della UI per la Gestione Log (TraceLogs)</li>
-            <li>Bug: Risolto errore #41 (GitHub) in Gestione Cartelle Media (Grazie a TFAstudio per il supporto)</li>
-            <li>Fix: Aggiornamento della UI per la Gestione Cartelle Media</li>
-        </ul>
-    </li>
-</ul>]]></key>
+        <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Cronologia delle Versioni<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.0</i></strong> - For Umbraco v7.6+</li>
-    <li><strong><em>v7.6.0.3</em></strong> - Per Umbraco fino alla v7.5.14</li>
-    <li><strong><em>v7.0.0.1</em></strong> - Per Umbraco v7+</li>
-    <li><strong><em>v6.1.3.0</em></strong> - Per Umbraco v6 fino alla v7.2</li>
-    <li><strong><em>v4.11.0.2</em></strong> - Per Umbraco v4.8 fino alla v4.11</li>
-    <li><strong><em>v4.5.0.1</em></strong> - Per Umbraco v4.5 fino alla v4.7.2</li>
-    <li><strong><em>v1.1.0.0</em></strong> - Per Umbraco fino alla v4.0</li>
+    <li><strong><i>v7.7.2.1</i></strong> - Per Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - Per Umbraco v7.6 fino alla v7.6.13</li>
+    <li><strong><i>v7.6.0.3</i></strong> - Per Umbraco fino alla v7.5.14</li>
+    <li><strong><i>v7.0.0.1</i></strong> - Per Umbraco v7+</li>
+    <li><strong><i>v6.1.3.0</i></strong> - Per Umbraco v6 fino alla v7.2</li>
+    <li><strong><i>v4.11.0.2</i></strong> - Per Umbraco v4.8 fino alla v4.11</li>
+    <li><strong><i>v4.5.0.1</i></strong> - Per Umbraco v4.5 fino alla v4.7.2</li>
+    <li><strong><i>v1.1.0.0</i></strong> - Per Umbraco fino alla v4.0</li>
 </ul>]]></key>
 
         <!-- LOGS MANAGER -->
