@@ -18,8 +18,8 @@
                     <localize key="FALM_UsersManager.Cleanup.Description">With this tool you can delete one or more users</localize>
                 </div>
                 <div ng-switch="id">
-                    <div ng-hide="!users.length" class="userForm">
-                        <!-- PANEL: LIST USERS -->
+                    <!-- LIST USERS THAT CAN BE DELETED -->
+                    <div ng-show="users.length" class="userForm">
                         <form id="deleteUsersForm" ng-submit="deleteSelectedUsers(users)" role="form">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -61,8 +61,8 @@
                         </form>
                     </div>
 
-                    <div ng-hide="users.length" class="noUserToDelete">
-                        <!-- PANEL: NO USERS TO DELETE -->
+                    <!-- NO USERS TO DELETE -->
+                    <div ng-show="!users.length" class="noUserToDelete">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <span class="bold"><localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize></span>
@@ -74,11 +74,14 @@
                     </div>
 
                     <!-- RESTART SEARCH -->
-                    <div>
+                    <div class="restartSearch">
                         <a ng-click="reloadRoute()" class="btn btn-default">
                             <localize key="FALM_UsersManager.RestartSearchUsers">Restart users search</localize>
                         </a>
                     </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader"></umb-load-indicator>
                 </div>
             </div>
         </umb-content>

@@ -317,11 +317,19 @@
         <member name="F:FALM.Housekeeping.Controllers.HkUsersApiController.UserService">
             <summary></summary>
         </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkUsersApiController.BackofficeIdentityKey">
+            <summary></summary>
+        </member>
         <member name="M:FALM.Housekeeping.Controllers.HkUsersApiController.GetAllUsers">
             <summary>
             Return all user excluding the administrator
             </summary>
             <returns>List of UsersModel</returns>
+        </member>
+        <member name="P:FALM.Housekeeping.Controllers.HkUsersApiController.CurrentIdentity">
+            <summary>
+            The <c>UmbracoBackOfficeIdentity</c> representing the currently logged on Back Office user
+            </summary>
         </member>
         <member name="M:FALM.Housekeeping.Controllers.HkUsersApiController.GetAllUserGroups(System.Collections.Generic.IEnumerable{Umbraco.Core.Models.Membership.IReadOnlyUserGroup})">
             <summary>

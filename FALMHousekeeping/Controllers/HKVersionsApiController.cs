@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using FALM.Housekeeping.Helpers;
 using FALM.Housekeeping.Models;
@@ -103,10 +104,14 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
+                HttpContext.Current.Server.ScriptTimeout = 10000;
+
                 var cleanupSummary = new List<CleanupResultModel>();
 
                 using (var db = HkDbHelper.ResolveDatabase())
                 {
+                    db.CommandTimeout = 0;
+
                     var _dbContext = ApplicationContext.Current.DatabaseContext;
                     var _dbHelper = new DatabaseSchemaHelper(_dbContext.Database, LoggerResolver.Current.Logger, _dbContext.SqlSyntax);
 
@@ -186,10 +191,14 @@ namespace FALM.Housekeeping.Controllers
         {
             try
             {
+                HttpContext.Current.Server.ScriptTimeout = 10000;
+
                 var cleanupSummary = new List<CleanupResultModel>();
 
                 using (var db = HkDbHelper.ResolveDatabase())
                 {
+                    db.CommandTimeout = 0;
+
                     var _dbContext = ApplicationContext.Current.DatabaseContext;
                     var _dbHelper = new DatabaseSchemaHelper(_dbContext.Database, LoggerResolver.Current.Logger, _dbContext.SqlSyntax);
 

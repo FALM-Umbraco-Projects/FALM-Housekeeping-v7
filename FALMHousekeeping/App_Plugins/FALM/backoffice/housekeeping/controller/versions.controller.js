@@ -83,7 +83,6 @@
                 hkVersionsResource.deleteVersionsByCount(0).then(function (response) {
                     if (response.data != "null") {
                         notificationsService.add($scope.versionsSuccessNotification);
-                        $route.reload();
                     }
                     else {
                         notificationsService.add($scope.versionsErrorNotification);
@@ -91,6 +90,7 @@
                     }
                 });
                 $scope.showLoader = false;
+                $route.reload();
             }
         };
 

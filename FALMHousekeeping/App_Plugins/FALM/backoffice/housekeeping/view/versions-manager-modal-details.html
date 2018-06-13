@@ -3,6 +3,7 @@
         <h3 class="title"><localize key="FALM_VersionsManager.Dialog-Title">Version details</localize> (<span>Id: {{ dialogData.currentPublishedVersionItem.NodeId }}</span>)</h3>
     </div>
     <div class="umb-panel-body with-header with-footer" id="falm-content">
+        <!-- CLEANUP FORM -->
         <div ng-show="dialogData.showCleanupForm" class="loading">
             <table id="FHDetailsTable" class="table">
                 <tbody>
@@ -56,12 +57,8 @@
             </div>
         </div>
 
-        <div ng-show="dialogData.showLoader" class="loading">
-            <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupInProgress">Cleanup in progress. Please wait until you see results</localize>
-            <umb-load-indicator></umb-load-indicator>
-        </div>
-
-        <div ng-show="dialogData.showCleanupSummarySuccess">
+        <!-- CLEANUP SUMMARY - SUCCESS -->
+        <div ng-show="dialogData.showCleanupSummarySuccess" class="cleanupSummarySuccess">
             <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-Summary">Cleanup Summary</localize></h5>
             <div class="alert alert-success" role="alert" style="padding-top: 20px;">
                 <h6 style="font-size: 14px; margin-bottom: 20px;"><strong><localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccess">Versions deleted successfully!</localize></strong></h6>
@@ -71,22 +68,30 @@
             </div>
         </div>
 
-        <div ng-show="dialogData.showCleanupSummaryError">
+        <!-- CLEANUP SUMMARY - ERROR -->
+        <div ng-show="dialogData.showCleanupSummaryError" class="cleanupSummaryError">
             <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-Summary">Cleanup Summary</localize></h5>
             <div class="alert alert-danger" role="alert" style="padding-top: 20px;">
                 <h6 style="font-size: 14px;"><localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupError">An Error occurred during cleanup</localize></h6>
             </div>
         </div>
-    </div>
-    <div class="umb-panel-footer" id="falm-footer">
-        <div>
-            <a ng-show="histVersions.ListNodeVersions.length > 1" href="" ng-click="deleteVersionsByNodeId(dialogData.currentPublishedVersionItem.NodeId, 0)" class="btn btn-danger" style="margin-right: 10px;">
-                <localize key="FALM_VersionsManager.CleanupCurrentNodeVersions">Cleanup current node Versions</localize>
-            </a>
-            <label ng-show="histVersions.ListNodeVersions.length <= 1" class="label label-warning pull-left"style="padding-top: 9px; padding-bottom: 9px;"><localize key="FALM_VersionsManager.Cleanup.NoVersionsToDelete">No Versions to delete</localize></label>
-            <a href="" ng-click="close()" class="btn pull-right">
-                <localize key="general_close">Close</localize>
-            </a>
+
+        <!-- LOADER -->
+        <div ng-show="dialogData.showLoader" class="loading">
+            <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupInProgress">Cleanup in progress. Please wait until you see results</localize>
         </div>
+        <umb-load-indicator ng-if="dialogData.showLoader"></umb-load-indicator>
+    </div>
+
+    <div class="umb-panel-footer" id="falm-footer">
+        <a ng-show="histVersions.ListNodeVersions.length > 1" href="" ng-click="deleteVersionsByNodeId(dialogData.currentPublishedVersionItem.NodeId, 0)" class="btn btn-danger" style="margin-right: 10px;">
+            <localize key="FALM_VersionsManager.CleanupCurrentNodeVersions">Cleanup current node Versions</localize>
+        </a>
+        <label ng-show="histVersions.ListNodeVersions.length <= 1" class="label label-warning pull-left"style="padding-top: 9px; padding-bottom: 9px;">
+            <localize key="FALM_VersionsManager.Cleanup.NoVersionsToDelete">No Versions to delete</localize>
+        </label>
+        <a href="" ng-click="close()" class="btn pull-right">
+            <localize key="general_close">Close</localize>
+        </a>
     </div>
 </umb-panel>

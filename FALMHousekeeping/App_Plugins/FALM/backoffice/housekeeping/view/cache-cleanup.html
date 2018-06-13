@@ -18,21 +18,20 @@
                     <localize key="FALM_CacheTempManager.Cache.Description">With this tool you can easily empty the "AppData/cache" folder on File System)</localize>
                 </div>
                 <div ng-switch="id">
-                    <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
-                        <!-- LOADER -->
+                    <!-- LOADER INFO -->
+                    <div ng-show="showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
                         <localize key="FALM_CacheTempManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
-                        <umb-load-indicator></umb-load-indicator>
                     </div>
-
-                    <div ng-hide="!showDeletionLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
-                        <!-- DELETION PROGRESS -->
+                    
+                    <!-- DELETION IN PROGRESS INFO -->
+                    <div ng-show="showDeletionLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
                         <localize key="FALM_CacheTempManager.DeletionInProgress">Please wait until you see deletion's result</localize>
-                        <umb-load-indicator></umb-load-indicator>
                     </div>
 
-                    <div ng-hide="!showResultPanel">                        
-                        <div ng-hide="!cacheContent.ListCacheContent.length" class="CacheContentForm">
-                            <!-- PANEL: CACHE OBJECTS THAT CAN BE DELETED -->
+                    <!-- RESULT PANEL -->
+                    <div ng-show="showResultPanel" class="resultPanel">
+                        <!-- PANEL: CACHE OBJECTS THAT CAN BE DELETED -->
+                        <div ng-show="cacheContent.ListCacheContent.length" class="CacheContentForm">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_CacheTempManager.Cache.ContentPanelTitle">Cache Directory Content</localize></span>
@@ -66,8 +65,8 @@
                             </div>
                         </div>
 
-                        <div ng-hide="cacheContent.ListCacheContent.length" class="CacheDirEmpty">
-                            <!-- PANEL: CACHE DIRECTORY EMPTY -->
+                        <!-- PANEL: CACHE DIRECTORY EMPTY -->
+                        <div ng-show="!cacheContent.ListCacheContent.length" class="CacheDirEmpty">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_CacheTempManager.Cache.ContentPanelTitle">Cache Directory Content</localize></span>
@@ -78,15 +77,19 @@
                             </div>
                         </div>
 
-                    <!-- RESTART SEARCH -->
-                    <div ng-hide="showLoader">
-                        <a ng-click="reloadRoute()" class="btn btn-default">
-                            <localize key="FALM_CacheTempManager.RestartSearch">Restart search</localize>
-                        </a>
-                        <a ng-click="createServicePage()" class="btn btn-default">
-                            <localize key="FALM_CacheTempManager.CreateServicePageLink">Create the Service Page</localize>
-                        </a>
+                        <!-- RESTART SEARCH -->
+                        <div ng-show="!showLoader" class="restartSearch">
+                            <a ng-click="reloadRoute()" class="btn btn-default">
+                                <localize key="FALM_CacheTempManager.RestartSearch">Restart search</localize>
+                            </a>
+                            <a ng-click="createServicePage()" class="btn btn-default">
+                                <localize key="FALM_CacheTempManager.CreateServicePageLink">Create the Service Page</localize>
+                            </a>
+                        </div>
                     </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader && showDeletionLoader"></umb-load-indicator>
                 </div>
             </div>
         </umb-content>

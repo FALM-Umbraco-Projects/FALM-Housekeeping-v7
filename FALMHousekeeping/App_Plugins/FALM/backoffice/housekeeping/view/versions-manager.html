@@ -18,15 +18,15 @@
                     <localize key="FALM_VersionsManager.Description">With this tool you can manage the Umbraco history versions.</localize>
                 </div>
                 <div ng-switch="id">
+                    <!-- SEARCH PANEL -->
                     <div class="searchPanel">
+                        <!-- LOADER INFO -->
                         <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
-                            <!-- LOADER -->
                             <localize key="FALM_VersionsManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
-                            <umb-load-indicator></umb-load-indicator>
                         </div>
 
-                        <div ng-hide="!versions.ListCurrentPublishedVersions.length">
-                            <!-- PANEL: SHOW VERSIONS -->
+                        <!-- PANEL: SHOW VERSIONS -->
+                        <div ng-show="versions.ListCurrentPublishedVersions.length" class="showVersions">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_VersionsManager.VersionsPanelTitle">History Versions</localize></span>
@@ -109,8 +109,8 @@
                             </div>
                         </div>
                         
+                        <!-- PANEL: NO VERSIONS FOUND -->
                         <div ng-hide="versions.ListCurrentPublishedVersions.length" class="noVersionsFound">
-                            <!-- PANEL: NO VERSIONS FOUND -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                         <span class="bold"><localize key="FALM_VersionsManager.VersionsPanelTitle">History Versions</localize></span>
@@ -123,11 +123,14 @@
                     </div>
 
                     <!-- RESTART SEARCH -->
-                    <div ng-hide="showLoader">
+                    <div ng-show="!showLoader" class="restartSearch">
                         <a ng-click="reloadRoute()" class="btn btn-default">
                             <localize key="FALM_VersionsManager.RestartSearchVersions">Restart versions search</localize>
                         </a>
                     </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader"></umb-load-indicator>
                 </div>
             </div>
         </umb-content>

@@ -32,7 +32,7 @@
             /// <summary>Icon of the Tree</summary>
             public const string Icon = "icon-umb-deploy";
             /// <summary>Title of the Tree</summary>
-            public const string Title = "Menu";
+            public const string Title = "FALM Housekeeping";
         }
 
         /// <summary>

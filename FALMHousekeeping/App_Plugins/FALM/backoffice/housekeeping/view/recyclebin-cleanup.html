@@ -18,11 +18,11 @@
                     <localize key="FALM_RecycleBinManager.Description">With this tool you can empty the Recycle Bin</localize>
                 </div>
                 <div ng-switch="id">
-                    <div ng-hide="!showSearchPanel" class="searchPanel">
+                    <!-- SEARCH PANEL -->
+                    <div ng-show="showSearchPanel" class="searchPanel">
                         <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
                             <!-- LOADER -->
                             <localize key="FALM_RecycleBinManager.SearchInProgress">Search in progress. Please wait until process complete</localize>
-                            <umb-load-indicator></umb-load-indicator>
                         </div>
 
                         <div ng-hide="!recycleBins.ListItemsInRecycleBins.length" class="itemsInRecycleBinsForm">
@@ -69,16 +69,16 @@
                         </div>
                     </div>
 
-                    <div ng-hide="!showDeletePanel" class="deletePanel">
+                    <!-- DELETE PANEL -->
+                    <div ng-show="showDeletePanel" class="deletePanel">
                         <div class="loading">
                             <!-- LOADER -->
                             <localize key="FALM_RecycleBinManager.DeleteInProgress">Delete in progress. Please wait until process complete</localize>
-                            <umb-load-indicator></umb-load-indicator>
                         </div>
                     </div>
 
                     <!-- RESTART SEARCH -->
-                    <div ng-hide="showLoader">
+                    <div ng-show="!showLoader" class="restartSearch">
                         <a ng-click="reloadRoute()" class="btn btn-default">
                             <localize key="FALM_RecycleBinManager.ReloadPage">Reload Page</localize>
                         </a>
@@ -86,6 +86,9 @@
                             <localize key="FALM_RecycleBinManager.CreateServicePageLink">Create the Service Page</localize>
                         </a>
                     </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader"></umb-load-indicator>
                 </div>
             </div>
         </umb-content>

@@ -23,7 +23,7 @@
         <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Cronologia delle Versioni<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.1</i></strong> - Per Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.2</i></strong> - Per Umbraco v7.7+</li>
     <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - Per Umbraco v7.6 fino alla v7.6.13</li>
     <li><strong><i>v7.6.0.3</i></strong> - Per Umbraco fino alla v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - Per Umbraco v7+</li>

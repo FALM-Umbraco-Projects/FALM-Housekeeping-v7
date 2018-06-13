@@ -40,6 +40,7 @@ function VersionsManagerDetailsController($route, $scope, hkVersionsResource, di
                 }
             });
             $scope.dialogData.showLoader = false;
+            $route.reload();
         }
     };
 
@@ -78,7 +79,7 @@ function VersionsManagerCleanupByCountController($route, $scope, hkVersionsResou
                 }
             });
             $scope.dialogData.showLoader = false;
-            $scope.dialogData.showCleanupSummary = true;
+            $route.reload();
         }
     };
 

@@ -18,15 +18,15 @@
                     <localize key="FALM_MediaManager.Cleanup.Description">With this tool you can delete file system folders under '/media' which have no entry in the DB (orphans).</localize>
                 </div>
                 <div ng-switch="id">
-                    <div ng-hide="!showSearchPanel">
-                        <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
-                            <!-- LOADER -->
+                    <!-- SEARCH PANEL -->
+                    <div ng-show="showSearchPanel" class="searchPanel">
+                        <!-- LOADER INFO -->
+                        <div ng-show="showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
                             <localize key="FALM_MediaManager.Cleanup.SearchInProgress">Search in progress. Please wait until you see results</localize>
-                            <umb-load-indicator></umb-load-indicator>
                         </div>
-                        
-                        <div ng-hide="!media.ListMediaWarnings.length" class="mediaWarningsForm">
-                            <!-- PANEL: INFORMATIONS AND WARNINGS -->
+
+                        <!-- PANEL: INFORMATIONS AND WARNINGS -->                        
+                        <div ng-show="!showLoader && media.ListMediaWarnings.length" class="mediaWarningsForm">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
@@ -51,8 +51,8 @@
                             </div>
                         </div>
 
-                        <div ng-hide="!media.ListMediaToDelete.length" class="mediaToDeleteForm">
-                            <!-- PANEL: MEDIA TO DELETE -->
+                        <!-- PANEL: MEDIA THAT CAN BE DELETED -->
+                        <div ng-show="!showLoader && media.ListMediaToDelete.length" class="mediaToDeleteForm">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
@@ -84,8 +84,8 @@
                             </div>
                         </div>
 
-                        <div ng-hide="media.ListMediaToDelete.length" class="noMediaToDelete">
-                            <!-- PANEL: NO MEDIA TO DELETE -->
+                        <!-- PANEL: NO MEDIA TO DELETE -->
+                        <div ng-show="!showLoader && !media.ListMediaToDelete.length" class="noMediaToDelete">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
@@ -97,15 +97,15 @@
                         </div>
                     </div>
 
-                    <div ng-hide="!showDeletePanel">
-                        <div ng-hide="!showDeleteLoader" class="loading">
-                            <!-- LOADER -->
+                    <!-- DELETE PANEL -->
+                    <div ng-show="showDeletePanel" class="deletePanel">
+                        <!-- LOADER INFO -->
+                        <div ng-show="showDeleteLoader" class="loading">
                             <localize key="FALM_MediaManager.Cleanup.DeleteInProgress">Delete in progress. Please wait until you see results</localize> 
-                            <img src="/App_Plugins/FALM/backoffice/housekeeping/css/img/searching.gif" alt="Searching..." />
                         </div>
 
-                        <div ng-hide="!media.ListMediaWarnings.length" class="mediaWarningsForm">
-                            <!-- PANEL: INFORMATIONS AND WARNINGS -->
+                        <!-- PANEL: INFORMATIONS AND WARNINGS -->
+                        <div ng-show="!showDeleteLoader && media.ListMediaWarnings.length" class="mediaWarningsForm">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
@@ -130,8 +130,8 @@
                             </div>
                         </div>
 
-                        <div ng-hide="!media.ListMediaToDelete.length" class="mediaToDeleteForm">
-                            <!-- PANEL: MEDIA DELETED -->
+                        <!-- PANEL: MEDIA DELETED -->
+                        <div ng-show="!showDeleteLoader && media.ListMediaToDelete.length" class="mediaToDeleteForm">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">File System Cleanup</localize></span>
@@ -158,11 +158,14 @@
                     </div>
 
                     <!-- RESTART SEARCH -->
-                    <div ng-hide="showLoader || showDeleteLoader">
+                    <div ng-show="!showLoader && !showDeleteLoader" class="restartSearch">
                         <a ng-click="reloadRoute()" class="btn btn-default">
                             <localize key="FALM_MediaManager.Cleanup.RestartSearchOrphans">Restart orphans search</localize>
                         </a>
                     </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader && showDeleteLoader"></umb-load-indicator>
                 </div>
             </div>
         </umb-content>

@@ -1,15 +1,17 @@
 ﻿using FALM.Housekeeping.Helpers;
 using FALM.Housekeeping.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Umbraco.Core;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Models.Membership;
 using Umbraco.Core.Persistence;
+using Umbraco.Core.Security;
 using Umbraco.Core.Services;
+using Umbraco.Web.Editors;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
 
@@ -24,6 +26,9 @@ namespace FALM.Housekeeping.Controllers
     {
         /// <summary></summary>
         protected IUserService UserService = ApplicationContext.Current.Services.UserService;
+        
+        /// <summary></summary>
+        const string BackofficeIdentityKey = "UmbracoBackofficeIdentity";
 
         /// <summary>
         /// Return all user excluding the administrator
@@ -32,21 +37,45 @@ namespace FALM.Housekeeping.Controllers
         [HttpGet]
         public List<HKUsersModel> GetAllUsers()
         {
+            try
+            {
+                var allUsers = UserService.GetAll(0, int.MaxValue, totalRecords: out int totalUsers);
 
-            var allUsers = UserService.GetAll(0, int.MaxValue, totalRecords: out int totalUsers);
-            string userGroups = string.Empty;
+                var currentUser = UserService.GetByUsername(CurrentIdentity.Name).Id;
 
-            return (from user in allUsers
-                    where user.Id != 0
-                    select new HKUsersModel
-                    {
-                        Selected = false,
-                        Id = user.Id.ToString(),
-                        Name = user.Name,
-                        Username = user.Username,
-                        Email = user.Email,
-                        UserType = GetAllUserGroups(user.Groups)
-                    }).ToList();
+                string userGroups = string.Empty;
+
+                return (from user in allUsers
+                        where user.Id != 0 &&
+                              user.Id != currentUser
+                        select new HKUsersModel
+                        {
+                            Selected = false,
+                            Id = user.Id.ToString(),
+                            Name = user.Name,
+                            Username = user.Username,
+                            Email = user.Email,
+                            UserType = GetAllUserGroups(user.Groups)
+                        }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+		/// The <c>UmbracoBackOfficeIdentity</c> representing the currently logged on Back Office user
+		/// </summary>
+		public static UmbracoBackOfficeIdentity CurrentIdentity
+        {
+            get
+            {
+                if (!HttpContext.Current.Items.Contains(BackofficeIdentityKey))
+                    HttpContext.Current.Items[BackofficeIdentityKey] = new HttpContextWrapper(HttpContext.Current).GetCurrentIdentity(true);
+
+                return (UmbracoBackOfficeIdentity)HttpContext.Current.Items[BackofficeIdentityKey];
+            }
         }
 
         /// <summary>
