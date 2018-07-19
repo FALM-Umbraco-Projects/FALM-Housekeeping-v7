@@ -7,37 +7,37 @@
             <tbody style="font-size: 12px;">
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event">Event</localize></th>
-                    <td style="padding: 15px; border-top: 0;"><span class="label label-{{ logTypeLabel }}">{{ dialogData.logItem.LogLevel }}</span></td>
+                    <td style="padding: 15px; border-top: 0;"><span class="label label-{{ logTypeLabel }}">{{ dialogData.logItem.Level }}</span></td>
                 </tr>
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogDate">Date</localize></th>
-                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogDate | date: 'dd MMMM yyyy' }}</td>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.Date | date: 'dd MMMM yyyy' }}</td>
                 </tr>
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogTime">Time</localize></th>
-                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogDate | date: 'HH:mm:ss' }}</td>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.Date | date: 'HH:mm:ss' }}</td>
                 </tr>
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogProcess">Process</localize></th>
-                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogProcess }}</td>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.Process }}</td>
                 </tr>
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogDomain">Domain</localize></th>
-                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogDomain }}</td>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.Domain }}</td>
                 </tr>
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogThread">Thread</localize></th>
-                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogThread }}</td>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.Thread }}</td>
                 </tr>
                 <tr>
                     <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogLogger">Logger</localize></th>
-                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.LogLogger }}</td>
+                    <td style="padding: 15px; border-top: 0;">{{ dialogData.logItem.Logger }}</td>
                 </tr>
             </tbody>
         </table>
         <div style="padding: 15px; word-wrap: break-word;">
             <p><strong><localize key="FALM_LogsManager.TraceLogsDialog-Event-LogMessage">Description:</localize></strong></p>
-            <p>{{ dialogData.logItem.LogMessage }}</p>
+            <p>{{ dialogData.logItem.Message }}</p>
         </div>
     </div>
     <div class="umb-panel-footer" id="falm-footer">

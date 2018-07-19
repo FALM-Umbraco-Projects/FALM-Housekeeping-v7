@@ -1,79 +1,97 @@
 ﻿'use strict';
-app.requires.push('angularUtils.directives.dirPagination');
+//app.requires.push('angularUtils.directives.dirPagination');
 (function () {
-    // Create DB Edit Controller for DB Events
-    function LogsDBManagerController($route, $scope, $routeParams, $filter, appState, treeService, navigationService, userService, notificationsService, localizationService, dialogService, eventsService, hkLogsResource) {
+    // ######################
+    // # DB LOGS CONTROLLER #
+    // ######################
+    function LogsDBManagerController($route, $scope, $routeParams, $filter, filterFilter, appState, treeService, navigationService, userService, notificationsService, localizationService, dialogService, eventsService, hkLogsResource) {
+        // ViewModel
+        var vm = this;
+
         // Set a property on the scope equal to the current route id
-        $scope.id = $routeParams.id;
+        vm.id = $routeParams.id;
 
         // Reload page function
-        $scope.reloadRoute = function () {
+        vm.reloadRoute = function () {
             $route.reload();
         };
 
         // Select current treenode
-        $scope.treeDebugNotification = {
+        vm.treeDebugNotification = {
             'type': 'success',
             'sticky': false
         };
-        $scope.treeDebugNotification.headline = "";
-        $scope.treeDebugNotification.message = $routeParams.tree;
+        vm.treeDebugNotification.headline = "";
+        vm.treeDebugNotification.message = $routeParams.tree;
 
-        // GET - VIEW LOGS
-        $scope.showLoader = false;
-        $scope.showSearchPanel = false;
+        // GET - View logs
+        vm.showLoader = false;
+        vm.showSearchPanel = false;
 
-        // Get all logs via hkLogsResource
-        hkLogsResource.getDBLogs().then(function (response) {
-            $scope.showSearchPanel = false;
-            $scope.showLoader = true;
-            $scope.logs = response.data;
-            $scope.sortType = 'LogDate'; // set the default sort type
-            $scope.reverse = true;       // set the default sort order
-            $scope.showLoader = false;   // hide loader
-            $scope.showSearchPanel = true;
-        });
-
-        // Table search
-        $scope.q = '';
-
-        // Table sort
-        $scope.sortType = '';
-        $scope.reverse = false;
-        $scope.sort = function (keyname) {
-            $scope.sortKey = keyname;           //set the sortKey to the param passed
-            $scope.reverse = !$scope.reverse;   //if true make it false and vice versa
-        };
+        vm.dblogs = [];
 
         // Table pagination
-        $scope.currentPage = 1;
-        $scope.pageSize = 10;
-        $scope.totalPages = 1;
+        vm.dblogs.pagination = {
+            pageNumber: 1,
+            totalPages: 1
+        };
+
+        vm.dblogs.itemsPerPage = 10;
+
+        // Get DB Logs
+        fetchData();
+
+        vm.nextPage = function () {
+            if (vm.dblogs.pagination.pageNumber < vm.dblogs.pagination.totalPages) {
+                vm.dblogs.pagination.pageNumber++;
+                fetchData();
+            }
+        };
+
+        vm.prevPage = function () {
+            if (vm.dblogs.pagination.pageNumber > 1) {
+                vm.dblogs.pagination.pageNumber--;
+                fetchData();
+            }
+        };
+
+        vm.goToPage = function (pageNumber) {
+            vm.dblogs.pagination.pageNumber = pageNumber;
+            fetchData();
+        };
+
+        // Logs filter
+        vm.q = '';
+
+        vm.filterDBLogs = function () {
+            vm.dblogs.pagination.pageNumber = "1";
+            fetchData();
+        };
 
         // Label CSS Class
-        $scope.getLabelType = function (LogHeader) {
+        vm.getLabelType = function (LogHeader) {
             switch (LogHeader) {
                 case 'Error':
                 case 'LoginFailure':
                     return 'label label-danger';
-                    //break;
+                //break;
                 case 'Publish':
                     return 'label label-success';
-                    //break;
+                //break;
                 case 'UnPublish':
                     return 'label label-info';
-                    //break;
+                //break;
                 case 'SendToPublish':
                 case 'SendToTranslate':
                     return 'label label-warning';
-                    //break;
+                //break;
                 default:
                     return 'label label-default';
             }
         };
 
         // Open detail modal
-        $scope.openDetailsModal = function (logItem, filteredLogs) {
+        vm.openDetailsModal = function (logItem, filteredLogs) {
             var dialog = dialogService.open({
                 template: '/App_Plugins/FALM/backoffice/housekeeping/view/logs-dbmanager-modal-details.html',
                 dialogData: {
@@ -85,79 +103,77 @@ app.requires.push('angularUtils.directives.dirPagination');
             });
         };
 
-        // POST - DELETE VIEWED LOGS
-        $scope.logsSuccessNotification = {
+        // POST - Delete Showed Logs
+        vm.logsSuccessNotification = {
             'type': 'success',
             'sticky': false
         };
         localizationService.localize("FALM_LogsManager.Cleanup.DeleteLogsSuccessHeadline").then(function (value) {
-            $scope.logsSuccessNotification.headline = value;
+            vm.logsSuccessNotification.headline = value;
         });
         localizationService.localize("FALM_LogsManager.Cleanup.DeleteLogsSuccessMessage").then(function (value) {
-            $scope.logsSuccessNotification.message = value;
+            vm.logsSuccessNotification.message = value;
         });
 
-        $scope.logsErrorNotification = {
+        vm.logsErrorNotification = {
             "type": "error",
             "headline": "",
             "sticky": false
         };
         localizationService.localize("FALM_LogsManager.Cleanup.DeleteLogsErrorHeadline").then(function (value) {
-            $scope.logsErrorNotification.headline = value;
+            vm.logsErrorNotification.headline = value;
         });
         localizationService.localize("FALM_LogsManager.Cleanup.DeleteLogsErrorMessage").then(function (value) {
-            $scope.logsErrorNotification.message = value;
+            vm.logsErrorNotification.message = value;
         });
-
         localizationService.localize("FALM_LogsManager.Cleanup.ConfirmationMessage").then(function (value) {
-            $scope.confirmDeleteActionMessage = value;
+            vm.confirmDeleteActionMessage = value;
         });
-
         localizationService.localize("FALM_LogsManager.Cleanup.confirmDeleteLogOlder6MonthsActionMessage").then(function (value) {
-            $scope.confirmDeleteLogOlder6MonthsActionMessage = value;
+            vm.confirmDeleteLogOlder6MonthsActionMessage = value;
         });
 
-        $scope.showDeletePanel = false;
-        $scope.showDeleteLoader = false;
+        vm.showDeletePanel = false;
+        vm.showDeleteLoader = false;
 
         // Delete filtered Logs via hkLogsResource
-        $scope.deleteFilteredDBLogs = function (filteredLogs) {
-            if (confirm($scope.confirmDeleteActionMessage)) {
-                $scope.showSearchPanel = false;
-                $scope.showLoader = true;
+        vm.deleteFilteredDBLogs = function (filteredLogs) {
+            if (confirm(vm.confirmDeleteActionMessage)) {
+                vm.showSearchPanel = false;
+                vm.showLoader = true;
                 hkLogsResource.deleteFilteredDBLogs(filteredLogs).then(function (response) {
                     if (response.data === "true") {
-                        notificationsService.add($scope.logsSuccessNotification);
+                        notificationsService.add(vm.logsSuccessNotification);
                     }
                     else {
-                        notificationsService.add($scope.logsErrorNotification);
+                        notificationsService.add(vm.logsErrorNotification);
                     }
                 });
-                $scope.showLoader = false;
-                $scope.showSearchPanel = true;
+                vm.showLoader = false;
+                vm.showSearchPanel = true;
                 $route.reload();
             }
         };
 
-        $scope.deleteDBLogsBeforeMonths = function () {
-            if (confirm($scope.confirmDeleteLogOlder6MonthsActionMessage)) {
-                $scope.showSearchPanel = false;
-                $scope.showLoader = true;
+        vm.deleteDBLogsBeforeMonths = function () {
+            if (confirm(vm.confirmDeleteLogOlder6MonthsActionMessage)) {
+                vm.showSearchPanel = false;
+                vm.showLoader = true;
                 hkLogsResource.deleteDBLogsBeforeMonths().then(function (response) {
                     if (response.data === "true") {
-                        notificationsService.add($scope.logsSuccessNotification);
+                        notificationsService.add(vm.logsSuccessNotification);
                     }
                     else {
-                        notificationsService.add($scope.logsErrorNotification);
+                        notificationsService.add(vm.logsErrorNotification);
                     }
-                    $scope.showLoader = false;
-                    $scope.showSearchPanel = true;
+                    vm.showLoader = false;
+                    vm.showSearchPanel = true;
                     $route.reload();
                 });
             }
         };
 
-        // TREE NODE HIGHLIGHT
+        // Tree Node Highlight
         var activeNode = appState.getTreeState("selectedNode");
         if (activeNode) {
             var activeNodePath = treeService.getPath(activeNode).join();
@@ -165,72 +181,121 @@ app.requires.push('angularUtils.directives.dirPagination');
         } else {
             navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "logs", $routeParams.id], forceReload: false, activate: true });
         }
+
+        // DB Logs Functions
+        function fetchData() {
+            // Get all db logs via hkLogsResource
+            hkLogsResource.getDBLogs(vm.q, vm.dblogs.itemsPerPage, vm.dblogs.pagination.pageNumber).then(function (response) {
+                vm.showSearchPanel = false;
+                vm.showLoader = true;
+
+                vm.dblogs.logsItems = response.data.ListDBLogs;
+                vm.dblogs.pagination.totalPages = response.data.TotalPages;
+                vm.dblogs.pagination.pageNumber = response.data.CurrentPage;
+                vm.dblogs.itemCount = response.data.TotalItems;
+
+                vm.showLoader = false;   // hide loader
+                vm.showSearchPanel = true;
+            }, function (response) {
+                notificationsService.error("Error", "Could not load log data.");
+            });
+
+            vm.dblogs.rangeTo = (vm.dblogs.itemsPerPage * (vm.dblogs.pagination.pageNumber - 1)) + vm.dblogs.itemCount;
+            vm.dblogs.rangeFrom = (vm.dblogs.rangeTo - vm.dblogs.itemCount) + 1;
+
+            vm.sortType = 'LogDate'; // set the default sort type
+            vm.reverse = true;       // set the default sort order
+        }
     }
 
-    // Create Edit controller for Trace Logs
-    function LogsTLManagerController($route, $scope, $routeParams, $filter, appState, treeService, navigationService, hkLogsResource, userService, notificationsService, localizationService, dialogService, eventsService) {
-        // Set a property on the scope equal to the current route id
-        $scope.id = $routeParams.id;
+    // #########################
+    // # TRACE LOGS CONTROLLER #
+    // #########################
+    function LogsTLManagerController($route, $scope, $routeParams, $filter, filterFilter, appState, treeService, navigationService, hkLogsResource, userService, notificationsService, localizationService, dialogService, eventsService) {
+        // ViewModel
+        var vm = this;
 
-        $scope.reloadRoute = function () {
+        // Set a property on the scope equal to the current route id
+        vm.id = $routeParams.id;
+
+        // Reload page function
+        vm.reloadRoute = function () {
             $route.reload();
         };
 
-        // Table search
-        $scope.q = '';
-
-        // Table sort
-        $scope.sortType = '';
-        $scope.reverse = false;
-        $scope.sort = function (keyname) {
-            $scope.sortKey = keyname;           //set the sortKey to the param passed
-            $scope.reverse = !$scope.reverse;   //if true make it false and vice versa
+        vm.tracelogs = [];
+        vm.tracelogs.allTraceLogs = [];
+        vm.tracelogs.logsItems = [];
+        vm.tracelogs.itemCount = 0;
+        vm.tracelogs.itemsPerPage = 10;
+        vm.tracelogs.pagination = {
+            pageNumber: 1,
+            totalPages: 1
         };
 
-        // Table pagination
-        $scope.currentPage = 1;
-        $scope.pageSize = 10;
-        $scope.totalPages = 1;
 
-        // GET - VIEW TRACE LOGS
-        $scope.showLoader = true;
-        $scope.showSearchPanel = true;
-        $scope.showNoTLLogsFound = false;
+        // Get Trace Logs
+        vm.showLoader = true;
+        vm.showSearchPanel = false;
+        vm.showNoTLLogsFound = false;
 
-        // Get all logs via hkLogsResource
-        hkLogsResource.getTraceLogs($scope.id).then(function (response) {
-            $scope.showSearchPanel = true;
-            $scope.showLoader = true;
-            $scope.logs = response.data;
-            $scope.sortType = 'LogDate'; // set the default sort type
-            $scope.reverse = true;       // set the default sort order
+        // Get all Trace Logs (paged)
+        fetchData();
 
-            if ($scope.logs.ListTraceLogs.length === "0") {
-                $scope.showNoDBLogsFound = true;
+        vm.nextPage = function () {
+            if (vm.tracelogs.pagination.pageNumber < vm.tracelogs.pagination.totalPages) {
+                vm.tracelogs.pagination.pageNumber++;
+                fetchData();
             }
+        };
 
-            $scope.showLoader = false;   // hide loader
-        });
+        vm.prevPage = function () {
+            if (vm.tracelogs.pagination.pageNumber > 1) {
+                vm.tracelogs.pagination.pageNumber--;
+                fetchData();
+            }
+        };
+
+        vm.goToPage = function (pageNumber) {
+            vm.tracelogs.pagination.pageNumber = pageNumber;
+            fetchData();
+        };
+
+        // Logs filter
+        vm.q = '';
+
+        vm.filterTraceLogs = function () {
+            vm.tracelogs.pagination.pageNumber = "1";
+            fetchData();
+        };
+
+        // Table sort
+        vm.sortType = '';
+        vm.reverse = false;
+        vm.sort = function (keyname) {
+            vm.sortKey = keyname;       //set the sortKey to the param passed
+            vm.reverse = !vm.reverse;   //if true make it false and vice versa
+        };
 
         // Label CSS Class
-        $scope.getLabelType = function (LogLabel) {
+        vm.getLabelType = function (LogLabel) {
             switch (LogLabel) {
                 case 'ERROR':
                     return 'label label-danger';
-                    //break;
+                //break;
                 case 'INFO':
                     return 'label label-info';
-                    //break;
+                //break;
                 case 'WARN':
                     return 'label label-warning';
-                    //break;
+                //break;
                 default:
                     return 'label label-default';
             }
         };
 
         // Open detail modal
-        $scope.openDetailsModal = function (logItem, filteredLogs) {
+        vm.openDetailsModal = function (logItem, filteredLogs) {
             var dialog = dialogService.open({
                 template: '/App_Plugins/FALM/backoffice/housekeeping/view/logs-tlmanager-modal-details.html',
                 dialogData: {
@@ -242,7 +307,7 @@ app.requires.push('angularUtils.directives.dirPagination');
             });
         };
 
-        // TREE NODE HIGHLIGHT
+        // Tree Node Highlight
         var activeNode = appState.getTreeState("selectedNode");
         if (activeNode) {
             var activeNodePath = treeService.getPath(activeNode).join();
@@ -250,6 +315,56 @@ app.requires.push('angularUtils.directives.dirPagination');
         } else {
             navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "logs", $routeParams.id], forceReload: false, activate: true });
         }
+
+        // Trace Logs Functions
+        function fetchData() {
+            if (vm.q == null || vm.q == '') {
+                // Get all trace logs via hkLogsResource
+                hkLogsResource.getTraceLogs(vm.id, vm.tracelogs.itemsPerPage, vm.tracelogs.pagination.pageNumber).then(function (response) {
+                    vm.showSearchPanel = false;
+                    vm.showLoader = true;
+
+                    vm.tracelogs.allTraceLogs = response.data.ListAllTraceLogs;
+                    vm.tracelogs.logsItems = response.data.ListTraceLogs;
+                    vm.tracelogs.pagination.totalPages = response.data.TotalPages;
+                    vm.tracelogs.pagination.pageNumber = response.data.CurrentPage;
+                    vm.tracelogs.itemCount = response.data.TotalItems;
+
+                    vm.showLoader = false;
+                    vm.showSearchPanel = true;
+                }, function (response) {
+                    notificationsService.error("Error", "Could not load log data.");
+                });
+            } else {
+                // Get filtered trace logs via hkLogsResource
+                hkLogsResource.filterTraceLogs(vm.id, vm.tracelogs.allTraceLogs, vm.tracelogs.allFilteredTraceLogs, vm.q, vm.tracelogs.previousSearch, vm.tracelogs.itemsPerPage, vm.tracelogs.pagination.pageNumber).then(function (response) {
+                    vm.showSearchPanel = false;
+                    vm.showLoader = true;
+
+                    vm.tracelogs.allFilteredTraceLogs = response.data.ListAllFilteredTraceLogs;
+                    vm.tracelogs.logsItems = response.data.ListTraceLogs;
+                    vm.tracelogs.previousSearch = response.data.PreviousSearch;
+                    vm.tracelogs.pagination.totalPages = response.data.TotalPages;
+                    vm.tracelogs.pagination.pageNumber = response.data.CurrentPage;
+                    vm.tracelogs.itemCount = response.data.TotalItems;
+
+                    vm.showLoader = false;
+                    vm.showSearchPanel = true;
+                }, function (response) {
+                    notificationsService.error("Error", "Could not load log data.");
+                });
+            }
+
+            vm.tracelogs.rangeTo = (vm.tracelogs.itemsPerPage * (vm.tracelogs.pagination.pageNumber - 1)) + vm.tracelogs.itemCount;
+            vm.tracelogs.rangeFrom = (vm.tracelogs.rangeTo - vm.tracelogs.itemCount) + 1;
+
+            vm.sortType = 'LogDate'; // set the default sort type
+            vm.reverse = true;       // set the default sort order
+        }
+
+        $scope.$watch('vm.tracelogs.pagination.totalPages', function (term) {
+            //alert("Total Pages: " + vm.tracelogs.pagination.totalPages);
+        });
     }
 
     // Register controllers

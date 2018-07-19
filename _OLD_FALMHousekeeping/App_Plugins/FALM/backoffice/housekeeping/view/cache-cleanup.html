@@ -1,0 +1,98 @@
+﻿<div ng-controller="FALMHousekeepingCacheCleanupController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h3 class="title"><localize key="FALM_CacheTempManager.Cache.Title">Cache and Temp directories management (File System)</localize></h3>
+                <div class="description">
+                    <localize key="FALM_CacheTempManager.Cache.Description">With this tool you can easily empty the "AppData/cache" folder on File System)</localize>
+                </div>
+                <div ng-switch="id">
+                    <!-- LOADER INFO -->
+                    <div ng-show="showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
+                        <localize key="FALM_CacheTempManager.SearchInProgress">Search in progress. Please wait until you see results</localize>
+                    </div>
+                    
+                    <!-- DELETION IN PROGRESS INFO -->
+                    <div ng-show="showDeletionLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
+                        <localize key="FALM_CacheTempManager.DeletionInProgress">Please wait until you see deletion's result</localize>
+                    </div>
+
+                    <!-- RESULT PANEL -->
+                    <div ng-show="showResultPanel" class="resultPanel">
+                        <!-- PANEL: CACHE OBJECTS THAT CAN BE DELETED -->
+                        <div ng-show="cacheContent.ListCacheContent.length" class="CacheContentForm">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_CacheTempManager.Cache.ContentPanelTitle">Cache Directory Content</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div><localize key="FALM_CacheTempManager.Cache.ContentPanelDescription">This is the content of the App_Data/cache folder on File System</localize></div>
+                                    <table id="infoTable" class="table table-striped table-bordered" >
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-4"><localize key="FALM_CacheTempManager.Entry">Entry</localize></th>
+                                                <th class="col-xs-4"><localize key="FALM_CacheTempManager.Type">Type</localize></th>
+                                                <th class="col-xs-4"><localize key="FALM_CacheTempManager.Dimension">Dimension</localize></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="cacheItem in cacheContent.ListCacheContent | orderBy:'Entry'" >
+                                                <td class="col-xs-4">/App_Data/cache/{{ cacheItem.Entry }}</td>
+                                                <td class="col-xs-4">{{ cacheItem.Type }}</td>
+                                                <td class="col-xs-4">{{ cacheItem.Dimension }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer">
+                                    <form id="cacheCleanupForm" ng-submit="emptyCacheDirectory()" role="form" style="margin: 0 10px 0 0;">
+                                        <button type="submit" id="btnCleanupCache" name="btnCleanupCache" class="btn btn-danger">
+                                            <localize key="FALM_CacheTempManager.Cache.StartEmptyButton">Empty cache directory</localize>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL: CACHE DIRECTORY EMPTY -->
+                        <div ng-show="!cacheContent.ListCacheContent.length" class="CacheDirEmpty">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_CacheTempManager.Cache.ContentPanelTitle">Cache Directory Content</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <p><localize key="FALM_CacheTempManager.Cache.DirEmpty">The App_Data/cache directory is empty</localize></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RESTART SEARCH -->
+                        <div ng-show="!showLoader" class="restartSearch">
+                            <a ng-click="reloadRoute()" class="btn btn-default">
+                                <localize key="FALM_CacheTempManager.RestartSearch">Restart search</localize>
+                            </a>
+                            <a ng-click="createServicePage()" class="btn btn-default">
+                                <localize key="FALM_CacheTempManager.CreateServicePageLink">Create the Service Page</localize>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader && showDeletionLoader"></umb-load-indicator>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer id="falm-footer" />
+    </umb-panel>
+</div>

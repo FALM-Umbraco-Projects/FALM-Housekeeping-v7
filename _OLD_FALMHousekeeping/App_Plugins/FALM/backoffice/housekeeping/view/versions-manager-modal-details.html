@@ -1,0 +1,97 @@
+﻿<umb-panel ng-controller="FALMHousekeepingVersionsManagerDetailsController">
+    <div class="umb-panel-header" id="falm-header">
+        <h3 class="title"><localize key="FALM_VersionsManager.Dialog-Title">Version details</localize> (<span>Id: {{ dialogData.currentPublishedVersionItem.NodeId }}</span>)</h3>
+    </div>
+    <div class="umb-panel-body with-header with-footer" id="falm-content">
+        <!-- CLEANUP FORM -->
+        <div ng-show="dialogData.showCleanupForm" class="loading">
+            <table id="FHDetailsTable" class="table">
+                <tbody>
+                    <tr>
+                        <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_VersionsManager.Dialog-NodeName">Node name:</localize></th>
+                        <td style="padding: 15px; border-top: 0;">{{ dialogData.currentPublishedVersionItem.NodeName }}</td>
+                    </tr>
+                    <tr>
+                        <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_VersionsManager.Dialog-CurrentPublishedVersionDate">Date and Time of published version</localize></th>
+                        <td style="padding: 15px; border-top: 0;">{{ dialogData.currentPublishedVersionItem.PublishedDate | date: 'dd MMMM yyyy' }}<br />{{ dialogData.currentPublishedVersionItem.PublishedDate | date: 'HH:mm:ss' }}</td>
+                    </tr>
+                    <tr>
+                        <th style="padding: 15px; border-top: 0; width: 120px;"><localize key="FALM_VersionsManager.Dialog-UserName">User</localize></th>
+                        <td style="padding: 15px; border-top: 0;">{{ dialogData.currentPublishedVersionItem.NodeUser }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="padding: 15px; word-wrap: break-word;">
+                <p><strong><localize key="FALM_VersionsManager.Dialog-HistoryVersions">List Versions</localize></strong></p>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="vertical-align: middle;">
+                                <localize key="FALM_VersionsManager.Dialog-VersionDate">Date</localize>
+                            </th>
+                            <th class="text-center" style="vertical-align: middle;">
+                                <localize key="FALM_VersionsManager.Dialog-Published">Published</localize>
+                            </th>
+                            <th class="text-center" style="vertical-align: middle;">
+                                <localize key="FALM_VersionsManager.Dialog-Newest">Newest</localize>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="histVersionItem in histVersions.ListNodeVersions | itemsPerPage:histPageSize" current-page="histCurrentPage" pagination-id="VersionsDetails">
+                            <td class="text-center">{{ histVersionItem.VersionDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                            <td class="text-center">{{ histVersionItem.Published }}</td>
+                            <td class="text-center">{{ histVersionItem.Newest }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                <div ng-show="histVersions.ListNodeVersions.length > itemsPerPage">
+                                <dir-pagination-controls boundary-links="true" template-url="/App_Plugins/FALM/backoffice/housekeeping/template/dirPagination.tpl.html" pagination-id="VersionsDetails"></dir-pagination-controls>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- CLEANUP SUMMARY - SUCCESS -->
+        <div ng-show="dialogData.showCleanupSummarySuccess" class="cleanupSummarySuccess">
+            <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-Summary">Cleanup Summary</localize></h5>
+            <div class="alert alert-success" role="alert" style="padding-top: 20px;">
+                <h6 style="font-size: 14px; margin-bottom: 20px;"><strong><localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccess">Versions deleted successfully!</localize></strong></h6>
+                <p ng-repeat="item in dialogData.cleanupSummary" style="font-size: 12px;">
+                    <span class="badge">{{ item.Result }}</span> <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccessResultDeletedRows">rows deleted</localize> <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupSuccessResultTable">in table</localize>: <strong>{{ item.Type }}</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- CLEANUP SUMMARY - ERROR -->
+        <div ng-show="dialogData.showCleanupSummaryError" class="cleanupSummaryError">
+            <h5><localize key="FALM_VersionsManager.Cleanup.Dialog-Summary">Cleanup Summary</localize></h5>
+            <div class="alert alert-danger" role="alert" style="padding-top: 20px;">
+                <h6 style="font-size: 14px;"><localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupError">An Error occurred during cleanup</localize></h6>
+            </div>
+        </div>
+
+        <!-- LOADER -->
+        <div ng-show="dialogData.showLoader" class="loading">
+            <localize key="FALM_VersionsManager.Cleanup.Dialog-CleanupInProgress">Cleanup in progress. Please wait until you see results</localize>
+        </div>
+        <umb-load-indicator ng-if="dialogData.showLoader"></umb-load-indicator>
+    </div>
+
+    <div class="umb-panel-footer" id="falm-footer">
+        <a ng-show="histVersions.ListNodeVersions.length > 1" href="" ng-click="deleteVersionsByNodeId(dialogData.currentPublishedVersionItem.NodeId, 0)" class="btn btn-danger" style="margin-right: 10px;">
+            <localize key="FALM_VersionsManager.CleanupCurrentNodeVersions">Cleanup current node Versions</localize>
+        </a>
+        <label ng-show="histVersions.ListNodeVersions.length <= 1" class="label label-warning pull-left"style="padding-top: 9px; padding-bottom: 9px;">
+            <localize key="FALM_VersionsManager.Cleanup.NoVersionsToDelete">No Versions to delete</localize>
+        </label>
+        <a href="" ng-click="close()" class="btn pull-right">
+            <localize key="general_close">Close</localize>
+        </a>
+    </div>
+</umb-panel>

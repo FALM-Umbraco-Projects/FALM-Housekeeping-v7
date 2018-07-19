@@ -1,0 +1,34 @@
+﻿{
+    "javascript": [
+        "~/App_Plugins/FALM/backoffice/housekeeping/scripts/dirPagination.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/edit.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/logs.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/logs.modals.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/logs.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/logs.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/media.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/media.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/media.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/users.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/users.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/users.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/versions.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/versions.modals.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/versions.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/versions.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/recyclebin.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/recyclebin.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/recyclebin.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/cache.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/cache.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/cache.directive.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/controller/temp.controller.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/resource/temp.resource.js",
+        "~/App_Plugins/FALM/backoffice/housekeeping/directive/temp.directive.js",
+        "~/App_Plugins/FALM/housekeeping.resource.js"
+    ],
+    "css": [
+        "~/App_Plugins/FALM/backoffice/housekeeping/css/fhbootstrap.css",
+        "~/App_Plugins/FALM/backoffice/housekeeping/css/fhstyle.css"
+    ]
+}

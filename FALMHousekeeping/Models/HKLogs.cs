@@ -10,6 +10,16 @@ namespace FALM.Housekeeping.Models
     {
         /// <summary></summary>
         public List<DBLogModel> ListDBLogs { get; set; }
+        /// <summary></summary>
+        public string Search { get; set; }
+        /// <summary></summary>
+        public int CurrentPage { get; set; }
+        /// <summary></summary>
+        public int ItemsPerPage { get; set; }
+        /// <summary></summary>
+        public int TotalItems { get; set; }
+        /// <summary></summary>
+        public int TotalPages { get; set; }
     }
 
     /// <summary>
@@ -18,7 +28,7 @@ namespace FALM.Housekeeping.Models
     public class DBLogModel
     {
         /// <summary></summary>
-        public int LogId { get; set; }
+        public int Id { get; set; }
         /// <summary></summary>
         public int UserId { get; set; }
         /// <summary></summary>
@@ -30,20 +40,38 @@ namespace FALM.Housekeeping.Models
         /// <summary></summary>
         public string NodeName { get; set; }
         /// <summary></summary>
-        public DateTime LogDate { get; set; }
+        public DateTime Date { get; set; }
         /// <summary></summary>
-        public string LogHeader { get; set; }
+        public string Header { get; set; }
         /// <summary></summary>
-        public string LogComment { get; set; }
+        public string Comment { get; set; }
     }
 
     /// <summary>
     /// List of Trace Log
     /// </summary>
-    public class TraceLogsModel
+    public class HKTraceLogsModel
     {
         /// <summary></summary>
+        public string FileName { get; set; }
+        /// <summary></summary>
+        public List<TraceLogDataModel> ListAllTraceLogs { get; set; }
+        /// <summary></summary>
+        public List<TraceLogDataModel> ListAllFilteredTraceLogs { get; set; }
+        /// <summary></summary>
         public List<TraceLogDataModel> ListTraceLogs { get; set; }
+        /// <summary></summary>
+        public string Search { get; set; }
+        /// <summary></summary>
+        public string PreviousSearch { get; set; }
+        /// <summary></summary>
+        public int ItemsPerPage { get; set; }
+        /// <summary></summary>
+        public int CurrentPage { get; set; }
+        /// <summary></summary>
+        public int TotalItems { get; set; }
+        /// <summary></summary>
+        public int TotalPages { get; set; }
     }
 
     /// <summary>
@@ -52,11 +80,11 @@ namespace FALM.Housekeeping.Models
     public class TraceLogFileModel
     {
         /// <summary></summary>
-        public DateTime LogDate { get; set; }
+        public DateTime Date { get; set; }
         /// <summary></summary>
-        public string LogFileName { get; set; }
+        public string FileName { get; set; }
         /// <summary></summary>
-        public string LogMachineName { get; set; }
+        public string MachineName { get; set; }
     }
 
     /// <summary>
@@ -66,24 +94,24 @@ namespace FALM.Housekeeping.Models
     {
         // Trace Log Data Format
         // 
-        // 2017-06-05 09:57:03,761 [P5076/D2/T1] INFO Umbraco.Core.CoreBootManager - Umbraco 7.5.14 application starting on BA-FABRI
+        // 2017-06-05 09:57:03,761 [P5076/D2/T1] INFO Umbraco.Core.CoreBootManager - Umbraco 7.5.14 application starting on BA-XXXXX
         // DateTime - Process/Domain/Thread - Type - Logger - Message
 
         /// <summary></summary>
-        public int LogId { get; set; }
+        public int Id { get; set; }
         /// <summary></summary>
-        public DateTime LogDate { get; set; }
+        public DateTime Date { get; set; }
         /// <summary></summary>
-        public string LogProcess { get; set; }
+        public string Process { get; set; }
         /// <summary></summary>
-        public string LogDomain { get; set; }
+        public string Domain { get; set; }
         /// <summary></summary>
-        public string LogThread { get; set; }
+        public string Thread { get; set; }
         /// <summary></summary>
-        public string LogLevel { get; set; }
+        public string Level { get; set; }
         /// <summary></summary>
-        public string LogLogger { get; set; }
+        public string Logger { get; set; }
         /// <summary></summary>
-        public string LogMessage { get; set; }
+        public string Message { get; set; }
     }
 }

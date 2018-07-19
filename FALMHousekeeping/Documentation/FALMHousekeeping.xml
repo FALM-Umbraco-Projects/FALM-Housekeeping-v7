@@ -211,6 +211,9 @@
             HkLogsApiController
             </summary>
         </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.logService">
+            <summary></summary>
+        </member>
         <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.DbLogsModel">
             <summary></summary>
         </member>
@@ -235,7 +238,10 @@
         <member name="F:FALM.Housekeeping.Controllers.HkLogsApiController.ThreadProcessRegex">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.GetDbLogs">
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.GetDbLogs(System.String,System.Int32,System.Int32)">
             <summary>
             Show all DB logs
             </summary>
@@ -254,12 +260,28 @@
             </summary>
             <returns>bool</returns>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.GetTraceLogs(System.String)">
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.GetTraceLogs(System.String,System.Int32,System.Int32)">
             <summary>
             Show selected Trace Log
             </summary>
             <param name="filename"></param>
+            <param name="itemsPerPage"></param>
+            <param name="pageNumber"></param>
             <returns>TraceLogsModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.PostFilterTraceLogs(FALM.Housekeeping.Models.HKTraceLogsModel)">
+            <summary>
+            Filter trace logs
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkLogsApiController.CreatePagination(FALM.Housekeeping.Models.HKTraceLogsModel)">
+            <summary>
+            Create Trace Logs Pagination
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
         </member>
         <member name="T:FALM.Housekeeping.Controllers.HkMediaApiController">
             <summary>
@@ -573,12 +595,27 @@
         <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.ListDBLogs">
             <summary></summary>
         </member>
+        <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.Search">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.CurrentPage">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.ItemsPerPage">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.TotalItems">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKDBLogsModel.TotalPages">
+            <summary></summary>
+        </member>
         <member name="T:FALM.Housekeeping.Models.DBLogModel">
             <summary>
             DB Log
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.DBLogModel.LogId">
+        <member name="P:FALM.Housekeeping.Models.DBLogModel.Id">
             <summary></summary>
         </member>
         <member name="P:FALM.Housekeeping.Models.DBLogModel.UserId">
@@ -596,21 +633,48 @@
         <member name="P:FALM.Housekeeping.Models.DBLogModel.NodeName">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.DBLogModel.LogDate">
+        <member name="P:FALM.Housekeeping.Models.DBLogModel.Date">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.DBLogModel.LogHeader">
+        <member name="P:FALM.Housekeeping.Models.DBLogModel.Header">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.DBLogModel.LogComment">
+        <member name="P:FALM.Housekeeping.Models.DBLogModel.Comment">
             <summary></summary>
         </member>
-        <member name="T:FALM.Housekeeping.Models.TraceLogsModel">
+        <member name="T:FALM.Housekeeping.Models.HKTraceLogsModel">
             <summary>
             List of Trace Log
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogsModel.ListTraceLogs">
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.FileName">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.ListAllTraceLogs">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.ListAllFilteredTraceLogs">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.ListTraceLogs">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.Search">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.PreviousSearch">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.ItemsPerPage">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.CurrentPage">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.TotalItems">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKTraceLogsModel.TotalPages">
             <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.TraceLogFileModel">
@@ -618,13 +682,13 @@
             Trace Log File
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogFileModel.LogDate">
+        <member name="P:FALM.Housekeeping.Models.TraceLogFileModel.Date">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogFileModel.LogFileName">
+        <member name="P:FALM.Housekeeping.Models.TraceLogFileModel.FileName">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogFileModel.LogMachineName">
+        <member name="P:FALM.Housekeeping.Models.TraceLogFileModel.MachineName">
             <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.TraceLogDataModel">
@@ -632,28 +696,28 @@
             Trace Log Data
             </summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogId">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Id">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogDate">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Date">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogProcess">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Process">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogDomain">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Domain">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogThread">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Thread">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogLevel">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Level">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogLogger">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Logger">
             <summary></summary>
         </member>
-        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.LogMessage">
+        <member name="P:FALM.Housekeeping.Models.TraceLogDataModel.Message">
             <summary></summary>
         </member>
         <member name="T:FALM.Housekeeping.Models.HKMediaModel">
@@ -741,10 +805,90 @@
             HkLogsService
             </summary>
         </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService.db">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService.cache">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._baseTraceLogPath">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._defaultTraceLogPath">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._baseTraceLogFilename">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._defautlTraceLogFileNamePattern">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._dateFormat">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._datePattern">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._machinePattern">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._filePattern">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService._filePatternRegex">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService.CombinedLogEntryPattern">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService.LogEntryRegex">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService.ThreadProcessPattern">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkLogsService.ThreadProcessRegex">
+            <summary></summary>
+        </member>
         <member name="M:FALM.Housekeeping.Services.HkLogsService.#ctor">
             <summary>
             Logs Service
             </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.#ctor(Umbraco.Core.Persistence.UmbracoDatabase,Umbraco.Core.Cache.IRuntimeCacheProvider)">
+            <summary>
+            Instantiates the log service with the Umbraco database and a caching provider
+            </summary>
+            <param name="db">The Umbraco database</param>
+            <param name="cache">A caching provider</param>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.GetDBLog(FALM.Housekeeping.Models.HKDBLogsModel)">
+            <summary>
+            Get DB Logs
+            </summary>
+            <returns>IEnumerable of TraceLogFileModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.GetTraceLog(FALM.Housekeeping.Models.HKTraceLogsModel)">
+            <summary>
+            Get Trace Logs
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.GetTraceLogFromFile(System.String)">
+            <summary>
+            Get all trace logs from files
+            </summary>
+            <param name="fileName"></param>
+            <returns>List of Logs</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkLogsService.FilterTraceLog(System.Collections.Generic.List{FALM.Housekeeping.Models.TraceLogDataModel},System.String)">
+            <summary>
+            Get all trace logs from files
+            </summary>
+            <param name="allTracelogs"></param>
+            <param name="searchString"></param>
+            <returns>List of Logs</returns>
         </member>
         <member name="M:FALM.Housekeeping.Services.HkLogsService.GetBaseTraceLogPath">
             <summary>

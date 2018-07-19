@@ -1,0 +1,174 @@
+﻿<div ng-controller="FALMHousekeepingMediaCleanupController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h3 class="title"><localize key="FALM_MediaManager.Title">Media Folders Manager (File System)</localize></h3>
+                <div class="description">
+                    <localize key="FALM_MediaManager.Cleanup.Description">With this tool you can delete file system folders under '/media' which have no entry in the DB (orphans).</localize>
+                </div>
+                <div ng-switch="id">
+                    <!-- SEARCH PANEL -->
+                    <div ng-show="showSearchPanel" class="searchPanel">
+                        <!-- LOADER INFO -->
+                        <div ng-show="showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
+                            <localize key="FALM_MediaManager.Cleanup.SearchInProgress">Search in progress. Please wait until you see results</localize>
+                        </div>
+
+                        <!-- PANEL: INFORMATIONS AND WARNINGS -->                        
+                        <div ng-show="!showLoader && media.ListMediaWarnings.length" class="mediaWarningsForm">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div><localize key="FALM_MediaManager.Cleanup.WarningsPanelDescription">The following folders will not be deleted</localize></div>
+                                    <table id="infoTable" class="table table-striped table-bordered" >
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-6"><localize key="FALM_MediaManager.Cleanup.Entry">Entry</localize></th>
+                                                <th class="col-xs-6"><localize key="FALM_MediaManager.Cleanup.Details">Details</localize></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="media in media.ListMediaWarnings | orderBy:'Entry'" >
+                                                <td class="col-xs-6">/media/{{ media.Entry }}</td>
+                                                <td class="col-xs-6">{{ media.Message }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL: MEDIA THAT CAN BE DELETED -->
+                        <div ng-show="!showLoader && media.ListMediaToDelete.length" class="mediaToDeleteForm">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div><localize key="FALM_MediaManager.Cleanup.OrphansPanelDescription">The following folders can be deleted</localize></div>
+                                    <table id="orphansTable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-6 text-center"><localize key="FALM_MediaManager.Cleanup.Entry">Entry</localize></th>
+                                                <th class="col-xs-6 text-center"><localize key="FALM_MediaManager.Cleanup.Details">Details</localize></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mediaToDeleteTable">
+                                            <tr ng-repeat="media in media.ListMediaToDelete | orderBy:'Entry'">
+                                                <td>/media/{{ media.Entry }}</td>
+                                                <td>{{ media.Message }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer">
+                                    <form id="mediaCleanupForm" ng-submit="deleteMediaOrphans(media.ListMediaToDelete)" role="form" style="margin: 0 10px 0 0;">
+                                        <button type="submit" id="btnCleanupMedia" name="btnCleanupMedia" class="btn btn-danger">
+                                            <localize key="FALM_MediaManager.Cleanup.StartCleanupButton">Cleanup media orphans</localize>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL: NO MEDIA TO DELETE -->
+                        <div ng-show="!showLoader && !media.ListMediaToDelete.length" class="noMediaToDelete">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">Cleanup</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <p><localize key="FALM_MediaManager.Cleanup.NoMediaToDelete">No media to delete</localize></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DELETE PANEL -->
+                    <div ng-show="showDeletePanel" class="deletePanel">
+                        <!-- LOADER INFO -->
+                        <div ng-show="showDeleteLoader" class="loading">
+                            <localize key="FALM_MediaManager.Cleanup.DeleteInProgress">Delete in progress. Please wait until you see results</localize> 
+                        </div>
+
+                        <!-- PANEL: INFORMATIONS AND WARNINGS -->
+                        <div ng-show="!showDeleteLoader && media.ListMediaWarnings.length" class="mediaWarningsForm">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.WarningsPanelTitle">Informations</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div><localize key="FALM_MediaManager.Cleanup.WarningsPanelDescriptionResults">The following folders haven't been deleted</localize></div>
+                                    <table id="infoTable" class="table table-striped table-bordered" >
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-6 text-center"><localize key="FALM_MediaManager.Cleanup.Entry">Entry</localize></th>
+                                                <th class="col-xs-6 text-center"><localize key="FALM_MediaManager.Cleanup.Details">Details</localize></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="media in media.ListMediaWarnings | orderBy:'Entry'" >
+                                                <td>/media/{{ media.Entry }}</td>
+                                                <td>{{ media.Message }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL: MEDIA DELETED -->
+                        <div ng-show="!showDeleteLoader && media.ListMediaToDelete.length" class="mediaToDeleteForm">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_MediaManager.Cleanup.OrphansPanelTitle">File System Cleanup</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div><localize key="FALM_MediaManager.Cleanup.OrphansPanelDescriptionResults">The following folders have been deleted</localize></div>
+                                    <table id="orphansTable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-6"><localize key="FALM_MediaManager.Cleanup.Entry">Entry</localize></th>
+                                                <th class="col-xs-6"><localize key="FALM_MediaManager.Cleanup.Details">Details</localize></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mediaToDeleteTable">
+                                            <tr ng-repeat="media in media.ListMediaToDelete | orderBy:'Entry'">
+                                                <td class="col-xs-6">/media/{{ media.Entry }}</td>
+                                                <td class="col-xs-6">{{ media.Message }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESTART SEARCH -->
+                    <div ng-show="!showLoader && !showDeleteLoader" class="restartSearch">
+                        <a ng-click="reloadRoute()" class="btn btn-default">
+                            <localize key="FALM_MediaManager.Cleanup.RestartSearchOrphans">Restart orphans search</localize>
+                        </a>
+                    </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader && showDeleteLoader"></umb-load-indicator>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer id="falm-footer" />
+    </umb-panel>
+</div>

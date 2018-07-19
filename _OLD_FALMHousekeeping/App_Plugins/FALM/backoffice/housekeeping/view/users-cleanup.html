@@ -1,0 +1,90 @@
+﻿<div ng-controller="FALMHousekeepingUsersCleanupController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h3 class="title"><localize key="FALM_UsersManager.Title">Users Manager</localize> - <localize key="FALM_UsersManager.Cleanup.SubTitle">Cleanup</localize></h3>
+                <div class="description">
+                    <localize key="FALM_UsersManager.Cleanup.Description">With this tool you can delete one or more users</localize>
+                </div>
+                <div ng-switch="id">
+                    <!-- LIST USERS THAT CAN BE DELETED -->
+                    <div ng-show="users.length" class="userForm">
+                        <form id="deleteUsersForm" ng-submit="deleteSelectedUsers(users)" role="form">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <p><localize key="FALM_UsersManager.Cleanup.UsersPanelDescription">The following users can be deleted</localize></p>
+                                    <div class="form-group table-responsive">
+                                        <table id="infoTable" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 30px; text-align: center;"><input type="checkbox" id="selectAll" name="selectAll" ng-model="selectAll" ng-click="checkAll(this)" /></th>
+                                                    <th style="width: 50px; text-align: center;"><localize key="FALM_UsersManager.User.Id">Id</localize></th>
+                                                    <th><localize key="FALM_UsersManager.User.Name">Name</localize></th>
+                                                    <th><localize key="FALM_UsersManager.User.Username">Username</localize></th>
+                                                    <th><localize key="FALM_UsersManager.User.Email">Email</localize></th>
+                                                    <th style="width: 120px; text-align: center;"><localize key="FALM_UsersManager.User.UserType">User groups</localize></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="user in users | orderBy:'Id'">
+                                                    <td style="text-align: center !important;">
+                                                        <input type="checkbox" id="select_{{ user.Id }}" name="select_{{ user.Id }}" ng-model="user.Selected" class="form-control" style="display: inline-block; margin-top: 0;" />
+                                                    </td>
+                                                    <td style="text-align: center;">{{ user.Id }}</td>
+                                                    <td>{{ user.Name }}</td>
+                                                    <td>{{ user.Username }}</td>
+                                                    <td>{{ user.Email }}</td>
+                                                    <td style="text-align: center;">{{ user.UserType }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <button type="submit" id="btnDeleteUsers" name="btnDeleteUsers" data-hotkey="ctrl+s" ng-disabled="!isAtLeastOneUserSelected()" class="btn btn-danger"><localize key="FALM_UsersManager.Cleanup.DeleteSelectedUsers">Delete selected user(s)</localize></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- NO USERS TO DELETE -->
+                    <div ng-show="!users.length" class="noUserToDelete">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span class="bold"><localize key="FALM_UsersManager.Cleanup.UsersPanelTitle">Users</localize></span>
+                            </div>
+                            <div class="panel-body">
+                                <p><localize key="FALM_UsersManager.Cleanup.NoUsersToDelete">There are no users to delete.</localize></p>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <!-- RESTART SEARCH -->
+                    <div class="restartSearch">
+                        <a ng-click="reloadRoute()" class="btn btn-default">
+                            <localize key="FALM_UsersManager.RestartSearchUsers">Restart users search</localize>
+                        </a>
+                    </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader"></umb-load-indicator>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer id="falm-footer"/>
+    </umb-panel>
+</div>

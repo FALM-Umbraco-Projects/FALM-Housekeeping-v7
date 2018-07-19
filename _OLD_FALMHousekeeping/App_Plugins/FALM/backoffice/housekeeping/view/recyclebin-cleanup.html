@@ -1,0 +1,97 @@
+﻿<div ng-controller="FALMHousekeepingRecycleBinCleanupController">
+    <umb-panel>
+        <umb-header id="falm-header">
+            <div class="umb-panel-header-content-wrapper">
+                <div class="umb-panel-header-content">
+                    <div class="umb-panel-header-left-side -top-position" ng-class="{'-top-position': tabs || !icon }">
+                        <div class="umb-panel-header-title-wrapper">
+                            <div class="umb-panel-header-name ng-scope ng-binding">F.A.L.M. Housekeeping</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-header>
+        <umb-content id="falm-content">
+            <div class="umb-panel-body with-header umb-scrollable no-footer" style="padding: 0 20px; margin-top: 19px;">
+                <h3 class="title"><localize key="FALM_RecycleBinManager.Title">Recycle Bin Manager</localize></h3>
+                <div class="description">
+                    <localize key="FALM_RecycleBinManager.Description">With this tool you can empty the Recycle Bin</localize>
+                </div>
+                <div ng-switch="id">
+                    <!-- SEARCH PANEL -->
+                    <div ng-show="showSearchPanel" class="searchPanel">
+                        <div ng-hide="!showLoader" class="loading" style="margin-top: 30px; margin-bottom: 30px;">
+                            <!-- LOADER -->
+                            <localize key="FALM_RecycleBinManager.SearchInProgress">Search in progress. Please wait until process complete</localize>
+                        </div>
+
+                        <div ng-hide="!recycleBins.ListItemsInRecycleBins.length" class="itemsInRecycleBinsForm">
+                            <!-- PANEL: ITEMS TO BE DELETED -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span class="bold"><localize key="FALM_RecycleBinManager.SearchPanelTitle">Recycle Bins Informations</localize></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div><localize key="FALM_RecycleBinManager.SearchPanelDescription">The following table shows the total number of items contained in each Recycle Bin</localize></div>
+                                    <table id="itemsInRecycleBinsTable" class="table table-striped table-bordered" style="margin-top: 15px;">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-6 text-center"><localize key="FALM_RecycleBinManager.Type">Type</localize></th>
+                                                <th class="col-xs-6 text-center"><localize key="FALM_RecycleBinManager.Details">Details</localize></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="itemsInRecycleBinsDetails">
+                                            <tr ng-repeat="item in recycleBins.ListItemsInRecycleBins">
+                                                <td>{{ item.Type }}</td>
+                                                <td>{{ item.Value }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer">
+                                    <form id="EmptyContentRecycleBinForm" ng-submit="emptyContentRecycleBin()" role="form" style="display: inline-block; margin: 0 10px 0 0;">
+                                        <button type="submit" id="btnEmptyContentRecycleBin" name="btnEmptyContentRecycleBin" ng-disabled="contentItems <= 0" class="btn btn-danger">
+                                            <localize key="FALM_RecycleBinManager.StartEmptyContentRecycleBinButton">Empty Content Recycle Bin</localize>
+                                        </button>
+                                    </form>
+                                    <form id="EmptyMediaRecycleBinForm" ng-submit="emptyMediaRecycleBin()" role="form" style="display: inline-block; margin: 0 10px 0 0;">
+                                        <button type="submit" id="btnEmptyMediaRecycleBin" name="btnEmptyMediaRecycleBin" ng-disabled="mediaItems <= 0" class="btn btn-warning">
+                                            <localize key="FALM_RecycleBinManager.StartEmptyMediaRecycleBinButton">Empty Media Recycle Bin</localize>
+                                        </button>
+                                    </form>
+                                    <form id="EmptyBothRecycleBinsForm" ng-submit="emptyBothRecycleBins()" role="form" style="display: inline-block; margin: 0 10px 0 0;">
+                                        <button type="submit" id="btnEmptyBothRecycleBins" name="btnEmptyBothRecycleBins" ng-disabled="((contentItems <= 0 && mediaItems <= 0) || (contentItems > 0 && mediaItems <= 0) || (contentItems <= 0 && mediaItems > 0))" class="btn btn-warning">
+                                            <localize key="FALM_RecycleBinManager.StartEmptyBothRecycleBinsButton">Empty Both Recycle Bins</localize>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DELETE PANEL -->
+                    <div ng-show="showDeletePanel" class="deletePanel">
+                        <div class="loading">
+                            <!-- LOADER -->
+                            <localize key="FALM_RecycleBinManager.DeleteInProgress">Delete in progress. Please wait until process complete</localize>
+                        </div>
+                    </div>
+
+                    <!-- RESTART SEARCH -->
+                    <div ng-show="!showLoader" class="restartSearch">
+                        <a ng-click="reloadRoute()" class="btn btn-default">
+                            <localize key="FALM_RecycleBinManager.ReloadPage">Reload Page</localize>
+                        </a>
+                        <a ng-click="createServicePage()" class="btn btn-default">
+                            <localize key="FALM_RecycleBinManager.CreateServicePageLink">Create the Service Page</localize>
+                        </a>
+                    </div>
+
+                    <!-- LOADER ANIMATION -->
+                    <umb-load-indicator ng-if="showLoader"></umb-load-indicator>
+                </div>
+            </div>
+        </umb-content>
+        <umb-footer id="falm-footer"/>
+    </umb-panel>
+</div>

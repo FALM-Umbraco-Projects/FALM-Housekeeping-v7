@@ -23,7 +23,7 @@
         <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Cronologia delle Versioni<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.2</i></strong> - Per Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.3</i></strong> - Per Umbraco v7.7+</li>
     <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - Per Umbraco v7.6 fino alla v7.6.13</li>
     <li><strong><i>v7.6.0.3</i></strong> - Per Umbraco fino alla v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - Per Umbraco v7+</li>
@@ -47,24 +47,26 @@
         <key alias="LogsManager.Contains"><![CDATA[contiene]]></key>
         <key alias="LogsManager.SearchLabel"><![CDATA[Cerca:]]></key>
         <key alias="LogsManager.ItemsPerPage"><![CDATA[Eventi per pagina:]]></key>
-        <key alias="LogsManager.LogId">Id</key>
+        <key alias="LogsManager.Id">Id</key>
+        <key alias="LogsManager.Date">Data</key>
+        <key alias="LogsManager.Type">Tipo</key>
         <key alias="LogsManager.Username">Username</key>
-        <key alias="LogsManager.NodeId">Nodo</key>
-        <key alias="LogsManager.NodeName">Nome del nodo</key>
-        <key alias="LogsManager.LogDate">Data</key>
-        <key alias="LogsManager.LogHeader">Tipo</key>
-        <key alias="LogsManager.LogLevel">Tipo</key>
-        <key alias="LogsManager.LogProcess">Processo</key>
-        <key alias="LogsManager.LogDomain">Dominio</key>
-        <key alias="LogsManager.LogThread">Thread</key>
-        <key alias="LogsManager.LogLogger">Logger</key>
-        <key alias="LogsManager.LogComment">Descrizione</key>
-        <key alias="LogsManager.LogMessage">Descrizione</key>
+        <key alias="LogsManager.NodeId">Id Nodo</key>
+        <key alias="LogsManager.NodeName">Nome Nodo</key>
+        <key alias="LogsManager.Description">Descrizione</key>
+        <key alias="LogsManager.Level">Tipo</key>
+        <key alias="LogsManager.Process">Processo</key>
+        <key alias="LogsManager.Domain">Dominio</key>
+        <key alias="LogsManager.Thread">Thread</key>
+        <key alias="LogsManager.Logger">Logger</key>
+        <key alias="LogsManager.Comment">Descrizione</key>
+        <key alias="LogsManager.Message">Descrizione</key>
         <key alias="LogsManager.Page">Pagina</key>
         <key alias="LogsManager.Of">di</key>
         <key alias="LogsManager.NoLogsFound"><![CDATA[Non sono stati trovati Log]]></key>
-        <key alias="LogsManager.StartCleanupButton"><![CDATA[Elimina Log]]></key>
+        <key alias="LogsManager.StartCleanupButton"><![CDATA[Elimina i Log visualizzati]]></key>
         <key alias="LogsManager.StartCleanupOlder6MonthsButton"><![CDATA[Elimina i Log più vecchi di 6 mesi]]></key>
+        <key alias="LogsManager.StartFilterLogs"><![CDATA[Filtra]]></key>
         <key alias="LogsManager.RestartSearchLogs"><![CDATA[Ricarica]]></key>
         <key alias="LogsManager.Title_TL"><![CDATA[Gestione Log di Umbraco (TraceLog)]]></key>
         <key alias="LogsManager.SubTitle_TL"><![CDATA[ ]]></key>

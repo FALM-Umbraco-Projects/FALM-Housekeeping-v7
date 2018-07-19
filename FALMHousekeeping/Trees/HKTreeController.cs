@@ -70,14 +70,14 @@ namespace FALM.Housekeeping.Trees
                         // Create TraceLog tree
                         foreach (var logFile in logsService.GetTraceLogFiles())
                         {
-                            string title = iCount == 1 ? textService.Localize("FALM/LogsManager.TreeActionManagerTL.Today", CultureInfo.CurrentCulture) : logFile.LogDate.ToString("yyyy-MM-dd");
+                            string title = iCount == 1 ? textService.Localize("FALM/LogsManager.TreeActionManagerTL.Today", CultureInfo.CurrentCulture) : logFile.Date.ToString("yyyy-MM-dd");
 
-                            if (logFile.LogMachineName != null && !logFile.LogMachineName.InvariantEquals(currentMachineName))
+                            if (logFile.MachineName != null && !logFile.MachineName.InvariantEquals(currentMachineName))
                             {
-                                title += " (" + logFile.LogMachineName + ")";
+                                title += " (" + logFile.MachineName + ")";
                             }
 
-                            string path = HttpUtility.UrlEncode(System.IO.Path.GetFileName(logFile.LogFileName));
+                            string path = HttpUtility.UrlEncode(System.IO.Path.GetFileName(logFile.FileName));
                             string traceLogRoutePath = queryStrings.GetValue<string>("application") + "/housekeeping/edittl/" + path;
 
                             tree.Add(CreateTreeNode(path, id, queryStrings, title, "icon-calendar-alt color-green", false, traceLogRoutePath));
