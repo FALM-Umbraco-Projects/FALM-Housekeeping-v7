@@ -16,6 +16,13 @@ In the new FALM section you can find the following tools:
 
 **Latest Changes**
 ==============
+- v7.7.2.3 - Enhancement: Logs manager, now use the core pagination component and umb-table layout
+- v7.7.2.2 - Various Fixes
+	- Fix: Resolved issue #50 (GitHub)
+	- Fix: Resolved issue #51 (GitHub)
+	- Fix: Resolved issue #52 (GitHub)
+	- Fix: Resolved issue #54 (GitHub)
+	- Fix: Resolved issue #55 (GitHub)
 - v7.7.2.1 - Various Fixes
     - Fix: Resolved issue #48 (GitHub) in Versions manager UI
     - Fix: DBLogs manager UI
@@ -46,7 +53,7 @@ In the new FALM section you can find the following tools:
 
 **Version History**
 ===============
-- v7.7.2.1 - For Umbraco v7.7+
+- v7.7.2.3 - For Umbraco v7.7+
 - v7.7.2.1_for_Umbraco_v7_6_13 - For Umbraco v7.6.0 to v7.6.13
 - v7.7.2.0  - For Umbraco v7.6+
 - v7.6.0.3  - For Umbraco until v7.5.14
