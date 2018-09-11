@@ -1,15 +1,29 @@
 ﻿'use strict';
 (function () {
-    // Create Edit controller
+    // ###############################
+    // # VERSIONS MANAGER CONTROLLER #
+    // ###############################
     function VersionsController($route, $scope, $routeParams, $filter, appState, treeService, navigationService, hkVersionsResource, userService, notificationsService, localizationService, dialogService, eventsService) {
-        // Set a property on the scope equal to the current route id
-        $scope.id = $routeParams.id;
+        // ViewModel
+        var vm = this;
 
-        $scope.reloadRoute = function () {
+        // Set a property on the scope equal to the current route id
+        vm.id = $routeParams.id;
+
+        // Reload page function
+        vm.reloadRoute = function () {
             $route.reload();
         };
 
-        localizationService.localize("FALM_VersionsManager.FilterByNodeId").then(function (value) {
+        // Select current treenode
+        vm.treeDebugNotification = {
+            'type': 'success',
+            'sticky': false
+        };
+        vm.treeDebugNotification.headline = "";
+        vm.treeDebugNotification.message = $routeParams.tree;
+
+        /*localizationService.localize("FALM_VersionsManager.FilterByNodeId").then(function (value) {
             $scope.FilterByNodeId = value;
         });
         localizationService.localize("FALM_VersionsManager.FilterByNodeName").then(function (value) {
@@ -20,82 +34,100 @@
         });
         localizationService.localize("FALM_VersionsManager.FilterByDateTo").then(function (value) {
             $scope.FilterByDateTo = value;
-        });
+        });*/
 
-        // GET - VIEW VERSIONS
-        $scope.showLoader = false;
+        // VIEW VERSIONS
+        vm.showLoader = false;
+        vm.showSearchPanel = false;
 
-        // Get all versions via hkVersionsResource
-        hkVersionsResource.getPublishedNodes().then(function (response) {
-            $scope.showLoader = true;
-            $scope.versions = response.data;
-            $scope.showLoader = false;   // hide loader
-        });
-
-        // Table search
-        $scope.search = '';
-
-        // Table sort
-        $scope.sortType = '';
-        $scope.reverse = false;
-        $scope.sort = function (keyname) {
-            $scope.sortKey = keyname;           //set the sortKey to the param passed
-            $scope.reverse = !$scope.reverse;   //if true make it false and vice versa
-        };
+        vm.versions = [];
 
         // Table pagination
-        $scope.currentPage = 1;
-        $scope.pageSize = 10;
-        $scope.totalPages = 1;
+        vm.versions.pagination = {
+            pageNumber: 1,
+            totalPages: 1
+        };
+
+        vm.versions.itemsPerPage = 10;
+
+        // Get Versions
+        fetchData();
+
+        vm.nextPage = function () {
+            if (vm.versions.pagination.pageNumber < vm.versions.pagination.totalPages) {
+                vm.versions.pagination.pageNumber++;
+                fetchData();
+            }
+        };
+
+        vm.prevPage = function () {
+            if (vm.versions.pagination.pageNumber > 1) {
+                vm.versions.pagination.pageNumber--;
+                fetchData();
+            }
+        };
+
+        vm.goToPage = function (pageNumber) {
+            vm.versions.pagination.pageNumber = pageNumber;
+            fetchData();
+        };
+
+        // Versions filter
+        vm.q = '';
+
+        vm.filterVersions = function () {
+            vm.versions.pagination.pageNumber = "1";
+            fetchData();
+        };
 
         // POST - DELETE VIEWED LOGS
-        $scope.versionsSuccessNotification = {
+        vm.versionsSuccessNotification = {
             'type': 'success',
             'sticky': false
         };
         localizationService.localize("FALM_VersionsManager.Cleanup.DeleteLogsSuccessHeadline").then(function (value) {
-            $scope.versionsSuccessNotification.headline = value;
+            vm.versionsSuccessNotification.headline = value;
         });
         localizationService.localize("FALM_VersionsManager.Cleanup.DeleteLogsSuccessMessage").then(function (value) {
-            $scope.versionsSuccessNotification.message = value;
+            vm.versionsSuccessNotification.message = value;
         });
 
-        $scope.versionsErrorNotification = {
+        vm.versionsErrorNotification = {
             "type": "error",
             "headline": "",
             "sticky": false
         };
         localizationService.localize("FALM_VersionsManager.Cleanup.DeleteLogsErrorHeadline").then(function (value) {
-            $scope.versionsErrorNotification.headline = value;
+            vm.versionsErrorNotification.headline = value;
         });
         localizationService.localize("FALM_VersionsManager.Cleanup.DeleteLogsErrorMessage").then(function (value) {
-            $scope.versionsErrorNotification.message = value;
+            vm.versionsErrorNotification.message = value;
         });
 
         localizationService.localize("FALM_VersionsManager.Cleanup.ConfirmationMessage").then(function (value) {
-            $scope.confirmDeleteActionMessage = value;
+            vm.confirmDeleteActionMessage = value;
         });
 
         // Delete filtered Logs via hkLogsResource
-        $scope.deleteVersionsByCount = function () {
-            if (confirm($scope.confirmDeleteActionMessage)) {
-                $scope.showLoader = true;
+        vm.deleteVersionsByCount = function () {
+            if (confirm(vm.confirmDeleteActionMessage)) {
+                vm.showLoader = true;
                 hkVersionsResource.deleteVersionsByCount(0).then(function (response) {
                     if (response.data != "null") {
-                        notificationsService.add($scope.versionsSuccessNotification);
+                        notificationsService.add(vm.versionsSuccessNotification);
                     }
                     else {
-                        notificationsService.add($scope.versionsErrorNotification);
-                        $scope.showDeletePanel = false;
+                        notificationsService.add(vm.versionsErrorNotification);
+                        vm.showDeletePanel = false;
                     }
                 });
-                $scope.showLoader = false;
-                $route.reload();
+                vm.showLoader = false;
+                vm.reload();
             }
         };
 
         // Open details modal
-        $scope.openDetailsModal = function (versionItem) {
+        vm.openDetailsModal = function (versionItem) {
             var dialog = dialogService.open({
                 template: '/App_Plugins/FALM/backoffice/housekeeping/view/versions-manager-modal-details.html',
                 dialogData: {
@@ -107,7 +139,7 @@
         };
 
         // Open cleanup by count modal
-        $scope.openCleanupByCountModal = function () {
+        vm.openCleanupByCountModal = function () {
             var cbcDialog = dialogService.open({
                 template: '/App_Plugins/FALM/backoffice/housekeeping/view/versions-manager-modal-cleanupbycount.html',
                 show: true,
@@ -122,6 +154,28 @@
             navigationService.syncTree({ tree: $routeParams.tree, path: activeNodePath, forceReload: false, activate: true });
         } else {
             navigationService.syncTree({ tree: $routeParams.tree, path: ["-1", "versions", $routeParams.id], forceReload: false, activate: true });
+        }
+
+        // Versions Functions
+        function fetchData() {
+            // Get all published versions via hkVersionsResource
+            hkVersionsResource.getPublishedNodes(vm.q, vm.versions.itemsPerPage, vm.versions.pagination.pageNumber).then(function (response) {
+                vm.showSearchPanel = false;
+                vm.showLoader = true;
+
+                vm.versions.versionsItems = response.data.ListCurrentPublishedVersions;
+                vm.versions.pagination.totalPages = response.data.TotalPages;
+                vm.versions.pagination.pageNumber = response.data.CurrentPage;
+                vm.versions.itemCount = response.data.TotalItems;
+
+                vm.showLoader = false;   // hide loader
+                vm.showSearchPanel = true;
+            }, function (response) {
+                notificationsService.error("Error", "Could not load log data.");
+            });
+
+            vm.versions.rangeTo = (vm.versions.itemsPerPage * (vm.versions.pagination.pageNumber - 1)) + vm.versions.itemCount;
+            vm.versions.rangeFrom = (vm.versions.rangeTo - vm.versions.itemCount) + 1;
         }
     }
 

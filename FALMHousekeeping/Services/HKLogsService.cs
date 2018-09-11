@@ -91,7 +91,6 @@ namespace FALM.Housekeeping.Services
 
             if (!String.IsNullOrEmpty(request.Search))
             {
-                //WHERE CONTAINS((co1, col2, col3, col4), 'term1')
                 sqlLog += "WHERE (umbracoLog.logHeader LIKE '%" + request.Search.ToLower() + "%') OR ";
                 sqlLog += "(umbracoUser.userName LIKE '%" + request.Search.ToLower() + "%') OR ";
                 sqlLog += "(umbracoNode.text LIKE '%" + request.Search.ToLower() + "%') OR ";
@@ -255,7 +254,7 @@ namespace FALM.Housekeeping.Services
         {
             var ListTraceLogs = new List<TraceLogDataModel>();
 
-            var filteredTL = allTracelogs.Where(tl => tl.Date != null && tl.Date.ToShortDateString().Contains(searchString) || 
+            var filteredTL = allTracelogs.Where(tl => tl.Date != null && tl.Date.ToShortDateString().ToLower().Contains(searchString.ToLower()) || 
                                                       !String.IsNullOrEmpty(tl.Level) && tl.Level.ToLower().Contains(searchString.ToLower()) || 
                                                       !String.IsNullOrEmpty(tl.Logger) && tl.Logger.ToLower().Contains(searchString.ToLower()) || 
                                                       !String.IsNullOrEmpty(tl.Message) && tl.Message.ToLower().Contains(searchString.ToLower()));

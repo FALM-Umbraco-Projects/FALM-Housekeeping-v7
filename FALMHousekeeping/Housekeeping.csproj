@@ -104,6 +104,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Documentation\FALMHousekeeping.xml" />
+    <Content Include="logo-falm.ico" />
     <Content Include="packages.config" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\versions-manager-modal-cleanupbycount.html" />
     <Content Include="App_Plugins\FALM\backoffice\housekeeping\view\logs-dbmanager.html" />
@@ -127,6 +128,7 @@
     <Compile Include="Models\HKLogs.cs" />
     <Compile Include="Models\HKMedia.cs" />
     <Compile Include="Models\HKUsers.cs" />
+    <Compile Include="Services\HKVersionsService.cs" />
     <Compile Include="Services\HKLogsService.cs" />
     <Compile Include="Trees\HKTreeController.cs" />
     <Compile Include="Applications\HKApplication.cs" />
@@ -315,6 +317,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo-falm.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

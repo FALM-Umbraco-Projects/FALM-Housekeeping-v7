@@ -23,7 +23,7 @@
         <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Version History<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.3</i></strong> - For Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.4</i></strong> - For Umbraco v7.7+</li>
     <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - For Umbraco v7.6 to v7.6.13</li>
     <li><strong><i>v7.6.0.3</i></strong> - For Umbraco until v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - For Umbraco v7+</li>
@@ -139,7 +139,7 @@ Make sure you have made a backup copy of the entire site (root e DB) before proc
 
 Are you sure you want to continue with the deletion?]]></key>
         <key alias="MediaManager.DeleteMediaOrphansSuccessMessage"><![CDATA[Cancellation successfully complete.]]></key>
-        <key alias="MediaManager.DeleteMediaOrphansErrorMessage"><![CDATA[Error occur during deleting process.
+        <key alias="MediaManager.DeleteMediaOrphansErrorMessage"><![CDATA[An error occurred during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]></key>
         <key alias="MediaManager.Cleanup.FooterMessage"><![CDATA[ ]]></key>
@@ -161,7 +161,7 @@ Are you sure you want to continue with the deletion of the selected users?]]></k
         <key alias="UsersManager.Cleanup.DeleteSelectedUsersSuccessHeadline"><![CDATA[OK]]></key>
         <key alias="UsersManager.Cleanup.DeleteSelectedUsersSuccessMessage"><![CDATA[Selected users successfully deleted.]]></key>
         <key alias="UsersManager.Cleanup.DeleteSelectedUsersErrorHeadline"><![CDATA[Errore]]></key>
-        <key alias="UsersManager.Cleanup.DeleteSelectedUsersErrorMessage"><![CDATA[Error occur during deleting process.
+        <key alias="UsersManager.Cleanup.DeleteSelectedUsersErrorMessage"><![CDATA[An error occurred during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]></key>
         <key alias="UsersManager.Cleanup.NoUserSelectedMessage"><![CDATA[You must select at least one user to delete.]]></key>
@@ -181,7 +181,7 @@ Please try again or contact the author of the package with the details of the er
         <key alias="VersionsManager.Description"><![CDATA[With this tool you can manage the Umbraco history versions.]]></key>
         <key alias="VersionsManager.SearchInProgress"><![CDATA[Search in progress. Please wait until you see results]]></key>
         <key alias="VersionsManager.NoVersionsFound"><![CDATA[No version found]]></key>
-        <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions]]></key>
+        <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions found:]]></key>
         <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filter by<br />Node Id]]></key>
         <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filter by<br />Node Name]]></key>
         <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filter by date range (from)]]></key>
@@ -191,6 +191,7 @@ Please try again or contact the author of the package with the details of the er
         <key alias="VersionsManager.CurrentPublishedVersionDate"><![CDATA[Published version]]></key>
         <key alias="VersionsManager.TotalVersions"><![CDATA[Other Versions]]></key>
         <key alias="VersionsManager.ItemsPerPage"><![CDATA[Items per page:]]></key>
+        <key alias="VersionsManager.StartFilterVersions"><![CDATA[Filter Versions]]></key>
         <key alias="VersionsManager.FooterMessage"><![CDATA[Click on row to see node versions details.]]></key>
         <key alias="VersionsManager.StartCleanupButton"><![CDATA[Cleanup all Versions]]></key>
         <key alias="VersionsManager.Cleanup.ConfirmationMessage"><![CDATA[All versions on the site will be permanently deleted except the "publish" and "newest" versions.
@@ -200,9 +201,9 @@ Are you sure you want to continue with the deletion of the versions?]]></key>
         <key alias="VersionsManager.Cleanup.NoVersionsToDelete"><![CDATA[No versions to delete]]></key>
         <key alias="VersionsManager.StartCleanupByCount"><![CDATA[Cleanup versions by count]]></key>
         <key alias="VersionsManager.Cleanup.DeleteLogsSuccessHeadline"><![CDATA[OK]]></key>
-        <key alias="VersionsManager.Cleanup.DeleteLogsSuccessMessage"><![CDATA[All versions succefully removed.]]></key>
+        <key alias="VersionsManager.Cleanup.DeleteLogsSuccessMessage"><![CDATA[All versions successfully removed.]]></key>
         <key alias="VersionsManager.Cleanup.DeleteLogsErrorHeadline"><![CDATA[Error]]></key>
-        <key alias="VersionsManager.Cleanup.DeleteLogsErrorMessage"><![CDATA[Error occur during deleting process.
+        <key alias="VersionsManager.Cleanup.DeleteLogsErrorMessage"><![CDATA[An error occurred during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]></key>
         <key alias="VersionsManager.CleanupCurrentNodeVersions"><![CDATA[Delete all versions of the current node]]></key>
@@ -211,9 +212,9 @@ The process may take a long time if the number of versions to be deleted is very
 
 Are you sure you want to continue with the deletion of the versions?]]></key>
         <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsSuccessHeadline"><![CDATA[OK]]></key>
-        <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsSuccessMessage"><![CDATA[All versions of the current node succefully removed.]]></key>
+        <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsSuccessMessage"><![CDATA[All versions of the current node successfully removed.]]></key>
         <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsErrorHeadline"><![CDATA[Error]]></key>
-        <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsErrorMessage"><![CDATA[Error occur during deleting process.
+        <key alias="VersionsManager.CleanupCurrentNodeVersions.DeleteLogsErrorMessage"><![CDATA[An error occurred during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]></key>
         <key alias="VersionsManager.RestartSearchVersions"><![CDATA[Restart search]]></key>
@@ -239,7 +240,7 @@ Are you sure you want to continue with the deletion of the versions?]]></key>
         <key alias="VersionsManager.Cleanup.Dialog-CleanupSuccess"><![CDATA[Versions deleted successfully!]]></key>
         <key alias="VersionsManager.Cleanup.Dialog-CleanupSuccessResultTable"><![CDATA[in table]]></key>
         <key alias="VersionsManager.Cleanup.Dialog-CleanupSuccessResultDeletedRows"><![CDATA[deleted rows]]></key>
-        <key alias="VersionsManager.Cleanup.Dialog-CleanupError"><![CDATA[Error occur during deleting process.
+        <key alias="VersionsManager.Cleanup.Dialog-CleanupError"><![CDATA[An error occurred during deleting process.
     
 Please try again or contact the author of the package with the details of the error.]]>
         </key>
@@ -266,27 +267,27 @@ Are you sure you want to continue with the deletion of the versions?]]></key>
         <key alias="RecycleBinManager.StartEmptyMediaRecycleBinButton"><![CDATA[Empty MEDIA Recycle Bin]]></key>
         <key alias="RecycleBinManager.StartEmptyBothRecycleBinsButton"><![CDATA[Empty BOTH Recycle Bins]]></key>
         <key alias="RecycleBinManager.EmptyContentRecycleBinSuccessHeadline"><![CDATA[OK]]></key>
-        <key alias="RecycleBinManager.EmptyContentRecycleBinSuccessMessage"><![CDATA[Content Recycle Bin succefully removed]]></key>
+        <key alias="RecycleBinManager.EmptyContentRecycleBinSuccessMessage"><![CDATA[Content Recycle Bin successfully removed]]></key>
         <key alias="RecycleBinManager.EmptyMediaRecycleBinSuccessHeadline"><![CDATA[OK]]></key>
-        <key alias="RecycleBinManager.EmptyMediaRecycleBinSuccessMessage"><![CDATA[Media Recycle Bin succefully removed]]></key>
+        <key alias="RecycleBinManager.EmptyMediaRecycleBinSuccessMessage"><![CDATA[Media Recycle Bin successfully removed]]></key>
         <key alias="RecycleBinManager.EmptyBothRecycleBinsSuccessHeadline"><![CDATA[OK]]></key>
-        <key alias="RecycleBinManager.EmptyBothRecycleBinsSuccessMessage"><![CDATA[All Recycle Bins succefully removed]]></key>
+        <key alias="RecycleBinManager.EmptyBothRecycleBinsSuccessMessage"><![CDATA[All Recycle Bins successfully removed]]></key>
         <key alias="RecycleBinManager.CreateFALMServicePageSuccessHeadline"><![CDATA[OK]]></key>
         <key alias="RecycleBinManager.CreateFALMServicePageSuccessMessage"><![CDATA[All Document Types, Template and Nodes of Service Page are ready to be used]]></key>
         <key alias="RecycleBinManager.EmptyContentRecycleBinErrorHeadline"><![CDATA[Error]]></key>
-        <key alias="RecycleBinManager.EmptyContentRecycleBinErrorMessage"><![CDATA[Error occur during emptying content recycle bin process.
+        <key alias="RecycleBinManager.EmptyContentRecycleBinErrorMessage"><![CDATA[An error occurred during emptying content recycle bin process.
     
 Please try again or contact the author of the package with the details of the error]]></key>
         <key alias="RecycleBinManager.EmptyMediaRecycleBinErrorHeadline"><![CDATA[Error]]></key>
-        <key alias="RecycleBinManager.EmptyMediaRecycleBinErrorMessage"><![CDATA[Error occur during emptying media recycle bin process.
+        <key alias="RecycleBinManager.EmptyMediaRecycleBinErrorMessage"><![CDATA[An error occurred during emptying media recycle bin process.
     
 Please try again or contact the author of the package with the details of the error]]></key>
         <key alias="RecycleBinManager.EmptyBothRecycleBinsErrorHeadline"><![CDATA[Error]]></key>
-        <key alias="RecycleBinManager.EmptyBothRecycleBinsErrorMessage"><![CDATA[Error occur during emptying all recycle bins process.
+        <key alias="RecycleBinManager.EmptyBothRecycleBinsErrorMessage"><![CDATA[An error occurred during emptying all recycle bins process.
     
 Please try again or contact the author of the package with the details of the error]]></key>
         <key alias="RecycleBinManager.CreateFALMServicePageErrorHeadline"><![CDATA[Error]]></key>
-        <key alias="RecycleBinManager.CreateFALMServicePageErrorMessage"><![CDATA[Error occur during Service Page creation process.
+        <key alias="RecycleBinManager.CreateFALMServicePageErrorMessage"><![CDATA[An error occurred during Service Page creation process.
     
 Please try again or contact the author of the package with the details of the error]]></key>
         <key alias="RecycleBinManager.ConfirmEmptyContentRecycleBinActionMessage"><![CDATA[All nodes in Content Recycle Bin will be permanently deleted.

@@ -2,8 +2,8 @@
     //the factory object returned
     return {
         //this calls the Api Controller and execute GetPublishedNodes()
-        getPublishedNodes: function () {
-            return $http.get("FALMHousekeeping/HkVersionsApi/GetPublishedNodes");
+        getPublishedNodes: function (search, itemsPerPage, pageNumber) {
+            return $http.get('FALMHousekeeping/HkVersionsApi/GetPublishedNodes', { params: { search: search, itemsPerPage: itemsPerPage, pageNumber: pageNumber } });
         },
         //this calls the Api Controller and execute GetVersionsByNodeId(nodeId)
         getVersionsByNodeId: function (publishedNodeId) {

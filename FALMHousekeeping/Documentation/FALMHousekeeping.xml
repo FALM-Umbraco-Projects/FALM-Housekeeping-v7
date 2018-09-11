@@ -165,6 +165,18 @@
             HkVersionsApiController
             </summary>
         </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.db">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.cache">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.versionsService">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.VersionsModel">
+            <summary></summary>
+        </member>
         <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.CurrentPublishedVersionsModel">
             <summary></summary>
         </member>
@@ -177,7 +189,7 @@
         <member name="F:FALM.Housekeeping.Controllers.HkVersionsApiController.ListHistoryVersions">
             <summary></summary>
         </member>
-        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.GetPublishedNodes">
+        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.GetPublishedNodes(System.String,System.Int32,System.Int32)">
             <summary>
             Get all published versions
             </summary>
@@ -204,6 +216,13 @@
             <param name="publishedNodeId"></param>
             <param name="versionsToKeep"></param>
             <returns>List of CleanupResultModel</returns>
+        </member>
+        <member name="M:FALM.Housekeeping.Controllers.HkVersionsApiController.CreatePagination(FALM.Housekeeping.Models.HKVersionsModel)">
+            <summary>
+            Create Pagination
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
         </member>
         <member name="T:FALM.Housekeeping.Controllers.HkLogsApiController">
             <summary>
@@ -531,6 +550,21 @@
         <member name="P:FALM.Housekeeping.Models.HKVersionsModel.ListCurrentPublishedVersions">
             <summary></summary>
         </member>
+        <member name="P:FALM.Housekeeping.Models.HKVersionsModel.Search">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKVersionsModel.CurrentPage">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKVersionsModel.ItemsPerPage">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKVersionsModel.TotalItems">
+            <summary></summary>
+        </member>
+        <member name="P:FALM.Housekeeping.Models.HKVersionsModel.TotalPages">
+            <summary></summary>
+        </member>
         <member name="T:FALM.Housekeeping.Models.CurrentPublishedVersionModel">
             <summary>
             Current Published Version
@@ -799,6 +833,35 @@
         </member>
         <member name="P:FALM.Housekeeping.Models.HKUsersModel.UserType">
             <summary></summary>
+        </member>
+        <member name="T:FALM.Housekeeping.Services.HkVersionsService">
+            <summary>
+            HkVersionsService
+            </summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkVersionsService.db">
+            <summary></summary>
+        </member>
+        <member name="F:FALM.Housekeeping.Services.HkVersionsService.cache">
+            <summary></summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkVersionsService.#ctor">
+            <summary>
+            Logs Service
+            </summary>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkVersionsService.#ctor(Umbraco.Core.Persistence.UmbracoDatabase,Umbraco.Core.Cache.IRuntimeCacheProvider)">
+            <summary>
+            Instantiates the versions service with the Umbraco database and a caching provider
+            </summary>
+            <param name="db">The Umbraco database</param>
+            <param name="cache">A caching provider</param>
+        </member>
+        <member name="M:FALM.Housekeeping.Services.HkVersionsService.GetVersions(FALM.Housekeeping.Models.HKVersionsModel)">
+            <summary>
+            Get Versions
+            </summary>
+            <returns>Paged Versions Model</returns>
         </member>
         <member name="T:FALM.Housekeeping.Services.HkLogsService">
             <summary>

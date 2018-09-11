@@ -25,26 +25,7 @@
                             <localize key="FALM_LogsManager.DBLogsPanelTitle">DB Log</localize> <localize key="FALM_LogsManager.Contains">contains</localize> <span class="badge">{{ vm.dblogs.itemCount }}</span> <localize key="FALM_LogsManager.Events">events</localize>
                         </div>
                         <div class="panel-body">
-                            <!--<form class="form-inline">
-                                <div class="form-group">
-                                    <label for="search" class="sr-only"><localize key="FALM_LogsManager.SearchLabel">Search:</localize></label>
-                                    <div class="input-group" style="float: left; margin-right: 10px;">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </div>
-                                        <input type="text" ng-model="vm.q" id="search" class="form-control" style="-webkit-border-top-right-radius: 4px !important; -webkit-border-bottom-right-radius: 4px !important; -moz-border-radius-topright: 4px !important; -moz-border-radius-bottomright: 4px !important; border-top-right-radius: 4px !important; border-bottom-right-radius: 4px !important; width: 300px; height: 32px !important;"/>
-                                    </div>
-                                    <div class="text-right" style="float: right;">
-                                        <label for="itemsPerPage" style="vertical-align: bottom;"><localize key="FALM_LogsManager.ItemsPerPage">Items per page:</localize></label>
-                                        <select ng-model="vm.dblogs.itemsPerPage" ng-change="vm.changeItemsPerPage()" id="itemsPerPage" class="form-control" style="-webkit-border-top-right-radius: 4px !important; -webkit-border-bottom-right-radius: 4px !important; -moz-border-radius-topright: 4px !important; -moz-border-radius-bottomright: 4px !important; border-radius: 4px !important; height: 32px !important;">
-                                            <option value="10">10</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>-->
-
+                            <!-- Filters -->
                             <form id="filterLogsForm" ng-submit="vm.filterDBLogs()" role="form" class="form-inline">
                                 <div>
                                     <label for="search" class="sr-only"><localize key="FALM_LogsManager.SearchLabel">Search:</localize></label>

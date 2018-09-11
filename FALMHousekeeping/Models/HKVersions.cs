@@ -10,6 +10,16 @@ namespace FALM.Housekeeping.Models
     {
         /// <summary></summary>
         public List<CurrentPublishedVersionModel> ListCurrentPublishedVersions { get; set; }
+        /// <summary></summary>
+        public string Search { get; set; }
+        /// <summary></summary>
+        public int CurrentPage { get; set; }
+        /// <summary></summary>
+        public int ItemsPerPage { get; set; }
+        /// <summary></summary>
+        public int TotalItems { get; set; }
+        /// <summary></summary>
+        public int TotalPages { get; set; }
     }
 
     /// <summary>

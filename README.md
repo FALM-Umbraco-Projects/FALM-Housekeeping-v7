@@ -14,8 +14,12 @@ In the new FALM section you can find the following tools:
 - **Recycle Bin Manager**: to cleanup Content and Media Recycle Bin
 - **Cache and TEMP directories Manager**: to cleanup "App_Data/cache" and "App_Data/TEMP" directories on File System<br /><br />
 
+**_TESTED WITH: Umbraco v7.7.13 - v7.8.3 - v7.9.6 - v7.10.4 - v7.11.1 - v7.12.2_**
+
+
 **Latest Changes**
 ==============
+- v7.7.2.4 - Enhancement: Versions manager, now use the core pagination component and umb-table layout
 - v7.7.2.3 - Enhancement: Logs manager, now use the core pagination component and umb-table layout
 - v7.7.2.2 - Various Fixes
 	- Fix: Resolved issue #50 (GitHub)
@@ -53,7 +57,7 @@ In the new FALM section you can find the following tools:
 
 **Version History**
 ===============
-- v7.7.2.3 - For Umbraco v7.7+
+- v7.7.2.4 - For Umbraco v7.7+
 - v7.7.2.1_for_Umbraco_v7_6_13 - For Umbraco v7.6.0 to v7.6.13
 - v7.7.2.0  - For Umbraco v7.6+
 - v7.6.0.3  - For Umbraco until v7.5.14

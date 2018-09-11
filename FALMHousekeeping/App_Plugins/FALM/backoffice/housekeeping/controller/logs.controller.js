@@ -1,5 +1,4 @@
 ﻿'use strict';
-//app.requires.push('angularUtils.directives.dirPagination');
 (function () {
     // ######################
     // # DB LOGS CONTROLLER #

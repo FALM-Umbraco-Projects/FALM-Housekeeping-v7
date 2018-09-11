@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FALM.Housekeeping.Helpers;
 using FALM.Housekeeping.Models;
+using FALM.Housekeeping.Services;
 using Umbraco.Core;
+using Umbraco.Core.Cache;
 using Umbraco.Core.Logging;
+using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
@@ -20,6 +24,14 @@ namespace FALM.Housekeeping.Controllers
     public class HkVersionsApiController : UmbracoApiController
     {
         /// <summary></summary>
+        private readonly UmbracoDatabase db;
+        /// <summary></summary>
+        private readonly IRuntimeCacheProvider cache;
+        /// <summary></summary>
+        protected HkVersionsService versionsService;
+        /// <summary></summary>
+        protected HKVersionsModel VersionsModel = new HKVersionsModel();
+        /// <summary></summary>
         protected HKVersionsModel CurrentPublishedVersionsModel = new HKVersionsModel();
         /// <summary></summary>
         protected List<CurrentPublishedVersionModel> ListCurrentPublishedVersions = new List<CurrentPublishedVersionModel>();
@@ -33,10 +45,16 @@ namespace FALM.Housekeeping.Controllers
         /// </summary>
         /// <returns>VersionsModel</returns>
         [HttpGet]
-        public HKVersionsModel GetPublishedNodes()
+        public HKVersionsModel GetPublishedNodes(string search = "", int itemsPerPage = 10, int pageNumber = 1)
         {
-            try
-            {
+            try { 
+                var request = new HKVersionsModel()
+                {
+                    Search = search,
+                    ItemsPerPage = itemsPerPage,
+                    CurrentPage = pageNumber,
+                };
+
                 var sqlVersions = "SELECT CurDoc.nodeId, CurDoc.text AS NodeName, umbracoUser.userName AS NodeUser, CurDoc.updateDate AS PublishedDate, HistDoc.VersionsCount AS VersionsCount ";
                 sqlVersions += "FROM cmsDocument AS CurDoc ";
                 sqlVersions += "INNER JOIN umbracoUser ON CurDoc.documentUser = umbracoUser.id ";
@@ -52,16 +70,34 @@ namespace FALM.Housekeeping.Controllers
                 using (var db = HkDbHelper.ResolveDatabase())
                 {
                     ListCurrentPublishedVersions = db.Fetch<CurrentPublishedVersionModel>(sqlVersions);
-                    CurrentPublishedVersionsModel.ListCurrentPublishedVersions = ListCurrentPublishedVersions;
                 }
+
+                if (!string.IsNullOrEmpty(request.Search))
+                {
+                    ListCurrentPublishedVersions = ListCurrentPublishedVersions.Where(tl => tl.NodeId > 0 && tl.NodeId.ToString().Contains(request.Search.ToLower()) ||
+                                                          !String.IsNullOrEmpty(tl.NodeName) && tl.NodeName.ToLower().Contains(request.Search.ToLower()) ||
+                                                          !String.IsNullOrEmpty(tl.NodeUser) && tl.NodeUser.ToLower().Contains(request.Search.ToLower())).ToList();
+                }
+
+                request.ListCurrentPublishedVersions = ListCurrentPublishedVersions;
+
+                var paged = CreatePagination(request);
+
+                //var paged = versionsService.GetVersions(request);
+
+                VersionsModel.CurrentPage = int.Parse(paged.PageNumber.ToString());
+                VersionsModel.ItemsPerPage = int.Parse(paged.PageSize.ToString());
+                VersionsModel.ListCurrentPublishedVersions = paged.Items.ToList();
+                VersionsModel.TotalItems = int.Parse(paged.TotalItems.ToString());
+                VersionsModel.TotalPages = int.Parse(paged.TotalPages.ToString());
+
+                return VersionsModel;
             }
             catch (Exception ex)
             {
                 LogHelper.Error<Exception>(ex.Message, ex);
-                return CurrentPublishedVersionsModel;
+                return null;
             }
-
-            return CurrentPublishedVersionsModel;
         }
 
         /// <summary>
@@ -259,6 +295,31 @@ namespace FALM.Housekeeping.Controllers
                 }
 
                 return cleanupSummary;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error<Exception>(ex.Message, ex);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Create Pagination
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        private PagedResult<CurrentPublishedVersionModel> CreatePagination(HKVersionsModel request)
+        {
+            try
+            {
+                var startAt = (request.CurrentPage - 1) * request.ItemsPerPage;
+
+                var PagedLogs = new PagedResult<CurrentPublishedVersionModel>(request.ListCurrentPublishedVersions.Count, request.CurrentPage, request.ItemsPerPage)
+                {
+                    Items = request.ListCurrentPublishedVersions.Skip(startAt).Take(request.ItemsPerPage).ToList<CurrentPublishedVersionModel>()
+                };
+
+                return PagedLogs;
             }
             catch (Exception ex)
             {

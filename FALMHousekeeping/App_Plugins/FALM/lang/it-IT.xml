@@ -23,7 +23,7 @@
         <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Cronologia delle Versioni<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.3</i></strong> - Per Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.4</i></strong> - Per Umbraco v7.7+</li>
     <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - Per Umbraco v7.6 fino alla v7.6.13</li>
     <li><strong><i>v7.6.0.3</i></strong> - Per Umbraco fino alla v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - Per Umbraco v7+</li>
@@ -180,7 +180,7 @@ Si prega di riprovare o di contattare l'autore del package indicando i dettagli 
         <key alias="VersionsManager.Description"><![CDATA[Questo strumento permette di gestire le versioni che Umbraco mantiene per ogni nodo del content.]]></key>
         <key alias="VersionsManager.SearchInProgress"><![CDATA[Ricerca in corso. Si prega di attendere fino a quando non vengono visualizzati i dati]]></key>
         <key alias="VersionsManager.NoVersionsFound"><![CDATA[Nessuna versione trovata]]></key>
-        <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Riepilogo Versioni]]></key>
+        <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versioni trovate:]]></key>
         <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filtra con<br />Id del nodo]]></key>
         <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filtra con<br />Nome del nodo]]></key>
         <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filtra per data (da)]]></key>
@@ -189,7 +189,8 @@ Si prega di riprovare o di contattare l'autore del package indicando i dettagli 
         <key alias="VersionsManager.NodeName"><![CDATA[Nome nodo]]></key>
         <key alias="VersionsManager.CurrentPublishedVersionDate"><![CDATA[Versione pubblicata]]></key>
         <key alias="VersionsManager.TotalVersions"><![CDATA[Altre Versioni]]></key>
-        <key alias="VersionsManager.ItemsPerPage"><![CDATA[Nodi per pagina:]]></key>
+        <key alias="VersionsManager.ItemsPerPage"><![CDATA[Versioni per pagina:]]></key>
+        <key alias="VersionsManager.StartFilterVersions"><![CDATA[Filtra Versioni]]></key>
         <key alias="VersionsManager.FooterMessage"><![CDATA[Clicca sulle righe per visualizzare i dettagli]]></key>
         <key alias="VersionsManager.StartCleanupButton"><![CDATA[Elimina tutte le versioni]]></key>
         <key alias="VersionsManager.Cleanup.ConfirmationMessage"><![CDATA[Proseguendo, verranno definitivamente cancellate tutte le versioni presenti nel sito escluse le versioni "publish" e "newest".

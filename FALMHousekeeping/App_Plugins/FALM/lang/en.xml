@@ -23,7 +23,7 @@
         <key alias="Dashboard.LatestChanges"></key>
         <key alias="Dashboard.VersionHistory"><![CDATA[<p><strong>Version History<br /></strong>=============</p>
 <ul>
-    <li><strong><i>v7.7.2.3</i></strong> - For Umbraco v7.7+</li>
+    <li><strong><i>v7.7.2.4</i></strong> - For Umbraco v7.7+</li>
     <li><strong><i>v7.7.2.1_for_Umbraco_v7_6_13</i></strong> - For Umbraco v7.6 to v7.6.13</li>
     <li><strong><i>v7.6.0.3</i></strong> - For Umbraco until v7.5.14</li>
     <li><strong><i>v7.0.0.1</i></strong> - For Umbraco v7+</li>
@@ -181,7 +181,7 @@ Please try again or contact the author of the package with the details of the er
         <key alias="VersionsManager.Description"><![CDATA[With this tool you can manage the Umbraco history versions.]]></key>
         <key alias="VersionsManager.SearchInProgress"><![CDATA[Search in progress. Please wait until you see results]]></key>
         <key alias="VersionsManager.NoVersionsFound"><![CDATA[No version found]]></key>
-        <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions]]></key>
+        <key alias="VersionsManager.VersionsPanelTitle"><![CDATA[Versions found:]]></key>
         <key alias="VersionsManager.FilterByNodeId"><![CDATA[Filter by<br />Node Id]]></key>
         <key alias="VersionsManager.FilterByNodeName"><![CDATA[Filter by<br />Node Name]]></key>
         <key alias="VersionsManager.FilterByDateFrom"><![CDATA[Filter by date range (from)]]></key>
@@ -191,6 +191,7 @@ Please try again or contact the author of the package with the details of the er
         <key alias="VersionsManager.CurrentPublishedVersionDate"><![CDATA[Published version]]></key>
         <key alias="VersionsManager.TotalVersions"><![CDATA[Other Versions]]></key>
         <key alias="VersionsManager.ItemsPerPage"><![CDATA[Items per page:]]></key>
+        <key alias="VersionsManager.StartFilterVersions"><![CDATA[Filter Versions]]></key>
         <key alias="VersionsManager.FooterMessage"><![CDATA[Click on row to see node versions details.]]></key>
         <key alias="VersionsManager.StartCleanupButton"><![CDATA[Cleanup all Versions]]></key>
         <key alias="VersionsManager.Cleanup.ConfirmationMessage"><![CDATA[All versions on the site will be permanently deleted except the "publish" and "newest" versions.
