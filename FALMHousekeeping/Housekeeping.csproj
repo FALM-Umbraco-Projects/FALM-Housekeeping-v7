@@ -159,31 +159,31 @@
   <ItemGroup>
     <Reference Include="businesslogic, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\businesslogic.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.7.1\lib\net45\businesslogic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="interfaces, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\interfaces.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.7.1\lib\net45\interfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4net, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\log4net.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.7.1\lib\net45\log4net.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.Mvc">
-      <HintPath>bin\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="umbraco, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\umbraco.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.7.1\lib\net45\umbraco.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Umbraco.Core, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Umbraco.Core.dll</HintPath>
+      <HintPath>..\packages\UmbracoCms.Core.7.7.1\lib\net45\Umbraco.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=2.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
